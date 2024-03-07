@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const taglie = [
-    { id: 0, value: 'Choose a size' },
+    { id: 0, value: '' },
     { id: 1, value: 'XXS' },
     { id: 2, value: 'XS' },
     { id: 3, value: 'S' },
@@ -12,7 +12,7 @@ const taglie = [
 ];
 
 const colori = [
-    { id: 0, value: 'Choose a color' },
+    { id: 0, value: '' },
     { id: 1, value: 'Red' },
     { id: 2, value: 'Green' },
     { id: 3, value: 'Yellow' },
@@ -21,24 +21,25 @@ const colori = [
 ];
 
 const toni = [
-    { id: 0, value: 'Choose a tone' },
+    { id: 0, value: '' },
     { id: 1, value: 'Aggresive' },
     { id: 2, value: 'Motivational' },
     { id: 3, value: 'Friendly' },
 ];
 
 const categorie = [
-    { id: 0, value: 'Choose a category' },
+    { id: 0, value: '' },
     { id: 1, value: 'Pants' },
     { id: 2, value: 'Jacket' },
     { id: 3, value: 'Tshirt' },
     { id: 4, value: 'Hat' },
 ];
 
-function TextInput() {
+function TextInput({ onChange }: { onChange: any }) {
     return (
         <div className="w-full">
             <input
+                onChange={onChange}
                 type="text"
                 id="default-input"
                 placeholder="Brand name..."
@@ -77,15 +78,9 @@ function ButtonGenerate({ onClick }: { onClick: any }) {
     );
 }
 
-const stampaValori = (categoria: string, taglia: string, colore: string, tono: string) => {
-    console.log(`Categoria selezionata: ${categoria}`);
-    console.log(`Talgia selezionata: ${taglia}`);
-    console.log(`Colore selezionato: ${colore}`);
-    console.log(`Tono selezionata: ${tono}`);
-}
+export default function Form({ onGeneration }: { onGeneration: any }) {
 
-export default function Form() {
-
+    const [brand, setBrand] = useState("");
     const [categoria, setCategoria] = useState("");
     const [taglia, setTaglia] = useState("");
     const [colore, setColore] = useState("");
@@ -93,12 +88,12 @@ export default function Form() {
 
     return (
         <form className="w-full md:w-1/3 h-auto flex flex-wrap justify-end gap-4 py-6 md:py-5 px-5 rounded-md bg-gray-100">
-            <TextInput />
-            <SelectInput arrayDati={categorie} width="md:w-full" onChange={(categoria: string) => setCategoria(categoria)} />
-            <SelectInput arrayDati={taglie} width="md:w-[calc(50%-0.5rem)]" onChange={(taglia: string) => setTaglia(taglia)} />
-            <SelectInput arrayDati={colori} width="md:w-[calc(50%-0.5rem)]" onChange={(colore: string) => setColore(colore)} />
-            <SelectInput arrayDati={toni} width="md:w-full" onChange={(tono: string) => setTono(tono)} />
-            <ButtonGenerate onClick={() => stampaValori(categoria, taglia, colore, tono)} />
+            <TextInput onChange={(event: any) => setBrand(event.target.value)} />
+            <SelectInput arrayDati={categorie} width="md:w-full" onChange={(event: any) => setCategoria(event.target.value)} />
+            <SelectInput arrayDati={taglie} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setTaglia(event.target.value)} />
+            <SelectInput arrayDati={colori} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setColore(event.target.value)} />
+            <SelectInput arrayDati={toni} width="md:w-full" onChange={(event: any) => setTono(event.target.value)} />
+            <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore, tono)} />
         </form>
     );
 }
