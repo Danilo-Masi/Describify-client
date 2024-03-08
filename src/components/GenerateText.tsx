@@ -25,16 +25,18 @@ const RegenerateIcon = React.memo(() => (
     </svg>
 ));
 
-export default function GenerateText({ description }: { description: string }) {
+export default function GenerateText({ description, onRegenerate }: { description: string, onRegenerate: () => void }) {
 
     const [descrizioneAttuale, setDescrizioneAttuale] = useState(description);
+    const [copied, setCopied] = useState(false);
 
-    const handleRegerate = () => {
-        console.log('Contenuto rigenerato');
-    }
-
-    const handleCopy = () => {
-        console.log('Contenuto copiato');
+    const handleCopy = async() => {
+        try {
+            await navigator.clipboard.writeText(descrizioneAttuale);
+            setCopied(true);
+        } catch (error) {
+            console.error('Errore nella copiatura del testo', error);
+        }
     }
 
     return (
@@ -47,8 +49,8 @@ export default function GenerateText({ description }: { description: string }) {
                 className="p-2-5 text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Write your thoughts here..." />
             <div className="flex justify-between md:justify-end md:gap-3">
-                <RegenerateButton value="Regenerate" icon={<RegenerateIcon />} onClick={handleRegerate} />
-                <RegenerateButton value="Copy to clipboard" icon={<CopyIcon />} onClick={handleCopy} />
+                <RegenerateButton value="Regenerate" icon={<RegenerateIcon />} onClick={onRegenerate} />
+                <RegenerateButton value={copied ? 'Copied' : 'Copy to Clipboard'} icon={<CopyIcon />} onClick={handleCopy} />
             </div>
         </div>
     );
