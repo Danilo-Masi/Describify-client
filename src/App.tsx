@@ -1,35 +1,18 @@
 import { useState } from "react";
-import ReactModal from 'react-modal';
 //Components
-
 import Navbar from "./components/Navbar";
-import GeneratePage from "./pages/GeneratePage";
+import AccessForm from "./components/AccessForm";
 import HomePage from "./pages/HomePage";
-import Login from "./components/Login";
-import Signup from './components/Signup';
 
 export default function App() {
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [logged, setLogged] = useState(false);
-  const [notSignup, setNotSignup] = useState(false);
-
-  const handleLogin = () => {
-    //Metodi per l'accesso
-    setLogged(true);
-    setModalOpen(false);
-  }
+  const [isSigninOpen, setSigninOpen] = useState(false);
+  const [isSignupOpen, setSignupOpen] = useState(false);
 
   return (
     <>
-      <Navbar onClickCta={() => setModalOpen(true)} />
-      {logged ? <GeneratePage /> : <HomePage />}
-      <ReactModal
-        ariaHideApp={false}
-        className="w-full h-full items-center justify-center"
-        isOpen={modalOpen}>
-        {notSignup ? <Signup /> : <Login onClick={handleLogin} onNotAccount={() => setNotSignup(true)} />}
-      </ReactModal>
+      <Navbar onSignin={() => { setSigninOpen(true), setSignupOpen(false) }} onSignup={() => { setSignupOpen(true), setSigninOpen(false) }} />
+      {isSigninOpen || isSignupOpen ? <AccessForm isSigninOpen={isSigninOpen} isSignupOpen={isSignupOpen} /> : <HomePage />}
     </>
   )
 }
