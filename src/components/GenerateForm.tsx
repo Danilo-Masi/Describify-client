@@ -88,7 +88,7 @@ function ButtonGenerate({ onClick }: { onClick: any }) {
     );
 }
 
-export default function Form({ onGeneration }: { onGeneration: (brand: string, categoria: string, taglia: string, colore: string, tono: string) => void }) {
+export default function GenerateForm({ onGeneration }: { onGeneration: (brand: string, categoria: string, taglia: string, colore: string, tono: string) => void }) {
 
     const [brand, setBrand] = useState("");
     const [categoria, setCategoria] = useState("");

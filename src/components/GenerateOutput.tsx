@@ -25,7 +25,7 @@ const RegenerateIcon = React.memo(() => (
     </svg>
 ));
 
-export default function GenerateText({ description, onRegenerate }: { description: string, onRegenerate: () => void }) {
+export default function GenerateOutput({ description, onRegenerate }: { description: string, onRegenerate: () => void }) {
 
     const [descrizioneAttuale, setDescrizioneAttuale] = useState(description);
     const [copied, setCopied] = useState(false);

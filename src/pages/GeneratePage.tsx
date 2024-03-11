@@ -1,8 +1,8 @@
 import { useState } from "react";
 //Components
 import Layout from "../components/Layout";
-import Form from "../components/Form";
-import GenerateText from "../components/GenerateText";
+import GenerateForm from "../components/GenerateForm";
+import GenerateOutput from "../components/GenerateOutput";
 
 export default function GeneratePage() {
 
@@ -35,8 +35,8 @@ export default function GeneratePage() {
     }
 
     return (
-        <Layout>
-            {!generate ? <Form onGeneration={handleGeneration} /> : <GenerateText description={description} onRegenerate={handleRegenerate} />}
+        <Layout padding="px-5">
+            {!generate ? <GenerateForm onGeneration={handleGeneration} /> : <GenerateOutput description={description} onRegenerate={handleRegenerate} />}
         </Layout>
     )
 }

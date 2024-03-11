@@ -1,6 +1,11 @@
+import { useState } from "react"
+
 export default function Navbar({ onSignin, onSignup }: { onSignin: () => void, onSignup: () => void }) {
+
+    const [isMenu, setMenu] = useState(false);
+
     return (
-        <div className="w-full h-[12svh] flex items-center justify-center bg-gray-200">
+        <div className="w-full h-[12svh] flex items-center justify-center bg-gray-300">
             <div className="w-[90%] md:w-[80%] flex items-center">
                 {/* Logo */}
                 <div className="w-1/2 md:w-1/4">
@@ -31,6 +36,7 @@ export default function Navbar({ onSignin, onSignup }: { onSignin: () => void, o
                 {/* Button Menu mobile */}
                 <div className="w-1/2 flex md:hidden items-center justify-end">
                     <button
+                        onClick={() => setMenu(!isMenu)}
                         type="button"
                         className="text-gray-700 border border-gray-700 hover:bg-gray-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm p-2.5 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -39,6 +45,13 @@ export default function Navbar({ onSignin, onSignup }: { onSignin: () => void, o
                         <span className="sr-only">menu icon</span>
                     </button>
                 </div>
+                {/* Menu mobile */}
+                {isMenu && (
+                    <div className="w-full h-svh flex flex-col items-center justify-center fixed top-0 left-0 bg-red-500">
+                        <p className="text-2xl fixed top-5 right-5" onClick={() => setMenu(!isMenu)}>X</p>
+                        <p>Home</p>
+                    </div>
+                )}
             </div>
         </div>
     )
