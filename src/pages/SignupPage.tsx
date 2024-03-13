@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 //Supabase
 import { supabase } from '../services/client';
 //Components
@@ -104,7 +105,7 @@ function SignupForm() {
             </ContainerInput>
             <ContainerInput flexOrentation="flex-row">
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Already have an account? <a href="#" className="font-medium text-blue-600 hover:underline dark:text-primary-500">Login here</a>
+                    Already have an account? <Link to="/signin" className="text-blue-700 font-medium">Login here</Link>
                 </p>
             </ContainerInput>
         </form>
@@ -113,7 +114,7 @@ function SignupForm() {
 
 export default function SignupPage() {
     return (
-        <Layout padding="p-0">
+        <Layout padding="p-0" mdFlexOrientation="md:flex-row">
             <SignupForm />
             <AccessBox />
         </Layout>

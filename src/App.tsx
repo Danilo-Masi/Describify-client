@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//Components
-import Navbar from "./components/Navbar";
 //Pages
 import HomePage from "./pages/HomePage";
 import GeneratePage from "./pages/GeneratePage";
@@ -9,10 +7,8 @@ import SignupPage from "./pages/SignupPage";
 
 export default function App() {
 
-
   return (
     <>
-      <Navbar />
       <BrowserRouter>
         <Routes>
           <Route index element={<HomePage />} />

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 //Supabase
 import { supabase } from '../services/client';
 //Components
@@ -35,6 +36,7 @@ function SigninForm() {
                 return;
             } else {
                 alert('Accesso effettutato corretamente');
+                console.log(supabase.auth.instanceID);
             }
         } catch (error) {
             console.error("Error during signin:", error);
@@ -86,13 +88,18 @@ function SigninForm() {
             <ContainerInput flexOrentation="flex-col">
                 <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
             </ContainerInput>
+            <ContainerInput flexOrentation="flex-row">
+                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                    You're new to Describy? <Link to="/signup" className="text-blue-700 font-medium">Singup here</Link>
+                </p>
+            </ContainerInput>
         </form>
     );
 }
 
 export default function SigninPage() {
     return (
-        <Layout padding="p-0">
+        <Layout padding="p-0" mdFlexOrientation="md:flex-row">
             <SigninForm />
             <AccessBox />
         </Layout>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 //Components
 import Layout from "../components/Layout";
+import Navbar from "../components/Navbar";
 import GenerateForm from "../components/GenerateForm";
 import GenerateOutput from "../components/GenerateOutput";
 
@@ -35,7 +36,8 @@ export default function GeneratePage() {
     }
 
     return (
-        <Layout padding="px-5">
+        <Layout padding="px-0" mdFlexOrientation="md:flex-col">
+            <Navbar />
             {!generate ? <GenerateForm onGeneration={handleGeneration} /> : <GenerateOutput description={description} onRegenerate={handleRegenerate} />}
         </Layout>
     )
