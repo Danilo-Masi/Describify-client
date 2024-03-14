@@ -40,15 +40,15 @@ export default function GenerateOutput({ description, onRegenerate }: { descript
     }
 
     return (
-        <div className="w-full md:w-1/3 flex flex-col gap-3">
+        <div className="w-full md:w-3/4 h-auto flex flex-wrap justify-end gap-5 p-5 rounded-lg border border-gray-400  ">
             <textarea
                 onChange={(event: any) => setDescrizioneAttuale(event.target.value)}
                 value={descrizioneAttuale}
                 id="message"
-                rows={10}
-                className="p-2-5 text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Write your thoughts here..." />
-            <div className="flex justify-between md:justify-end md:gap-3">
+                rows={15}
+                className=" w-full p-2-5 text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                placeholder="Your description here..." />
+            <div className="flex justify-between md:justify-end md:gap-3 gap-2">
                 <RegenerateButton value="Regenerate" icon={<RegenerateIcon />} onClick={onRegenerate} />
                 <RegenerateButton value={copied ? 'Copied' : 'Copy to Clipboard'} icon={<CopyIcon />} onClick={handleCopy} />
             </div>

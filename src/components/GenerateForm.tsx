@@ -97,7 +97,7 @@ export default function GenerateForm({ onGeneration }: { onGeneration: (brand: s
     const [tono, setTono] = useState("");
 
     return (
-        <form className="w-full md:w-1/3 h-auto flex flex-wrap justify-end gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-md bg-gray-100 border border-gray-300">
+        <form className="w-full md:w-3/4 h-auto flex flex-wrap justify-end gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-md bg-gray-100 border border-gray-300">
             <TextInput onChange={(event: any) => setBrand(event.target.value)} valoreLabel="Brand name" />
             <SelectInput arrayDati={categorie} width="md:w-full" onChange={(event: any) => setCategoria(event.target.value)} valoreLabel="Category" />
             <SelectInput arrayDati={taglie} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setTaglia(event.target.value)} valoreLabel="Size" />

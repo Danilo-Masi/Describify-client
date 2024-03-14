@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 //Supabase
 import { supabase } from '../services/client';
 //Components
@@ -7,7 +7,9 @@ import AccessBox from "../components/AccessBox";
 import Layout from "../components/Layout";
 import ContainerInput from "../components/ContainerInput";
 
-function SigninForm() {
+function SigninForm({ setToken }: { setToken: Dispatch<SetStateAction<boolean>> }) {
+
+    const navigate = useNavigate();
 
     const [rememberCheckbox, setRememberCheckbox] = useState(false);
     const [signinForm, setSigninForm] = useState({
@@ -32,11 +34,11 @@ function SigninForm() {
             });
             if (error) {
                 console.error("Error during signin:", error);
-                alert('Error during signin: ' + error.message);
                 return;
             } else {
                 alert('Accesso effettutato corretamente');
-                console.log(supabase.auth.instanceID);
+                setToken(data);
+                navigate('/');
             }
         } catch (error) {
             console.error("Error during signin:", error);
@@ -97,10 +99,10 @@ function SigninForm() {
     );
 }
 
-export default function SigninPage() {
+export default function SigninPage({ setToken }: { setToken: Dispatch<SetStateAction<boolean>> }) {
     return (
         <Layout padding="p-0" mdFlexOrientation="md:flex-row">
-            <SigninForm />
+            <SigninForm setToken={setToken} />
             <AccessBox />
         </Layout>
     )
