@@ -1,15 +1,16 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 //Supabase
-import { supabase } from '../services/client';
+import { supabase } from '../services/client.tsx';
 //Components
 import AccessBox from "../components/AccessBox";
 import Layout from "../components/Layout";
 import ContainerInput from "../components/ContainerInput";
 
-function SigninForm({ setToken }: { setToken: Dispatch<SetStateAction<boolean>> }) {
+function SigninForm() {
 
-    const navigate = useNavigate();
+    //Funzione per navigare tra le varie pagine
+    const navigate: NavigateFunction = useNavigate();
 
     const [rememberCheckbox, setRememberCheckbox] = useState(false);
     const [signinForm, setSigninForm] = useState({
@@ -17,6 +18,7 @@ function SigninForm({ setToken }: { setToken: Dispatch<SetStateAction<boolean>> 
         password: ''
     });
 
+    //Imposta lo stato dei vari input presenti nel form
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
         setSigninForm(prevState => ({
             ...prevState,
@@ -24,25 +26,26 @@ function SigninForm({ setToken }: { setToken: Dispatch<SetStateAction<boolean>> 
         }))
     }
 
+    //Funzione per effettuare l'accesso all'account 
     const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //Validazione dei dati //TODO
+        //Validazione dei dati /***** DA IMPLEMENTARE ******/
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: signinForm.email,
                 password: signinForm.password,
             });
             if (error) {
-                console.error("Error during signin:", error);
+                alert('Credenziali errate');
+                console.error("Errore nelle credenziali:", error);
                 return;
             } else {
                 alert('Accesso effettutato corretamente');
-                setToken(data);
+                sessionStorage.setItem('token', JSON.stringify(data));
                 navigate('/');
             }
         } catch (error) {
             console.error("Error during signin:", error);
-            alert('Error during signin');
         }
     }
 
@@ -81,7 +84,6 @@ function SigninForm({ setToken }: { setToken: Dispatch<SetStateAction<boolean>> 
                         type="checkbox"
                         value=""
                         className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
-                        required
                         checked={rememberCheckbox}
                         onChange={() => setRememberCheckbox(!rememberCheckbox)} />
                 </div>
@@ -99,10 +101,10 @@ function SigninForm({ setToken }: { setToken: Dispatch<SetStateAction<boolean>> 
     );
 }
 
-export default function SigninPage({ setToken }: { setToken: Dispatch<SetStateAction<boolean>> }) {
+export default function SigninPage() {
     return (
         <Layout padding="p-0" mdFlexOrientation="md:flex-row">
-            <SigninForm setToken={setToken} />
+            <SigninForm/>
             <AccessBox />
         </Layout>
     )

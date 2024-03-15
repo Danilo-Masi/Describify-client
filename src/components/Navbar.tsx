@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+//Supabase
+import { supabase } from '../services/client.tsx';
 
 function Logo() {
     return (
@@ -53,7 +55,28 @@ function AccessButton() {
 }
 
 function UserProfile({ emailUser }: { emailUser: string }) {
+    //Funzione per navigare tra le varie pagine
+    const navigate = useNavigate();
+
     const [visibile, setVisibile] = useState(false);
+
+    //Funzione per permettere all'utente di effettuare il logout dall'app
+    const handleSignout = async () => {
+        console.log('Esci???');
+        try {
+            let { error } = await supabase.auth.signOut();
+            if (error) {
+                alert('Errore durante la fase di logout');
+                console.error('Errore durante la fase di logout', error);
+                return;
+            } else {
+                sessionStorage.removeItem('token');
+                navigate('/signin');
+            }
+        } catch (error) {
+            console.error('Errore', error);
+        }
+    }
 
     return (
         <div className="w-1/2 md:w-1/4 flex flex-col h-auto items-end">
@@ -68,17 +91,14 @@ function UserProfile({ emailUser }: { emailUser: string }) {
             <div
                 className={`h-auto flex-col items-start gap-2 px-16 py-3 absolute top-16 rounded-lg bg-gray-100 mt-1 ${visibile ? 'flex' : 'hidden'}`}>
                 <p>Token 0</p>
-                <p>Logout</p>
+                <button onClick={handleSignout}>Logout</button>
             </div>
         </div>
     );
 }
 
 
-export default function Navbar({ token }: { token: boolean }) {
-
-    const [emailUser, setEmailUser] = useState('name@describify.com');
-
+export default function Navbar({ token, emailUser }: { token: boolean, emailUser: string }) {
     return (
         <div className="w-full h-[12svh] flex items-center justify-center bg-gray-300">
             <div className="w-[90%] md:w-[80%] flex items-center">
@@ -87,5 +107,5 @@ export default function Navbar({ token }: { token: boolean }) {
                 {token ? <UserProfile emailUser={emailUser} /> : <AccessButton />}
             </div>
         </div>
-    )
+    );
 }

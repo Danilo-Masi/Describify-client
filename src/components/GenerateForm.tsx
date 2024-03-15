@@ -77,18 +77,19 @@ function SelectInput({ arrayDati, width, onChange, valoreLabel }: { arrayDati: a
     );
 }
 
-function ButtonGenerate({ onClick }: { onClick: any }) {
+function ButtonGenerate({ onClick, accessToken }: { onClick: any, accessToken: boolean }) {
     return (
         <button
+            disabled={!accessToken}
             onClick={onClick}
             type="button"
-            className="w-full md:w-[calc(50%-0.5rem)] mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            className="w-full md:w-[calc(50%-0.5rem)] mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 focus:outline-none disabled:bg-gray-400 ">
             Generate
         </button>
     );
 }
 
-export default function GenerateForm({ onGeneration }: { onGeneration: (brand: string, categoria: string, taglia: string, colore: string, tono: string) => void }) {
+export default function GenerateForm({ onGeneration, accessToken }: { onGeneration: (brand: string, categoria: string, taglia: string, colore: string, tono: string) => void, accessToken: boolean }) {
 
     const [brand, setBrand] = useState("");
     const [categoria, setCategoria] = useState("");
@@ -103,7 +104,7 @@ export default function GenerateForm({ onGeneration }: { onGeneration: (brand: s
             <SelectInput arrayDati={taglie} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setTaglia(event.target.value)} valoreLabel="Size" />
             <SelectInput arrayDati={colori} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setColore(event.target.value)} valoreLabel="Color" />
             <SelectInput arrayDati={toni} width="md:w-full" onChange={(event: any) => setTono(event.target.value)} valoreLabel="Tone of the description" />
-            <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore, tono)} />
+            <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore, tono)} accessToken={accessToken} />
         </form>
     );
 }

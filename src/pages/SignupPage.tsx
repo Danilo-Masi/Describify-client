@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 //Supabase
-import { supabase } from '../services/client';
+import { supabase } from '../services/client.tsx';
 //Components
 import AccessBox from "../components/AccessBox";
 import Layout from "../components/Layout";
 import ContainerInput from "../components/ContainerInput";
 
 function SignupForm() {
+
+    //Funzione per navigare tra le varie pagine
+    const navigate: NavigateFunction = useNavigate();
 
     const [termsCheckbox, setTermsCheckbox] = useState(false);
     const [signupForm, setSignupForm] = useState({
@@ -16,6 +19,7 @@ function SignupForm() {
         confirmPassword: '',
     })
 
+    //Imposta lo stato dei vari input presenti nel form
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
         setSignupForm(prevState => ({
             ...prevState,
@@ -23,10 +27,10 @@ function SignupForm() {
         }))
     }
 
-    //TODO
+    //Funzione per effettuare la registrazione di un nuovo utente
     const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //Validazione dei dati //TODO
+        //Validazione dei dati /***** DA IMPLEMENTARE ******/
         try {
             const { data, error } = await supabase.auth.signUp({
                 email: signupForm.email,
@@ -36,8 +40,12 @@ function SignupForm() {
                 console.error("Error during signup:", error);
                 alert('Error during signup: ' + error.message);
                 return;
+            } else {
+                alert('Check your email to confirm the account');
+                alert('Utente registrato correttamente');
+                sessionStorage.setItem('token', JSON.stringify(data));
+                navigate('/');
             }
-            alert('Check your email to confirm the account');
         } catch (error) {
             console.error("Error during signup:", error);
             alert('Error during signup');
@@ -118,5 +126,5 @@ export default function SignupPage() {
             <SignupForm />
             <AccessBox />
         </Layout>
-    )
+    );
 }
