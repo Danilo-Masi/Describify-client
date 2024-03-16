@@ -70,6 +70,7 @@ function SigninForm() {
             <ContainerInput flexOrentation="flex-col">
                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
                 <input
+                    placeholder="•••••••••"
                     type="password"
                     id="password"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -103,7 +104,7 @@ function SigninForm() {
 
 export default function SigninPage() {
     return (
-        <Layout padding="p-0" mdFlexOrientation="md:flex-row">
+        <Layout padding="p-0" mdFlexOrientation="md:flex-row" mdHeight="md:h-svh">
             <SigninForm/>
             <AccessBox />
         </Layout>

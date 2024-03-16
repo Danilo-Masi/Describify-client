@@ -101,7 +101,7 @@ function UserProfile({ emailUser }: { emailUser: string }) {
 export default function Navbar({ token, emailUser }: { token: boolean, emailUser: string }) {
     return (
         <div className="w-full h-[12svh] flex items-center justify-center bg-gray-300">
-            <div className="w-[90%] md:w-[80%] flex items-center">
+            <div className="w-[90%] md:w-[85%] flex items-center">
                 <Logo />
                 <MenuElements />
                 {token ? <UserProfile emailUser={emailUser} /> : <AccessButton />}

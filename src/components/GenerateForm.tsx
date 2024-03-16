@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const taglie = [
-    { id: 0, value: '' },
     { id: 1, value: 'XXS' },
     { id: 2, value: 'XS' },
     { id: 3, value: 'S' },
@@ -12,7 +11,6 @@ const taglie = [
 ];
 
 const colori = [
-    { id: 0, value: '' },
     { id: 1, value: 'Red' },
     { id: 2, value: 'Green' },
     { id: 3, value: 'Yellow' },
@@ -21,14 +19,12 @@ const colori = [
 ];
 
 const toni = [
-    { id: 0, value: '' },
     { id: 1, value: 'Aggresive' },
     { id: 2, value: 'Motivational' },
     { id: 3, value: 'Friendly' },
 ];
 
 const categorie = [
-    { id: 0, value: '' },
     { id: 1, value: 'Pants' },
     { id: 2, value: 'Jacket' },
     { id: 3, value: 'Tshirt' },
@@ -52,7 +48,7 @@ function TextInput({ onChange, valoreLabel }: { onChange: any, valoreLabel: stri
     );
 }
 
-function SelectInput({ arrayDati, width, onChange, valoreLabel }: { arrayDati: any[], width: string, onChange: any, valoreLabel: string }) {
+function SelectInput({ arrayDati, width, onChange, valoreLabel, placeholder }: { arrayDati: any[], width: string, onChange: any, valoreLabel: string, placeholder: string }) {
     return (
         <div className={`w-full ${width} flex flex-col gap-2`}>
             <label htmlFor={valoreLabel} className="flex text-sm font-medium text-gray-900 dark:text-white">
@@ -63,6 +59,11 @@ function SelectInput({ arrayDati, width, onChange, valoreLabel }: { arrayDati: a
                 onChange={onChange}
                 id={valoreLabel}
                 className={`bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
+                {placeholder && (
+                    <option value="" disabled selected>
+                        {placeholder}
+                    </option>
+                )}
                 {arrayDati && arrayDati.length > 0 && (
                     arrayDati.map(a => {
                         return (
@@ -100,10 +101,10 @@ export default function GenerateForm({ onGeneration, accessToken }: { onGenerati
     return (
         <form className="w-full md:w-3/4 h-auto flex flex-wrap justify-end gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-md bg-gray-100 border border-gray-300">
             <TextInput onChange={(event: any) => setBrand(event.target.value)} valoreLabel="Brand name" />
-            <SelectInput arrayDati={categorie} width="md:w-full" onChange={(event: any) => setCategoria(event.target.value)} valoreLabel="Category" />
-            <SelectInput arrayDati={taglie} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setTaglia(event.target.value)} valoreLabel="Size" />
-            <SelectInput arrayDati={colori} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setColore(event.target.value)} valoreLabel="Color" />
-            <SelectInput arrayDati={toni} width="md:w-full" onChange={(event: any) => setTono(event.target.value)} valoreLabel="Tone of the description" />
+            <SelectInput arrayDati={categorie} width="md:w-full" onChange={(event: any) => setCategoria(event.target.value)} valoreLabel="Category" placeholder="Select a category"/>
+            <SelectInput arrayDati={taglie} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setTaglia(event.target.value)} valoreLabel="Size" placeholder="Select a size"/>
+            <SelectInput arrayDati={colori} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setColore(event.target.value)} valoreLabel="Color" placeholder="Select a color"/>
+            <SelectInput arrayDati={toni} width="md:w-full" onChange={(event: any) => setTono(event.target.value)} valoreLabel="Tone of the description" placeholder="Select a tone"/>
             <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore, tono)} accessToken={accessToken} />
         </form>
     );

@@ -75,6 +75,7 @@ function SignupForm() {
             <ContainerInput flexOrentation="flex-col">
                 <label htmlFor="input-signup-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
                 <input
+                    placeholder="•••••••••"
                     type="password"
                     id="input-signup-password"
                     name="input-signup-password"
@@ -86,6 +87,7 @@ function SignupForm() {
             <ContainerInput flexOrentation="flex-col">
                 <label htmlFor="input-signup-repet-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Repeat password</label>
                 <input
+                    placeholder="•••••••••"
                     type="password"
                     id="input-signup-repet-password"
                     name="input-signup-repet-password"
@@ -122,7 +124,7 @@ function SignupForm() {
 
 export default function SignupPage() {
     return (
-        <Layout padding="p-0" mdFlexOrientation="md:flex-row">
+        <Layout padding="p-0" mdFlexOrientation="md:flex-row" mdHeight="md:h-svh">
             <SignupForm />
             <AccessBox />
         </Layout>
