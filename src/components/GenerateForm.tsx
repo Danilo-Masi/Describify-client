@@ -1,6 +1,6 @@
 import { useState } from "react";
 //Data
-import { taglie, colori, toni, categorie } from '../data/data';
+import { taglie, colori, toni, categorie, cat } from '../data/data';
 
 interface SelectInputProps {
     arrayDati: Array<{ id: number; value: string; sottoCategorie?: Array<{ id: number; value: string; dettagli?: Array<{ id: number; value: string }> }> }>;
@@ -22,12 +22,12 @@ function TextInput({ onChange, valoreLabel }: { onChange: any, valoreLabel: stri
                 {valoreLabel}
             </label>
             <input
-                required
-                onChange={onChange}
                 type="text"
-                id="default-input"
                 placeholder="Brand name..."
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                id={valoreLabel}
+                required
+                onChange={onChange} />
         </div>
     );
 }
@@ -130,8 +130,8 @@ export default function GenerateForm({ onGeneration, accessToken }: { onGenerati
     return (
         <form className="w-full md:w-3/4 h-auto flex flex-wrap justify-end gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-md bg-gray-100 border border-gray-300">
             <TextInput onChange={(event: any) => setBrand(event.target.value)} valoreLabel="Brand name" />
-            {/*<SelectInput arrayDati={categorie} width="md:w-full" onChange={(event: any) => setCategoria(event.target.value)} valoreLabel="Category" placeholder="Select a category" />*/}
-            <DinamicalySelectInput arrayDati={categorie} width="md:full" valoreLabel="Categorie" />
+            <SelectInput arrayDati={cat} width="md:w-full" onChange={(event: any) => setCategoria(event.target.value)} valoreLabel="Category" placeholder="Select a category" />
+            {/*<DinamicalySelectInput arrayDati={categorie} width="md:full" valoreLabel="Categorie" />*/}
             <SelectInput arrayDati={taglie} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setTaglia(event.target.value)} valoreLabel="Size" placeholder="Select a size" />
             <SelectInput arrayDati={colori} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setColore(event.target.value)} valoreLabel="Color" placeholder="Select a color" />
             <SelectInput arrayDati={toni} width="md:w-full" onChange={(event: any) => setTono(event.target.value)} valoreLabel="Tone of the description" placeholder="Select a tone" />

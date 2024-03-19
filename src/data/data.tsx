@@ -22,6 +22,12 @@ export const toni = [
     { id: 3, value: 'Friendly' },
 ];
 
+export const cat = [
+    { id: 1, value: 'Pantaloni' },
+    { id: 2, value: 'Giacche invernali' },
+    { id: 3, value: 'Tshirt' },
+];
+
 export const categorie = [
     {
         value: 'Uomo',

@@ -1,30 +1,43 @@
 import { useState } from "react";
+import axios from "axios";
 //Components
 import GenerateForm from "../components/GenerateForm";
 import GenerateOutput from "../components/GenerateOutput";
 
 export default function Home({ accessToken }: { accessToken: boolean }) {
 
+    const [isLoading, setLoading] = useState(false);
+    const [tokenAvaible, setTokenAvabile] = useState(5);
     const [generate, setGenerate] = useState(false);
-    const [description, setDescription] = useState("");
+    const [description, setDescription] = useState(" ");
 
-    const handleGeneration = (brand: string, categoria: string, taglia: string, colore: string, tono: string) => {
-        alert(`Brand: ${brand}, Categoria: ${categoria}, Taglia: ${taglia}, Colore: ${colore}, Tono: ${tono}`);
+    const handleGeneration = async (brand: string, categoria: string, taglia: string, colore: string, tono: string) => {
         //Validazione dei dati /***** DA IMPLEMENTARE ******/
-        //Controllo che l'utente abbia token dispobibili per la generazione
-        if (5 <= 0) {
+        if (brand === '' || categoria === '' || taglia === '' || colore === '') {
+            alert('Inserisci tutti i pramentri prima di procedere');
+            return;
+        }
+        //Controllo che l'utente abbia token dispobibili per la generazione /***** DA IMPLEMENTARE ******/
+        if (tokenAvaible <= 0) {
             alert('Acquista nuovi token per generare le tue caption');
             return;
         }
-        //Chiamata all'API per la generazione del testo //TESTO DI PROVA//
-        const descrizioneTest = `${categoria} ${brand}, colore ${colore}, taglia ${taglia}, usato ma in ottime condizioni, per altre info o foto scrivetemi in privato.`;
-        //Se la generazione ha avuto risultato positivo riduco i token, setto la descrizione, e apro il nuovo panel
-        setDescription(descrizioneTest);
-        setGenerate(true);
-    }
 
-    const handleRegenerate = () => {
-        setGenerate(false);
+        const prompt = `Brand: ${brand}, Categoria: ${categoria}, Taglia: ${taglia}, Colore: ${colore}`;
+
+        try {
+            setLoading(true);
+            const res: any = await axios.post("http://localhost:3000/chat", { prompt });
+            console.log(res.data.descrizione);
+            setTokenAvabile(tokenAvaible - 1);
+            setDescription(res.data.descrizione);
+            setLoading(false);
+            setGenerate(true);
+        } catch (error) {
+            console.error("Errore durante la generazione:", error);
+            alert("Si è verificato un errore, riprova.");
+            setLoading(false);
+        }
     }
 
     return (
@@ -37,7 +50,13 @@ export default function Home({ accessToken }: { accessToken: boolean }) {
             </div>
             {/* Form generazione */}
             <div className="w-full md:w-1/2 h-[88svh] flex items-center justify-center p-5 bg-gray-100">
-                {!generate ? <GenerateForm onGeneration={handleGeneration} accessToken={accessToken} /> : <GenerateOutput description={description} onRegenerate={handleRegenerate} />}
+                {/************ DA IMPLEMENTARE  *************/}
+                {isLoading ?
+                    <div className="w-full h-full bg-red-500">Loading...</div>
+                    : !generate
+                        ? <GenerateForm onGeneration={handleGeneration} accessToken={accessToken} />
+                        : <GenerateOutput onRegenerate={() => setGenerate(false)} description={description} />
+                }
             </div>
         </div>
     );
