@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-//TextAPI
-import { callOPENAIAPI } from "../services/textAPI";
 //Components
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";

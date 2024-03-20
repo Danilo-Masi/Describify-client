@@ -1,21 +1,15 @@
 import { useState } from "react";
 //Data
-import { taglie, colori, toni, categorie, cat } from '../data/data';
+import { taglie, colori, categorie } from '../data/data';
+//Components
+import ModalDropdow from "./ModalDropdow";
 
-interface SelectInputProps {
-    arrayDati: Array<{ id: number; value: string; sottoCategorie?: Array<{ id: number; value: string; dettagli?: Array<{ id: number; value: string }> }> }>;
-    width: string;
-    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+interface TextInputProps {
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     valoreLabel: string;
-    placeholder: string;
 }
 
-interface ButtonGenerateProps {
-    onClick: () => void;
-    accessToken: boolean;
-}
-
-function TextInput({ onChange, valoreLabel }: { onChange: any, valoreLabel: string }) {
+function TextInput({ onChange, valoreLabel }: TextInputProps) {
     return (
         <div className="w-full flex flex-col gap-2">
             <label htmlFor={valoreLabel} className="flex text-sm font-medium text-gray-900 dark:text-white">
@@ -32,27 +26,33 @@ function TextInput({ onChange, valoreLabel }: { onChange: any, valoreLabel: stri
     );
 }
 
-function SelectInput({ arrayDati, width, onChange, valoreLabel, placeholder }: SelectInputProps) {
+interface InputSelectProps {
+    mdWidth: string,
+    valoreInput: string,
+    onClick: () => void
+}
+
+function InputSelect({ mdWidth, valoreInput, onClick }: InputSelectProps) {
     return (
-        <div className={`w-full ${width} flex flex-col gap-2`}>
-            <label htmlFor={valoreLabel} className="flex text-sm font-medium text-gray-900 dark:text-white">
-                {valoreLabel}
+        <div className={`${mdWidth} w-full h-auto flex flex-col gap-2`}>
+            <label htmlFor={valoreInput} className="flex text-sm font-medium text-gray-900 dark:text-white">
+                {valoreInput}
             </label>
-            <select
-                required
-                onChange={onChange}
-                id={valoreLabel}
-                defaultValue=""
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                {placeholder && <option value="" disabled>{placeholder}</option>}
-                {arrayDati.map((a) => (
-                    <option key={a.id} value={a.value}>
-                        {a.value}
-                    </option>
-                ))}
-            </select>
+            <div
+                onClick={onClick}
+                className="flex items-center justify-between p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
+                <p>{valoreInput}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+            </div>
         </div>
     );
+}
+
+interface ButtonGenerateProps {
+    onClick: () => void;
+    accessToken: boolean;
 }
 
 function ButtonGenerate({ onClick, accessToken }: ButtonGenerateProps) {
@@ -67,75 +67,42 @@ function ButtonGenerate({ onClick, accessToken }: ButtonGenerateProps) {
     );
 }
 
-interface Option {
-    value: string;
-    label: string;
-    children?: Option[];
+interface GenerateFormProps {
+    onGeneration: (brand: string, categoria: string, taglia: string, colore: string) => void;
+    accessToken: boolean;
 }
 
-function DinamicalySelectInput({ width, valoreLabel, arrayDati }: { width: string, valoreLabel: string, arrayDati: Option[] }) {
-
-    const [selectedCategory, setSelectedCategory] = useState<string>("");
-    const [selectedSubCategory, setSelectedSubCategory] = useState<string>("");
-
-    const selectedCategoryObject = arrayDati.find((cat: any) => cat.value === selectedCategory);
-
-    const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedCategory(event.target.value);
-        // Resetta la sottocategoria ogni volta che cambia la categoria
-        setSelectedSubCategory("");
-    };
-
-    return (
-        <div className={`w-full ${width} flex flex-col gap-2`}>
-            <label htmlFor="categoria" className="flex text-sm font-medium text-gray-900 dark:text-white">
-                {valoreLabel}
-            </label>
-            <select
-                id="categoria"
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            >
-                <option value="">Seleziona una categoria</option>
-                {arrayDati.map((cat: any) => (
-                    <option key={cat.value} value={cat.value}>{cat.label}</option>
-                ))}
-            </select>
-            {selectedCategoryObject && selectedCategoryObject.children &&
-                <select
-                    id="sottocategoria"
-                    value={selectedSubCategory}
-                    onChange={(event) => setSelectedSubCategory(event.target.value)}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2"
-                >
-                    <option value="">Seleziona una sottocategoria</option>
-                    {selectedCategoryObject.children.map((subCat: any) => (
-                        <option key={subCat.value} value={subCat.value}>{subCat.label}</option>
-                    ))}
-                </select>
-            }
-        </div>
-    );
-}
-
-export default function GenerateForm({ onGeneration, accessToken }: { onGeneration: (brand: string, categoria: string, taglia: string, colore: string, tono: string) => void, accessToken: boolean }) {
+export default function GenerateForm({ onGeneration, accessToken }: GenerateFormProps) {
 
     const [brand, setBrand] = useState("");
-    const [categoria, setCategoria] = useState("");
-    const [taglia, setTaglia] = useState("");
-    const [colore, setColore] = useState("");
-    const [tono, setTono] = useState("");
+    const [categoria, setCategoria] = useState("Scegli categoria");
+    const [taglia, setTaglia] = useState("Scegli taglia");
+    const [colore, setColore] = useState("Scegli colore");
+
+
+    interface ModalItem {
+        value: string;
+        children?: ModalItem[];
+    }
+
+    const [modalData, setModalData] = useState<ModalItem[]>([]);
+    const [modalLabel, setModalLabel] = useState("");
+    const [modalVisibility, setModalVisibiliy] = useState(false);
+
+    const handleModal = (arrayData: ModalItem[], valueLabel: string) => {
+        setModalData(arrayData);
+        setModalLabel(valueLabel)
+        setModalVisibiliy(true);
+    }
 
     return (
-        <form className="w-full md:w-3/4 h-auto flex flex-wrap justify-end gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-md bg-gray-100 border border-gray-300">
+        <form className="w-full md:w-3/4 h-auto flex flex-wrap justify-start gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-md bg-gray-100 border border-gray-300">
+            <InputSelect mdWidth="md:w-full" valoreInput={categoria} onClick={() => handleModal(categorie, "Select a category")} />
             <TextInput onChange={(event: any) => setBrand(event.target.value)} valoreLabel="Brand name" />
-            <SelectInput arrayDati={cat} width="md:w-full" onChange={(event: any) => setCategoria(event.target.value)} valoreLabel="Category" placeholder="Select a category" />
-            {/*<DinamicalySelectInput arrayDati={categorie} width="md:full" valoreLabel="Categorie" />*/}
-            <SelectInput arrayDati={taglie} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setTaglia(event.target.value)} valoreLabel="Size" placeholder="Select a size" />
-            <SelectInput arrayDati={colori} width="md:w-[calc(50%-0.5rem)]" onChange={(event: any) => setColore(event.target.value)} valoreLabel="Color" placeholder="Select a color" />
-            <SelectInput arrayDati={toni} width="md:w-full" onChange={(event: any) => setTono(event.target.value)} valoreLabel="Tone of the description" placeholder="Select a tone" />
-            <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore, tono)} accessToken={accessToken} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={taglia} onClick={() => handleModal(taglie, "Select a size")} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={colore} onClick={() => handleModal(colori, "Select a color")} />
+            {modalVisibility ? <ModalDropdow valoreLabel={modalLabel} arrayDati={modalData} onClick={() => setModalVisibiliy(false)} /> : ''}
+            <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore)} accessToken={accessToken} />
         </form>
     );
 }

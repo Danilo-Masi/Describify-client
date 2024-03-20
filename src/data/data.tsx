@@ -16,53 +16,67 @@ export const colori = [
     { id: 5, value: 'Black' },
 ];
 
-export const toni = [
-    { id: 1, value: 'Aggresive' },
-    { id: 2, value: 'Motivational' },
-    { id: 3, value: 'Friendly' },
-];
-
-export const cat = [
-    { id: 1, value: 'Pantaloni' },
-    { id: 2, value: 'Giacche invernali' },
-    { id: 3, value: 'Tshirt' },
-];
-
 export const categorie = [
     {
-        value: 'Uomo',
-        label: 'Uomo',
+        value: 'Donna',
         children: [
-            {
-                value: 'Vestiti',
-                label: 'Vestiti',
-            },
-            {
-                value: 'Scarpe',
-                label: 'Scarpe',
-            },
-            {
-                value: 'Gioielli',
-                label: 'Gioielli',
-            }
+            { value: 'Vestiti' },
+            { value: 'Scarpe' },
+            { value: 'Borse' },
+            { value: 'Accessori' },
+            { value: 'Bellezza' }
         ]
     },
     {
-        value: 'Donna',
-        label: 'Donna',
+        value: 'Uomo',
         children: [
-            {
-                value: 'Vestiti',
-                label: 'Vestiti',
-            },
-            {
-                value: 'Scarpe',
-                label: 'Scarpe',
-            },
-            {
-                value: 'Gioielli',
-                label: 'Gioielli',
-            }
+            { value: 'Vestiti' },
+            { value: 'Scarpe' },
+            { value: 'Accessori' },
+            { value: 'Cura del corpo' }
+        ]
+    },
+    {
+        value: 'Bambini',
+        children: [
+            { value: 'Abbigliamento bambina' },
+            { value: 'Abbigliamento bambino' },
+            { value: 'Giochi' },
+            { value: 'Cura dei bambini' },
+            { value: 'Passegino' },
+            { value: 'Giocattoli da cavalcare' },
+            { value: 'Sedute e seggiolini per auto' },
+            { value: 'Mobili per bambini' },
+            { value: 'Occorente per la scuola' }
+        ]
+    },
+    {
+        value: 'Casa',
+        children: [
+            { value: 'Tessili' },
+            { value: 'Accessori per la casa' },
+            { value: 'Stoviglie' },
+            { value: 'Festeggiamenti e feste' },
+        ]
+    },
+    {
+        value: 'Intrattenimento',
+        children: [
+            { value: 'Videogiochi e console' },
+            { value: 'Giochi e rompicapo' },
+            { value: 'Musica e video' },
+            { value: 'Libri' },
+        ]
+    },
+    {
+        value: 'Animali',
+        children: [
+            { value: 'Cani' },
+            { value: 'Gatti' },
+            { value: 'Piccoli animali' },
+            { value: 'Pesci' },
+            { value: 'Uccelli' },
+            { value: 'Rettili' }
         ]
     }
 ];

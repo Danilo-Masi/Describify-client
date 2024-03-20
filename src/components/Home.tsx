@@ -11,7 +11,7 @@ export default function Home({ accessToken }: { accessToken: boolean }) {
     const [generate, setGenerate] = useState(false);
     const [description, setDescription] = useState(" ");
 
-    const handleGeneration = async (brand: string, categoria: string, taglia: string, colore: string, tono: string) => {
+    const handleGeneration = async (brand: string, categoria: string, taglia: string, colore: string) => {
         //Validazione dei dati /***** DA IMPLEMENTARE ******/
         if (brand === '' || categoria === '' || taglia === '' || colore === '') {
             alert('Inserisci tutti i pramentri prima di procedere');
