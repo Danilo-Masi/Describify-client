@@ -1,19 +1,19 @@
 export const taglie = [
-    { id: 1, value: 'XXS' },
-    { id: 2, value: 'XS' },
-    { id: 3, value: 'S' },
-    { id: 4, value: 'M' },
-    { id: 5, value: 'L' },
-    { id: 6, value: 'XL' },
-    { id: 7, value: 'XXL' },
+    { value: 'XXS' },
+    { value: 'XS' },
+    { value: 'S' },
+    { value: 'M' },
+    { value: 'L' },
+    { value: 'XL' },
+    { value: 'XXL' },
 ];
 
 export const colori = [
-    { id: 1, value: 'Red' },
-    { id: 2, value: 'Green' },
-    { id: 3, value: 'Yellow' },
-    { id: 4, value: 'White' },
-    { id: 5, value: 'Black' },
+    { value: 'Red' },
+    { value: 'Green' },
+    { value: 'Yellow' },
+    { value: 'White' },
+    { value: 'Black' },
 ];
 
 export const categorie = [
