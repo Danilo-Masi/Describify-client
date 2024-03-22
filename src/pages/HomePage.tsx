@@ -6,6 +6,7 @@ import Features from "../components/Features";
 import Prices from "../components/Prices";
 import Faqs from "../components/Faqs";
 import Home from "../components/Home";
+import FooterEnd from "../components/FooterEnd";
 
 export default function HomePage() {
 
@@ -35,6 +36,7 @@ export default function HomePage() {
             <Features />
             <Prices />
             <Faqs />
+            <FooterEnd />
         </Layout>
     )
 }

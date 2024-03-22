@@ -1,7 +1,10 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Dropdown } from 'flowbite-react';
 //Supabase
 import { supabase } from '../services/client.tsx';
+import { useState } from "react";
+import ModalMenu from "./ModalMenu.tsx";
+import ModalConfirm from "./ModalConfirm.tsx";
 
 function Logo() {
     return (
@@ -54,15 +57,18 @@ function AccessButton() {
     );
 }
 
-function UserProfile({ emailUser }: { emailUser: string }) {
-    //Funzione per navigare tra le varie pagine
+interface UserProfileProps {
+    emailUser: string,
+}
+
+function UserProfile({ emailUser }: UserProfileProps) {
+
     const navigate = useNavigate();
 
-    const [visibile, setVisibile] = useState(false);
+    const [confirmModal, setConfirmModal] = useState(false);
 
     //Funzione per permettere all'utente di effettuare il logout dall'app
     const handleSignout = async () => {
-        console.log('Esci???');
         try {
             let { error } = await supabase.auth.signOut();
             if (error) {
@@ -78,27 +84,31 @@ function UserProfile({ emailUser }: { emailUser: string }) {
         }
     }
 
+    const emailUtente: string = emailUser.length > 10 ? emailUser.slice(0, emailUser.indexOf('@')) : emailUser;
+
     return (
         <div className="w-1/2 md:w-1/4 flex flex-col h-auto items-end">
-            <button
-                type="button"
-                id="dropdownDefaultButton"
-                data-dropdown-toggle="dropdown"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center inline-block"
-                onClick={() => setVisibile(!visibile)}>
-                {emailUser}
-            </button>
-            <div
-                className={`h-auto flex-col items-start gap-2 px-16 py-3 absolute top-16 rounded-lg bg-gray-100 mt-1 ${visibile ? 'flex' : 'hidden'}`}>
-                <p>Token 0</p>
-                <button onClick={handleSignout}>Logout</button>
-            </div>
+            <Dropdown label={emailUtente} color="blue">
+                <Dropdown.Header>
+                    <span className="block truncate text-sm font-medium">{emailUser}</span>
+                </Dropdown.Header>
+                <Dropdown.Item>Dashboard</Dropdown.Item>
+                <Dropdown.Item>Settings</Dropdown.Item>
+                <Dropdown.Item>Earnings</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={() => setConfirmModal(true)}>Sign out</Dropdown.Item>
+            </Dropdown>
+            {confirmModal ? <ModalConfirm onClose={() => setConfirmModal(false)}/> : ''}
         </div>
     );
 }
 
+interface NavbarProps {
+    token: boolean,
+    emailUser: string
+}
 
-export default function Navbar({ token, emailUser }: { token: boolean, emailUser: string }) {
+export default function Navbar({ token, emailUser }: NavbarProps) {
     return (
         <div className="w-full h-[12svh] flex items-center justify-center bg-gray-300">
             <div className="w-[90%] md:w-[85%] flex items-center">

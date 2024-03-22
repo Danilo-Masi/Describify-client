@@ -3,6 +3,7 @@ import axios from "axios";
 //Components
 import GenerateForm from "../components/GenerateForm";
 import GenerateOutput from "../components/GenerateOutput";
+import SkeletonForm from "./SkeletonForm";
 
 export default function Home({ accessToken }: { accessToken: boolean }) {
 
@@ -22,9 +23,9 @@ export default function Home({ accessToken }: { accessToken: boolean }) {
             alert('Acquista nuovi token per generare le tue caption');
             return;
         }
-
+        //Prompt passato al server
         const prompt = `Brand: ${brand}, Categoria: ${categoria}, Taglia: ${taglia}, Colore: ${colore}`;
-
+        
         try {
             setLoading(true);
             const res: any = await axios.post("http://localhost:3000/chat", { prompt });
@@ -36,7 +37,6 @@ export default function Home({ accessToken }: { accessToken: boolean }) {
         } catch (error) {
             console.error("Errore durante la generazione:", error);
             alert("Si è verificato un errore, riprova.");
-            setLoading(false);
         }
     }
 
@@ -52,7 +52,7 @@ export default function Home({ accessToken }: { accessToken: boolean }) {
             <div className="w-full md:w-1/2 h-[88svh] flex items-center justify-center p-5 bg-gray-100">
                 {/************ DA IMPLEMENTARE  *************/}
                 {isLoading ?
-                    <div className="w-full h-full bg-red-500">Loading...</div>
+                    <SkeletonForm />
                     : !generate
                         ? <GenerateForm onGeneration={handleGeneration} accessToken={accessToken} />
                         : <GenerateOutput onRegenerate={() => setGenerate(false)} description={description} />

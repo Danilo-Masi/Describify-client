@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 //Data
 import { taglie, colori, categorie } from '../data/data';
 //Components
@@ -28,15 +28,16 @@ function TextInput({ onChange, valoreLabel }: TextInputProps) {
 
 interface InputSelectProps {
     mdWidth: string,
+    valoreLabel: string,
     valoreInput: string,
     onClick: () => void
 }
 
-function InputSelect({ mdWidth, valoreInput, onClick }: InputSelectProps) {
+function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelectProps) {
     return (
         <div className={`${mdWidth} w-full h-auto flex flex-col gap-2`}>
-            <label htmlFor={valoreInput} className="flex text-sm font-medium text-gray-900 dark:text-white">
-                {valoreInput}
+            <label htmlFor={valoreLabel} className="flex text-sm font-medium text-gray-900 dark:text-white">
+                {valoreLabel}
             </label>
             <div
                 onClick={onClick}
@@ -95,14 +96,33 @@ export default function GenerateForm({ onGeneration, accessToken }: GenerateForm
         setModalVisibiliy(true);
     }
 
+    const handleSelection = (selectedValue: string) => {
+        switch (modalData) {
+            case categorie:
+                setCategoria(selectedValue);
+                break;
+            case taglie:
+                setTaglia(selectedValue);
+                break;
+            case colori:
+                setColore(selectedValue);
+                break;
+            default:
+                break;
+        }
+    }
+
     return (
         <form className="w-full md:w-3/4 h-auto flex flex-wrap justify-start gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-md bg-gray-100 border border-gray-300">
-            <InputSelect mdWidth="md:w-full" valoreInput={categoria} onClick={() => handleModal(categorie, "Select a category")} />
-            <TextInput onChange={(event: any) => setBrand(event.target.value)} valoreLabel="Brand name" />
-            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={taglia} onClick={() => handleModal(taglie, "Select a size")} />
-            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={colore} onClick={() => handleModal(colori, "Select a color")} />
-            {modalVisibility ? <ModalDropdow valoreLabel={modalLabel} arrayDati={modalData} onClick={() => setModalVisibiliy(false)} /> : ''}
+            <InputSelect mdWidth="md:w-full" valoreInput={categoria} valoreLabel="Select a category" onClick={() => handleModal(categorie, "Select a category")} />
+            <TextInput onChange={(event: React.ChangeEvent<HTMLInputElement>) => setBrand(event.target.value)} valoreLabel="Brand name" />
+            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={taglia} valoreLabel="Select a size" onClick={() => handleModal(taglie, "Select a size")} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={colore} valoreLabel="Select a color" onClick={() => handleModal(colori, "Select a color")} />
             <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore)} accessToken={accessToken} />
+            {modalVisibility
+                ? <ModalDropdow valoreLabel={modalLabel} arrayDati={modalData} onClick={() => setModalVisibiliy(false)} onSelect={(selectedValue) => handleSelection(selectedValue)} />
+                : ''
+            }
         </form>
     );
 }
