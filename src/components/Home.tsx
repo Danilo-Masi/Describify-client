@@ -5,7 +5,12 @@ import GenerateForm from "../components/GenerateForm";
 import GenerateOutput from "../components/GenerateOutput";
 import SkeletonForm from "./SkeletonForm";
 
-export default function Home({ accessToken }: { accessToken: boolean }) {
+interface HomeProps {
+    accessToken: boolean;
+    id: string;
+}
+
+export default function Home({ accessToken, id }: HomeProps) {
 
     const [isLoading, setLoading] = useState(false);
     const [tokenAvaible, setTokenAvabile] = useState(5);
@@ -25,7 +30,7 @@ export default function Home({ accessToken }: { accessToken: boolean }) {
         }
         //Prompt passato al server
         const prompt = `Brand: ${brand}, Categoria: ${categoria}, Taglia: ${taglia}, Colore: ${colore}`;
-        
+
         try {
             setLoading(true);
             const res: any = await axios.post("http://localhost:3000/chat", { prompt });
@@ -41,7 +46,7 @@ export default function Home({ accessToken }: { accessToken: boolean }) {
     }
 
     return (
-        <div className="w-full h-auto flex flex-wrap items-center justify-start">
+        <div className="w-full h-auto flex flex-wrap items-center justify-start" id={id}>
             {/* Box Homepage */}
             <div className="w-full md:w-1/2 h-[88svh] flex flex-col items-start justify-start md:justify-center p-10 gap-3 bg-blue-700">
                 <h1 className="text-white text-xl font-bold">Describify</h1>
@@ -49,7 +54,7 @@ export default function Home({ accessToken }: { accessToken: boolean }) {
                 <p className="text-gray-300 text-md">Millions of designers and agencies around the world showcase their portfolio work on Flowbite - the home to the world’s best design and creative professionals.</p>
             </div>
             {/* Form generazione */}
-            <div className="w-full md:w-1/2 h-[88svh] flex items-center justify-center p-5 bg-gray-100">
+            <div className="w-full md:w-1/2 h-[88svh] flex items-center justify-center p-5">
                 {/************ DA IMPLEMENTARE  *************/}
                 {isLoading ?
                     <SkeletonForm />

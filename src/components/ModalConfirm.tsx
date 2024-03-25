@@ -2,10 +2,11 @@ import { Button, Modal } from 'flowbite-react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 interface ModalConfirmProps {
+    onConfirm: () => void;
     onClose: () => void;
 }
 
-export default function ModalConfirm({ onClose }: ModalConfirmProps) {
+export default function ModalConfirm({ onConfirm, onClose }: ModalConfirmProps) {
     return (
         <Modal show={true} size="sm" onClose={onClose} popup>
             <Modal.Header />
@@ -16,7 +17,7 @@ export default function ModalConfirm({ onClose }: ModalConfirmProps) {
                         Are you sure you want to signout?
                     </h3>
                     <div className="flex justify-center gap-4">
-                        <Button color="failure" onClick={onClose}>
+                        <Button color="failure" onClick={onConfirm}>
                             {"Yes, I'm sure"}
                         </Button>
                         <Button color="gray" onClick={onClose}>

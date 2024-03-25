@@ -36,10 +36,11 @@ interface InputSelectProps {
 function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelectProps) {
     return (
         <div className={`${mdWidth} w-full h-auto flex flex-col gap-2`}>
-            <label htmlFor={valoreLabel} className="flex text-sm font-medium text-gray-900 dark:text-white">
+            <label htmlFor={valoreLabel} className="flex text-sm font-medium text-gray-900">
                 {valoreLabel}
             </label>
             <div
+                id={valoreLabel}
                 onClick={onClick}
                 className="flex items-center justify-between p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
                 <p>{valoreInput}</p>

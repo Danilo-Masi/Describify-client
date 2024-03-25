@@ -1,6 +1,10 @@
-export default function Faqs() {
+interface FaqsProps {
+  id: string;
+}
+
+export default function Faqs({ id }: FaqsProps) {
   return (
-    <div className="w-full h-svh flex items-center justify-center bg-yellow-500">
+    <div className="w-full h-svh flex items-center justify-center text-white" id={id}>
       Faq's
     </div>
   )

@@ -1,10 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+//React-router
+import { useNavigate } from "react-router-dom";
+import { HashLink as Link } from 'react-router-hash-link';
+//Flowbite
 import { Dropdown } from 'flowbite-react';
 //Supabase
 import { supabase } from '../services/client.tsx';
-import { useState } from "react";
-import ModalMenu from "./ModalMenu.tsx";
+//Components
 import ModalConfirm from "./ModalConfirm.tsx";
+import ModalUsage from "./ModalUsage.tsx";
+import ModalSettings from "./ModalSettings.tsx";
 
 function Logo() {
     return (
@@ -17,10 +22,10 @@ function Logo() {
 function MenuElements() {
     return (
         <div className="md:w-2/4 hidden md:flex items-center justify-center gap-3">
-            <p>Home</p>
-            <p>Features</p>
-            <p>Prices</p>
-            <p>Faq's</p>
+            <Link to="#Home" smooth>Home</Link>
+            <Link to="#Features" smooth>Features</Link>
+            <Link to="#Prices" smooth>Prices</Link>
+            <Link to="#Faqs" smooth>Faqs</Link>
         </div>
     );
 }
@@ -65,7 +70,9 @@ function UserProfile({ emailUser }: UserProfileProps) {
 
     const navigate = useNavigate();
 
-    const [confirmModal, setConfirmModal] = useState(false);
+    const [signoutModal, setSignoutModal] = useState(false);
+    const [modalUsage, setModalUsage] = useState(false);
+    const [modalSettings, setModalSettings] = useState(false);
 
     //Funzione per permettere all'utente di effettuare il logout dall'app
     const handleSignout = async () => {
@@ -92,13 +99,14 @@ function UserProfile({ emailUser }: UserProfileProps) {
                 <Dropdown.Header>
                     <span className="block truncate text-sm font-medium">{emailUser}</span>
                 </Dropdown.Header>
-                <Dropdown.Item>Dashboard</Dropdown.Item>
-                <Dropdown.Item>Settings</Dropdown.Item>
-                <Dropdown.Item>Earnings</Dropdown.Item>
+                <Dropdown.Item onClick={() => setModalUsage(true)}>Usage</Dropdown.Item>
+                <Dropdown.Item onClick={() => setModalSettings(true)}>Settings</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item onClick={() => setConfirmModal(true)}>Sign out</Dropdown.Item>
+                <Dropdown.Item onClick={() => setSignoutModal(true)}>Sign out</Dropdown.Item>
             </Dropdown>
-            {confirmModal ? <ModalConfirm onClose={() => setConfirmModal(false)}/> : ''}
+            {signoutModal ? <ModalConfirm onClose={() => setSignoutModal(false)} onConfirm={() => handleSignout()} /> : ''}
+            {modalUsage ? <ModalUsage onClose={() => setModalUsage(false)} /> : ''}
+            {modalSettings ? <ModalSettings onClose={() => setModalSettings(false)} /> : ''}
         </div>
     );
 }
@@ -110,7 +118,7 @@ interface NavbarProps {
 
 export default function Navbar({ token, emailUser }: NavbarProps) {
     return (
-        <div className="w-full h-[12svh] flex items-center justify-center bg-gray-300">
+        <div className="w-full h-[12svh] flex items-center justify-center bg-slate-800 text-white">
             <div className="w-[90%] md:w-[85%] flex items-center">
                 <Logo />
                 <MenuElements />

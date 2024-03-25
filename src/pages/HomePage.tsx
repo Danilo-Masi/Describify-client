@@ -6,13 +6,13 @@ import Features from "../components/Features";
 import Prices from "../components/Prices";
 import Faqs from "../components/Faqs";
 import Home from "../components/Home";
-import FooterEnd from "../components/FooterEnd";
+import Footer from "../components/Footer";
 
 export default function HomePage() {
 
     const [accessToken, setAccessToken] = useState(false);
     const [emailUser, setEmailUser] = useState('');
-    
+
 
     useEffect(() => {
         try {
@@ -32,11 +32,11 @@ export default function HomePage() {
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
             <Navbar token={accessToken} emailUser={emailUser} />
-            <Home accessToken={accessToken}/>
-            <Features />
-            <Prices />
-            <Faqs />
-            <FooterEnd />
+            <Home accessToken={accessToken} id="Home"/>
+            <Features id="Features"/>
+            <Prices id="Prices"/>
+            <Faqs id="Faqs" />
+            <Footer />
         </Layout>
     )
 }
