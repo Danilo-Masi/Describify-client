@@ -7,10 +7,9 @@ import SkeletonForm from "./SkeletonForm";
 
 interface HomeProps {
     accessToken: boolean;
-    id: string;
 }
 
-export default function Home({ accessToken, id }: HomeProps) {
+export default function Home({ accessToken }: HomeProps) {
 
     const [isLoading, setLoading] = useState(false);
     const [tokenAvaible, setTokenAvabile] = useState(5);
@@ -46,7 +45,7 @@ export default function Home({ accessToken, id }: HomeProps) {
     }
 
     return (
-        <div className="w-full h-auto flex flex-wrap items-center justify-start" id={id}>
+        <div className="w-full h-auto flex flex-wrap items-center justify-start">
             {/* Box Homepage */}
             <div className="w-full md:w-1/2 h-[88svh] flex flex-col items-start justify-start md:justify-center p-10 gap-3 bg-blue-700">
                 <h1 className="text-white text-xl font-bold">Describify</h1>

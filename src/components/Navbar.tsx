@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 //React-router
 import { useNavigate } from "react-router-dom";
 import { HashLink as Link } from 'react-router-hash-link';
@@ -63,35 +63,43 @@ function AccessButton() {
 }
 
 interface UserProfileProps {
-    emailUser: string,
+    emailUser: string;
 }
+
+//Costanti per i Modal che devono essere aperti
+const ModalType = {
+    NONE: 'NONE',
+    USAGE: 'USAGE',
+    SETTINGS: 'SETTINGS',
+    SIGNOUT: 'SIGNOUT',
+};
 
 function UserProfile({ emailUser }: UserProfileProps) {
 
     const navigate = useNavigate();
 
-    const [signoutModal, setSignoutModal] = useState(false);
-    const [modalUsage, setModalUsage] = useState(false);
-    const [modalSettings, setModalSettings] = useState(false);
+    const [currentModal, setCurrentModal] = useState(ModalType.NONE);
 
     //Funzione per permettere all'utente di effettuare il logout dall'app
-    const handleSignout = async () => {
+    const handleSignout = useCallback(async () => {
         try {
-            let { error } = await supabase.auth.signOut();
+            const { error } = await supabase.auth.signOut();
             if (error) {
-                alert('Errore durante la fase di logout');
                 console.error('Errore durante la fase di logout', error);
                 return;
-            } else {
-                sessionStorage.removeItem('token');
-                navigate('/signin');
             }
+            sessionStorage.removeItem('token');
+            navigate('/signin');
         } catch (error) {
             console.error('Errore', error);
         }
-    }
+    }, [navigate]);
 
+    //Formattazione dell'email dell'utente
     const emailUtente: string = emailUser.length > 10 ? emailUser.slice(0, emailUser.indexOf('@')) : emailUser;
+
+    //Funzione per chiudere i Modal
+    const closeModal = useCallback(() => setCurrentModal(ModalType.NONE), []);
 
     return (
         <div className="w-1/2 md:w-1/4 flex flex-col h-auto items-end">
@@ -99,26 +107,27 @@ function UserProfile({ emailUser }: UserProfileProps) {
                 <Dropdown.Header>
                     <span className="block truncate text-sm font-medium">{emailUser}</span>
                 </Dropdown.Header>
-                <Dropdown.Item onClick={() => setModalUsage(true)}>Usage</Dropdown.Item>
-                <Dropdown.Item onClick={() => setModalSettings(true)}>Settings</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentModal(ModalType.USAGE)}>Usage</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentModal(ModalType.SETTINGS)}>Settings</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item onClick={() => setSignoutModal(true)}>Sign out</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentModal(ModalType.SIGNOUT)} className="text-red-600">Sign out</Dropdown.Item>
             </Dropdown>
-            {signoutModal ? <ModalConfirm onClose={() => setSignoutModal(false)} onConfirm={() => handleSignout()} /> : ''}
-            {modalUsage ? <ModalUsage onClose={() => setModalUsage(false)} /> : ''}
-            {modalSettings ? <ModalSettings onClose={() => setModalSettings(false)} /> : ''}
+            {currentModal === ModalType.SIGNOUT && <ModalConfirm onClose={closeModal} onConfirm={() => handleSignout()} />}
+            {currentModal === ModalType.USAGE && <ModalUsage onClose={closeModal} />}
+            {currentModal === ModalType.SETTINGS && <ModalSettings onClose={closeModal} />}
         </div>
     );
 }
 
 interface NavbarProps {
-    token: boolean,
-    emailUser: string
+    token: boolean;
+    emailUser: string;
+    id: string;
 }
 
-export default function Navbar({ token, emailUser }: NavbarProps) {
+export default function Navbar({ token, emailUser, id }: NavbarProps) {
     return (
-        <div className="w-full h-[12svh] flex items-center justify-center bg-slate-800 text-white">
+        <div className="w-full h-[12svh] flex items-center justify-center bg-slate-800 text-white" id={id}>
             <div className="w-[90%] md:w-[85%] flex items-center">
                 <Logo />
                 <MenuElements />
