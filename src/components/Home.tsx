@@ -5,11 +5,8 @@ import GenerateForm from "../components/GenerateForm";
 import GenerateOutput from "../components/GenerateOutput";
 import SkeletonForm from "./SkeletonForm";
 
-interface HomeProps {
-    accessToken: boolean;
-}
 
-export default function Home({ accessToken }: HomeProps) {
+export default function Home() {
 
     const [isLoading, setLoading] = useState(false);
     const [tokenAvaible, setTokenAvabile] = useState(5);
@@ -58,7 +55,7 @@ export default function Home({ accessToken }: HomeProps) {
                 {isLoading ?
                     <SkeletonForm />
                     : !generate
-                        ? <GenerateForm onGeneration={handleGeneration} accessToken={accessToken} />
+                        ? <GenerateForm onGeneration={handleGeneration} />
                         : <GenerateOutput onRegenerate={() => setGenerate(false)} description={description} />
                 }
             </div>

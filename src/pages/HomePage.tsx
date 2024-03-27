@@ -7,12 +7,12 @@ import Prices from "../components/Prices";
 import Faqs from "../components/Faqs";
 import Home from "../components/Home";
 import Footer from "../components/Footer";
+import Hero from "../components/Hero";
 
 export default function HomePage() {
 
     const [accessToken, setAccessToken] = useState(false);
     const [emailUser, setEmailUser] = useState('');
-
 
     useEffect(() => {
         try {
@@ -31,10 +31,10 @@ export default function HomePage() {
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar token={accessToken} emailUser={emailUser} id="Home"/>
-            <Home accessToken={accessToken} />
-            <Features id="Features"/>
-            <Prices id="Prices"/>
+            <Navbar token={accessToken} emailUser={emailUser} id="Home" />
+            {accessToken ? <Home /> : <Hero /> }
+            <Features id="Features" />
+            <Prices id="Prices" />
             <Faqs id="Faqs" />
             <Footer />
         </Layout>

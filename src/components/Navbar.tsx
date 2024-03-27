@@ -127,7 +127,7 @@ interface NavbarProps {
 
 export default function Navbar({ token, emailUser, id }: NavbarProps) {
     return (
-        <div className="w-full h-[12svh] flex items-center justify-center bg-slate-800 text-white" id={id}>
+        <div className="w-full h-[12svh] flex items-center justify-center" id={id}>
             <div className="w-[90%] md:w-[85%] flex items-center">
                 <Logo />
                 <MenuElements />

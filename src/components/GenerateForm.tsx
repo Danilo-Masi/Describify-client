@@ -54,13 +54,11 @@ function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelect
 
 interface ButtonGenerateProps {
     onClick: () => void;
-    accessToken: boolean;
 }
 
-function ButtonGenerate({ onClick, accessToken }: ButtonGenerateProps) {
+function ButtonGenerate({ onClick }: ButtonGenerateProps) {
     return (
         <button
-            disabled={!accessToken}
             onClick={onClick}
             type="button"
             className="w-full md:w-[calc(50%-0.5rem)] mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 focus:outline-none disabled:bg-gray-400 ">
@@ -71,10 +69,9 @@ function ButtonGenerate({ onClick, accessToken }: ButtonGenerateProps) {
 
 interface GenerateFormProps {
     onGeneration: (brand: string, categoria: string, taglia: string, colore: string) => void;
-    accessToken: boolean;
 }
 
-export default function GenerateForm({ onGeneration, accessToken }: GenerateFormProps) {
+export default function GenerateForm({ onGeneration }: GenerateFormProps) {
 
     const [brand, setBrand] = useState("");
     const [categoria, setCategoria] = useState("Scegli categoria");
@@ -119,7 +116,7 @@ export default function GenerateForm({ onGeneration, accessToken }: GenerateForm
             <TextInput onChange={(event: React.ChangeEvent<HTMLInputElement>) => setBrand(event.target.value)} valoreLabel="Brand name" />
             <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={taglia} valoreLabel="Select a size" onClick={() => handleModal(taglie, "Select a size")} />
             <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={colore} valoreLabel="Select a color" onClick={() => handleModal(colori, "Select a color")} />
-            <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore)} accessToken={accessToken} />
+            <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore)} />
             {modalVisibility
                 ? <ModalDropdow valoreLabel={modalLabel} arrayDati={modalData} onClick={() => setModalVisibiliy(false)} onSelect={(selectedValue) => handleSelection(selectedValue)} />
                 : ''
