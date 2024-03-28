@@ -9,7 +9,7 @@ interface LayoutProps {
 
 export default function Layout({ children, padding, mdFlexOrientation, mdHeight }: LayoutProps) {
     return (
-        <div className={`w-full h-auto flex flex-col items-center justify-start bg-gray-50 ${mdHeight} ${mdFlexOrientation} ${padding}`}>
+        <div className={`w-full h-auto flex flex-col items-center justify-start bg-custom-background text-custom-text dark:bg-dark-background dark:text-dark-text ${mdHeight} ${mdFlexOrientation} ${padding}`}>
             {children}
         </div>
     );

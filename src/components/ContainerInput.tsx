@@ -1,9 +1,16 @@
 import { ReactNode } from "react";
 
-export default function ContainerInput({ children, flexOrentation }: { children: ReactNode, flexOrentation: string }) {
+interface ContainerInputProps {
+    children: ReactNode;
+    flexOrentation: string;
+}
+
+export default function ContainerInput({ children, flexOrentation }: ContainerInputProps) {
     return (
         <div className={`w-full flex ${flexOrentation} items-start`}>
             {children}
         </div>
     );
 }
+
+//DA SPOSTARE IN LAYOUT

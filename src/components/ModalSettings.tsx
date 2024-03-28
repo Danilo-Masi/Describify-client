@@ -24,7 +24,7 @@ function SettingsBlock({ title, description, options, onChange }: SettingsBlockP
                 <span className="text-sm font-light">{description}</span>
             </p>
             <div className="w-full md:w-1/3">
-                <Select id="languages" required onChange={passaValore}>
+                <Select id={title} required onChange={passaValore}>
                     {options.map((el, key) => (
                         <option
                             key={key}>
@@ -43,6 +43,7 @@ interface ModalSettingsProps {
 
 export default function ModalSettings({ onClose }: ModalSettingsProps) {
 
+    //Funzione per la modifica della lingua corrente
     const handleLanguageChoose = (linguaSelezionata: string) => {
         try {
             console.log('Lingua selezionata: ' + linguaSelezionata);
@@ -50,18 +51,22 @@ export default function ModalSettings({ onClose }: ModalSettingsProps) {
             //OPERAZIONI DI RICARICAMENTO DELLE PAGINE
         } catch (error) {
             console.error('Errore nella selezione della lingua', error);
-            //ALERT DI AVVERTIMENTO ALL'UTENTE
+            alert('Errore nel cambio della lingua');
         }
     }
 
+    //Funzione per la modifica del tema corrente
     const handleThemeChoose = (temaSelezionato: string) => {
         try {
-            console.log('Tema selezionato: ' + temaSelezionato);
-            localStorage.setItem("tema", temaSelezionato);
-            //OPERAZIONI DI RICARICAMENTO DELLE PAGINE
+            localStorage.setItem("tema", temaSelezionato.toLowerCase());
+            if (temaSelezionato.toLowerCase() === 'dark') {
+                document.body.classList.add('dark');
+            } else {
+                document.body.classList.remove('dark');
+            }
         } catch (error) {
             console.error('Errore nella selezione del tema', error);
-            //ALERT DI AVVERTIMENTO ALL'UTENTE
+            alert('Errore nel cambio del tema');
         }
     }
 

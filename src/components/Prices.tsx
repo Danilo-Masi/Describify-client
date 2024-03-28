@@ -10,6 +10,7 @@ interface PricesProps {
 export default function Prices({ id }: PricesProps) {
   return (
     <ContainerComponents id={id}>
+      {/* Intestazione */}
       <Intestazione
         badgeValue="Prices"
         titleValue="Choose the plan that fit better for you"

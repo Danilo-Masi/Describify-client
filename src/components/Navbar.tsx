@@ -20,12 +20,14 @@ function Logo() {
 }
 
 function MenuElements() {
+    // Imposta il link selezionato
+    const [linkSelected, setLinkSelected] = useState('linkHome')
     return (
         <div className="md:w-2/4 hidden md:flex items-center justify-center gap-3">
-            <Link to="#Home" smooth>Home</Link>
-            <Link to="#Features" smooth>Features</Link>
-            <Link to="#Prices" smooth>Prices</Link>
-            <Link to="#Faqs" smooth>Faqs</Link>
+            <Link to="#Home" smooth onClick={() => setLinkSelected("linkHome")} className={`${linkSelected === "linkHome" && 'text-[#1A56DB]'}`}>Home</Link>
+            <Link to="#Features" smooth onClick={() => setLinkSelected("linkFeatures")} className={`${linkSelected === "linkFeatures" && 'text-[#1A56DB]'}`}>Features</Link>
+            <Link to="#Prices" smooth onClick={() => setLinkSelected("linkPrices")} className={`${linkSelected === "linkPrices" && 'text-[#1A56DB]'}`}>Prices</Link>
+            <Link to="#Faqs" smooth onClick={() => setLinkSelected("linkFaqs")} className={`${linkSelected === "linkFaqs" && 'text-[#1A56DB]'}`}>Faqs</Link>
         </div>
     );
 }
@@ -37,14 +39,14 @@ function AccessButton() {
                 <Link to="/signin">
                     <button
                         type="button"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                        className="text-white bg-trasparent hover:bg-[#1A56DB] border border-[#1A56DB] focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                         Login
                     </button>
                 </Link>
                 <Link to="/signup">
                     <button
                         type="button"
-                        className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                        className="text-white bg-[#1A56DB] hover:bg-[#163677] focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                         Signup
                     </button>
                 </Link>
@@ -53,7 +55,7 @@ function AccessButton() {
                 <Link to="/signin">
                     <button
                         type="button"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                        className="text-white bg-[#1A56DB] hover:bg-[#163677] focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                         Get started
                     </button>
                 </Link>

@@ -1,3 +1,4 @@
+//Flowbite
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
 //Data
 import { questions } from "../data/questions";

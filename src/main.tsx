@@ -9,3 +9,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>,
 )
+
+//RIMUOVERE STRICTMODE PRIMA DEL DEPLOY
