@@ -5,7 +5,7 @@ function RegenerateButton({ value, icon, onClick }: { value: string, icon: JSX.E
         <button
             onClick={onClick}
             type="button"
-            className="gap-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            className="w-max gap-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center bg-custom-accent dark:bg-dark-accent text-dark-textPrimary hover:bg-dark-accent dark:hover:bg-custom-accent">
             {icon}
             {value}
         </button>
@@ -30,7 +30,7 @@ export default function GenerateOutput({ description, onRegenerate }: { descript
     const [descrizioneAttuale, setDescrizioneAttuale] = useState(description);
     const [copied, setCopied] = useState(false);
 
-    const handleCopy = async() => {
+    const handleCopy = async () => {
         try {
             await navigator.clipboard.writeText(descrizioneAttuale);
             setCopied(true);
@@ -40,17 +40,15 @@ export default function GenerateOutput({ description, onRegenerate }: { descript
     }
 
     return (
-        <div className="w-full md:w-3/4 h-auto flex flex-wrap justify-end gap-5 p-5 rounded-lg border border-gray-400  ">
+        <div className="w-full md:w-1/2 h-min flex flex-wrap justify-end gap-5 md:gap-3 p-5 rounded-lg border bg-custom-elevation dark:bg-dark-elevation border-custom-border dark:border-dark-border ">
             <textarea
                 onChange={(event: any) => setDescrizioneAttuale(event.target.value)}
                 value={descrizioneAttuale}
                 id="message"
-                rows={15}
-                className=" w-full p-2-5 text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 resize-none"
-                placeholder="Your description here..." />
-            <div className="flex justify-between md:justify-end md:gap-3 gap-2">
-                <RegenerateButton value="Regenerate" icon={<RegenerateIcon />} onClick={onRegenerate} />
+                className=" w-full h-[50svh] md:h-[40svh] text-md rounded-lg resize-none border-none bg-custom-elevation dark:bg-dark-elevation text-custom-textPrimary dark:text-dark-textPrimary" />
+            <div className="w-full flex flex-col md:flex-row gap-4 justify-end items-end">
                 <RegenerateButton value={copied ? 'Copied' : 'Copy to Clipboard'} icon={<CopyIcon />} onClick={handleCopy} />
+                <RegenerateButton value="Regenerate" icon={<RegenerateIcon />} onClick={onRegenerate} />
             </div>
         </div>
     );

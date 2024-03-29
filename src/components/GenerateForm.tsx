@@ -12,13 +12,13 @@ interface TextInputProps {
 function TextInput({ onChange, valoreLabel }: TextInputProps) {
     return (
         <div className="w-full flex flex-col gap-2">
-            <label htmlFor={valoreLabel} className="flex text-sm font-medium text-gray-900 dark:text-white">
+            <label htmlFor={valoreLabel} className="flex text-sm font-medium text-custom-textPrimary dark:text-dark-textPrimary">
                 {valoreLabel}
             </label>
             <input
                 type="text"
-                placeholder="Brand name..."
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Zara, Apple, Nike,..."
+                className="border text-md rounded-lg block w-full p-2.5 bg-custom-elevation dark:bg-dark-elevation border-custom-border dark:border-dark-border text-custom-textSecondary dark:text-dark-textSecondary placeholder:text-custom-textSecondary dark:placeholder:text-dark-textSecondary"
                 id={valoreLabel}
                 required
                 onChange={onChange} />
@@ -36,13 +36,13 @@ interface InputSelectProps {
 function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelectProps) {
     return (
         <div className={`${mdWidth} w-full h-auto flex flex-col gap-2`}>
-            <label htmlFor={valoreLabel} className="flex text-sm font-medium text-gray-900">
+            <label htmlFor={valoreLabel} className="flex text-sm font-medium text-custom-textPrimary dark:text-dark-textPrimary">
                 {valoreLabel}
             </label>
             <div
                 id={valoreLabel}
                 onClick={onClick}
-                className="flex items-center justify-between p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
+                className="flex items-center justify-between p-2.5 text-md rounded-lg cursor-pointer border bg-custom-elevation dark:bg-dark-elevation border-custom-border dark:border-dark-border text-custom-textSecondary dark:text-dark-textSecondary">
                 <p>{valoreInput}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -61,7 +61,7 @@ function ButtonGenerate({ onClick }: ButtonGenerateProps) {
         <button
             onClick={onClick}
             type="button"
-            className="w-full md:w-[calc(50%-0.5rem)] mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 focus:outline-none disabled:bg-gray-400 ">
+            className="w-full md:w-[calc(50%-0.5rem)] mt-2  focus:ring-1 font-medium rounded-lg text-md px-5 py-2.5 focus:outline-none disabled:bg-gray-400 bg-custom-accent dark:bg-dark-accent text-dark-textPrimary">
             Generate
         </button>
     );
@@ -111,7 +111,7 @@ export default function GenerateForm({ onGeneration }: GenerateFormProps) {
     }
 
     return (
-        <form className="w-full md:w-3/4 h-auto flex flex-wrap justify-start gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-md bg-gray-100 border border-gray-300">
+        <form className="w-full md:w-1/2 h-auto flex flex-wrap justify-start gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-lg border border-custom-border dark:border-dark-border bg-custom-elevation dark:bg-dark-elevation">
             <InputSelect mdWidth="md:w-full" valoreInput={categoria} valoreLabel="Select a category" onClick={() => handleModal(categorie, "Select a category")} />
             <TextInput onChange={(event: React.ChangeEvent<HTMLInputElement>) => setBrand(event.target.value)} valoreLabel="Brand name" />
             <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={taglia} valoreLabel="Select a size" onClick={() => handleModal(taglie, "Select a size")} />

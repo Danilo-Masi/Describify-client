@@ -40,7 +40,7 @@ export default function ModalDropdown({ valoreLabel, arrayDati, onClick, onSelec
                             <li
                                 key={key}
                                 onClick={() => handleSelect(elemento)}
-                                className={`flex items-center justify-between p-2.5 bg-gray-50 text-gray-900 text-md rounded-lg cursor-pointer border border-gray-300`}>
+                                className={`flex items-center justify-between p-2.5 text-md rounded-lg cursor-pointer border bg-custom-elevation dark:bg-dark-elevation border-custom-border dark:border-dark-border text-custom-textSecondary dark:text-dark-textSecondary `}>
                                 <p>{elemento.value}</p>
                             </li>
                         ))}

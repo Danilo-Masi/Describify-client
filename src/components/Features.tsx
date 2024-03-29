@@ -12,11 +12,11 @@ export default function Features({ id }: FeaturesProps) {
     <ContainerComponents id={id}>
       {/* Intestazione */}
       <Intestazione
-        badgeValue="How does it work?"
-        titleValue="A pratical and easy way for create your announce"
-        descriptionValue="You can create easily and fast a complete description for your announce with the power of AI. What are you waiting for?Do it now. " />
+        badgeValue="HOW DOES IT WORK?"
+        titleValue="Effortless Selling Starts Here"
+        descriptionValue="With Descrify, you’re just a few clicks away from the perfect product description. Our AI analyzes your item’s details and crafts descriptions designed to sell. No more writing stress - spend your time where it counts " />
       {/* Features step */}
-      <div className="w-[90%] flex flex-wrap gap-10">
+      <div className=" flex flex-wrap gap-10">
         <FeaturesStep />
         <FeaturesStep order1="md:order-2" order2="md:order-1" />
         <FeaturesStep />

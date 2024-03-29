@@ -14,20 +14,18 @@ import ModalSettings from "./ModalSettings.tsx";
 function Logo() {
     return (
         <div className="w-1/2 md:w-1/4">
-            <h1 className="text-2xl">Describify</h1>
+            <h1 className="text-2xl text-custom-textPrimary dark:text-dark-textPrimary">Describify</h1>
         </div>
     );
 }
 
 function MenuElements() {
-    // Imposta il link selezionato
-    const [linkSelected, setLinkSelected] = useState('linkHome')
     return (
-        <div className="md:w-2/4 hidden md:flex items-center justify-center gap-3">
-            <Link to="#Home" smooth onClick={() => setLinkSelected("linkHome")} className={`${linkSelected === "linkHome" && 'text-[#1A56DB]'}`}>Home</Link>
-            <Link to="#Features" smooth onClick={() => setLinkSelected("linkFeatures")} className={`${linkSelected === "linkFeatures" && 'text-[#1A56DB]'}`}>Features</Link>
-            <Link to="#Prices" smooth onClick={() => setLinkSelected("linkPrices")} className={`${linkSelected === "linkPrices" && 'text-[#1A56DB]'}`}>Prices</Link>
-            <Link to="#Faqs" smooth onClick={() => setLinkSelected("linkFaqs")} className={`${linkSelected === "linkFaqs" && 'text-[#1A56DB]'}`}>Faqs</Link>
+        <div className="md:w-2/4 hidden md:flex items-center justify-center gap-10">
+            <Link to="#Home" smooth className={`text-custom-textPrimary dark:text-dark-textPrimary`}>Home</Link>
+            <Link to="#Features" smooth className={`text-custom-textPrimary dark:text-dark-textPrimary`}>Features</Link>
+            <Link to="#Prices" smooth className={`text-custom-textPrimary dark:text-dark-textPrimary`}>Prices</Link>
+            <Link to="#Faqs" smooth className={` text-custom-textPrimary dark:text-dark-textPrimary`}>Faqs</Link>
         </div>
     );
 }
@@ -39,14 +37,14 @@ function AccessButton() {
                 <Link to="/signin">
                     <button
                         type="button"
-                        className="text-white bg-trasparent hover:bg-[#1A56DB] border border-[#1A56DB] focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                        className="focus:ring-1 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 bg-trasparent hover:bg-custom-accent dark:hover:bg-dark-accent text-custom-accent dark:text-dark-accent hover:text-dark-textPrimary dark:hover:text-dark-textPrimary border border-custom-accent dark:border-dark-accent">
                         Login
                     </button>
                 </Link>
                 <Link to="/signup">
                     <button
                         type="button"
-                        className="text-white bg-[#1A56DB] hover:bg-[#163677] focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                        className="font-medium rounded-lg text-sm px-5 py-2.5 bg-custom-accent dark:bg-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent text-dark-textPrimary">
                         Signup
                     </button>
                 </Link>
@@ -55,7 +53,7 @@ function AccessButton() {
                 <Link to="/signin">
                     <button
                         type="button"
-                        className="text-white bg-[#1A56DB] hover:bg-[#163677] focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                        className="font-medium rounded-lg text-sm px-5 py-2.5 bg-custom-accent dark:bg-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent text-dark-textPrimary">
                         Get started
                     </button>
                 </Link>
@@ -112,7 +110,7 @@ function UserProfile({ emailUser }: UserProfileProps) {
                 <Dropdown.Item onClick={() => setCurrentModal(ModalType.USAGE)}>Usage</Dropdown.Item>
                 <Dropdown.Item onClick={() => setCurrentModal(ModalType.SETTINGS)}>Settings</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item onClick={() => setCurrentModal(ModalType.SIGNOUT)} className="text-red-600">Sign out</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentModal(ModalType.SIGNOUT)} className="text-red-600 dark:text-red-500">Sign out</Dropdown.Item>
             </Dropdown>
             {currentModal === ModalType.SIGNOUT && <ModalConfirm onClose={closeModal} onConfirm={() => handleSignout()} />}
             {currentModal === ModalType.USAGE && <ModalUsage onClose={closeModal} />}
@@ -130,7 +128,7 @@ interface NavbarProps {
 export default function Navbar({ token, emailUser, id }: NavbarProps) {
     return (
         <div className="w-full h-[12svh] flex items-center justify-center" id={id}>
-            <div className="w-[90%] md:w-[85%] flex items-center">
+            <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />
                 {token ? <UserProfile emailUser={emailUser} /> : <AccessButton />}

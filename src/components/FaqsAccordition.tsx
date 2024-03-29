@@ -5,11 +5,11 @@ import { questions } from "../data/questions";
 
 export default function FaqsAccordition() {
     return (
-        <Accordion className="w-[90%] md:w-1/2">
+        <Accordion className="w-full md:w-1/2">
             {questions && questions.map((domanda, index) => (
                 <AccordionPanel key={index}>
-                    <AccordionTitle>{domanda.title}</AccordionTitle>
-                    <AccordionContent>
+                    <AccordionTitle className="text-custom-textPrimary dark:text-dark-textPrimary">{domanda.title}</AccordionTitle>
+                    <AccordionContent className="text-custom-textSecondary dark:text-dark-textSecondary">
                         <p>{domanda.content}</p>
                     </AccordionContent>
                 </AccordionPanel>

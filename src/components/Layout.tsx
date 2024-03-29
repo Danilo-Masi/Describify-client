@@ -18,11 +18,25 @@ export default function Layout({ children, padding, mdFlexOrientation, mdHeight 
 interface ContainerComponentsProps {
     children: ReactNode;
     id?: string;
+    gap?: string;
 }
 
-export function ContainerComponents({ children, id }: ContainerComponentsProps) {
+export function ContainerComponents({ children, id, gap }: ContainerComponentsProps) {
     return (
-        <div className="w-full h-auto  flex flex-col items-center justify-start gap-y-10 py-5 md:py-10" id={id}>
+        <div className={`w-[90%] h-auto flex flex-col items-center justify-start py-5 md:py-10 ${!gap ? 'gap-y-10': gap}`} id={id}>
+            {children}
+        </div>
+    );
+}
+
+interface ContainerInputProps {
+    children: ReactNode;
+    flexOrentation: string;
+}
+
+export function ContainerInput({ children, flexOrentation }: ContainerInputProps) {
+    return (
+        <div className={`w-full flex ${flexOrentation} items-start`}>
             {children}
         </div>
     );

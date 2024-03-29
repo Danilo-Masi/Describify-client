@@ -12,9 +12,9 @@ export default function Faqs({ id }: FaqsProps) {
     <ContainerComponents id={id}>
       {/* Intestazione */}
       <Intestazione
-        badgeValue="Faq's"
-        titleValue="There are sometinngh that it's not clear?"
-        descriptionValue="You can create easily and fast a complete description for your announce with the power of AI. What are you waiting for?Do it now. " />
+        badgeValue="FAQs"
+        titleValue="Have Questions?"
+        descriptionValue="We’ve got answers. Discover how Descrify can change the way you sell online." />
         {/* Faqs box */}
         <FaqsAccordition />
     </ContainerComponents>

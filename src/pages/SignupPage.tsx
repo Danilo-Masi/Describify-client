@@ -6,7 +6,7 @@ import { supabase } from '../services/client.tsx';
 //Components
 import AccessBox from "../components/AccessBox";
 import Layout from "../components/Layout";
-import ContainerInput from "../components/ContainerInput";
+import { ContainerInput } from "../components/Layout";
 
 function SignupForm() {
 

@@ -10,7 +10,6 @@ export default function App() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('tema');
-    console.log("Tema iniziale: " + savedTheme);
     if (savedTheme === 'dark') {
       document.body.classList.add('dark');
     } else {

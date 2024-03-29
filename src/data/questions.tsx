@@ -1,14 +1,14 @@
 export const questions = [
     {
         title: "What is Describify?",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquam dolor tincidunt blandit ullamcorper. Pellentesque et ligula sed mauris facilisis dictum. Nunc placerat eleifend semper. Etiam quis porttitor ligula. Pellentesque efficitur urna quis facilisis malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed ornare, nisi non luctus."
+        content: "Descrify is an innovative app that uses AI to generate high-quality product descriptions for your online sales listings, making selling easier and faster."
     },
     {
-        title: "Why i need Describify?",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquam dolor tincidunt blandit ullamcorper. Pellentesque et ligula sed mauris facilisis dictum. Nunc placerat eleifend semper. Etiam quis porttitor ligula. Pellentesque efficitur urna quis facilisis malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed ornare, nisi non luctus."
+        title: "Why use Descrify?",
+        content: "For the time you'll save and the sales you'll gain. Our AI creates descriptions that attract buyers, so you can focus on your business."
     },
     {
-        title: "What type of AI use Describify?",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquam dolor tincidunt blandit ullamcorper. Pellentesque et ligula sed mauris facilisis dictum. Nunc placerat eleifend semper. Etiam quis porttitor ligula. Pellentesque efficitur urna quis facilisis malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed ornare, nisi non luctus."
+        title: "What type of AI does Descrify use?",
+        content: "State-of-the-art AI designed to understand and highlight the key selling points of your products, ensuring your listings stand out."
     }
 ];

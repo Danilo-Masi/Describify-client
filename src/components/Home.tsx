@@ -39,19 +39,14 @@ export default function Home() {
         } catch (error) {
             console.error("Errore durante la generazione:", error);
             alert("Si è verificato un errore, riprova.");
+            setLoading(false);
         }
     }
 
     return (
-        <div className="w-full h-auto flex flex-wrap items-center justify-start">
-            {/* Box Homepage */}
-            <div className="w-full md:w-1/2 h-[88svh] flex flex-col items-start justify-start md:justify-center p-10 gap-3 bg-blue-700">
-                <h1 className="text-white text-xl font-bold">Describify</h1>
-                <h1 className="text-white text-5xl font-bold">Explore the world’s leading design portfolios.</h1>
-                <p className="text-gray-300 text-md">Millions of designers and agencies around the world showcase their portfolio work on Flowbite - the home to the world’s best design and creative professionals.</p>
-            </div>
+        <div className="w-full md:w-[90%] h-auto md:h-[88svh] flex flex-wrap items-center justify-center">
             {/* Form generazione */}
-            <div className="w-full md:w-1/2 h-[88svh] flex items-center justify-center p-5">
+            <div className="w-full h-[88svh] flex items-center justify-center p-5">
                 {/************ DA IMPLEMENTARE  *************/}
                 {isLoading ?
                     <SkeletonForm />

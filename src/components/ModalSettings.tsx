@@ -18,10 +18,10 @@ function SettingsBlock({ title, description, options, onChange }: SettingsBlockP
 
     return (
         <div className="flex flex-wrap items-center justify-center gap-y-3 md:gap-0">
-            <p className="text-md font-medium w-full md:w-2/3">
+            <p className="text-md font-medium w-full md:w-2/3 text-custom-textPrimary dark:text-dark-textPrimary">
                 {title}
                 <br />
-                <span className="text-sm font-light">{description}</span>
+                <span className="text-sm font-light text-custom-textSecondary dark:text-dark-textSecondary">{description}</span>
             </p>
             <div className="w-full md:w-1/3">
                 <Select id={title} required onChange={passaValore}>
@@ -77,7 +77,7 @@ export default function ModalSettings({ onClose }: ModalSettingsProps) {
                 {/* Lingua */}
                 <SettingsBlock title="Language" description="Select the language of the platform" options={languages} onChange={handleLanguageChoose} />
                 {/* Divider */}
-                <div className="w-full bg-gray-200 h-[1px] my-4" />
+                <div className="w-full h-[0.1px] my-4 bg-custom-textSecondary dark:bg-dark-textSecondary" />
                 {/* Theme */}
                 <SettingsBlock title="Interface theme" description="Customize your application theme" options={themes} onChange={handleThemeChoose} />
             </Modal.Body>

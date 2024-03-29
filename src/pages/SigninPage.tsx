@@ -6,7 +6,7 @@ import { supabase } from '../services/client.tsx';
 //Components
 import AccessBox from "../components/AccessBox";
 import Layout from "../components/Layout";
-import ContainerInput from "../components/ContainerInput";
+import { ContainerInput } from "../components/Layout";
 
 function SigninForm() {
 
@@ -93,7 +93,7 @@ function SigninForm() {
                 <label htmlFor="remember" className="ms-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">Remember me</label>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
-                <button type="submit" className="focus:ring-1 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-custom-textPrimary bg-custom-accent focus:ring-custom-accent dark:text-dark-textPrimary dark:bg-dark-accent dark:focus:ring-dark-accent">Submit</button>
+                <button type="submit" className="focus:ring-1 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-dark-textPrimary bg-custom-accent focus:ring-custom-accent dark:text-dark-textPrimary dark:bg-dark-accent dark:focus:ring-dark-accent">Submit</button>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-row">
                 <p className="text-sm font-light text-custom-textSecondary dark:text-dark-textSecondary">
