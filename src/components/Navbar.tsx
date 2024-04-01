@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 //React-router
 import { useNavigate } from "react-router-dom";
 import { HashLink as Link } from 'react-router-hash-link';
@@ -122,12 +122,26 @@ function UserProfile({ emailUser }: UserProfileProps) {
 interface NavbarProps {
     token: boolean;
     emailUser: string;
-    id: string;
 }
 
-export default function Navbar({ token, emailUser, id }: NavbarProps) {
+export default function Navbar({ token, emailUser }: NavbarProps) {
+
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <div className="w-full h-[12svh] flex items-center justify-center" id={id}>
+        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 ${isScrolled ? 'bg-custom-background dark:bg-dark-background shadow-lg' : ''}`} >
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />

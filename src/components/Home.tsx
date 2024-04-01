@@ -7,7 +7,11 @@ import GenerateOutput from "../components/GenerateOutput";
 import SkeletonForm from "./SkeletonForm";
 
 
-export default function Home() {
+interface HomeProps {
+    id: string;
+}
+
+export default function Home({ id }: HomeProps) {
 
     const [isLoading, setLoading] = useState(false);
     const [tokenAvaible, setTokenAvabile] = useState(5);
@@ -44,7 +48,7 @@ export default function Home() {
     }
 
     return (
-        <div className="w-full md:w-[90%] h-auto md:h-[88svh] flex flex-wrap items-center justify-center">
+        <div className="w-full md:w-[90%] h-auto md:h-[88svh] flex flex-wrap items-center justify-center" id={id}>
             {/* Form generazione */}
             <div className="w-full h-[88svh] flex items-center justify-center p-5">
                 {/************ DA IMPLEMENTARE  *************/}

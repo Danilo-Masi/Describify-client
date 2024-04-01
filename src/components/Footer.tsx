@@ -15,12 +15,12 @@ function FooterCol({ children, mdWidth, mdItemsPosition }: FooterColProps) {
     );
 }
 
-const textTitle: string = "text-lg font-medium text-dark-textPrimary dark:text-custom-textPrimary";
-const textPharagraph: string = 'text-gray-300 font-light text-dark-textSecondary dark:text-custom-textSecondary';
+const textTitle: string = "text-lg font-medium text-dark-textPrimary";
+const textPharagraph: string = 'text-gray-300 font-light text-custom-textSecondary dark:text-dark-textSecondary';
 
 export default function Footer() {
     return (
-        <div className="w-full flex items-center justify-center bg-dark-background dark:bg-custom-background">
+        <div className="w-full flex items-center justify-center bg-dark-background dark:bg-custom-textPrimary">
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
                 {/* Logo */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>

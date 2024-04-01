@@ -31,8 +31,8 @@ export default function HomePage() {
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar token={accessToken} emailUser={emailUser} id="Home" />
-            {accessToken ? <Home /> : <Hero /> }
+            <Navbar token={accessToken} emailUser={emailUser} />
+            {accessToken ? <Home id="Home"/> : <Hero id="Home"/> }
             <Features id="Features" />
             <Prices id="Prices" />
             <Faqs id="Faqs" />
