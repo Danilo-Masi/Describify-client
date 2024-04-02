@@ -1,4 +1,4 @@
-export const questions = [
+export const questionsEn = [
     {
         title: "What is Describify?",
         content: "Descrify is an innovative app that uses AI to generate high-quality product descriptions for your online sales listings, making selling easier and faster."

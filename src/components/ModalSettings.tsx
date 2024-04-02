@@ -1,4 +1,8 @@
+//Flowbite
 import { Modal, Select } from "flowbite-react";
+//I18Next
+import i18n from "../i18n";
+import { useTranslation } from 'react-i18next';
 
 const languages: string[] = ['English', 'Italiano'];
 const themes: string[] = ['Dark', 'Light'];
@@ -8,9 +12,10 @@ interface SettingsBlockProps {
     description: string;
     options: string[];
     onChange: (arg0: string) => void;
+    selectedOption: string;
 }
 
-function SettingsBlock({ title, description, options, onChange }: SettingsBlockProps) {
+function SettingsBlock({ title, description, options, onChange, selectedOption }: SettingsBlockProps) {
 
     const passaValore = (event: any) => {
         onChange(event.target.value);
@@ -24,11 +29,11 @@ function SettingsBlock({ title, description, options, onChange }: SettingsBlockP
                 <span className="text-sm font-light text-custom-textSecondary dark:text-dark-textSecondary">{description}</span>
             </p>
             <div className="w-full md:w-1/3">
-                <Select id={title} required onChange={passaValore}>
-                    {options.map((el, key) => (
+                <Select id={title} required onChange={passaValore} value={selectedOption}>
+                    {options.map((option, key) => (
                         <option
                             key={key}>
-                            {el}
+                            {option}
                         </option>
                     ))}
                 </Select>
@@ -43,12 +48,25 @@ interface ModalSettingsProps {
 
 export default function ModalSettings({ onClose }: ModalSettingsProps) {
 
+    const { t } = useTranslation();
+
+    const languageFromStorage = localStorage.getItem("language");
+    const selectedLanguage = languageFromStorage === "en" ? "English" : "Italiano";
+    const themeFromStorage = localStorage.getItem("tema");
+    const selectedTheme = themeFromStorage && themeFromStorage === 'dark' ? 'Dark' : 'Light';
+
     //Funzione per la modifica della lingua corrente
     const handleLanguageChoose = (linguaSelezionata: string) => {
+        let lng = "";
+        if (linguaSelezionata === 'Italiano') {
+            lng = 'it';
+        } else {
+            lng = 'en';
+        }
         try {
-            console.log('Lingua selezionata: ' + linguaSelezionata);
-            localStorage.setItem("lingua", linguaSelezionata);
-            //OPERAZIONI DI RICARICAMENTO DELLE PAGINE
+            console.log('Lingua selezionata: ' + lng);
+            i18n.changeLanguage(lng);
+            localStorage.setItem('language', lng);
         } catch (error) {
             console.error('Errore nella selezione della lingua', error);
             alert('Errore nel cambio della lingua');
@@ -72,14 +90,24 @@ export default function ModalSettings({ onClose }: ModalSettingsProps) {
 
     return (
         <Modal dismissible show={true} onClose={onClose}>
-            <Modal.Header>Settings</Modal.Header>
+            <Modal.Header>{t('modalSetting')}</Modal.Header>
             <Modal.Body>
                 {/* Lingua */}
-                <SettingsBlock title="Language" description="Select the language of the platform" options={languages} onChange={handleLanguageChoose} />
+                <SettingsBlock
+                    title={t('modalSettingTitle1')}
+                    description={t('modalSettingCaption1')}
+                    options={languages}
+                    onChange={handleLanguageChoose}
+                    selectedOption={selectedLanguage} />
                 {/* Divider */}
                 <div className="w-full h-[0.1px] my-4 bg-custom-textSecondary dark:bg-dark-textSecondary" />
                 {/* Theme */}
-                <SettingsBlock title="Interface theme" description="Customize your application theme" options={themes} onChange={handleThemeChoose} />
+                <SettingsBlock
+                    title={t('modalSettingTitle2')}
+                    description={t('modalSettingCaption2')}
+                    options={themes}
+                    onChange={handleThemeChoose}
+                    selectedOption={selectedTheme} />
             </Modal.Body>
         </Modal>
     )

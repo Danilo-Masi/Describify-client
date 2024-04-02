@@ -37,7 +37,7 @@ function AccessButton() {
                 <Link to="/signin">
                     <button
                         type="button"
-                        className="focus:ring-1 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 bg-trasparent hover:bg-custom-accent dark:hover:bg-dark-accent text-custom-accent dark:text-dark-accent hover:text-dark-textPrimary dark:hover:text-dark-textPrimary border border-custom-accent dark:border-dark-accent">
+                        className="focus:ring-1 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 bg-trasparent hover:bg-custom-accent dark:hover:bg-dark-accent text-custom-accent dark:text-dark-textPrimary hover:text-dark-textPrimary dark:hover:text-dark-textPrimary border border-custom-accent dark:border-dark-accent">
                         Login
                     </button>
                 </Link>

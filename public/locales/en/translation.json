@@ -1,0 +1,32 @@
+{
+    "heroBadge": "A project by Danilo Masi",
+    "heroTitle": "Value your time and increse your sell online",
+    "heroDescription": "Elevate your sales with AI. Descrify will instantly generate a captivating description for your listing. Boost your sales on Vinted, eBay, Subito, and more, with descriptions that sell",
+    
+    "featuresBadge": "How does it work?",
+    "featuresTitle": "Effortless Selling Starts Here",
+    "featuresDescription": "With Descrify, you’re just a few clicks away from the perfect product description. Our AI analyzes your item’s details and crafts descriptions designed to sell. No more writing stress - spend your time where it counts",
+    
+    "pricesBadge": "Prices",
+    "pricesTitle": "Maximize Your Listings, Minimize Your Effort",
+    "pricesDescription": "Choose a Descrify plan that suits your needs. Our Free plan is great to get started, while our Standard and Premium plans offer advanced features for serious sellers. Sell more, effortlessly",
+    
+    "faqsTitle": "Have Questions?",
+    "faqsDescription": "We’ve got answers. Discover how Descrify can change the way you sell online.",
+
+    "footerCaption": "The smarter way to sell. Harness the power of AI for listings that stand out and sell fast.",
+    "footerTerms": "Terms and policy",
+    "footerContacts": "Contacts",
+
+    "labelCategory": "Select a category",
+    "labelBrand": "Enter a brand name",
+    "labelSize": "Select a size",
+    "labelColor": "Select a color",
+    "labelButtonGenerate": "Generate",
+
+    "modalSetting": "Settings",
+    "modalSettingTitle1": "Language",
+    "modalSettingCaption1": "Select the language of the platform",
+    "modalSettingTitle2": "Interface theme",
+    "modalSettingCaption2": "Customize your application theme"
+}

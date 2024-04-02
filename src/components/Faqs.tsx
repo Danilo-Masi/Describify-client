@@ -1,3 +1,5 @@
+//I18Next
+import { useTranslation } from 'react-i18next';
 //Components
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
@@ -8,15 +10,18 @@ interface FaqsProps {
 }
 
 export default function Faqs({ id }: FaqsProps) {
+
+  const { t } = useTranslation();
+
   return (
     <ContainerComponents id={id}>
       {/* Intestazione */}
       <Intestazione
         badgeValue="FAQs"
-        titleValue="Have Questions?"
-        descriptionValue="We’ve got answers. Discover how Descrify can change the way you sell online." />
-        {/* Faqs box */}
-        <FaqsAccordition />
+        titleValue={t('faqsTitle')}
+        descriptionValue={t('faqsDescription')} />
+      {/* Faqs box */}
+      <FaqsAccordition />
     </ContainerComponents>
   );
 }

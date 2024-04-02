@@ -1,0 +1,32 @@
+{
+    "heroBadge": "Un progetto di Danilo Masi",
+    "heroTitle": "Valorizza il tuo tempo e vendi di più",
+    "heroDescription": "Descrify genera istantaneamente una descrizione accattivante per il tuo annuncio cosi da farti risparmiare tempo e aumentare le vendite su Vinted, eBay, Subito,...",
+    
+    "featuresBadge": "Come funziona?",
+    "featuresTitle": "Vendi senza sforzo",
+    "featuresDescription": "Con Descrify, sei a pochi clic dalla descrizione perfetta per il tuo prodotto. La nostra AI analizza i dettagli del vostro articolo e genera una descrizione ad hoc per voi. Nessun più sforzo di scrittura passa il vostro tempo dove conta",
+    
+    "pricesBadge": "Prezzi",
+    "pricesTitle": "Massimizza i tuoi annunci, minimizza il tuo sforzo",
+    "pricesDescription": "Scegli un abbonamento adatto alle tue esigenze. Il nostro piano gratuito è ottimo per iniziare, mentre i nostri piani Standard e Premium offrono funzionalità avanzate per i venditori specializzati",
+    
+    "faqsTitle": "Hai delle domande?",
+    "faqsDescription": "Abbiamo delle risposte. Scopri come Descrify può cambiare il tuo modo di vendere online.",
+
+    "footerCaption": "Il modo più intelligente per vendere. Sfrutta la potenza dell'AI per annunci che si distinguono e vendono velocemente.",
+    "footerTerms": "Termini e condizioni",
+    "footerContacts": "Contatti",
+
+    "labelCategory": "Seleziona una categoria",
+    "labelBrand": "Immeti un brand",
+    "labelSize": "Seleziona una dimensione",
+    "labelColor": "Seleziona un colore",
+    "labelButtonGenerate": "Genera",
+
+    "modalSetting": "Impostazioni",
+    "modalSettingTitle1": "Lingua",
+    "modalSettingCaption1": "Seleziona la lingua della piattaforma",
+    "modalSettingTitle2": "Tema",
+    "modalSettingCaption2": "Personalizza il tema della piattaforma"
+}

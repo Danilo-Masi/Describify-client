@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+//I18Next
+import { useTranslation } from 'react-i18next';
 //Data
 import { taglie, colori, categorie } from '../data/data';
 //Components
@@ -54,15 +56,16 @@ function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelect
 
 interface ButtonGenerateProps {
     onClick: () => void;
+    labelButton: string;
 }
 
-function ButtonGenerate({ onClick }: ButtonGenerateProps) {
+function ButtonGenerate({ onClick, labelButton }: ButtonGenerateProps) {
     return (
         <button
             onClick={onClick}
             type="button"
             className="w-full md:w-[calc(50%-0.5rem)] mt-2  focus:ring-1 font-medium rounded-lg text-md px-5 py-2.5 focus:outline-none disabled:bg-gray-400 bg-custom-accent dark:bg-dark-accent text-dark-textPrimary">
-            Generate
+            {labelButton}
         </button>
     );
 }
@@ -73,10 +76,12 @@ interface GenerateFormProps {
 
 export default function GenerateForm({ onGeneration }: GenerateFormProps) {
 
+    const { t } = useTranslation();
+
     const [brand, setBrand] = useState("");
-    const [categoria, setCategoria] = useState("Scegli categoria");
-    const [taglia, setTaglia] = useState("Scegli taglia");
-    const [colore, setColore] = useState("Scegli colore");
+    const [categoria, setCategoria] = useState("TV, Blazer,Shorts,...");
+    const [taglia, setTaglia] = useState("XS,M,XL,...");
+    const [colore, setColore] = useState("Red, Black,...");
 
 
     interface ModalItem {
@@ -112,11 +117,11 @@ export default function GenerateForm({ onGeneration }: GenerateFormProps) {
 
     return (
         <form className="w-full md:w-1/2 h-auto flex flex-wrap justify-start gap-4 md:gap-3 py-6 md:py-5 px-5 rounded-lg border border-custom-border dark:border-dark-border bg-custom-elevation dark:bg-dark-elevation">
-            <InputSelect mdWidth="md:w-full" valoreInput={categoria} valoreLabel="Select a category" onClick={() => handleModal(categorie, "Select a category")} />
-            <TextInput onChange={(event: React.ChangeEvent<HTMLInputElement>) => setBrand(event.target.value)} valoreLabel="Brand name" />
-            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={taglia} valoreLabel="Select a size" onClick={() => handleModal(taglie, "Select a size")} />
-            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={colore} valoreLabel="Select a color" onClick={() => handleModal(colori, "Select a color")} />
-            <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore)} />
+            <InputSelect mdWidth="md:w-full" valoreInput={categoria} valoreLabel={t('labelCategory')} onClick={() => handleModal(categorie, "Select a category")} />
+            <TextInput onChange={(event: React.ChangeEvent<HTMLInputElement>) => setBrand(event.target.value)} valoreLabel={t('labelBrand')} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={taglia} valoreLabel={t('labelSize')} onClick={() => handleModal(taglie, "Select a size")} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.5rem)]" valoreInput={colore} valoreLabel={t('labelColor')} onClick={() => handleModal(colori, "Select a color")} />
+            <ButtonGenerate onClick={() => onGeneration(brand, categoria, taglia, colore)} labelButton={t('labelButtonGenerate')} />
             {modalVisibility
                 ? <ModalDropdow valoreLabel={modalLabel} arrayDati={modalData} onClick={() => setModalVisibiliy(false)} onSelect={(selectedValue) => handleSelection(selectedValue)} />
                 : ''
