@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
+import ConfirmEmailPage from "./pages/ConfirmEmailPage";
 
 export default function App() {
 
@@ -23,6 +24,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/confirmEmail" element={<ConfirmEmailPage />} />
       </Routes>
     </BrowserRouter>
   );

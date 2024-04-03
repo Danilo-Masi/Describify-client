@@ -30,7 +30,7 @@ export default function Footer() {
                 {/* Logo */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>
                     <p className={textTitle}>Describify</p>
-                    <p className={`max-w-md md:text-start text-center font-light ${textPharagraph}`}>
+                    <p className={`max-w-md md:text-start text-center font-light text-balance ${textPharagraph}`}>
                         {t('footerCaption')}
                     </p>
                 </FooterCol>

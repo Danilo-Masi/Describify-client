@@ -11,7 +11,7 @@ i18n
   .init({
     lng: language, // Imposta la lingua recuperata o il fallback
     fallbackLng: 'en', // Lingua di fallback
-    debug: true, // Abilita i log di debug in console
+    debug: false, // Abilita i log di debug in console
     interpolation: {
       escapeValue: false, // Non necessario per React poiché sfugge già di default
     }

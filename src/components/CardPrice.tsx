@@ -44,8 +44,8 @@ export default function CardPrice({ titlePlan, pricePlan, planOptions, currentPl
                             />
                         </svg>
                         <div className="flex flex-col gap-y-1">
-                            <span className="text-base font-normal leading-tight text-custom-textPrimary dark:text-dark-textPrimary">{option.title}</span>
-                            <span className="text-base font-light leading-tight text-custom-textSecondary dark:text-dark-textSecondary">{option.caption}</span>
+                            <span className="text-base font-normal leading-tight text-custom-textPrimary dark:text-dark-textPrimary text-balance">{option.title}</span>
+                            <span className="text-base font-light leading-tight text-custom-textSecondary dark:text-dark-textSecondary text-balance">{option.caption}</span>
                         </div>
                     </li>
 

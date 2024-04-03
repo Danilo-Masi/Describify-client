@@ -2,14 +2,15 @@ import { ReactNode } from 'react';
 
 interface LayoutProps {
     children: ReactNode;
-    padding: string;
-    mdFlexOrientation: string;
+    padding?: string;
+    mdFlexOrientation?: string;
     mdHeight: string;
+    justifyPosition?: string;
 }
 
-export default function Layout({ children, padding, mdFlexOrientation, mdHeight }: LayoutProps) {
+export default function Layout({ children, padding, mdFlexOrientation, mdHeight, justifyPosition }: LayoutProps) {
     return (
-        <div className={`w-full h-auto flex flex-col items-center justify-start bg-custom-background text-custom-text dark:bg-dark-background dark:text-dark-text ${mdHeight} ${mdFlexOrientation} ${padding}`}>
+        <div className={`w-full h-auto flex flex-col items-center bg-custom-background text-custom-text dark:bg-dark-background dark:text-dark-text ${justifyPosition ? justifyPosition : 'justify-start'} ${mdHeight} ${mdFlexOrientation} ${padding}`}>
             {children}
         </div>
     );
