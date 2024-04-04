@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+//Supabase
+import { supabase } from '../services/client.tsx';
 //Components
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
@@ -15,24 +17,24 @@ export default function HomePage() {
     const [emailUser, setEmailUser] = useState('');
 
     useEffect(() => {
-        try {
-            const dataAccesso: string | null = sessionStorage.getItem('token');
-            if (dataAccesso) {
-                const tokenObject = JSON.parse(dataAccesso);
-                const emailUtente: string = tokenObject.user?.email;
-                setEmailUser(emailUtente);
+        const { data: authListener } = supabase.auth.onAuthStateChange((_, session) => {
+            const userEmail = session?.user?.email;
+            if (userEmail) {
+                setEmailUser(userEmail);
                 setAccessToken(true);
+            } else {
+                setEmailUser('');
+                setAccessToken(false);
             }
-        } catch (error) {
-            console.error("Errore durante il caricamento del token d'accesso" + error);
-            setAccessToken(false);
-        }
+        });
+        // Cleanup function per rimuovere la sottoscrizione
+        return () => authListener.subscription.unsubscribe();
     }, []);
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
             <Navbar token={accessToken} emailUser={emailUser} />
-            {accessToken ? <Home id="Home"/> : <Hero id="Home"/> }
+            {accessToken ? <Home id="Home" /> : <Hero id="Home" />}
             <Features id="Features" />
             <Prices id="Prices" />
             <Faqs id="Faqs" />

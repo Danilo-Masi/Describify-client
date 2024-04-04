@@ -86,14 +86,16 @@ function UserProfile({ emailUser }: UserProfileProps) {
             const { error } = await supabase.auth.signOut();
             if (error) {
                 console.error('Errore durante la fase di logout', error);
+                // Qui potresti decidere di mostrare un messaggio di errore all'utente. //
                 return;
             }
-            sessionStorage.removeItem('token');
+            // Redirezione all'utente verso la pagina di signin dopo il logout. //
             navigate('/signin');
         } catch (error) {
             console.error('Errore', error);
         }
     }, [navigate]);
+
 
     //Formattazione dell'email dell'utente
     const emailUtente: string = emailUser.length > 10 ? emailUser.slice(0, emailUser.indexOf('@')) : emailUser;

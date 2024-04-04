@@ -1,4 +1,23 @@
 {
+    "signinWelcome": "Welcome back",
+    "signinEmailLabel": "Your email",
+    "signinPasswordLabel": "Your password",
+    "signinCheckboxLabel": "Remember me",
+    "signinForgetLabel": "Forget the password?",
+    "signinButton": "Access",
+    "signinRedirectLabel": "You're new to Descrify?",
+    "signinRedirectLink": "Singup here",
+
+    "signupWelcome": "Your best work start here",
+    "signupEmailLabel": "Your email",
+    "signupPasswordLabel": "Your password",
+    "signupConfirmPasswordLabel": "Repeat password",
+    "signupCheckboxLabel": "I agree with the",
+    "singupCheckboxLink": "terms and conditions",
+    "signupButton": "Register new account",
+    "signupRedirectLabel": "Alredy have an account?",
+    "signupRedirectLink": "Login here",
+
     "heroBadge": "A project by Danilo Masi",
     "heroTitle": "Value your time and increse your sell online",
     "heroDescription": "Elevate your sales with AI. Descrify will instantly generate a captivating description for your listing. Boost your sales on Vinted, eBay, Subito, and more, with descriptions that sell",
@@ -29,4 +48,6 @@
     "modalSettingCaption1": "Select the language of the platform",
     "modalSettingTitle2": "Interface theme",
     "modalSettingCaption2": "Customize your application theme"
+
+
 }

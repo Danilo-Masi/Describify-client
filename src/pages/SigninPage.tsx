@@ -1,4 +1,6 @@
 import { useState } from "react";
+//I18Next
+import { useTranslation } from 'react-i18next';
 //React router
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 //Supabase
@@ -10,7 +12,7 @@ import { ContainerInput } from "../components/Layout";
 
 function SigninForm() {
 
-    //Funzione per navigare tra le varie pagine
+    const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
 
     const [rememberCheckbox, setRememberCheckbox] = useState(false);
@@ -30,35 +32,33 @@ function SigninForm() {
     //Funzione per effettuare l'accesso all'account 
     const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //Validazione dei dati /***** DA IMPLEMENTARE ******/
+        // Validazione dei dati /***** DA IMPLEMENTARE ******/
         try {
-            const { data, error } = await supabase.auth.signInWithPassword({
+            const { error } = await supabase.auth.signInWithPassword({
                 email: signinForm.email,
                 password: signinForm.password,
             });
             if (error) {
                 alert('Credenziali errate');
                 console.error("Errore nelle credenziali:", error);
-                return;
             } else {
-                alert('Accesso effettutato corretamente');
-                sessionStorage.setItem('token', JSON.stringify(data));
-                navigate('/');
+                alert('Accesso effettuato correttamente');
+                navigate('/'); // Naviga verso la homepage o la dashboard
             }
         } catch (error) {
             console.error("Error during signin:", error);
         }
-    }
+    };
 
     return (
         <form
             onSubmit={handleSignin}
             className="w-full md:w-1/2 h-[88svh] md:h-full flex flex-col gap-5 items-center justify-center px-6 md:px-32">
             <ContainerInput flexOrentation="flex-col">
-                <h1 className="text-2xl font-bold text-custom-textPrimary dark:text-dark-textPrimary">Welcome back</h1>
+                <h1 className="text-2xl font-bold text-custom-textPrimary dark:text-dark-textPrimary">{t('signinWelcome')}</h1>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
-                <label htmlFor="email" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">Your email</label>
+                <label htmlFor="email" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signinEmailLabel')}</label>
                 <input
                     autoComplete="email"
                     type="email"
@@ -70,7 +70,7 @@ function SigninForm() {
                     onChange={event => handleChange(event, 'email')} />
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
-                <label htmlFor="password" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">Your password</label>
+                <label htmlFor="password" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signinPasswordLabel')}</label>
                 <input
                     placeholder="•••••••••"
                     type="password"
@@ -90,17 +90,18 @@ function SigninForm() {
                         checked={rememberCheckbox}
                         onChange={() => setRememberCheckbox(!rememberCheckbox)} />
                 </div>
-                <label htmlFor="remember" className="ms-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">Remember me</label>
+                <label htmlFor="remember" className="ms-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signinCheckboxLabel')}</label>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
                 <button type="submit" className="focus:ring-1 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-dark-textPrimary bg-custom-accent focus:ring-custom-accent dark:text-dark-textPrimary dark:bg-dark-accent dark:focus:ring-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent">
-                    Submit
+                    {t('signinButton')}
                 </button>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-row">
                 <p className="text-sm font-light text-custom-textSecondary dark:text-dark-textSecondary">
-                    You're new to Describy? <Link to="/signup" className="text-custom-accent dark:text-dark-accent hover:text-dark-accent dark:hover:text-custom-accent font-medium">Singup here</Link>
+                    {t('signinRedirectLabel')} <Link to="/signup" className="text-custom-accent dark:text-dark-accent hover:text-dark-accent dark:hover:text-custom-accent">{t('signinRedirectLink')}</Link>
                 </p>
+
             </ContainerInput>
         </form>
     );

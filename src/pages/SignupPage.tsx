@@ -1,4 +1,6 @@
 import { useState } from "react";
+//I18Next
+import { useTranslation } from 'react-i18next';
 //React-router
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 //Supabase
@@ -10,7 +12,7 @@ import { ContainerInput } from "../components/Layout";
 
 function SignupForm() {
 
-    //Funzione per navigare tra le varie pagine
+    const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
 
     const [termsCheckbox, setTermsCheckbox] = useState(false);
@@ -31,21 +33,19 @@ function SignupForm() {
     //Funzione per effettuare la registrazione di un nuovo utente
     const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //Validazione dei dati /***** DA IMPLEMENTARE ******/
+        // Validazione dei dati /***** DA IMPLEMENTARE ******/
         try {
-            const { data, error } = await supabase.auth.signUp({
+            const { error } = await supabase.auth.signUp({
                 email: signupForm.email,
                 password: signupForm.password,
             });
             if (error) {
                 console.error("Error during signup:", error);
                 alert('Error during signup: ' + error.message);
-                return;
             } else {
                 alert('Check your email to confirm the account');
-                alert('Utente registrato correttamente');
-                sessionStorage.setItem('token', JSON.stringify(data));
-                navigate('/');
+                // Naviga verso la pagina di conferma email o un messaggio appropriato
+                navigate('/confirmEmail');
             }
         } catch (error) {
             console.error("Error during signup:", error);
@@ -53,16 +53,15 @@ function SignupForm() {
         }
     };
 
-
     return (
         <form
             onSubmit={handleSignup}
             className="w-full md:w-1/2 h-[88svh] md:h-full flex flex-col gap-5 items-center justify-center px-6 md:px-32">
             <ContainerInput flexOrentation="flex-col">
-                <h1 className="text-2xl font-bold text-custom-textPrimary dark:text-dark-textPrimary">Your best work start here</h1>
+                <h1 className="text-2xl font-bold text-custom-textPrimary dark:text-dark-textPrimary">{t('signupWelcome')}</h1>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
-                <label htmlFor="input-signup-email" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">Your email</label>
+                <label htmlFor="input-signup-email" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signupEmailLabel')}</label>
                 <input
                     type="email"
                     id="input-signup-email"
@@ -74,7 +73,7 @@ function SignupForm() {
                     onChange={event => handleChange(event, 'email')} />
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
-                <label htmlFor="input-signup-password" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">Your password</label>
+                <label htmlFor="input-signup-password" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signupPasswordLabel')}</label>
                 <input
                     placeholder="•••••••••"
                     type="password"
@@ -86,7 +85,7 @@ function SignupForm() {
                     onChange={event => handleChange(event, 'password')} />
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
-                <label htmlFor="input-signup-repet-password" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">Repeat password</label>
+                <label htmlFor="input-signup-repet-password" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signupConfirmPasswordLabel')}</label>
                 <input
                     placeholder="•••••••••"
                     type="password"
@@ -109,14 +108,14 @@ function SignupForm() {
                         checked={termsCheckbox}
                         onChange={() => setTermsCheckbox(!termsCheckbox)} />
                 </div>
-                <label htmlFor="terms" className="ms-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">I agree with the <a href="#" className="text-custom-accent dark:text-dark-accent font-medium">terms and conditions</a></label>
+                <label htmlFor="terms" className="ms-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signupCheckboxLabel')} <a href="#" className="text-custom-accent dark:text-dark-accent font-medium">{t('singupCheckboxLink')}</a></label>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
-                <button type="submit" className="w-full md:w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Register new account</button>
+                <button type="submit" className="w-full md:w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{t('signupButton')}</button>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-row">
                 <p className="text-sm font-light text-custom-textSecondary dark:text-dark-textSecondary">
-                    Already have an account? <Link to="/signin" className="text-custom-accent dark:text-dark-accent font-medium">Login here</Link>
+                    {t('signupRedirectLabel')} <Link to="/signin" className="text-custom-accent dark:text-dark-accent font-medium">{t('signupRedirectLink')}</Link>
                 </p>
             </ContainerInput>
         </form>

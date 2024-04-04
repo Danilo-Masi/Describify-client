@@ -1,4 +1,23 @@
-{
+{   
+    "signinWelcome": "Bentornato",
+    "signinEmailLabel": "La tua email",
+    "signinPasswordLabel": "La tua password",
+    "signinCheckboxLabel": "Ricordami",
+    "signinForgetLabel": "Hai dimenticato la password?",
+    "signinButton": "Accedi",
+    "signinRedirectLabel": "Non hai un account Descrify?",
+    "signinRedirectLink": "Registrati qui",
+
+    "signupWelcome": "Genera annunci velocemente e aumenta le vendite",
+    "signupEmailLabel": "La tua email",
+    "signupPasswordLabel": "La tua password",
+    "signupConfirmPasswordLabel": "Ripeti la tua password",
+    "signupCheckboxLabel": "Accetto i",
+    "singupCheckboxLink": "termini di servizio e condizioni",
+    "signupButton": "Registra account",
+    "signupRedirectLabel": "Hai già un account?",
+    "signupRedirectLink": "Accedi qui",
+
     "heroBadge": "Un progetto di Danilo Masi",
     "heroTitle": "Valorizza il tuo tempo e vendi di più",
     "heroDescription": "Descrify genera istantaneamente una descrizione accattivante per il tuo annuncio cosi da farti risparmiare tempo e aumentare le vendite su Vinted, eBay, Subito,...",
@@ -29,4 +48,5 @@
     "modalSettingCaption1": "Seleziona la lingua della piattaforma",
     "modalSettingTitle2": "Tema",
     "modalSettingCaption2": "Personalizza il tema della piattaforma"
+    
 }

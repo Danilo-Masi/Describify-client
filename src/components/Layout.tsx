@@ -37,7 +37,7 @@ interface ContainerInputProps {
 
 export function ContainerInput({ children, flexOrentation }: ContainerInputProps) {
     return (
-        <div className={`w-full flex ${flexOrentation} items-start`}>
+        <div className={`w-full flex items-start ${flexOrentation}`}>
             {children}
         </div>
     );
