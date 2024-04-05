@@ -101,7 +101,6 @@ function SigninForm() {
                 <p className="text-sm font-light text-custom-textSecondary dark:text-dark-textSecondary">
                     {t('signinRedirectLabel')} <Link to="/signup" className="text-custom-accent dark:text-dark-accent hover:text-dark-accent dark:hover:text-custom-accent">{t('signinRedirectLink')}</Link>
                 </p>
-
             </ContainerInput>
         </form>
     );

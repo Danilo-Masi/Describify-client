@@ -19,7 +19,8 @@ export default function HomePage() {
     useEffect(() => {
         const { data: authListener } = supabase.auth.onAuthStateChange((_, session) => {
             const userEmail = session?.user?.email;
-            if (userEmail) {
+            const verificaEmail = session?.user?.email_confirmed_at != null;
+            if (session && userEmail && verificaEmail) {
                 setEmailUser(userEmail);
                 setAccessToken(true);
             } else {
@@ -27,17 +28,17 @@ export default function HomePage() {
                 setAccessToken(false);
             }
         });
-        // Cleanup function per rimuovere la sottoscrizione
+        // Cleanup 
         return () => authListener.subscription.unsubscribe();
     }, []);
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar token={accessToken} emailUser={emailUser} />
+            <Navbar accessToken={accessToken} emailUser={emailUser} />
             {accessToken ? <Home id="Home" /> : <Hero id="Home" />}
-            <Features id="Features" />
-            <Prices id="Prices" />
-            <Faqs id="Faqs" />
+            <Features id="Features" accessToken={accessToken} />
+            <Prices id="Prices" accessToken={accessToken} />
+            <Faqs id="Faqs" accessToken={accessToken} />
             <Footer />
         </Layout>
     )

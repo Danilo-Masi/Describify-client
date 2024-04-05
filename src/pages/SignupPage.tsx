@@ -1,19 +1,24 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 //I18Next
 import { useTranslation } from 'react-i18next';
 //React-router
-import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 //Supabase
 import { supabase } from '../services/client.tsx';
 //Components
 import AccessBox from "../components/AccessBox";
 import Layout from "../components/Layout";
 import { ContainerInput } from "../components/Layout";
+import ModalConfirmAccount from "../components/ModalConfirmAccount.tsx";
 
-function SignupForm() {
+interface SignupFormProps {
+    setModalOpen: Dispatch<SetStateAction<boolean>>;
+    setEmailPut: Dispatch<SetStateAction<string>>
+}
+
+function SignupForm({setModalOpen, setEmailPut}: SignupFormProps) {
 
     const { t } = useTranslation();
-    const navigate: NavigateFunction = useNavigate();
 
     const [termsCheckbox, setTermsCheckbox] = useState(false);
     const [signupForm, setSignupForm] = useState({
@@ -44,8 +49,9 @@ function SignupForm() {
                 alert('Error during signup: ' + error.message);
             } else {
                 alert('Check your email to confirm the account');
-                // Naviga verso la pagina di conferma email o un messaggio appropriato
-                navigate('/confirmEmail');
+                // Apri modal di conferma email
+                setEmailPut(signupForm.email);
+                setModalOpen(true);
             }
         } catch (error) {
             console.error("Error during signup:", error);
@@ -123,10 +129,15 @@ function SignupForm() {
 }
 
 export default function SignupPage() {
+
+    const [emailPut, setEmailPut] = useState("");
+    const [isModalEmailOpen, setIsModalEmailOpen] = useState(true);
+
     return (
         <Layout padding="p-0" mdFlexOrientation="md:flex-row" mdHeight="md:h-svh">
-            <SignupForm />
+            <SignupForm setModalOpen={setIsModalEmailOpen} setEmailPut={setEmailPut}/>
             <AccessBox />
+            {isModalEmailOpen && <ModalConfirmAccount onClose={() => setIsModalEmailOpen(false)} emailUser={emailPut}/>}
         </Layout>
     );
 }

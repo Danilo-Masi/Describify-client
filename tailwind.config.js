@@ -18,6 +18,7 @@ export default {
           border: '#D1D5DB', // Bordo normale per la light mode
           borderFocus: '#1A56DB',
           disabled: '#9CA3AF', // Bordo al focus per la light mode (usa l'accent color)
+          softBlur: '0 0 15px 5px rgba(0, 0, 0, 0.05)'
         },
         // Colori per la dark mode
         dark: {

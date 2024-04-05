@@ -7,9 +7,10 @@ import FeaturesStep from "./FeaturesStep";
 
 interface FeaturesProps {
   id: string;
+  accessToken: boolean;
 }
 
-export default function Features({ id }: FeaturesProps) {
+export default function Features({ id , accessToken}: FeaturesProps) {
 
   const { t } = useTranslation();
 
@@ -17,6 +18,7 @@ export default function Features({ id }: FeaturesProps) {
     <ContainerComponents id={id}>
       {/* Intestazione */}
       <Intestazione
+        accessToken={accessToken}
         badgeValue={t('featuresBadge').toUpperCase()}
         titleValue={t('featuresTitle')}
         descriptionValue={t('featuresDescription')} />

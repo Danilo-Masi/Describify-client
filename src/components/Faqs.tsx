@@ -7,9 +7,10 @@ import FaqsAccordition from "./FaqsAccordition";
 
 interface FaqsProps {
   id: string;
+  accessToken: boolean;
 }
 
-export default function Faqs({ id }: FaqsProps) {
+export default function Faqs({ id, accessToken }: FaqsProps) {
 
   const { t } = useTranslation();
 
@@ -17,6 +18,7 @@ export default function Faqs({ id }: FaqsProps) {
     <ContainerComponents id={id}>
       {/* Intestazione */}
       <Intestazione
+        accessToken={accessToken}
         badgeValue="FAQs"
         titleValue={t('faqsTitle')}
         descriptionValue={t('faqsDescription')} />

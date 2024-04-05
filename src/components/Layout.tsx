@@ -20,11 +20,14 @@ interface ContainerComponentsProps {
     children: ReactNode;
     id?: string;
     gap?: string;
+    bgColor?: string;
 }
 
-export function ContainerComponents({ children, id, gap }: ContainerComponentsProps) {
+export function ContainerComponents({ children, id, gap, bgColor }: ContainerComponentsProps) {
     return (
-        <div className={`w-[90%] h-auto flex flex-col items-center justify-start py-5 md:py-10 ${!gap ? 'gap-y-10': gap}`} id={id}>
+        <div
+            className={`w-[90%] h-auto flex flex-col items-center justify-start py-5 md:py-10 ${!gap ? 'gap-y-10' : gap} ${bgColor}`}
+            id={id}>
             {children}
         </div>
     );

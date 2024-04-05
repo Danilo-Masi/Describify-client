@@ -14,7 +14,9 @@ import ModalSettings from "./ModalSettings.tsx";
 function Logo() {
     return (
         <div className="w-1/2 md:w-1/4">
-            <h1 className="text-2xl text-custom-textPrimary dark:text-dark-textPrimary">Describify</h1>
+            <Link to="/#Home" smooth>
+                <h1 className="text-2xl text-custom-textPrimary dark:text-dark-textPrimary">Describify</h1>
+            </Link>
         </div>
     );
 }
@@ -122,11 +124,11 @@ function UserProfile({ emailUser }: UserProfileProps) {
 }
 
 interface NavbarProps {
-    token: boolean;
+    accessToken: boolean;
     emailUser: string;
 }
 
-export default function Navbar({ token, emailUser }: NavbarProps) {
+export default function Navbar({ accessToken, emailUser }: NavbarProps) {
 
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -147,7 +149,7 @@ export default function Navbar({ token, emailUser }: NavbarProps) {
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />
-                {token ? <UserProfile emailUser={emailUser} /> : <AccessButton />}
+                {accessToken ? <UserProfile emailUser={emailUser} /> : <AccessButton />}
             </div>
         </div>
     );

@@ -11,9 +11,10 @@ import { pianoFree, pianoStandard, pianoPremium } from '../data/planOptions_it';
 
 interface PricesProps {
   id: string;
+  accessToken: boolean;
 }
 
-export default function Prices({ id }: PricesProps) {
+export default function Prices({ id, accessToken }: PricesProps) {
 
   const { t } = useTranslation();
   const [currentPlan, setCurrentPlan] = useState("Free plan");
@@ -36,6 +37,7 @@ export default function Prices({ id }: PricesProps) {
     <ContainerComponents id={id}>
       {/* Intestazione */}
       <Intestazione
+        accessToken={accessToken}
         badgeValue={t('pricesBadge').toUpperCase()}
         titleValue={t('pricesTitle')}
         descriptionValue={t('pricesDescription')} />

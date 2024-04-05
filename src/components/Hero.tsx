@@ -18,7 +18,9 @@ export default function Hero({ id }: HeroProps) {
     const { t } = useTranslation();
 
     return (
-        <ContainerComponents gap="gap-y-10" id={id}>
+        <ContainerComponents
+            gap="gap-y-10"
+            id={id}>
             <Intestazione
                 badgeValue={t('heroBadge').toUpperCase()}
                 titleValue={t('heroTitle')}
@@ -31,7 +33,7 @@ export default function Hero({ id }: HeroProps) {
                     </svg>
                 </Button>
             </Link>
-            <div className="w-full md:w-4/5 h-[60svh] md:h-[80svh] flex items-center justify-center rounded-xl bg-gray-900 ">
+            <div className="w-full md:w-4/5 h-[60svh] md:h-[80svh] flex items-center justify-center rounded-xl bg-gray-900">
 
             </div>
         </ContainerComponents>
