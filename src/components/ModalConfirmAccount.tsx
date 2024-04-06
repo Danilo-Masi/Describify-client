@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 //Supabase
 import { supabase } from '../services/client.tsx';
 //React-router
-import { NavigateFunction, useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 //Flowbite
 import { Modal } from "flowbite-react";
 
@@ -25,7 +25,7 @@ export default function ModalConfirmAccount({ emailUser }: ModalConfirmAccountPr
     }, []);
 
     const handleResendEmail = async () => {
-        console.log('Rinvia email di verifica account...');
+        console.log('Rinvia email di verifica a ' + emailUser);
     }
 
     return (

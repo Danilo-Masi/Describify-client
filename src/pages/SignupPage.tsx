@@ -130,6 +130,8 @@ function SignupForm({setModalOpen, setEmailPut}: SignupFormProps) {
 
 export default function SignupPage() {
 
+    // Verificare che l'utente non sia già loggato //
+
     const [emailPut, setEmailPut] = useState("");
     const [isModalEmailOpen, setIsModalEmailOpen] = useState(true);
 
@@ -137,7 +139,7 @@ export default function SignupPage() {
         <Layout padding="p-0" mdFlexOrientation="md:flex-row" mdHeight="md:h-svh">
             <SignupForm setModalOpen={setIsModalEmailOpen} setEmailPut={setEmailPut}/>
             <AccessBox />
-            {isModalEmailOpen && <ModalConfirmAccount onClose={() => setIsModalEmailOpen(false)} emailUser={emailPut}/>}
+            {isModalEmailOpen && <ModalConfirmAccount emailUser={emailPut}/>}
         </Layout>
     );
 }

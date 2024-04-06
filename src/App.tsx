@@ -23,6 +23,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/profile-update" element={<SigninPage modalOpen={true}/>} />
       </Routes>
     </BrowserRouter>
   );

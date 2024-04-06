@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Button } from "flowbite-react";
 //I18Next
 import { useTranslation } from 'react-i18next';
+//Images
+import Screenshot from '../assets/images/ciao.png';
 //Components
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
@@ -33,8 +35,11 @@ export default function Hero({ id }: HeroProps) {
                     </svg>
                 </Button>
             </Link>
-            <div className="w-full md:w-4/5 h-[60svh] md:h-[80svh] flex items-center justify-center rounded-xl bg-gray-900">
-
+            <div className="relative w-full md:w-3/4 h-min">
+                <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-400 to-emerald-400 blur-md" />
+                <div className="relative flex w-full h-min items-center justify-center rounded-lg bg-custom-background dark:bg-dark-background border-1 border-custom-border dark:border-dark-border">
+                    <img src={Screenshot} className="w-full rounded-lg" />
+                </div>
             </div>
         </ContainerComponents>
     );

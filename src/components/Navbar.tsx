@@ -145,7 +145,7 @@ export default function Navbar({ accessToken, emailUser }: NavbarProps) {
     }, []);
 
     return (
-        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 ${isScrolled ? 'bg-custom-background dark:bg-dark-background shadow-lg' : ''}`} >
+        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 bg-custom-background dark:bg-dark-background ${isScrolled ? 'shadow-lg' : ''}`} >
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />

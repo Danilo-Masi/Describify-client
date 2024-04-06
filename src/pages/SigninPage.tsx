@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 //I18Next
 import { useTranslation } from 'react-i18next';
 //React router
@@ -9,8 +9,13 @@ import { supabase } from '../services/client.tsx';
 import AccessBox from "../components/AccessBox";
 import Layout from "../components/Layout";
 import { ContainerInput } from "../components/Layout";
+import ModalResetPassword from "../components/ModalResetPassword.tsx";
 
-function SigninForm() {
+interface SigninFormProps {
+    setModalOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+function SigninForm({ setModalOpen }: SigninFormProps) {
 
     const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
@@ -89,8 +94,9 @@ function SigninForm() {
                         className="w-4 h-4 border rounded focus:ring-1 border-custom-border bg-custom-background focus:ring-custom-accent checked:bg-custom-accent dark:border-dark-border dark:bg-dark-background dark:ring-dark-accent dark:checked:bg-dark-accent"
                         checked={rememberCheckbox}
                         onChange={() => setRememberCheckbox(!rememberCheckbox)} />
+                    <label htmlFor="remember" className="ms-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signinCheckboxLabel')}</label>
                 </div>
-                <label htmlFor="remember" className="ms-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signinCheckboxLabel')}</label>
+                <p className="text-custom-accent dark:text-dark-accent cursor-pointer" onClick={() => setModalOpen(true)}>Lost password?</p>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
                 <button type="submit" className="focus:ring-1 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-dark-textPrimary bg-custom-accent focus:ring-custom-accent dark:text-dark-textPrimary dark:bg-dark-accent dark:focus:ring-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent">
@@ -106,11 +112,21 @@ function SigninForm() {
     );
 }
 
-export default function SigninPage() {
+interface SigninPageProps {
+    modalOpen?: boolean;
+}
+
+export default function SigninPage({ modalOpen }: SigninPageProps) {
+
+    // Verificare che l'utente non sia già loggato //
+
+    const [isModalResetPassOpen, setIsModalResetPassOpen] = useState(modalOpen ? modalOpen : false);
+
     return (
         <Layout padding="p-0" mdFlexOrientation="md:flex-row" mdHeight="md:h-svh">
-            <SigninForm />
+            <SigninForm setModalOpen={setIsModalResetPassOpen} />
             <AccessBox />
+            {isModalResetPassOpen && <ModalResetPassword onClose={() => setIsModalResetPassOpen(false)} />}
         </Layout>
     )
 }
