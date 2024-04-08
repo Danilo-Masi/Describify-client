@@ -16,7 +16,7 @@ interface SignupFormProps {
     setEmailPut: Dispatch<SetStateAction<string>>
 }
 
-function SignupForm({setModalOpen, setEmailPut}: SignupFormProps) {
+function SignupForm({ setModalOpen, setEmailPut }: SignupFormProps) {
 
     const { t } = useTranslation();
 
@@ -113,8 +113,8 @@ function SignupForm({setModalOpen, setEmailPut}: SignupFormProps) {
                         required
                         checked={termsCheckbox}
                         onChange={() => setTermsCheckbox(!termsCheckbox)} />
+                    <label htmlFor="terms" className="ms-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signupCheckboxLabel')} <a href="#" className="text-custom-accent dark:text-dark-accent font-medium">{t('singupCheckboxLink')}</a></label>
                 </div>
-                <label htmlFor="terms" className="ms-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">{t('signupCheckboxLabel')} <a href="#" className="text-custom-accent dark:text-dark-accent font-medium">{t('singupCheckboxLink')}</a></label>
             </ContainerInput>
             <ContainerInput flexOrentation="flex-col">
                 <button type="submit" className="w-full md:w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{t('signupButton')}</button>
@@ -133,13 +133,13 @@ export default function SignupPage() {
     // Verificare che l'utente non sia già loggato //
 
     const [emailPut, setEmailPut] = useState("");
-    const [isModalEmailOpen, setIsModalEmailOpen] = useState(true);
+    const [isModalEmailOpen, setIsModalEmailOpen] = useState(false);
 
     return (
         <Layout padding="p-0" mdFlexOrientation="md:flex-row" mdHeight="md:h-svh">
-            <SignupForm setModalOpen={setIsModalEmailOpen} setEmailPut={setEmailPut}/>
+            <SignupForm setModalOpen={setIsModalEmailOpen} setEmailPut={setEmailPut} />
             <AccessBox />
-            {isModalEmailOpen && <ModalConfirmAccount emailUser={emailPut}/>}
+            {isModalEmailOpen && <ModalConfirmAccount emailUser={emailPut} />}
         </Layout>
     );
 }

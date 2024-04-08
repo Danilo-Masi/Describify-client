@@ -15,7 +15,7 @@ function Logo() {
     return (
         <div className="w-1/2 md:w-1/4">
             <Link to="/#Home" smooth>
-                <h1 className="text-2xl text-custom-textPrimary dark:text-dark-textPrimary">Describify</h1>
+                <h1 className="text-3xl font-bold text-custom-textPrimary dark:text-dark-textPrimary">Describify</h1>
             </Link>
         </div>
     );
@@ -123,6 +123,18 @@ function UserProfile({ emailUser }: UserProfileProps) {
     );
 }
 
+function JoinWaitllistButton() {
+    return (
+        <div className="w-1/2 md:w-1/4 flex items-center justify-end">
+            <button
+                type="button"
+                className="text-dark-textPrimary bg-custom-accent dark:bg-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent font-medium rounded-lg text-sm px-5 py-2.5">
+                Join the waitlist
+            </button>
+        </div>
+    );
+}
+
 interface NavbarProps {
     accessToken: boolean;
     emailUser: string;
@@ -149,7 +161,10 @@ export default function Navbar({ accessToken, emailUser }: NavbarProps) {
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />
+                <JoinWaitllistButton />
+                {/* 
                 {accessToken ? <UserProfile emailUser={emailUser} /> : <AccessButton />}
+                */}
             </div>
         </div>
     );

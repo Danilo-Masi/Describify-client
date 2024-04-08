@@ -10,6 +10,7 @@ import Faqs from "../components/Faqs";
 import Home from "../components/Home";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
+import WaitlistBox from "../components/WaitlistBox.tsx";
 
 export default function HomePage() {
 
@@ -39,6 +40,7 @@ export default function HomePage() {
             <Features id="Features" accessToken={accessToken} />
             <Prices id="Prices" accessToken={accessToken} />
             <Faqs id="Faqs" accessToken={accessToken} />
+            <WaitlistBox />
             <Footer />
         </Layout>
     )
