@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, Dispatch, SetStateAction } from "react";
 //React-router
 import { useNavigate } from "react-router-dom";
 import { HashLink as Link } from 'react-router-hash-link';
@@ -123,10 +123,15 @@ function UserProfile({ emailUser }: UserProfileProps) {
     );
 }
 
-function JoinWaitllistButton() {
+interface JoinWaitllistButtonProps {
+    setBorderAnimation: Dispatch<SetStateAction<boolean>>;
+}
+
+function JoinWaitllistButton({ setBorderAnimation }: JoinWaitllistButtonProps) {
     return (
         <div className="w-1/2 md:w-1/4 flex items-center justify-end">
             <button
+                onClick={() => setBorderAnimation(true)}
                 type="button"
                 className="text-dark-textPrimary bg-custom-accent dark:bg-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent font-medium rounded-lg text-sm px-5 py-2.5">
                 Join the waitlist
@@ -138,11 +143,13 @@ function JoinWaitllistButton() {
 interface NavbarProps {
     accessToken: boolean;
     emailUser: string;
+    setBorderAnimation: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Navbar({ accessToken, emailUser }: NavbarProps) {
+export default function Navbar({ accessToken, emailUser, setBorderAnimation }: NavbarProps) {
 
     const [isScrolled, setIsScrolled] = useState(false);
+    
 
     useEffect(() => {
         const handleScroll = () => {
@@ -161,7 +168,7 @@ export default function Navbar({ accessToken, emailUser }: NavbarProps) {
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />
-                <JoinWaitllistButton />
+                <JoinWaitllistButton setBorderAnimation={setBorderAnimation} />
                 {/* 
                 {accessToken ? <UserProfile emailUser={emailUser} /> : <AccessButton />}
                 */}

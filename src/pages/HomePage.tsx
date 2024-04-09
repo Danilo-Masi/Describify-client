@@ -16,6 +16,7 @@ export default function HomePage() {
 
     const [accessToken, setAccessToken] = useState(false);
     const [emailUser, setEmailUser] = useState('');
+    const [borderAnimation, setBorderAnimation] = useState(false);
 
     useEffect(() => {
         const { data: authListener } = supabase.auth.onAuthStateChange((_, session) => {
@@ -35,8 +36,8 @@ export default function HomePage() {
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar accessToken={accessToken} emailUser={emailUser} />
-            {accessToken ? <Home id="Home" /> : <Hero id="Home" />}
+            <Navbar accessToken={accessToken} emailUser={emailUser} setBorderAnimation={setBorderAnimation} />
+            {accessToken ? <Home id="Home" /> : <Hero id="Home" borderAnimation={borderAnimation} />}
             <Features id="Features" accessToken={accessToken} />
             <Prices id="Prices" accessToken={accessToken} />
             <Faqs id="Faqs" accessToken={accessToken} />

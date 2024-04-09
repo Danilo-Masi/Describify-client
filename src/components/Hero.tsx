@@ -1,7 +1,3 @@
-//React-router
-import { Link } from "react-router-dom";
-//Flowbite
-import { Button } from "flowbite-react";
 //I18Next
 import { useTranslation } from 'react-i18next';
 //Images
@@ -14,9 +10,10 @@ import WaitlistGadget from "./WaitlistGadget";
 
 interface HeroProps {
     id: string;
+    borderAnimation: boolean;
 }
 
-export default function Hero({ id }: HeroProps) {
+export default function Hero({ id, borderAnimation }: HeroProps) {
 
     const { t } = useTranslation();
 
@@ -28,7 +25,7 @@ export default function Hero({ id }: HeroProps) {
                 badgeValue={t('heroBadge').toUpperCase()}
                 titleValue={t('heroTitle')}
                 descriptionValue={t('heroDescription')} />
-            <WaitlistGadget />
+            <WaitlistGadget borderAnimation={borderAnimation}/>
             <div className="relative w-full md:w-3/4 h-min">
                 <div className="absolute -inset-1 rounded-lg bg-gradient-to-tr from-emerald-500 via-cyan-700 to-blue-500 blur-md" />
                 <div className="relative flex w-full h-min items-center justify-center rounded-lg bg-custom-background dark:bg-dark-background border-1 border-custom-border dark:border-dark-border">
