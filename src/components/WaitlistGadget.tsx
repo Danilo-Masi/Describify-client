@@ -36,6 +36,19 @@ export default function WaitlistGadget({ buttonColor, mdWidth, borderAnimation }
         gsap.fromTo(form, { opacity: 0 }, { opacity: 1, duration: 1.5, scrollTrigger: { trigger: form }, delay: 1 });
     }, []);
 
+    //Funzione per inviare l'email di confermata iscrizione alla waitlist
+    const sendWaitlistEmail = async () => {
+        try {
+            const response = await axios.post('http://localhost:3000/send-email', {
+                email: emailInput,
+            });
+            alert('Controlla la tua casella postale');
+        } catch (error) {
+            console.error(error);
+            return;
+        }
+    }
+
     //Funzione per aggiungere un email al software di waitlist
     const submitWaitlist = async (e: any) => {
         e.preventDefault();
@@ -48,6 +61,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth, borderAnimation }
                 });
                 // Eventi se la richiesta ha successo
                 alert('Iscrizione effettuata correttamente');
+                sendWaitlistEmail();
                 setEmailLoading(false);
                 setEmailInput("");
                 setEmailSend(true);
