@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 //Components˚
 import ModalMessage from "./ModalMessage";
+//Resend
+import { Resend } from 'resend';
 
 // Funzione per validare l'email lato Client
 const validateEmail = (email: string) => {
@@ -38,11 +40,26 @@ export default function WaitlistGadget({ buttonColor, mdWidth, borderAnimation }
 
     //Funzione per inviare l'email di confermata iscrizione alla waitlist
     const sendWaitlistEmail = async () => {
+
+        const resendKey: string = import.meta.env.VITE_RESEND_API_KEY;
+        const resend = new Resend(resendKey);
+
         try {
-            const response = await axios.post('http://localhost:3000/send-email', {
-                email: emailInput,
+            /* Richiesta invio email al Server **NON FUNZIONA**
+            const response = await axios.post('http://localhost:3000/send-email', { email: emailInput });
+            */
+            const { data, error } = await resend.emails.send({
+                from: 'Acme <onboarding@resend.dev>',
+                to: emailInput,
+                subject: 'Hello World',
+                html: '<strong>It works FINALLY!</strong>',
             });
-            alert('Controlla la tua casella postale');
+            if (error) {
+                return console.error(error);
+            }
+            console.log(data);
+            alert('Iscrizione effettuata correttamente, controlla la tua casella postale!!');
+            setEmailSend(true);
         } catch (error) {
             console.error(error);
             return;
@@ -56,15 +73,14 @@ export default function WaitlistGadget({ buttonColor, mdWidth, borderAnimation }
         setErrorInput("");
         if (validateEmail(emailInput)) {
             try {
-                const response = await axios.post('http://localhost:3000/api/signup-to-waitlist', {
-                    email: emailInput,
-                });
+                //const response = await axios.post('http://localhost:3000/api/signup-to-waitlist', { email: emailInput });
                 // Eventi se la richiesta ha successo
-                alert('Iscrizione effettuata correttamente');
                 sendWaitlistEmail();
-                setEmailLoading(false);
-                setEmailInput("");
-                setEmailSend(true);
+                {
+                    emailSend &&
+                    setEmailLoading(false);
+                    setEmailInput("");
+                }
             } catch (error: any) {
                 if (error.response) {
                     console.error('Data:', error.response.data);
