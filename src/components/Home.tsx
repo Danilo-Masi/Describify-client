@@ -6,7 +6,6 @@ import GenerateForm from "../components/GenerateForm";
 import GenerateOutput from "../components/GenerateOutput";
 import SkeletonForm from "./SkeletonForm";
 
-
 interface HomeProps {
     id: string;
 }

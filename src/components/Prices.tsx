@@ -18,10 +18,10 @@ export default function Prices({ id, accessToken }: PricesProps) {
 
   const { t } = useTranslation();
   const [currentPlan, setCurrentPlan] = useState("Free plan");
-  const [currentLng, setCurrentLng] = useState("en");
+  const [currentLng, setCurrentLng] = useState("it");
 
   const aggiornaDomande = () => {
-    const verificaLingua = localStorage.getItem("language") || "en";
+    const verificaLingua = localStorage.getItem("language") || "it";
     if (verificaLingua === "en") {
       setCurrentLng("en");
     } else {
@@ -31,7 +31,7 @@ export default function Prices({ id, accessToken }: PricesProps) {
 
   useState(() => {
     aggiornaDomande();
-  }, []);
+  });
 
   return (
     <ContainerComponents id={id}>

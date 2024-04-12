@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 //Flowbite
 import { Card } from "flowbite-react";
-import { useEffect, useState } from "react";
 
 interface CardPriceProps {
     titlePlan: string;
@@ -20,7 +20,7 @@ export default function CardPrice({ titlePlan, pricePlan, planOptions, currentPl
     }, []);
 
     return (
-        <Card className='w-full md:w-1/3'>
+        <Card className='w-full md:w-1/3 bg-custom-elevation dark:bg-dark-elevation border-custom-border dark:border-dark-border'>
             <h5 className="text-xl font-medium text-custom-textPrimary dark:text-dark-textPrimary">{titlePlan}</h5>
             <div className="flex items-baseline text-custom-textPrimary dark:text-dark-textPrimary">
                 <span className="text-3xl font-semibold">€</span>

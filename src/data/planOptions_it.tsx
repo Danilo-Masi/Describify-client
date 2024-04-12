@@ -1,11 +1,11 @@
 export const pianoFree = [
     {
-        title: '5 Generazioni di Descrizioni',
-        caption: 'Perfetto per venditori occasionali per creare facilmente didascalie',
+        title: '5 generazioni (lifetime)',
+        caption: 'Perfetto per provare l\'app e capire se utilizzarla',
     },
     {
         title: 'Branding Descrify',
-        caption: 'Le descrizioni includono una discreta nota "Powered by Descrify"',
+        caption: 'Le descrizioni includono una nota "Powered by Descrify"',
     },
     {
         title: 'Accesso alle Categorie Base',
@@ -23,8 +23,8 @@ export const pianoFree = [
 
 export const pianoStandard = [
     {
-        title: '50 Generazioni di Descrizioni',
-        caption: 'Ideale per venditori regolari che cercano di aumentare la loro portata',
+        title: '50 generazioni',
+        caption: 'Ideale per venditori regolari alla ricerca di un plus',
     },
     {
         title: 'Branding Descrify Rimosso',
@@ -46,7 +46,7 @@ export const pianoStandard = [
 
 export const pianoPremium = [
     {
-        title: '200 Generazioni di Descrizioni',
+        title: '200 generazioni',
         caption: 'Potenziale illimitato per venditori ad alto volume',
     },
     {

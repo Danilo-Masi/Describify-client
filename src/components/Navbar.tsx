@@ -149,7 +149,7 @@ interface NavbarProps {
 export default function Navbar({ accessToken, emailUser, setBorderAnimation }: NavbarProps) {
 
     const [isScrolled, setIsScrolled] = useState(false);
-    
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -164,7 +164,7 @@ export default function Navbar({ accessToken, emailUser, setBorderAnimation }: N
     }, []);
 
     return (
-        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 bg-custom-background dark:bg-dark-background ${isScrolled ? 'shadow-lg' : ''}`} >
+        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 ${isScrolled && 'shadow-lg bg-custom-background dark:bg-dark-background'}`} >
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />

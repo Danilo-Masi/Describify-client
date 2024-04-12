@@ -7,8 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 //Components˚
 import ModalMessage from "./ModalMessage";
-//Resend
-import { Resend } from 'resend';
 
 // Funzione per validare l'email lato Client
 const validateEmail = (email: string) => {
@@ -40,72 +38,51 @@ export default function WaitlistGadget({ buttonColor, mdWidth, borderAnimation }
 
     //Funzione per inviare l'email di confermata iscrizione alla waitlist
     const sendWaitlistEmail = async () => {
-
-        const resendKey: string = import.meta.env.VITE_RESEND_API_KEY;
-        const resend = new Resend(resendKey);
-
         try {
-            /* Richiesta invio email al Server **NON FUNZIONA**
             const response = await axios.post('http://localhost:3000/send-email', { email: emailInput });
-            */
-            const { data, error } = await resend.emails.send({
-                from: 'Acme <onboarding@resend.dev>',
-                to: emailInput,
-                subject: 'Hello World',
-                html: '<strong>It works FINALLY!</strong>',
-            });
-            if (error) {
-                return console.error(error);
+            if (response.status === 200) {
+                return true;
             }
-            console.log(data);
-            alert('Iscrizione effettuata correttamente, controlla la tua casella postale!!');
-            setEmailSend(true);
+            return false;
         } catch (error) {
             console.error(error);
-            return;
+            return false;
         }
     }
 
-    //Funzione per aggiungere un email al software di waitlist
+    // Funzione per aggiungere un'email al software di waitlist
     const submitWaitlist = async (e: any) => {
         e.preventDefault();
         setEmailLoading(true);
         setErrorInput("");
         if (validateEmail(emailInput)) {
             try {
-                //const response = await axios.post('http://localhost:3000/api/signup-to-waitlist', { email: emailInput });
-                // Eventi se la richiesta ha successo
-                sendWaitlistEmail();
-                {
-                    emailSend &&
+                const response = await axios.post('http://localhost:3000/signup-to-waitlist', { email: emailInput });
+                if (response.status === 200) {
+                    const emailSent = await sendWaitlistEmail();
+                    if (emailSent) {
+                        alert('Iscrizione alla waitlist effettuata con successo e email inviata!');
+                    } else {
+                        alert('Iscrizione alla waitlist effettuata, ma invio email fallito.');
+                    }
                     setEmailLoading(false);
                     setEmailInput("");
-                }
-            } catch (error: any) {
-                if (error.response) {
-                    console.error('Data:', error.response.data);
-                    console.error('Status:', error.response.status);
-                    console.error('Headers:', error.response.headers);
-                } else if (error.request) {
-                    // La richiesta è stata fatta ma non è stata ricevuta alcuna risposta
-                    console.error('Request:', error.request);
-                } else if (error.config) {
-                    // Informazioni aggiuntive se disponibili
-                    console.error('Config:', error.config);
+                    setEmailSend(true);
                 } else {
-                    // Qualcosa è andato storto nella configurazione della richiesta
-                    console.error('Error Message:', error.message);
+                    alert('Errore durante l\'iscrizione alla waitlist.');
+                    setEmailLoading(false);
                 }
-                // CREARE MODAL CHE FA VISUALIZZARE L'ERRORE //
+            } catch (error) {
+                console.error('Errore:', error);
+                setErrorInput("Si è verificato un errore durante l'iscrizione alla waitlist.");
                 setEmailLoading(false);
-                setEmailInput("");
             }
         } else {
             setErrorInput("Errore nella digitazione dell'email");
             setEmailLoading(false);
-            return;
         }
     };
+
 
     return (
         <form className={`flex flex-col md:flex-row items-start justify-center w-full gap-y-5 ${mdWidth ? mdWidth : 'md:w-2/6'}`} ref={formRef}>
@@ -114,7 +91,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth, borderAnimation }
                 <input
                     type="email"
                     name="email-input"
-                    className={`w-full bg-custom-elevation dark:bg-dark-elevation border border-custom-border dark:border-dark-border text-custom-textPrimary dark:text-dark-textPrimary placeholder:text-custom-textSecondary dark:placeholder:text-dark-textSecondary text-sm rounded-lg block p-3 ${errorInput && 'border-red-500 dark:border-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-transparent'} ${borderAnimation ? 'animate-pulse' : ''}`}
+                    className={`w-full bg-custom-elevation dark:bg-dark-elevation border border-custom-border dark:border-dark-border focus:border-custom-borderFocus dark:focus:border-dark-borderFocus ring-1 ring-custom-border dark:ring-dark-border focus:ring-custom-borderRing dark:focus:ring-dark-borderRing text-custom-textPrimary dark:text-dark-textPrimary placeholder:text-custom-textSecondary dark:placeholder:text-dark-textSecondary text-sm rounded-lg block p-3 ${errorInput && 'border-red-500 dark:border-red-500 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500'} ${borderAnimation ? 'ring-custom-borderRing dark:ring-dark-borderRing' : ''}`}
                     placeholder="name@describify.com"
                     value={emailInput}
                     onChange={(event) => setEmailInput(event.target.value)} />

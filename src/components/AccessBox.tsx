@@ -5,5 +5,5 @@ export default function AccessBox() {
             <h1 className="text-white text-5xl font-bold">Explore the world’s leading design portfolios.</h1>
             <p className="text-gray-300 text-md">Millions of designers and agencies around the world showcase their portfolio work on Flowbite - the home to the world’s best design and creative professionals.</p>
         </div>
-    )
+    );
 }

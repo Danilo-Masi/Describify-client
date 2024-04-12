@@ -12,8 +12,8 @@ interface ModalMessageProps {
 
 export default function ModalMessage({ onClose }: ModalMessageProps) {
     return (
-        <Modal dismissible show size="sm">
-            <Modal.Body className="flex flex-col justify-center items-center gap-y-7">
+        <Modal dismissible show size="sm" className="bg-custom-background dark:bg-dark-background">
+            <Modal.Body className="flex flex-col justify-center items-center gap-y-7 rounded-lg bg-custom-elevation2 dark:bg-dark-elevation2">
                 <div className="flex -space-x-3 rtl:space-x-reverse">
                     <img className="w-12 h-12 border-2 border-white rounded-full dark:border-gray-800" src={profilePicture1} alt="profile-picture-1" />
                     <img className="w-12 h-12 border-2 border-white rounded-full dark:border-gray-800" src={profilePicture2} alt="profile-picture-2" />

@@ -25,7 +25,7 @@ export default function Footer() {
     const { t } = useTranslation();
 
     return (
-        <div className="w-full flex items-center justify-center bg-dark-background dark:bg-custom-textPrimary">
+        <div className="w-full flex items-center justify-center border-t border-custom-border dark:border-dark-border">
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
                 {/* Logo */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>
