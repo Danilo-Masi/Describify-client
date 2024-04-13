@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 //React-router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Pages
@@ -6,8 +6,11 @@ import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
 import ErrorPage from "./pages/ErrorPage";
+import ModalCookies from "./components/ModalCookies";
 
 export default function App() {
+
+  const [cookiesConsent, setCookiesConsent] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('tema');
@@ -16,6 +19,11 @@ export default function App() {
     } else {
       document.body.classList.remove('dark');
     }
+  }, []);
+
+  useEffect(() => {
+    const consensoCookies = localStorage.getItem('cookiesConsent');
+    setCookiesConsent(!!consensoCookies);
   }, []);
 
   return (
@@ -30,6 +38,7 @@ export default function App() {
         <Route path="/profile-update" element={<SigninPage modalOpen={true}/>} />
         */}
       </Routes>
+      {!cookiesConsent && <ModalCookies />}
     </BrowserRouter>
   );
 }

@@ -11,13 +11,15 @@ export default {
         // Colori per la light mode
         custom: {
           accent: '#048353', // Colore principale
-          background: '#F9F9F9', // Sfondo chiaro
-          textPrimary: '#202020', // Testi h1, h2, etc. per la light mode
-          textSecondary: '#646464', // Testi p, label, etc. per la light mode
-          elevation: '#E8E8E8', // Sfondo per card, input, etc. per la light mode
-          border: '#CECECE', // Bordo normale per la light mode
-          borderFocus: '#BBB',
-          disabled: '#8D8D8D', // Bordo al focus per la light mode (usa l'accent color)
+          background: '#FCFCFC', // Sfondo chiaro
+          textPrimary: '#202020', // Testo primario
+          textSecondary: '#646464', // Testo secondario
+          elevation: '#F9F9F9', // Sfondo elavato
+          elevation2: '#EFEFEF', // Sfondo elevato più scuro
+          border: '#D8D8D8', // Bordo
+          borderFocus: '#92CDAB', //Bordo selezionato (focus)
+          borderRing: '#66B78B', //Contorno bordo (ring)
+          disabled: '#E0E0E0', // Bottone, testo disabilitato
           softBlur: '0 0 15px 5px rgba(0, 0, 0, 0.05)'
         },
         // Colori per la dark mode
@@ -25,18 +27,18 @@ export default {
           accent: '#048353', // Colore principale
           background: '#121212', // Sfondo scuro
           textPrimary: '#EEE', // Testo primario
-          textSecondary: '#B4B4B4', // Testi secondario
+          textSecondary: '#B4B4B4', // Testo secondario
           elevation: '#191919', // Sfondo elevato
           elevation2: '#232323', // Sfondo elevato più chiaro
-          border: '#3A3A3A', // Bordo elementi non interattivi
-          borderFocus: '#056B44', //Bordo elemento focus
-          borderRing: '#008050', //Bordo elemento selezionato
+          border: '#3A3A3A', // Bordo
+          borderFocus: '#056B44', //Bordo selezionato (focus)
+          borderRing: '#008050', //Contorno bordo (ring)
           disabled: '#6E6E6E', // Bottone, testo disablitato
         }
       },
       backgroundImage: {
-        'dark-gradient': 'linear-gradient(to bottom, #101C15, #121212 )',
-        'custom-gradient': 'linear-gradient(to top, #056B44, #FFFFFF )',
+        'custom-gradient': 'linear-gradient(to top, #056B44, #FFFFFF )', //Gradient chiaro
+        'dark-gradient': 'linear-gradient(to bottom, #101C15, #121212 )', //Gradient scuro
       }
     },
   },
