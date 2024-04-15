@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 //React-router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+//Cookie-consent
+import { Cookies, useCookies } from "react-cookie";
 //Pages
 import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
@@ -10,7 +12,8 @@ import ModalCookies from "./components/ModalCookies";
 
 export default function App() {
 
-  const [cookiesConsent, setCookiesConsent] = useState(false);
+  const [cookies] = useCookies(['userCookieConsent']);
+  const [cookieModalOpen, setCookieModalOpen] = useState(true);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('tema');
@@ -22,9 +25,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const consensoCookies = localStorage.getItem('cookiesConsent');
-    setCookiesConsent(!!consensoCookies);
-  }, []);
+    if (cookies.userCookieConsent !== undefined) {
+      setCookieModalOpen(false);
+    } else {
+      setCookieModalOpen(true);
+    }
+  }, [cookies.userCookieConsent]);
 
   return (
     <BrowserRouter>
@@ -38,7 +44,7 @@ export default function App() {
         <Route path="/profile-update" element={<SigninPage modalOpen={true}/>} />
         */}
       </Routes>
-      {!cookiesConsent && <ModalCookies />}
+      {cookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}
     </BrowserRouter>
   );
 }
