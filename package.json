@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.8",
+    "apexcharts": "^3.48.0",
     "axios": "^1.6.8",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.5",
@@ -19,6 +20,7 @@
     "i18next-browser-languagedetector": "^7.2.1",
     "i18next-http-backend": "^2.5.0",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-cookie": "^7.1.4",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.1.0",

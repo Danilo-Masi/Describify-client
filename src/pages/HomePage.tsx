@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 //Supabase
 import { supabase } from '../services/client.tsx';
 //Components
-import Layout from "../components/Layout";
+import {Layout} from "../components/Layout";
 import Navbar from "../components/Navbar";
 import Features from "../components/Features";
 import Prices from "../components/Prices";

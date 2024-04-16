@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 //Axios
 import axios from 'axios';
 //GSAP
@@ -28,13 +28,6 @@ export default function WaitlistGadget({ buttonColor, mdWidth, borderAnimation }
     const [errorInput, setErrorInput] = useState("");
     const [emailLoading, setEmailLoading] = useState(false);
     const [emailSend, setEmailSend] = useState(false);
-
-    const formRef = useRef(null);
-
-    useEffect(() => {
-        const form = formRef.current;
-        gsap.fromTo(form, { opacity: 0 }, { opacity: 1, duration: 1.5, scrollTrigger: { trigger: form }, delay: 1 });
-    }, []);
 
     //Funzione per inviare l'email di confermata iscrizione alla waitlist
     const sendWaitlistEmail = async () => {
@@ -85,7 +78,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth, borderAnimation }
 
 
     return (
-        <form className={`flex flex-col md:flex-row items-start justify-center w-full gap-y-5 ${mdWidth ? mdWidth : 'md:w-2/6'}`} ref={formRef}>
+        <form className={`flex flex-col md:flex-row items-start justify-center w-full gap-y-5 ${mdWidth ? mdWidth : 'md:w-2/6'}`}>
             {/* Email input */}
             <div className="w-full">
                 <input
@@ -113,7 +106,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth, borderAnimation }
                     onClick={submitWaitlist}
                     type="submit"
                     className={`w-full md:w-min py-3 px-5 md:ms-2 text-sm font-medium text-dark-textPrimary rounded-lg border ${buttonColor ? buttonColor : 'bg-custom-accent dark:bg-dark-accent border-custom-accent dark:border-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent'}`}>
-                    Subriscribe
+                    Iscriviti
                 </button>
             )}
             {/* Modal */}

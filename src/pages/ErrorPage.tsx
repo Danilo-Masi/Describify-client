@@ -1,7 +1,7 @@
 //React-router
 import { Link } from "react-router-dom";
 //Components
-import Layout from "../components/Layout";
+import {Layout} from "../components/Layout";
 
 export default function ErrorPage() {
   return (

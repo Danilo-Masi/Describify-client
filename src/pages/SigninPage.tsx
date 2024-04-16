@@ -7,7 +7,7 @@ import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { supabase } from '../services/client.tsx';
 //Components
 import AccessBox from "../components/AccessBox";
-import Layout from "../components/Layout";
+import {Layout} from "../components/Layout";
 import { ContainerInput } from "../components/Layout";
 import ModalResetPassword from "../components/ModalResetPassword.tsx";
 

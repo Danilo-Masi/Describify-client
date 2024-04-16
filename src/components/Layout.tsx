@@ -9,7 +9,7 @@ interface LayoutProps {
     bgColor?: string;
 }
 
-export default function Layout({ children, padding, mdFlexOrientation, mdHeight, justifyPosition, bgColor }: LayoutProps) {
+export function Layout({ children, padding, mdFlexOrientation, mdHeight, justifyPosition, bgColor }: LayoutProps) {
     return (
         <div className={`w-full h-auto flex flex-col items-center text-custom-text dark:text-dark-text ${justifyPosition ? justifyPosition : 'justify-start'} ${mdHeight} ${mdFlexOrientation} ${padding} ${bgColor ? bgColor : 'bg-custom-gradient dark:bg-dark-gradient '}`}>
             {children}

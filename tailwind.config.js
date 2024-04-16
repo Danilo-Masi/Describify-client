@@ -37,13 +37,15 @@ export default {
         }
       },
       backgroundImage: {
-        'custom-gradient': 'linear-gradient(to top, #056B44, #FFFFFF )', //Gradient chiaro
+        'custom-gradient': 'linear-gradient(to bottom, #056B44, #FAFAFA, #FFFFFF )', //Gradient chiaro
         'dark-gradient': 'linear-gradient(to bottom, #101C15, #121212 )', //Gradient scuro
       }
     },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin')({
+      charts: true,
+    }),
   ],
   darkMode: 'class',
 }

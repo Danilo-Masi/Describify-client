@@ -29,7 +29,7 @@ export default function ModalConfirmAccount({ emailUser }: ModalConfirmAccountPr
     }
 
     return (
-        <Modal show={true} dismissible={false}>
+        <Modal show dismissible={false}>
             <Modal.Body>
                 <div className="flex flex-wrap gap-5">
                     <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">

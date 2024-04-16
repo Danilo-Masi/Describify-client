@@ -7,7 +7,7 @@ import { Dropdown } from 'flowbite-react';
 //Supabase
 import { supabase } from '../services/client.tsx';
 //Components
-import ModalConfirm from "./ModalConfirm.tsx";
+import ModalLogout from "./ModalLogout.tsx";
 import ModalUsage from "./ModalUsage.tsx";
 import ModalSettings from "./ModalSettings.tsx";
 
@@ -116,7 +116,7 @@ function UserProfile({ emailUser }: UserProfileProps) {
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={() => setCurrentModal(ModalType.SIGNOUT)} className="text-red-600 dark:text-red-500">Sign out</Dropdown.Item>
             </Dropdown>
-            {currentModal === ModalType.SIGNOUT && <ModalConfirm onClose={closeModal} onConfirm={() => handleSignout()} />}
+            {currentModal === ModalType.SIGNOUT && <ModalLogout onClose={closeModal} onConfirm={() => handleSignout()} />}
             {currentModal === ModalType.USAGE && <ModalUsage onClose={closeModal} />}
             {currentModal === ModalType.SETTINGS && <ModalSettings onClose={closeModal} />}
         </div>
@@ -134,7 +134,7 @@ function JoinWaitllistButton({ setBorderAnimation }: JoinWaitllistButtonProps) {
                 onClick={() => setBorderAnimation(true)}
                 type="button"
                 className="text-dark-textPrimary bg-custom-accent dark:bg-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent font-medium rounded-lg text-sm px-5 py-2.5">
-                Join the waitlist
+                Iscriviti alla waitlist
             </button>
         </div>
     );
