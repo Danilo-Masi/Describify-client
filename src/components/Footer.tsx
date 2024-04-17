@@ -5,55 +5,53 @@ import { HashLink as Link } from 'react-router-hash-link';
 
 interface FooterColProps {
     children: any;
-    mdWidth: string;
-    mdItemsPosition: string;
+    mdWidth?: string;
+    mdItemsPosition?: string;
 }
 
 function FooterCol({ children, mdWidth, mdItemsPosition }: FooterColProps) {
     return (
-        <div className={`w-full flex flex-col items-center justify-center gap-2 ${mdWidth} ${mdItemsPosition}`}>
+        <div className={`w-full flex flex-col items-center justify-center gap-2 ${mdWidth ? mdWidth : 'md:w-1/5'} ${mdItemsPosition ? mdItemsPosition : 'md:items-center'}`}>
             {children}
         </div>
     );
 }
-
-const textTitle: string = "text-lg font-medium text-dark-textPrimary";
-const textPharagraph: string = 'text-gray-300 font-light text-custom-textSecondary dark:text-dark-textSecondary';
 
 export default function Footer() {
 
     const { t } = useTranslation();
 
     return (
-        <div className="w-full flex items-center justify-center border-t border-custom-border dark:border-dark-border">
+        <div className="w-full flex items-center justify-center border-t border-custom-borderGray dark:border-dark-borderGray">
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
                 {/* Logo */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>
-                    <p className={textTitle}>Describify</p>
-                    <p className={`max-w-md md:text-start text-center font-light text-balance ${textPharagraph}`}>
+                    <p className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</p>
+                    <p className="max-w-md md:text-start text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
                         {t('footerCaption')}
                     </p>
                 </FooterCol>
                 {/* Link */}
-                <FooterCol mdWidth='md:w-1/5' mdItemsPosition='md:items-center'>
-                    <p className={textTitle}>Link</p>
-                    <Link to="#Home" smooth className={textPharagraph}>Home</Link>
-                    <Link to="#Features" smooth className={textPharagraph}>Features</Link>
-                    <Link to="#Prices" smooth className={textPharagraph}>Prices</Link>
-                    <Link to="#Faqs" smooth className={textPharagraph}>Faqs</Link>
+                <FooterCol>
+                    <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Link</p>
+                    <Link to="#Home" smooth className="text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Home</Link>
+                    <Link to="#Features" smooth className="text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Features</Link>
+                    <Link to="#Prices" smooth className="text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Prices</Link>
+                    <Link to="#Faqs" smooth className="text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Faqs</Link>
                 </FooterCol>
                 {/* Company */}
-                <FooterCol mdWidth='md:w-1/5' mdItemsPosition='md:items-center'>
-                    <p className={textTitle}>{t('footerTerms')}</p>
-                    <p className={textPharagraph}>Terms conditions</p>
-                    <p className={textPharagraph}>Privacy policy</p>
-                    <p className={textPharagraph}>Cookies</p>
+                <FooterCol>
+                    <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('footerTerms')}</p>
+                    <p className="text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Terms conditions</p>
+                    <p className="text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Privacy policy</p>
+                    <p className="text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Cookies</p>
                 </FooterCol>
                 {/* Contatti */}
-                <FooterCol mdWidth='md:w-1/5' mdItemsPosition='md:items-center'>
-                    <p className={textTitle}>{t('footerContacts')}</p>
-                    <p className={textPharagraph}>Telefono: <span>+39 3425150935</span></p>
-                    <p className={textPharagraph}>Email: <span>describify@info.com</span></p>
+                <FooterCol>
+                    <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('footerContacts')}</p>
+                    <p className="text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">Email:
+                        <span className='font-medium text-custom-solidColor dark:text-dark-solidColor'> describify@info.com</span>
+                    </p>
                 </FooterCol>
             </div>
         </div>

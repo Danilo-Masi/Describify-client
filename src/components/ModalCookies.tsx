@@ -29,24 +29,24 @@ export default function ModalCookies({ setCookieModalOpen }: ModalCookiesProps) 
             show
             size="sm"
             position="bottom-left"
-            className="bg-custom-background dark:bg-dark-background">
-            <Modal.Body className="bg-custom-elevation2 dark:bg-dark-elevation2 rounded-lg">
+            className="bg-dark-background dark:bg-dark-background">
+            <Modal.Body className="bg-custom-elevation dark:bg-dark-elevation rounded-lg">
                 <div className="flex flex-wrap gap-4">
-                    <p className="text-custom-textSecondary dark:text-dark-textSecondary text-balance">Utilizziamo cookie di terze parti per personalizzare i servizi e analizzare il traffico sulla piattaforma. Per ulteriori informazioni, clicca qui:
-                        <span className="text-custom-accent dark:text-dark-accent font-medium">
+                    <p className="text-custom-textSecondary dark:text-dark-textSecondary text-balance">Utilizziamo cookie di terze parti per personalizzare i servizi e analizzare il traffico sulla piattaforma. Per ulteriori informazioni, leggi
+                        <span className="text-custom-solidColor dark:text-dark-solidColor font-medium">
                             <a href="#"> Cookies policy</a>
                         </span>
                     </p>
                     <button
                         onClick={handleAccept}
                         type="button"
-                        className="w-full md:w-[calc(50%-0.5rem)] text-dark-textPrimary bg-custom-accent dark:bg-dark-accent hover:bg-dark-borderFocus dark:hover:bg-dark-borderFocus font-medium rounded-lg text-sm px-5 py-2.5">
+                        className="w-full md:w-[calc(50%-0.5rem)] text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor font-medium rounded-lg text-sm px-5 py-2.5">
                         Accetta
                     </button>
                     <button
                         onClick={handleDecline}
                         type="button"
-                        className="w-full md:w-[calc(50%-0.5rem)] text-custom-textPrimary dark:text-dark-textPrimary bg-custom-background dark:bg-dark-elevation2 border border-custom-border dark:border-dark-border focus:outline-none hover:bg-custom-border dark:hover:bg-dark-border font-medium rounded-lg text-sm px-5 py-2.5">
+                        className="w-full md:w-[calc(50%-0.5rem)] text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-dark-textPrimaryGray bg-custom-elevation dark:bg-dark-elevation border border-custom-borderGray dark:border-dark-borderGray focus:outline-none hover:bg-custom-hoverGray dark:hover:bg-dark-hoverGray font-medium rounded-lg text-sm px-5 py-2.5">
                         Declina
                     </button>
                 </div>

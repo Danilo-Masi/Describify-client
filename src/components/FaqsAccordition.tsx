@@ -28,11 +28,11 @@ export default function FaqsAccordition() {
     }, []);
 
     return (
-        <Accordion className="w-full md:w-1/2 bg-custom-elevation dark:bg-dark-elevation border-custom-border dark:border-dark-border">
+        <Accordion className="w-full md:w-1/2 border border-custom-borderGray dark:border-dark-borderGray">
             {domande && domande.map((domanda, index) => (
                 <AccordionPanel key={index}>
-                    <AccordionTitle className="text-custom-textPrimary dark:text-dark-textPrimary text-balance">{domanda.title}</AccordionTitle>
-                    <AccordionContent className="text-custom-textSecondary dark:text-dark-textSecondary text-balance bg-custom-elevation2 dark:bg-dark-elevation2">
+                    <AccordionTitle className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray text-balance bg-custom-elevation dark:bg-dark-elevation hover:bg-custom-elevation3 dark:hover:bg-dark-elevation3 focus:ring-0">{domanda.title}</AccordionTitle>
+                    <AccordionContent className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance bg-custom-elevation3 dark:bg-dark-elevation3">
                         <p>{domanda.content}</p>
                     </AccordionContent>
                 </AccordionPanel>

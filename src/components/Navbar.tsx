@@ -1,7 +1,10 @@
 import { useState, useCallback, useEffect, Dispatch, SetStateAction } from "react";
 //React-router
-import { useNavigate } from "react-router-dom";
-import { HashLink as Link } from 'react-router-hash-link';
+import { useNavigate, Link } from "react-router-dom";
+//GSAP
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollToPlugin);
 //Flowbite
 import { Dropdown } from 'flowbite-react';
 //Supabase
@@ -12,22 +15,30 @@ import ModalUsage from "./ModalUsage.tsx";
 import ModalSettings from "./ModalSettings.tsx";
 
 function Logo() {
+
+    const handleScroll = () => {
+        gsap.to(window, { duration: 1, scrollTo: { y: "#Home", offsetY: 50 } });
+    }
+
     return (
         <div className="w-1/2 md:w-1/4">
-            <Link to="/#Home" smooth>
-                <h1 className="text-3xl font-bold text-custom-textPrimary dark:text-dark-textPrimary">Describify</h1>
-            </Link>
+            <h1 className="text-3xl cursor-pointer font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray" onClick={() => handleScroll()}>Describify</h1>
         </div>
     );
 }
 
 function MenuElements() {
+
+    const handleScroll = (divId: string) => {
+        gsap.to(window, { duration: 1, scrollTo: { y: divId, offsetY: 50 } });
+    }
+
     return (
-        <div className="md:w-2/4 hidden md:flex items-center justify-center gap-10">
-            <Link to="#Home" smooth className={`text-custom-textPrimary dark:text-dark-textPrimary`}>Home</Link>
-            <Link to="#Features" smooth className={`text-custom-textPrimary dark:text-dark-textPrimary`}>Features</Link>
-            <Link to="#Prices" smooth className={`text-custom-textPrimary dark:text-dark-textPrimary`}>Prices</Link>
-            <Link to="#Faqs" smooth className={` text-custom-textPrimary dark:text-dark-textPrimary`}>Faqs</Link>
+        <div className="md:w-2/4 hidden md:flex items-center justify-center gap-8">
+            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</p>
+            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Features")}>Features</p>
+            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Prices")}>Prices</p>
+            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</p>
         </div>
     );
 }
@@ -124,16 +135,16 @@ function UserProfile({ emailUser }: UserProfileProps) {
 }
 
 interface JoinWaitllistButtonProps {
-    setBorderAnimation: Dispatch<SetStateAction<boolean>>;
+    setModalWaitlistOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-function JoinWaitllistButton({ setBorderAnimation }: JoinWaitllistButtonProps) {
+function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps) {
     return (
         <div className="w-1/2 md:w-1/4 flex items-center justify-end">
             <button
-                onClick={() => setBorderAnimation(true)}
+                onClick={() => setModalWaitlistOpen(true)}
                 type="button"
-                className="text-dark-textPrimary bg-custom-accent dark:bg-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent font-medium rounded-lg text-sm px-5 py-2.5">
+                className="text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor font-medium rounded-lg text-sm px-5 py-2.5">
                 Iscriviti alla waitlist
             </button>
         </div>
@@ -143,10 +154,10 @@ function JoinWaitllistButton({ setBorderAnimation }: JoinWaitllistButtonProps) {
 interface NavbarProps {
     accessToken: boolean;
     emailUser: string;
-    setBorderAnimation: Dispatch<SetStateAction<boolean>>;
+    setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Navbar({ accessToken, emailUser, setBorderAnimation }: NavbarProps) {
+export default function Navbar({ accessToken, emailUser, setModalWaitListOpen }: NavbarProps) {
 
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -164,11 +175,11 @@ export default function Navbar({ accessToken, emailUser, setBorderAnimation }: N
     }, []);
 
     return (
-        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 ${isScrolled && 'backdrop-blur-md backdrop-brightness-50'}`} >
+        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-100'}`} >
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />
-                <JoinWaitllistButton setBorderAnimation={setBorderAnimation} />
+                <JoinWaitllistButton setModalWaitlistOpen={setModalWaitListOpen} />
                 {/* 
                 {accessToken ? <UserProfile emailUser={emailUser} /> : <AccessButton />}
                 */}

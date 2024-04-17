@@ -12,26 +12,24 @@ interface ModalMessageProps {
 
 export default function ModalMessage({ onClose }: ModalMessageProps) {
     return (
-        <Modal dismissible show size="sm" className="bg-custom-background dark:bg-dark-background">
-            <Modal.Body className="flex flex-col justify-center items-center gap-y-7 rounded-lg bg-custom-elevation2 dark:bg-dark-elevation2">
+        <Modal dismissible show size="sm" className="bg-dark-elevation4 dark:bg-dark-elevation4">
+            <Modal.Body className="bg-custom-elevation dark:bg-dark-elevation2 rounded-lg p-10 flex flex-col gap-y-5 items-center justify-center">
                 <div className="flex -space-x-3 rtl:space-x-reverse">
-                    <img className="w-12 h-12 border-2 border-white rounded-full dark:border-gray-800" src={profilePicture1} alt="profile-picture-1" />
-                    <img className="w-12 h-12 border-2 border-white rounded-full dark:border-gray-800" src={profilePicture2} alt="profile-picture-2" />
-                    <img className="w-12 h-12 border-2 border-white rounded-full dark:border-gray-800" src={profilePicture3} alt="profile-picture-3" />
-                    <img className="w-12 h-12 border-2 border-white rounded-full dark:border-gray-800" src={profilePicture4} alt="profile-picture-4" />
+                    <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={profilePicture1} alt="profile-picture-1" />
+                    <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={profilePicture2} alt="profile-picture-2" />
+                    <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={profilePicture3} alt="profile-picture-3" />
+                    <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={profilePicture4} alt="profile-picture-4" />
                 </div>
                 <div className="flex flex-col justify-center items-center gap-y-2 text-center">
-                    <h1 className="text-custom-textPrimary dark:text-dark-textPrimary font-bold text-2xl text-balance">Yo! you have been added to our waitlist</h1>
-                    <p className="text-custom-textSecondary dark:text-dark-textSecondary font-light text-sm text-balance">We will send you an email as soon as we ready to launch.</p>
+                    <h1 className="text-3xl font-extrabold text-center text-balance text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Hey! Sei stato inserito correttamente nella waitlist</h1>
+                    <p className="text-md font-medium text-center text-balance text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">Riceverai un email di notifica quando la piattaforma sarà pronta e riceverai i tupi 20 token di benvenuto</p>
                 </div>
                 <button
                     name="button-close"
                     type="button"
-                    className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+                    className="text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor font-medium rounded-lg text-sm px-5 py-2.5"
                     onClick={onClose}>
-                    <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-custom-elevation dark:bg-dark-elevation rounded-md group-hover:bg-opacity-0">
-                        Got it! Thank you
-                    </span>
+                        Capito! Grazie
                 </button>
             </Modal.Body>
         </Modal >

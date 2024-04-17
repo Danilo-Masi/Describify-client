@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 //Supabase
 import { supabase } from '../services/client.tsx';
 //Components
-import {Layout} from "../components/Layout";
+import { Layout } from "../components/Layout";
 import Navbar from "../components/Navbar";
 import Features from "../components/Features";
 import Prices from "../components/Prices";
@@ -10,12 +10,13 @@ import Faqs from "../components/Faqs";
 import Home from "../components/Home";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
+import WaitlistModal from "../components/WaitlistModal.tsx";
 
 export default function HomePage() {
 
     const [accessToken, setAccessToken] = useState(false);
     const [emailUser, setEmailUser] = useState('');
-    const [borderAnimation, setBorderAnimation] = useState(false);
+    const [modalWaitListOpen, setModalWaitListOpen] = useState(false);
 
     useEffect(() => {
         const { data: authListener } = supabase.auth.onAuthStateChange((_, session) => {
@@ -35,12 +36,13 @@ export default function HomePage() {
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar accessToken={accessToken} emailUser={emailUser} setBorderAnimation={setBorderAnimation} />
-            {accessToken ? <Home id="Home" /> : <Hero id="Home" borderAnimation={borderAnimation} />}
+            <Navbar accessToken={accessToken} emailUser={emailUser} setModalWaitListOpen={setModalWaitListOpen}/>
+            {accessToken ? <Home id="Home" /> : <Hero id="Home" />}
             <Features id="Features" accessToken={accessToken} />
             <Prices id="Prices" accessToken={accessToken} />
             <Faqs id="Faqs" accessToken={accessToken} />
             <Footer />
+            {modalWaitListOpen && <WaitlistModal onClose={() => setModalWaitListOpen(false)}/>}
         </Layout>
     )
 }

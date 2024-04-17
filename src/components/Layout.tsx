@@ -26,7 +26,7 @@ interface ContainerComponentsProps {
 export function ContainerComponents({ children, id, gap }: ContainerComponentsProps) {
     return (
         <div
-            className={`w-[90%] h-auto flex flex-col items-center justify-start py-5 md:py-10 ${!gap ? 'gap-y-10' : gap}`}
+            className={`w-[90%] h-auto flex flex-col items-center justify-start py-5 md:py-10 ${gap ? gap : 'gap-y-10'}`}
             id={id}>
             {children}
         </div>

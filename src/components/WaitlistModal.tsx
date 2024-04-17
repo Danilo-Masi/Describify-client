@@ -1,6 +1,15 @@
 //Flowbite
 import { Modal } from "flowbite-react";
+//Components
 import WaitlistGadget from "./WaitlistGadget";
+//Images
+//Images
+import picture1 from '../assets/images/picture_1.webp';
+import picture2 from '../assets/images/picture_2.webp';
+import picture3 from '../assets/images/picture_3.webp';
+import picture4 from '../assets/images/picture_4.webp';
+import picture5 from '../assets/images/picture_5.webp';
+import picture6 from '../assets/images/picture_6.webp';
 
 interface WaitlistModalProps {
     onClose: () => void;
@@ -13,12 +22,23 @@ export default function WaitlistModal({ onClose }: WaitlistModalProps) {
             dismissible
             size="md"
             onClose={onClose}
-            className="bg-custom-background dark:bg-dark-background">
-            <Modal.Body className="bg-custom-elevation2 dark:bg-dark-elevation2 rounded-lg">
+            className="bg-dark-elevation4 dark:bg-dark-elevation4">
+            <Modal.Body className="bg-custom-elevation dark:bg-dark-elevation2 rounded-lg p-10">
                 <div className="flex flex-col gap-y-5">
-                    <p className="text-2xl font-bold text-custom-textPrimary dark:text-dark-textPrimary">Entra in Esclusiva</p>
-                    <p className="text-md font-light text-custom-textSecondary dark:text-dark-textSecondary">Unisciti alla waitlist di Describify oggi e accedi a strumenti che trasformeranno il tuo e-commerce. Posti limitati, agisci ora!</p>
-                    <WaitlistGadget mdWidth="md:w-full"/>
+                    <p className="text-3xl font-extrabold text-center text-balance text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Siamo quasi pronti...</p>
+                    <div className="flex items-center justify-center -space-x-3 rtl:space-x-reverse">
+                        <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={picture1} alt="profile-picture-1" />
+                        <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={picture2} alt="profile-picture-2" />
+                        <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={picture3} alt="profile-picture-3" />
+                        <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={picture4} alt="profile-picture-4" />
+                        <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={picture5} alt="profile-picture-3" />
+                        <img className="w-10 h-10 border-2 border-custom-solidColor rounded-full dark:border-dark-solidColor" src={picture6} alt="profile-picture-4" />
+                    </div>
+                    <p className="text-md font-medium text-center text-balance text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+                        Unisciti subito alla nostra waitlist per ottenere un accesso esclusivo alla versione Beta di Describify. Iscrivendoti ora, riceverai anche
+                        <span className="text-bold text-custom-solidColor dark:text-dark-solidColor"> 20 token omaggio</span> al tuo primo accesso!
+                    </p>
+                    <WaitlistGadget mdWidth="md:w-full" />
                 </div>
             </Modal.Body>
         </Modal>
