@@ -30,9 +30,9 @@ export default function ModalCookies({ setCookieModalOpen }: ModalCookiesProps) 
             size="sm"
             position="bottom-left"
             className="bg-dark-background dark:bg-dark-background">
-            <Modal.Body className="bg-custom-elevation dark:bg-dark-elevation rounded-lg">
+            <Modal.Body className="bg-custom-elevation dark:bg-dark-elevation4 rounded-lg">
                 <div className="flex flex-wrap gap-4">
-                    <p className="text-custom-textSecondary dark:text-dark-textSecondary text-balance">Utilizziamo cookie di terze parti per personalizzare i servizi e analizzare il traffico sulla piattaforma. Per ulteriori informazioni, leggi
+                    <p className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance">Utilizziamo cookie di terze parti per personalizzare i servizi e analizzare il traffico sulla piattaforma. Per ulteriori informazioni, leggi
                         <span className="text-custom-solidColor dark:text-dark-solidColor font-medium">
                             <a href="#"> Cookies policy</a>
                         </span>

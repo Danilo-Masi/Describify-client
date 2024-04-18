@@ -16,7 +16,8 @@ export default function Hero({ id }: HeroProps) {
     return (
         <ContainerComponents gap="gap-y-10" id={id}>
             <Intestazione
-                titleDimension='text-8xl'
+                titleDimension='text-7xl'
+                mdTitleDimension='md:text-8xl'
                 descriptionDimension='text-xl'
                 titleValue={t('heroTitle')}
                 descriptionValue={t('heroDescription')} />

@@ -16,7 +16,7 @@ export default function App() {
   const [cookieModalOpen, setCookieModalOpen] = useState(true);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('tema');
+    const savedTheme = localStorage.getItem('tema') || 'dark';
     if (savedTheme === 'dark') {
       document.body.classList.add('dark');
     } else {

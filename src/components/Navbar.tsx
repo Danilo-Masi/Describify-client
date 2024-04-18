@@ -175,7 +175,7 @@ export default function Navbar({ accessToken, emailUser, setModalWaitListOpen }:
     }, []);
 
     return (
-        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-100'}`} >
+        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-95'}`} >
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />

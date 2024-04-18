@@ -60,9 +60,8 @@ export default {
         }
       },
       backgroundImage: {
-        //'custom-gradient': 'linear-gradient(to top, #FAFAFA, #FFD5D0, #F9E5E3, #FAFAFA )', //Gradient chiaro
-        'custom-gradient': 'linear-gradient(to bottom, #FAFAFA, #F6B7AF, #FAFAFA, #F6B7AF, #FAFAFA)',
-        'dark-gradient': 'linear-gradient(to top, #181818, #271513, #181818, #460B0B, #181818)', //Gradient scuro
+        'custom-gradient': 'linear-gradient(to bottom, #D65A61, #FAFAFA, #FAFAFA, #FAFAFA, #FAFAFA)', //Gradient chiaro
+        'dark-gradient': 'linear-gradient(to bottom, #271513, #181818, #181818, #271513, #181818)', //Gradient scuro
       }
     },
   },
