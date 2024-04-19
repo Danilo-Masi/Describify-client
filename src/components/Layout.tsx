@@ -11,7 +11,7 @@ interface LayoutProps {
 
 export function Layout({ children, padding, mdFlexOrientation, mdHeight, justifyPosition, bgColor }: LayoutProps) {
     return (
-        <div className={`w-full h-auto flex flex-col items-center ${justifyPosition ? justifyPosition : 'justify-start'} ${mdHeight} ${mdFlexOrientation} ${padding} ${bgColor ? bgColor : 'bg-custom-background dark:bg-dark-gradient '}`}>
+        <div className={`w-full h-auto flex flex-col items-center ${justifyPosition ? justifyPosition : 'justify-start'} ${mdHeight} ${mdFlexOrientation} ${padding} ${bgColor ? bgColor : 'bg-custom-background dark:bg-dark-background'}`}>
             {children}
         </div>
     );
@@ -26,7 +26,7 @@ interface ContainerComponentsProps {
 export function ContainerComponents({ children, id, gap }: ContainerComponentsProps) {
     return (
         <div
-            className={`w-[90%] h-auto flex flex-col items-center justify-start py-16 ${gap ? gap : 'gap-y-10'} `}
+            className={`w-[90%] h-auto flex flex-col items-center justify-start py-16 ${gap ? gap : 'gap-y-10'}`}
             id={id}>
             {children}
         </div>

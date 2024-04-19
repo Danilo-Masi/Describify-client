@@ -10,58 +10,59 @@ export default {
       colors: {
         // Colori per la light mode
         custom: {
-          accent: '#C1121F', // Colore primario
-          accentAlternativo: '#3EEDE0', // Colore alternativo 
+          accent: '#8E64FF', // Colore primario
+          accentAlternativo: '#f92672', // Colore alternativo 
           background: '#FAFAFA', // Sfondo chiaro (0)
-          elevation: '#F7F7F7', // Sfondo elavato (1)
-          elevation2: '#F3F3F3', //Sfondo elevato2 (2)
-          elevation3: '#EAEAEA', //Sfondo elevato3 (3)
-          elevation4: '#E2E2E2', //Sfondo elevato4 (4)
-          disabled: '#DADADA', //Disabilitato (5)
-          borderColor: '#F6B7AF', //Bordo normale colorato (6)
-          borderGray: '#D2D2D2', //Bordo normale grigio (6)
-          borderFocusColor: '#EDA29B', //Border focus colorato (7)
-          borderFocusGray: '#C7C7C7', //Border focus grigio (7)
-          borderRingColor: '#E4887F', //Border ring colorato (8)
-          borderRingGray: '#B3B3B3', //Border ring grigio (8)
-          solidColor: '#C1121F', //Colore solido (9) //Per i bottoni
-          solidGray: '#858585', //Grigio solido (9) //Per i bottoni
-          hoverColor: '#B0000C', //Hover colorato (10)
-          hoverGray: '#7A7A7A', //Hover grigio (10)
-          textSecondaryColor: '#C71D25', // Testo secondario colorato (11)
-          textSecondaryGray: '#5C5C5C', //Testo secondario grigio (11)
-          textPrimaryColor: '#651716', // Testo primario colorato (12)
-          textPrimaryGray: '#202020', //Testo primario grigio (12)
+          elevation: '#F6F7FA', // Sfondo elavato (1)
+          elevation2: '#F2F3F9', //Sfondo elevato2 (2)
+          elevation3: '#E8E9F4', //Sfondo elevato3 (3)
+          elevation4: '#DFE1EF', //Sfondo elevato4 (4)
+          disabled: '#D7D9EB', //Disabilitato (5)
+          borderColor: '#CAC1FF', //Bordo normale colorato (6)
+          borderGray: '#CED0E6', //Bordo normale grigio (6)
+          borderFocusColor: '#B8ABFA', //Border focus colorato (7)
+          borderFocusGray: '#C3C5DF', //Border focus grigio (7)
+          borderRingColor: '#A28EF4', //Border ring colorato (8)
+          borderRingGray: '#AFB2CD', //Border ring grigio (8)
+          solidColor: '#8E64FF', //Colore solido (9) //Per i bottoni
+          solidGray: '#82849E', //Grigio solido (9) //Per i bottoni
+          hoverColor: '#8256F0', //Hover colorato (10)
+          hoverGray: '#787A93', //Hover grigio (10)
+          textSecondaryColor: '#673CC6', // Testo secondario colorato (11)
+          textSecondaryGray: '#5A5C74', //Testo secondario grigio (11)
+          textPrimaryColor: '#361F6B', // Testo primario colorato (12)
+          textPrimaryGray: '#1D1E30', //Testo primario grigio (12)
         },
         // Colori per la dark mode
         dark: {
-          accent: '#C1121F', // Colore primario
-          accentAlternativo: '#3EEDE0', // Colore alternativo 
-          background: '#181818', // Sfondo scuro (0)
-          elevation: '#202020', // Sfondo elavato (1)
-          elevation2: '#1F1F1F', //Sfondo elevato2 (2)
-          elevation3: '#272727', //Sfondo elevato3 (3)
-          elevation4: '#2D2D2D', //Sfondo elevato4 (4)
-          disabled: '#343434', //Disabilitato (5)
-          borderColor: '#82040F', //Bordo normale colorato (6)
-          borderGray: '#3C3C3C', //Bordo normale grigio (6)
-          borderFocusColor: '#9D191D', //Border focus colorato (7)
-          borderFocusGray: '#494949', //Border focus grigio (7)
-          borderRingColor: '#CB2228', //Border ring colorato (8)
-          borderRingGray: '#606060', //Border ring grigio (8)
-          solidColor: '#C1121F', //Colore solido (9) //Per i bottoni
-          solidGray: '#6E6E6E', //Grigio solido (9) //Per i bottoni
-          hoverColor: '#A32022', //Hover colorato (10)
-          hoverGray: '#7B7B7B', //Hover grigio (10)
-          textSecondaryColor: '#FF8C81', // Testo secondario colorato (11)
-          textSecondaryGray: '#B4B4B4', //Testo secondario grigio (11)
-          textPrimaryColor: '#FFCFC8', // Testo primario colorato (12)
-          textPrimaryGray: '#EEE', //Testo primario grigio (12)
+          accent: '#8E64FF', // Colore primario
+          accentAlternativo: '#f92672', // Colore alternativo 
+          background: '#010314', // Sfondo scuro (0)
+          elevation: '#030311', // Sfondo elavato (1)
+          elevation2: '#131427', //Sfondo elevato2 (2)
+          elevation3: '#1E1F33', //Sfondo elevato3 (3)
+          elevation4: '#25263C', //Sfondo elevato4 (4)
+          disabled: '#2D2E44', //Disabilitato (5)
+          borderColor: '#483284', //Bordo normale colorato (6)
+          borderGray: '#35374D', //Bordo normale grigio (6)
+          borderFocusColor: '#573F9B', //Border focus colorato (7)
+          borderFocusGray: '#43455C', //Border focus grigio (7)
+          borderRingColor: '#6C4FBF', //Border ring colorato (8)
+          borderRingGray: '#5C5E76', //Border ring grigio (8)
+          solidColor: '#8E64FF', //Colore solido (9) //Per i bottoni
+          solidGray: '#696C84', //Grigio solido (9) //Per i bottoni
+          hoverColor: '#8256F0', //Hover colorato (10)
+          hoverGray: '#777992', //Hover grigio (10)
+          textSecondaryColor: '#B9A2FF', // Testo secondario colorato (11)
+          textSecondaryGray: '#AFB1CC', //Testo secondario grigio (11)
+          textPrimaryColor: '#E1DCFF', // Testo primario colorato (12)
+          textPrimaryGray: '#EAEDFF', //Testo primario grigio (12)
         }
       },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to bottom, #D65A61, #FAFAFA, #FAFAFA, #FAFAFA, #FAFAFA)', //Gradient chiaro
-        'dark-gradient': 'linear-gradient(to bottom, #271513, #181818, #181818, #271513, #181818)', //Gradient scuro
+        'dark-gradient': 'radial-gradient(40% 40% at 50% 50%, #010314 0%, #483284 5%, #010314 100%)', //Gradient scuro md
+        'hero-pattern': "url('./assets/images/hero.jpeg')",
       }
     },
   },
