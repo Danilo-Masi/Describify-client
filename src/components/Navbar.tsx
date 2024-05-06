@@ -5,6 +5,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
+//I18Next
+import { useTranslation } from 'react-i18next';
 //Flowbite
 import { Dropdown } from 'flowbite-react';
 //Supabase
@@ -15,11 +17,9 @@ import ModalUsage from "./ModalUsage.tsx";
 import ModalSettings from "./ModalSettings.tsx";
 
 function Logo() {
-
     const handleScroll = () => {
         gsap.to(window, { duration: 1, scrollTo: { y: "#Home", offsetY: 50 } });
     }
-
     return (
         <div className="w-1/2 md:w-1/4">
             <h1 className="text-3xl cursor-pointer font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray" onClick={() => handleScroll()}>Describify</h1>
@@ -28,16 +28,15 @@ function Logo() {
 }
 
 function MenuElements() {
-
+    const { t } = useTranslation();
     const handleScroll = (divId: string) => {
         gsap.to(window, { duration: 1, scrollTo: { y: divId, offsetY: 50 } });
     }
-
     return (
         <div className="md:w-2/4 hidden md:flex items-center justify-center gap-8">
             <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</p>
-            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Features")}>Features</p>
-            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Prices")}>Prices</p>
+            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</p>
+            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</p>
             <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</p>
         </div>
     );
@@ -175,7 +174,7 @@ export default function Navbar({ accessToken, emailUser, setModalWaitListOpen }:
     }, []);
 
     return (
-        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-10 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-95'}`} >
+        <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-20 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-95'}`} >
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />

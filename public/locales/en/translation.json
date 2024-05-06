@@ -18,17 +18,19 @@
     "signupRedirectLabel": "Alredy have an account?",
     "signupRedirectLink": "Login here",
 
-    "heroBadge": "A project by Danilo Masi",
-    "heroTitle": "Value your time and increse your sell online",
-    "heroDescription": "Elevate your sales with AI. Descrify will instantly generate a captivating description for your listing. Boost your sales on Vinted, eBay, Subito, and more, with descriptions that sell",
+    "linkFeatures": "Features",
+    "linkPrices": "Prices",
+
+    "heroTitle": "Turn every click into a sale.",
+    "heroDescription": "Optimize ads and increase sales on eBay, Vinted, and other platforms with the power of AI",
     
     "featuresBadge": "How does it work?",
     "featuresTitle": "Effortless Selling Starts Here",
     "featuresDescription": "With Descrify, you’re just a few clicks away from the perfect product description. Our AI analyzes your item’s details and crafts descriptions designed to sell. No more writing stress - spend your time where it counts",
     
     "pricesBadge": "Prices",
-    "pricesTitle": "Maximize Your Listings, Minimize Your Effort",
-    "pricesDescription": "Choose a Descrify plan that suits your needs. Our Free plan is great to get started, while our Standard and Premium plans offer advanced features for serious sellers. Sell more, effortlessly",
+    "pricesTitle": "Explore our subscription plans",
+    "pricesDescription": "Choose a subscription plan that suits your needs. Our Free plan is great to test the service, while our Standard and Premium plans offer advanced features for serious sellers.",
     
     "faqsTitle": "Have Questions?",
     "faqsDescription": "We’ve got answers. Discover how Descrify can change the way you sell online.",
@@ -47,7 +49,7 @@
     "modalSettingTitle1": "Language",
     "modalSettingCaption1": "Select the language of the platform",
     "modalSettingTitle2": "Interface theme",
-    "modalSettingCaption2": "Customize your application theme"
+    "modalSettingCaption2": "Customize your application theme",
 
-
+    "waitlistGadgetError": "The entered email is not valid"
 }

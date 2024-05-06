@@ -1,3 +1,5 @@
+const svgToDataUri = require("mini-svg-data-uri");
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -5,6 +7,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -61,15 +64,26 @@ export default {
       },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to bottom, #D65A61, #FAFAFA, #FAFAFA, #FAFAFA, #FAFAFA)', //Gradient chiaro
-        'dark-gradient': 'radial-gradient(40% 40% at 50% 50%, #010314 0%, #483284 5%, #010314 100%)', //Gradient scuro md
-        'hero-pattern': "url('./assets/images/hero.jpeg')",
+        'dark-gradient': 'radial-gradient(40% 40% at 50% 50%, #573F9B 5%, #010314 100%)', //Gradient scuro md
+        'bg-grid': 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 32 32\' width=\'32\' height=\'32\' fill=\'none\' stroke=\'%23010314\'%3E%3Cpath d=\'M0 .5H31.5V32\'/%3E%3C/svg%3E")',
       }
     },
   },
+
   plugins: [
     require('flowbite/plugin')({
       charts: true,
     }),
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.bg-grid': {
+          backgroundImage: `url("${svgToDataUri(
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#1E1F33"><path d="M0 .5H31.5V32"/></svg>`
+          )}")`,
+        },
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
   ],
-  darkMode: 'class',
-}
+};
+

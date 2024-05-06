@@ -5,7 +5,9 @@ import axios from 'axios';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-//Components˚
+//I18Next
+import { useTranslation } from 'react-i18next';
+//Components
 import ModalMessage from "./ModalMessage";
 
 // Funzione per validare l'email lato Client
@@ -22,6 +24,8 @@ interface WaitlistGadgetProps {
 }
 
 export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetProps) {
+
+    const { t } = useTranslation();
 
     const [emailInput, setEmailInput] = useState("");
     const [errorInput, setErrorInput] = useState("");
@@ -70,25 +74,25 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                 setEmailLoading(false);
             }
         } else {
-            setErrorInput("L'email che hai inserito non è valida");
+            const erroreEmail = t('waitlistGadgetError');
+            setErrorInput(erroreEmail);
             setEmailLoading(false);
         }
     };
 
-
     return (
-        <form className={`flex flex-col md:flex-row items-start justify-center w-full gap-y-5 ${mdWidth ? mdWidth : 'md:w-2/6'}`}>
+        <form className={`flex flex-col md:flex-row items-start justify-center w-full gap-y-5 z-10 ${mdWidth ? mdWidth : 'md:w-2/6'}`}>
             {/* Email input */}
             <div className="w-full">
                 <input
                     type="email"
                     name="email-input"
-                    className={`w-full bg-custom-elevation dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusGray dark:focus:border-dark-borderFocusGray focus:ring-custom-borderRingGray dark:focus:ring-dark-borderRingGray text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray text-sm rounded-lg block p-3 ${errorInput !== "" && 'border-custom-solidColor dark:border-dark-solidColor'}`}
+                    className={`w-full bg-custom-elevation dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusGray dark:focus:border-dark-borderFocusGray focus:ring-custom-borderRingGray dark:focus:ring-dark-borderRingGray text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray text-sm rounded-lg block p-3 ${errorInput !== "" && 'border-red-500 dark:border-red-500'}`}
                     placeholder="name@describify.com"
                     value={emailInput}
                     onFocus={() => setErrorInput("")}
                     onChange={(event) => setEmailInput(event.target.value)} />
-                <p className={`w-full mt-2 px-3 text-sm font-medium text-custom-solidColor dark:text-dark-solidColor ${errorInput !== "" ? 'flex' : 'hidden'}`}>
+                <p className={`w-full mt-2 px-3 text-sm font-medium text-red-500 dark:text-red-500 ${errorInput !== "" ? 'flex' : 'hidden'}`}>
                     {errorInput}
                 </p>
             </div>

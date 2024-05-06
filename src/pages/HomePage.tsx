@@ -18,6 +18,7 @@ export default function HomePage() {
     const [emailUser, setEmailUser] = useState('');
     const [modalWaitListOpen, setModalWaitListOpen] = useState(false);
 
+    {/* 
     useEffect(() => {
         const { data: authListener } = supabase.auth.onAuthStateChange((_, session) => {
             const userEmail = session?.user?.email;
@@ -33,16 +34,18 @@ export default function HomePage() {
         // Cleanup 
         return () => authListener.subscription.unsubscribe();
     }, []);
+    */}
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar accessToken={accessToken} emailUser={emailUser} setModalWaitListOpen={setModalWaitListOpen}/>
-            {accessToken ? <Home id="Home" /> : <Hero id="Home" />}
+            <Navbar accessToken={accessToken} emailUser={emailUser} setModalWaitListOpen={setModalWaitListOpen} />
+            {/* {accessToken ? <Home id="Home" /> : <Hero id="Home" />} */}
+            <Hero id="Home" />
             <Features id="Features" accessToken={accessToken} />
-            <Prices id="Prices" accessToken={accessToken} />
+            <Prices id="Prices" accessToken={accessToken} setModalWaitListOpen={setModalWaitListOpen} />
             <Faqs id="Faqs" accessToken={accessToken} />
             <Footer />
-            {modalWaitListOpen && <WaitlistModal onClose={() => setModalWaitListOpen(false)}/>}
+            {modalWaitListOpen && <WaitlistModal onClose={() => setModalWaitListOpen(false)} />}
         </Layout>
     )
 }

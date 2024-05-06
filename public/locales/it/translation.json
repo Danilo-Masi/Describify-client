@@ -17,6 +17,9 @@
     "signupButton": "Registra account",
     "signupRedirectLabel": "Hai già un account?",
     "signupRedirectLink": "Accedi qui",
+    
+    "linkFeatures": "Funzionalità",
+    "linkPrices": "Prezzi",
 
     "heroTitle": "Trasforma ogni click in vendita.",
     "heroDescription": "Ottimizza gli annunci e incrementa le vendite su eBay, Vinted e altre piattaforme con la potenza dell'AI",
@@ -26,8 +29,8 @@
     "featuresDescription": "Il nostro AI crea per te descrizioni che catturano l'attenzione e si distinguono. Più interesse significa più vendite. Risparmia tempo e aumenta i profitti con Describify.",
     
     "pricesBadge": "Prezzi",
-    "pricesTitle": "Paga solo quello che consumi",
-    "pricesDescription": "Nessuna spesa fissa mensile o annuale, nessuna ansia di disdire un abbonamento, paghi solo quello che consumi.",
+    "pricesTitle": "Eslora i nostri piani",
+    "pricesDescription": "Scegli un piano di abbonamento che si adatti alle tue esigenze. Il nostro piano gratuito ti permette di testare il servizio, mentre i piani Standard e Premium offrono funzionalità avanzate per venditori seri",
     
     "faqsTitle": "Hai delle domande?",
     "faqsDescription": "Abbiamo le risposte che cerci. Scopri di più su come Describify può aiutarti nelle tue vendite.",
@@ -46,6 +49,8 @@
     "modalSettingTitle1": "Lingua",
     "modalSettingCaption1": "Seleziona la lingua della piattaforma",
     "modalSettingTitle2": "Tema",
-    "modalSettingCaption2": "Personalizza il tema della piattaforma"
+    "modalSettingCaption2": "Personalizza il tema della piattaforma",
+
+    "waitlistGadgetError": "L'email inserita non è valida"
     
 }
