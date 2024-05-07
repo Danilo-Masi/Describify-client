@@ -37,7 +37,7 @@ export default function Intestazione({ badgeValue, titleValue, descriptionValue,
         <div className="md:w-2/4 h-auto flex flex-col items-center justify-center gap-y-5 z-10">
             {badgeValue && <Badge color="none" className="px-5 py-2 rounded-xl border border-custom-textPrimaryGray dark:border-dark-borderGray text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{badgeValue}</Badge>}
             <h1 className={`${titleDimension ? titleDimension : 'text-6xl'} ${mdTitleDimension} text-balance font-bold text-center text-custom-textPrimaryGray dark:text-dark-textPrimaryGray`} ref={titleRef}>{titleValue}</h1>
-            <p className={`${descriptionDimension ? descriptionDimension : 'text-md'} text-balance font-light text-center text-custom-textSecondaryGray dark:text-dark-textSecondaryGray`} ref={captionRef}>{descriptionValue}</p>
+            <p className={`${descriptionDimension ? descriptionDimension : 'text-lg'} text-balance font-light text-center text-custom-textSecondaryGray dark:text-dark-textSecondaryGray`} ref={captionRef}>{descriptionValue}</p>
         </div>
     );
 }
