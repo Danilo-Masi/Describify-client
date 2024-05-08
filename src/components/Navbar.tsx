@@ -21,8 +21,8 @@ function Logo() {
         gsap.to(window, { duration: 1, scrollTo: { y: "#Home", offsetY: 50 } });
     }
     return (
-        <div className="w-1/2 md:w-1/4">
-            <h1 className="text-3xl cursor-pointer font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray" onClick={() => handleScroll()}>Describify</h1>
+        <div className="w-1/2 md:w-1/4 p-y-10">
+            <Link to="/" className="text-3xl cursor-pointer font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray" onClick={() => handleScroll()}>Describify</Link>
         </div>
     );
 }
@@ -34,11 +34,11 @@ function MenuElements() {
     }
     return (
         <div className="md:w-2/4 hidden md:flex items-center justify-center gap-8">
-            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</p>
-            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</p>
-            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</p>
-            <p className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</p>
-        </div>
+            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</Link>
+            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</Link>
+            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</Link>
+            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</Link>
+        </div >
     );
 }
 
@@ -151,8 +151,8 @@ function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps)
 }
 
 interface NavbarProps {
-    accessToken: boolean;
-    emailUser: string;
+    accessToken?: boolean;
+    emailUser?: string;
     setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 

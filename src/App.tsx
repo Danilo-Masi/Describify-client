@@ -5,15 +5,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Cookies, useCookies } from "react-cookie";
 //Pages
 import HomePage from "./pages/HomePage";
-import SigninPage from "./pages/SigninPage";
-import SignupPage from "./pages/SignupPage";
+import LegalPage from "./pages/LegalPage";
 import ErrorPage from "./pages/ErrorPage";
 import ModalCookies from "./components/ModalCookies";
+import WaitlistModal from "./components/WaitlistModal";
 
 export default function App() {
 
   const [cookies] = useCookies(['userCookieConsent']);
   const [cookieModalOpen, setCookieModalOpen] = useState(true);
+  const [modalWaitListOpen, setModalWaitListOpen] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('tema') || 'dark';
@@ -35,8 +36,11 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="/" element={<HomePage />} />
+        <Route index element={<HomePage setModalWaitListOpen={setModalWaitListOpen} />} />
+        <Route path="/" element={<HomePage setModalWaitListOpen={setModalWaitListOpen} />} />
+        <Route path="/terms-&-conditions" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
+        <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
+        <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
         <Route path="*" element={<ErrorPage />} />
         {/* 
         <Route path="/signin" element={<SigninPage />} />
@@ -45,6 +49,7 @@ export default function App() {
         */}
       </Routes>
       {cookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}
+      {modalWaitListOpen && <WaitlistModal onClose={() => setModalWaitListOpen(false)} />}
     </BrowserRouter>
   );
 }

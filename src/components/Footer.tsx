@@ -1,5 +1,7 @@
 //I18Next
 import { useTranslation } from 'react-i18next';
+//React-router
+import { Link } from "react-router-dom";
 //GSAP
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -13,7 +15,7 @@ interface FooterColProps {
 
 function FooterCol({ children, mdWidth, mdItemsPosition }: FooterColProps) {
     return (
-        <div className={`w-full flex flex-col items-center justify-center gap-2 ${mdWidth ? mdWidth : 'md:w-1/5'} ${mdItemsPosition ? mdItemsPosition : 'md:items-center'}`}>
+        <div className={`w-full flex flex-col items-center justify-center gap-5 md:gap-3 ${mdWidth ? mdWidth : 'md:w-1/5'} ${mdItemsPosition ? mdItemsPosition : 'md:items-center'}`}>
             {children}
         </div>
     );
@@ -36,7 +38,7 @@ export default function Footer() {
                     <p className="max-w-md md:text-start text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
                         {t('footerCaption')}
                     </p>
-                    <div className='w-full flex items-start justify-start gap-x-3'>
+                    <div className='w-full flex items-center md:items-start justify-center md:justify-start gap-x-5'>
                         <a href='https://www.instagram.com/describify' target='_blank' rel='noopener noreferrer'>
                             <svg className="w-6 h-6 text-custom-textPrimaryGray hover:text-custom-hoverGray dark:text-dark-textPrimaryGray hover:dark:text-dark-hoverGray" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path fill="currentColor" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd" />
@@ -57,22 +59,22 @@ export default function Footer() {
                 {/* Link */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Link</p>
-                    <p className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</p>
-                    <p className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Features")}>Features</p>
-                    <p className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Prices")}>Prices</p>
-                    <p className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</p>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</Link>
                 </FooterCol>
                 {/* Company */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('footerTerms')}</p>
-                    <p className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Terms conditions</p>
-                    <p className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Privacy policy</p>
-                    <p className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Cookies</p>
+                    <Link to="/terms-&-conditions" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Terms & Conditions</Link>
+                    <Link to="/privacy-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Privacy policy</Link>
+                    <Link to="/cookie-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor">Cookies policy</Link>
                 </FooterCol>
                 {/* Contatti */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('footerContacts')}</p>
-                    <a href="mailto:info@describify.it?subject=Oggetto%20della%20mail" target='_blank' rel='noopener noreferrer' className='text-center font-light text-custom-solidColor dark:text-dark-solidColor'>info@describify.it</a>
+                    <a href="mailto:info@describify.it?subject=Hey!!%20👋" target='_blank' rel='noopener noreferrer' className='text-center font-light text-custom-textSecondaryGray hover:text-custom-hoverColor dark:text-dark-textSecondaryGray dark:hover:text-dark-hoverColor'>info@describify.it</a>
                 </FooterCol>
             </div>
         </div>

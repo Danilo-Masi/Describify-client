@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 //Supabase
 import { supabase } from '../services/client.tsx';
 //Components
@@ -10,13 +10,15 @@ import Faqs from "../components/Faqs";
 import Home from "../components/Home";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
-import WaitlistModal from "../components/WaitlistModal.tsx";
 
-export default function HomePage() {
+interface HomePageProps {
+    setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function HomePage({ setModalWaitListOpen }: HomePageProps) {
 
     const [accessToken, setAccessToken] = useState(false);
     const [emailUser, setEmailUser] = useState('');
-    const [modalWaitListOpen, setModalWaitListOpen] = useState(false);
 
     {/* 
     useEffect(() => {
@@ -45,7 +47,6 @@ export default function HomePage() {
             <Prices id="Prices" accessToken={accessToken} setModalWaitListOpen={setModalWaitListOpen} />
             <Faqs id="Faqs" accessToken={accessToken} />
             <Footer />
-            {modalWaitListOpen && <WaitlistModal onClose={() => setModalWaitListOpen(false)} />}
         </Layout>
     )
 }
