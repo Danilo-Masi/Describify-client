@@ -1,4 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
+//React-router
+import { Link } from "react-router-dom";
+//I18Next
+import { useTranslation } from 'react-i18next';
 //Cookie-consent
 import { useCookies } from "react-cookie";
 //Flowbite
@@ -9,6 +13,8 @@ interface ModalCookiesProps {
 }
 
 export default function ModalCookies({ setCookieModalOpen }: ModalCookiesProps) {
+
+    const { t } = useTranslation();
 
     const [cookies, setCookie] = useCookies(['userCookieConsent', 'name']);
 
@@ -27,27 +33,29 @@ export default function ModalCookies({ setCookieModalOpen }: ModalCookiesProps) 
     return (
         <Modal
             show
+            dismissible={false}
             size="sm"
             position="bottom-left"
             className="bg-dark-background dark:bg-dark-background">
             <Modal.Body className="bg-custom-elevation dark:bg-dark-elevation4 rounded-lg">
-                <div className="flex flex-wrap gap-4">
-                    <p className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance">Utilizziamo cookie di terze parti per personalizzare i servizi e analizzare il traffico sulla piattaforma. Per ulteriori informazioni, leggi
-                        <span className="text-custom-solidColor dark:text-dark-solidColor font-medium">
-                            <a href="#"> Cookies policy</a>
+                <div className="flex flex-wrap gap-4 font-poppins">
+                    <p className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance font-light">
+                        {t('cookieBannerText')}
+                        <span className="text-custom-solidColor dark:text-dark-solidColor">
+                            <Link to="/cookie-policy"> Cookies policy</Link>
                         </span>
                     </p>
                     <button
                         onClick={handleAccept}
                         type="button"
-                        className="w-full md:w-[calc(50%-0.5rem)] text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor font-medium rounded-lg text-sm px-5 py-2.5">
-                        Accetta
+                        className="w-full md:w-[calc(50%-0.5rem)] text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor font-semibold rounded-lg text-sm px-5 py-2.5">
+                        {t('cookieBannerAccept')}
                     </button>
                     <button
                         onClick={handleDecline}
                         type="button"
-                        className="w-full md:w-[calc(50%-0.5rem)] text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-dark-textPrimaryGray bg-custom-elevation dark:bg-dark-elevation border border-custom-borderGray dark:border-dark-borderGray focus:outline-none hover:bg-custom-hoverGray dark:hover:bg-dark-hoverGray font-medium rounded-lg text-sm px-5 py-2.5">
-                        Declina
+                        className="w-full md:w-[calc(50%-0.5rem)] text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-dark-textPrimaryGray bg-custom-elevation dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:outline-none hover:bg-custom-hoverGray dark:hover:bg-dark-hoverGray font-semibold rounded-lg text-sm px-5 py-2.5">
+                        {t('cookieBannerAccept')}
                     </button>
                 </div>
             </Modal.Body>

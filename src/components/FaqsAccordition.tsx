@@ -31,8 +31,8 @@ export default function FaqsAccordition() {
         <Accordion className="w-full md:w-1/2 border border-custom-borderGray dark:border-dark-borderGray">
             {domande && domande.map((domanda, index) => (
                 <AccordionPanel key={index}>
-                    <AccordionTitle className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray text-balance bg-custom-elevation dark:bg-dark-elevation hover:bg-custom-elevation3 dark:hover:bg-dark-elevation3 focus:ring-0">{domanda.title}</AccordionTitle>
-                    <AccordionContent className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance bg-custom-elevation3 dark:bg-dark-elevation3">
+                    <AccordionTitle className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray text-balance bg-custom-elevation dark:bg-dark-elevation hover:bg-custom-elevation3 dark:hover:bg-dark-elevation3 focus:ring-0 font-medium font-poppins">{domanda.title}</AccordionTitle>
+                    <AccordionContent className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance bg-custom-elevation3 dark:bg-dark-elevation3 font-light font-lora">
                         <p>{domanda.content}</p>
                     </AccordionContent>
                 </AccordionPanel>

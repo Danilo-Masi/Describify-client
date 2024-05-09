@@ -7,19 +7,19 @@ interface PriceCardProps {
 
 export default function PriceCard({ setModalWaitListOpen, planDetails }: PriceCardProps) {
   return (
-    <div className="w-full h-auto flex flex-col rounded-lg p-5 gap-y-5 bg-custom-elevation dark:bg-dark-elevation2 border border-custom-borderColor dark:border-dark-borderColor">
+    <div className="w-full h-auto flex flex-col rounded-lg p-5 gap-y-5 bg-custom-elevation dark:bg-dark-elevation2 border border-custom-borderColor dark:border-dark-borderColor font-poppins">
       <p className="text-2xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{planDetails.title}</p>
-      <p className="text-2xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">${planDetails.prices}
-        <span className="text-md font-medium text-custom-textSecondaryGray dark:text-dark-textSecondaryGray"> / {planDetails.month}</span>
+      <p className="text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">${planDetails.prices}
+        <span className="text-lg font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray"> / {planDetails.month}</span>
       </p>
-      <p className="text-md font-medium text-clip text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">{planDetails.description}</p>
+      <p className="text-md font-light text-clip text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">{planDetails.description}</p>
       <button
         onClick={() => setModalWaitListOpen(true)}
         type="button"
-        className="text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor font-medium rounded-lg text-sm px-5 py-2.5">
+        className="text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor font-semibold rounded-lg text-sm px-5 py-2.5">
         {planDetails.button}
       </button>
-      <ul className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray flex flex-col gap-y-5">
+      <ul className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray flex flex-col gap-y-5 font-light">
         <li className="flex gap-x-2">
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

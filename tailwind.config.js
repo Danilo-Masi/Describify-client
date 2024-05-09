@@ -10,6 +10,12 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      //Font
+      fontFamily: {
+        "poppins": ['Poppins', 'sans-serif'],
+        "lora": ['Lora', 'serif']
+      },
+      //Palette colori
       colors: {
         // Colori per la light mode
         custom: {

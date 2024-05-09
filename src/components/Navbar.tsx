@@ -15,32 +15,7 @@ import { supabase } from '../services/client.tsx';
 import ModalLogout from "./ModalLogout.tsx";
 import ModalUsage from "./ModalUsage.tsx";
 import ModalSettings from "./ModalSettings.tsx";
-
-function Logo() {
-    const handleScroll = () => {
-        gsap.to(window, { duration: 1, scrollTo: { y: "#Home", offsetY: 50 } });
-    }
-    return (
-        <div className="w-1/2 md:w-1/4 p-y-10">
-            <Link to="/" className="text-3xl cursor-pointer font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray" onClick={() => handleScroll()}>Describify</Link>
-        </div>
-    );
-}
-
-function MenuElements() {
-    const { t } = useTranslation();
-    const handleScroll = (divId: string) => {
-        gsap.to(window, { duration: 1, scrollTo: { y: divId, offsetY: 50 } });
-    }
-    return (
-        <div className="md:w-2/4 hidden md:flex items-center justify-center gap-8">
-            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</Link>
-            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</Link>
-            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</Link>
-            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-semibold cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</Link>
-        </div >
-    );
-}
+import ActiveButton from "./ActiveButton.tsx";
 
 function AccessButton() {
     return (
@@ -133,19 +108,44 @@ function UserProfile({ emailUser }: UserProfileProps) {
     );
 }
 
+//Logo della NavBar
+function Logo() {
+    const handleScroll = () => {
+        gsap.to(window, { duration: 1, scrollTo: { y: "#Home", offsetY: 50 } });
+    }
+    return (
+        <div className="w-1/2 md:w-1/4 p-y-10">
+            <Link to="/" className="text-3xl cursor-pointer font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray font-poppins" onClick={() => handleScroll()}>Describify</Link>
+        </div>
+    );
+}
+
+//Link di navigazione della NavBar
+function MenuElements() {
+    const { t } = useTranslation();
+    const handleScroll = (divId: string) => {
+        gsap.to(window, { duration: 1, scrollTo: { y: divId, offsetY: 50 } });
+    }
+    return (
+        <div className="md:w-2/4 hidden md:flex items-center justify-center gap-8 font-poppins">
+            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</Link>
+            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer`} onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</Link>
+            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer`} onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</Link>
+            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</Link>
+        </div >
+    );
+}
+
 interface JoinWaitllistButtonProps {
     setModalWaitlistOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+//Bottone 'iscriviti' della NavBar
 function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps) {
+    const { t } = useTranslation();
     return (
         <div className="w-1/2 md:w-1/4 flex items-center justify-end">
-            <button
-                onClick={() => setModalWaitlistOpen(true)}
-                type="button"
-                className="text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor font-medium rounded-lg text-sm px-5 py-2.5">
-                Iscriviti alla waitlist
-            </button>
+            <ActiveButton text={t('buttonSubscribe')} onClick={() => setModalWaitlistOpen(true)}/>
         </div>
     );
 }
@@ -159,7 +159,6 @@ interface NavbarProps {
 export default function Navbar({ accessToken, emailUser, setModalWaitListOpen }: NavbarProps) {
 
     const [isScrolled, setIsScrolled] = useState(false);
-
 
     useEffect(() => {
         const handleScroll = () => {

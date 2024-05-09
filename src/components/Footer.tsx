@@ -30,11 +30,11 @@ export default function Footer() {
     }
 
     return (
-        <div className="w-full flex items-center justify-center border-t border-custom-borderGray dark:border-dark-borderGray">
+        <div className="w-full flex items-center justify-center border-t border-custom-borderGray dark:border-dark-borderGray font-poppins">
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
                 {/* Logo */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>
-                    <p className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</p>
+                    <p className="text-2xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</p>
                     <p className="max-w-md md:text-start text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
                         {t('footerCaption')}
                     </p>

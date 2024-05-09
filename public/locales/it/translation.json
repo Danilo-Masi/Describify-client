@@ -20,6 +20,7 @@
     
     "linkFeatures": "Funzionalità",
     "linkPrices": "Prezzi",
+    "buttonSubscribe": "Iscriviti",
 
     "heroTitle": "Trasforma ogni click in vendita.",
     "heroDescription": "Ottimizza gli annunci e incrementa le vendite su eBay, Vinted e altre piattaforme con la potenza dell'AI",
@@ -51,6 +52,15 @@
     "modalSettingTitle2": "Tema",
     "modalSettingCaption2": "Personalizza il tema della piattaforma",
 
-    "waitlistGadgetError": "L'email inserita non è valida"
-    
+    "cookieBannerText": "Utilizziamo cookie di terze parti per personalizzare i servizi e analizzare il traffico sulla piattaforma. Per ulteriori informazioni, leggi: ",
+    "cookieBannerAccept": "Accetta",
+    "cookieBannerDecline": "Declina",
+
+    "messageBannerTitle": "Complimenti, sei entrato a far parte di Describify!!",
+    "messageBannerContent": "Appena saremo pronti con il lancio della versione Beta ti invieremo un email di notifica",
+    "messageBannerButton": "Capito",
+
+    "waitlistBannerTitle": "Manca pochissimo...",
+    "waitlistBannerContent": "Unisciti alla community di Describify oggi stesso e ricevi un bonus esclusivo di 5 token al tuo primo accesso! Non perdere l'opportunità di essere tra i primi a sperimentare tutto ciò che abbiamo da offrire.",
+    "waitlistGadgetError": "Inserisci un email valida"
 }
