@@ -11,6 +11,8 @@ import { useTranslation } from 'react-i18next';
 import { Dropdown } from 'flowbite-react';
 //Supabase
 import { supabase } from '../services/client.tsx';
+//Images
+import logo from '../assets/images/Logo.webp';
 //Components
 import ModalLogout from "./ModalLogout.tsx";
 import ModalUsage from "./ModalUsage.tsx";
@@ -115,7 +117,9 @@ function Logo() {
     }
     return (
         <div className="w-1/2 md:w-1/4 p-y-10">
-            <Link to="/" className="text-3xl cursor-pointer font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray font-poppins" onClick={() => handleScroll()}>Describify</Link>
+            <Link to="/" onClick={() => handleScroll()} aria-label="link logo home">
+                <img src={logo} className="w-full md:w-3/5" alt='Logo Describify'/>
+            </Link>
         </div>
     );
 }
@@ -145,7 +149,7 @@ function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps)
     const { t } = useTranslation();
     return (
         <div className="w-1/2 md:w-1/4 flex items-center justify-end">
-            <ActiveButton text={t('buttonSubscribe')} onClick={() => setModalWaitlistOpen(true)}/>
+            <ActiveButton text={t('buttonSubscribe')} onClick={() => setModalWaitlistOpen(true)} />
         </div>
     );
 }

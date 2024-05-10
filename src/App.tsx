@@ -38,7 +38,7 @@ export default function App() {
       <Routes>
         <Route index element={<HomePage setModalWaitListOpen={setModalWaitListOpen} />} />
         <Route path="/" element={<HomePage setModalWaitListOpen={setModalWaitListOpen} />} />
-        <Route path="/terms-&-conditions" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
+        <Route path="/terms-conditions" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
         <Route path="*" element={<ErrorPage />} />

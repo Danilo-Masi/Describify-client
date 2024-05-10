@@ -48,7 +48,7 @@ export default function LegalPage({ setModalWaitListOpen }: PrivacyPolicyProps) 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
             <Navbar setModalWaitListOpen={setModalWaitListOpen} />
-            <div className="w-[90%] h-auto flex flex-col items-start justify-start gap-y-8 py-5 md:py-10">
+            <div className="w-[90%] h-auto flex flex-col items-start justify-start gap-y-8 py-5 md:py-10" id="Start">
                 <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{data?.titlePrimary}</h1>
                 <p className="text-md font-medium text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">{data?.captionPrimary}</p>
                 {data?.paragraphs.map((paragraph, index) => (

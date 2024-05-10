@@ -15,7 +15,6 @@ export default {
         "poppins": ['Poppins', 'sans-serif'],
         "lora": ['Lora', 'serif']
       },
-      //Palette colori
       colors: {
         // Colori per la light mode
         custom: {
@@ -69,13 +68,11 @@ export default {
         }
       },
       backgroundImage: {
-        'custom-gradient': 'linear-gradient(to bottom, #D65A61, #FAFAFA, #FAFAFA, #FAFAFA, #FAFAFA)', //Gradient chiaro
-        'dark-gradient': 'radial-gradient(40% 40% at 50% 50%, #573F9B 5%, #010314 100%)', //Gradient scuro md
+        'dark-gradient': 'radial-gradient(40% 40% at 50% 50%, #573F9B 5%, #010314 100%)',
         'bg-grid': 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 32 32\' width=\'32\' height=\'32\' fill=\'none\' stroke=\'%23010314\'%3E%3Cpath d=\'M0 .5H31.5V32\'/%3E%3C/svg%3E")',
       }
     },
   },
-
   plugins: [
     require('flowbite/plugin')({
       charts: true,
