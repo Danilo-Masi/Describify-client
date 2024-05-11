@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 //React-router
-import { useLocation } from "react-router-dom"; 
+import { useLocation } from "react-router-dom";
 //Components
 import { Layout } from "../components/Layout";
 import Navbar from "../components/Navbar";
@@ -28,12 +28,11 @@ export default function LegalPage({ setModalWaitListOpen }: PrivacyPolicyProps) 
     const [data, setData] = useState<PrivacyDataProps | null>(null);
 
     useEffect(() => {
-        // Ottieni l'URL corrente
-        const currentURL = location.pathname;
+        const currentURL = location.pathname; //Ottiene l'URL corrente della pagina
         if (currentURL.includes("terms-&-conditions")) {
             import("../data/terms_&_conditions.json").then((data) => {
                 setData(data);
-            }); 
+            });
         } else if (currentURL.includes("privacy-policy")) {
             import("../data/privacy_policy.json").then((data) => {
                 setData(data);

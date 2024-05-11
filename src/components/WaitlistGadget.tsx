@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 import { useTranslation } from 'react-i18next';
 //Components
 import ModalMessage from "./ModalMessage";
+import AlertMessage from "./AlertMessage";
 
 // Funzione per validare l'email lato Client
 const validateEmail = (email: string) => {
@@ -41,7 +42,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
             }
             return false;
         } catch (error) {
-            console.error(error);
+            console.error("Errore nel metodo dell'invio dell'email", error);
             return false;
         }
     }
@@ -57,23 +58,28 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                 if (response.status === 200) {
                     const emailSent = await sendWaitlistEmail();
                     if (emailSent) {
-                        alert('Iscrizione alla waitlist effettuata con successo e email inviata!');
+                        //AGGIUNGERE MESSAGGIO E VISIBILITA ALERT
                     } else {
-                        alert('Iscrizione alla waitlist effettuata, ma invio email fallito.');
+                        //Errore nell'invio dell'email
+                        console.error("Iscrizione alla waitlist effettuata, invio email non andato a buon fine");
                     }
                     setEmailLoading(false);
                     setEmailInput("");
                     setEmailSend(true);
                 } else {
-                    alert('Errore durante l\'iscrizione alla waitlist.');
+                    //Errore nell'iscrizione alla waitlist
+                    console.error("Errore durante l'iscrizione alla waitlist")
+                    alert("Errore durante l'iscrizione alla waitlist."); //AGGIUNGERE MESSAGGIO E VISIBILITA ALERT
                     setEmailLoading(false);
                 }
             } catch (error) {
-                console.error('Errore:', error);
-                setErrorInput("Si è verificato un errore durante l'iscrizione alla waitlist.");
+                //Errore "imprevisto" nell'iscrizione alla waitlist
+                console.error("Errore imprevisto durante l'iscrizione alla waitlist:", error);
+                setErrorInput("Si è verificato un errore durante l'iscrizione alla waitlist."); //TRADURRE
                 setEmailLoading(false);
             }
         } else {
+            //Email digitata male
             const erroreEmail = t('waitlistGadgetError');
             setErrorInput(erroreEmail);
             setEmailLoading(false);
@@ -110,11 +116,11 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                     onClick={submitWaitlist}
                     type="submit"
                     className={`w-full md:w-min py-3 px-5 md:ms-2 text-sm font-semibold text-dark-textPrimaryGray rounded-lg border ${buttonColor ? buttonColor : 'bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor border-0'}`}>
-                    Iscriviti
+                    {t('buttonSubscribe')}
                 </button>
             )}
             {/* Modal */}
-            {emailSend ? <ModalMessage onClose={() => setEmailSend(false)} /> : ''}
+            {emailSend && <ModalMessage onClose={() => setEmailSend(false)} />}
         </form >
 
     )

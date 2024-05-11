@@ -23,8 +23,13 @@ export default function Prices({ id, accessToken, setModalWaitListOpen }: Prices
   const [verificaLingua, setVerificaLingua] = useState("");
 
   useEffect(() => {
-    const language = localStorage.getItem('language') || "it";
-    setVerificaLingua(language);
+    const language = localStorage.getItem('language');
+    if(language !== null) {
+      setVerificaLingua(language);
+    }else {
+      const languageDefault = localStorage.getItem('i18nextLng') || 'it';
+      setVerificaLingua(languageDefault);
+    }
   }, [verificaLingua]);
 
   return (
