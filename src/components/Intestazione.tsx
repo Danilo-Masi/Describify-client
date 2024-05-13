@@ -1,8 +1,6 @@
 import { useEffect, useRef } from "react";
-//GSAP
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+//Utilities
+import { handleFade } from '../utilities/animations';
 //Flowbite
 import { Badge } from "flowbite-react";
 
@@ -22,22 +20,19 @@ export default function Intestazione({ badgeValue, titleValue, descriptionValue,
     const captionRef = useRef(null);
 
     useEffect(() => {
-        //GSAP
-        const title = titleRef.current;
-        const caption = captionRef.current;
-        gsap.fromTo(title, { opacity: 0 }, { opacity: 1, duration: 1.5, scrollTrigger: { trigger: title } });
-        gsap.fromTo(caption, { opacity: 0 }, { opacity: 1, duration: 1, scrollTrigger: { trigger: caption }, delay: 0.5 });
-        // Cleanup 
-        return () => {
-            ScrollTrigger.getAll().forEach(t => t.kill());
-        };
+        //Reference
+        const title = titleRef.current || "";
+        const caption = captionRef.current || "";
+        //Avvio delle animazioni
+        handleFade(title, 1.0, 0.0);
+        handleFade(caption, 1.0, 0.5);
     }, [accessToken]);
 
     return (
         <div className="md:w-2/4 h-auto flex flex-col items-center justify-center gap-y-5 z-10">
-            {badgeValue && <Badge color="none" className="px-5 py-2 rounded-xl border border-custom-textPrimaryGray dark:border-dark-borderGray text-custom-textPrimaryGray dark:text-dark-textPrimaryGray font-poppins font-semibold">{badgeValue}</Badge>}
-            <h1 className={`${titleDimension ? titleDimension : 'text-6xl'} ${mdTitleDimension} text-balance text-center text-custom-textPrimaryGray dark:text-dark-textPrimaryGray font-poppins font-bold`} ref={titleRef}>{titleValue}</h1>
-            <p className={`${descriptionDimension ? descriptionDimension : 'text-lg'} text-balance text-center text-custom-textSecondaryGray dark:text-dark-textSecondaryGray font-lora font-medium`} ref={captionRef}>{descriptionValue}</p>
+            {badgeValue && <Badge color="none" className="px-5 py-2 rounded-xl border border-custom-textPrimaryGray dark:border-dark-borderGray text-custom-textPrimaryGray dark:text-dark-textPrimaryGray font-bold">{badgeValue}</Badge>}
+            <h1 className={`${titleDimension ? titleDimension : 'text-5xl'} ${mdTitleDimension ? mdTitleDimension : 'md:text-6xl'} text-balance text-center text-custom-textPrimaryGray dark:text-dark-textPrimaryGray font-bold`} ref={titleRef}>{titleValue}</h1>
+            <p className={`${descriptionDimension ? descriptionDimension : 'text-lg'} text-balance text-center text-custom-textSecondaryGray dark:text-dark-textSecondaryGray font-light`} ref={captionRef}>{descriptionValue}</p>
         </div>
     );
 }

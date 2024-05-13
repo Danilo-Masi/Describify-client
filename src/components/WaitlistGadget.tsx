@@ -1,15 +1,10 @@
 import { useState } from "react";
 //Axios
 import axios from 'axios';
-//GSAP
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 //I18Next
 import { useTranslation } from 'react-i18next';
 //Components
 import ModalMessage from "./ModalMessage";
-import AlertMessage from "./AlertMessage";
 
 // Funzione per validare l'email lato Client
 const validateEmail = (email: string) => {
@@ -28,12 +23,12 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
 
     const { t } = useTranslation();
 
-    const [emailInput, setEmailInput] = useState("");
-    const [errorInput, setErrorInput] = useState("");
-    const [emailLoading, setEmailLoading] = useState(false);
-    const [emailSend, setEmailSend] = useState(false);
+    const [emailInput, setEmailInput] = useState(""); //Valore dell'email inserita dall'utente
+    const [errorInput, setErrorInput] = useState(""); //Imposta messaggio di errore
+    const [emailLoading, setEmailLoading] = useState(false); //Imposta in stato di loading
+    const [emailSend, setEmailSend] = useState(false); //Imposta in stato di inviato
 
-    //Funzione per inviare l'email di confermata iscrizione alla waitlist
+    //Funzione per inviare l'email una volta iscritti alla waitlist (Resend)
     const sendWaitlistEmail = async () => {
         try {
             const response = await axios.post('http://localhost:3000/send-email', { email: emailInput });
@@ -47,7 +42,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
         }
     }
 
-    // Funzione per aggiungere un'email al software di waitlist
+    // Funzione per aggiungere un'utente alla waitlist
     const submitWaitlist = async (e: any) => {
         e.preventDefault();
         setEmailLoading(true);
@@ -60,7 +55,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                     if (emailSent) {
                         //AGGIUNGERE MESSAGGIO E VISIBILITA ALERT
                     } else {
-                        //Errore nell'invio dell'email
+                        //Errore nell'invio dell'email (Resend)
                         console.error("Iscrizione alla waitlist effettuata, invio email non andato a buon fine");
                     }
                     setEmailLoading(false);
@@ -87,7 +82,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
     };
 
     return (
-        <form className={`flex flex-col md:flex-row items-start justify-center w-full gap-y-5 z-10 font-poppins ${mdWidth ? mdWidth : 'md:w-2/6'}`}>
+        <form className={`flex flex-col md:flex-row items-start justify-center w-full gap-y-5 z-10 ${mdWidth ? mdWidth : 'md:w-2/6'}`}>
             {/* Email input */}
             <div className="w-full">
                 <input
@@ -122,6 +117,5 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
             {/* Modal */}
             {emailSend && <ModalMessage onClose={() => setEmailSend(false)} />}
         </form >
-
-    )
+    );
 }

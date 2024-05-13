@@ -2,12 +2,10 @@
 import { useTranslation } from 'react-i18next';
 //React-router
 import { Link } from "react-router-dom";
-//GSAP
-import { gsap } from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-gsap.registerPlugin(ScrollToPlugin);
 //Images
 import logo from '../assets/images/Logo.webp';
+//Utils
+import { handleScroll } from '../utilities/animations';
 
 interface FooterColProps {
     children: any;
@@ -27,12 +25,12 @@ export default function Footer() {
 
     const { t } = useTranslation();
 
-    const handleScroll = (divId: string) => {
-        gsap.to(window, { duration: 1, scrollTo: { y: divId, offsetY: 50 } });
-    }
+    //const handleScroll = (divId: string) => {
+    //    gsap.to(window, { duration: 1, scrollTo: { y: divId, offsetY: 50 } });
+    //}
 
     return (
-        <div className="w-full flex items-center justify-center border-t border-custom-borderGray dark:border-dark-borderGray font-poppins">
+        <div className="w-full flex items-center justify-center border-t border-custom-borderGray dark:border-dark-borderGray">
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
                 {/* Logo */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>

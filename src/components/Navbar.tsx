@@ -1,24 +1,16 @@
-import { useState, useCallback, useEffect, Dispatch, SetStateAction } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 //React-router
-import { useNavigate, Link } from "react-router-dom";
-//GSAP
-import { gsap } from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-gsap.registerPlugin(ScrollToPlugin);
+import { Link } from "react-router-dom";
+//Utils
+import { handleScroll } from '../utilities/animations';
 //I18Next
 import { useTranslation } from 'react-i18next';
-//Flowbite
-import { Dropdown } from 'flowbite-react';
-//Supabase
-import { supabase } from '../services/client.tsx';
 //Images
 import logo from '../assets/images/Logo.webp';
 //Components
-import ModalLogout from "./ModalLogout.tsx";
-import ModalUsage from "./ModalUsage.tsx";
-import ModalSettings from "./ModalSettings.tsx";
 import ActiveButton from "./ActiveButton.tsx";
 
+{/* 
 function AccessButton() {
     return (
         <>
@@ -110,15 +102,14 @@ function UserProfile({ emailUser }: UserProfileProps) {
     );
 }
 
+*/}
+
 //Logo della NavBar
 function Logo() {
-    const handleScroll = () => {
-        gsap.to(window, { duration: 1, scrollTo: { y: "#Home", offsetY: 50 } });
-    }
     return (
         <div className="w-1/2 md:w-1/4 p-y-10">
-            <Link to="/" onClick={() => handleScroll()} aria-label="link logo home">
-                <img src={logo} className="w-full md:w-3/5" alt='Logo Describify'/>
+            <Link to="/" onClick={() => handleScroll("#Home")} aria-label="link logo home">
+                <img src={logo} className="w-full md:w-3/5" alt='Logo Describify' />
             </Link>
         </div>
     );
@@ -127,15 +118,12 @@ function Logo() {
 //Link di navigazione della NavBar
 function MenuElements() {
     const { t } = useTranslation();
-    const handleScroll = (divId: string) => {
-        gsap.to(window, { duration: 1, scrollTo: { y: divId, offsetY: 50 } });
-    }
     return (
-        <div className="md:w-2/4 hidden md:flex items-center justify-center gap-8 font-poppins">
-            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</Link>
-            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer`} onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</Link>
-            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer`} onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</Link>
-            <Link to="/" className={`text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</Link>
+        <div className="md:w-2/4 hidden md:flex items-center justify-center gap-8">
+            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => handleScroll("#Home")}>Home</Link>
+            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</Link>
+            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</Link>
+            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => handleScroll("#Faqs")}>Faqs</Link>
         </div >
     );
 }
@@ -160,7 +148,7 @@ interface NavbarProps {
     setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Navbar({ accessToken, emailUser, setModalWaitListOpen }: NavbarProps) {
+export default function Navbar({ setModalWaitListOpen }: NavbarProps) {
 
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -182,9 +170,6 @@ export default function Navbar({ accessToken, emailUser, setModalWaitListOpen }:
                 <Logo />
                 <MenuElements />
                 <JoinWaitllistButton setModalWaitlistOpen={setModalWaitListOpen} />
-                {/* 
-                {accessToken ? <UserProfile emailUser={emailUser} /> : <AccessButton />}
-                */}
             </div>
         </div>
     );

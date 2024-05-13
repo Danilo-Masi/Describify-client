@@ -11,7 +11,7 @@ interface LayoutProps {
 
 export function Layout({ children, padding, mdFlexOrientation, mdHeight, justifyPosition, bgColor }: LayoutProps) {
     return (
-        <div className={`w-full h-auto flex flex-col items-center ${justifyPosition ? justifyPosition : 'justify-start'} ${mdHeight} ${mdFlexOrientation} ${padding} ${bgColor ? bgColor : 'bg-custom-background dark:bg-dark-background'}`}>
+        <div className={`w-full h-auto flex flex-col items-center font-inter ${justifyPosition ? justifyPosition : 'justify-start'} ${mdHeight} ${mdFlexOrientation} ${padding} ${bgColor ? bgColor : 'bg-custom-background dark:bg-dark-background'}`}>
             {children}
         </div>
     );

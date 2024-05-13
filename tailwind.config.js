@@ -12,8 +12,7 @@ export default {
     extend: {
       //Font
       fontFamily: {
-        "poppins": ['Poppins', 'sans-serif'],
-        "lora": ['Lora', 'serif']
+        "inter": ['Inter', 'sans-serif'],
       },
       colors: {
         // Colori per la light mode
