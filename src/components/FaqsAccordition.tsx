@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react";
 //Flowbite
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
+//Utilities
+import { useLanguage } from "../utilities/useLanguage";
 //Data
 import { questionsEn } from "../data/questions_en";
 import { questionsIt } from "../data/questions_it";
 
 export default function FaqsAccordition() {
 
+    const language = useLanguage();
     const [domande, setDomande] = useState(questionsEn);
 
+    //Funzione per impostare le faqs nella lingua corrente
+    const aggiornaDomande = () => {
+        if (language === "en") {
+            setDomande(questionsEn);
+        } else {
+            setDomande(questionsIt);
+        }
+    };
+
     useEffect(() => {
-        const aggiornaDomande = () => {
-            const verificaLingua = localStorage.getItem("language") || "it";
-            if (verificaLingua === "en") {
-                setDomande(questionsEn);
-            } else {
-                setDomande(questionsIt);
-            }
-        };
-
         aggiornaDomande();
-
         window.addEventListener('languageChange', aggiornaDomande);
-
         // Cleanup
         return () => window.removeEventListener('languageChange', aggiornaDomande);
     }, []);

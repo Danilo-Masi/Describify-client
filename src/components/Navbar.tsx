@@ -2,7 +2,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from "react";
 //React-router
 import { Link } from "react-router-dom";
 //Utils
-import { handleScroll } from '../utilities/animations';
+import { handleScroll } from '../utilities/useAnimations.tsx';
 //I18Next
 import { useTranslation } from 'react-i18next';
 //Images

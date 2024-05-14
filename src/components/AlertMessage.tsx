@@ -1,9 +1,15 @@
+//Flowbite
 import { Alert } from "flowbite-react";
 
-export default function AlertMessage() {
+interface AlertMessageProps {
+  colorType: string;
+  message: string;
+}
+
+export default function AlertMessage({ colorType, message }: AlertMessageProps) {
   return (
-    <Alert color="failure">
-      <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
+    <Alert color={colorType}>
+      <p className="font-medium">{message}</p>
     </Alert>
-  )
+  );
 }

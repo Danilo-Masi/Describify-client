@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Cookie-consent
 import { useCookies } from "react-cookie";
+//Utilities
+import { useLanguage } from "./utilities/useLanguage";
 //Pages
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
@@ -13,17 +15,29 @@ import WaitlistModal from "./components/WaitlistModal";
 
 export default function App() {
 
+  const language = useLanguage();
   const [cookies] = useCookies(['userCookieConsent']);
   const [cookieModalOpen, setCookieModalOpen] = useState(true);
   const [modalWaitListOpen, setModalWaitListOpen] = useState(false);
 
   useEffect(() => {
-    if (cookies.userCookieConsent !== undefined) {
-      setCookieModalOpen(false);
-    } else {
+    if (cookies.userCookieConsent === undefined || cookies.userCookieConsent === null) {
       setCookieModalOpen(true);
+    } else {
+      setCookieModalOpen(false);
     }
   }, [cookies.userCookieConsent]);
+
+  useEffect(() => {
+    //Modica la lingua del file index.html
+    document.documentElement.lang = language;
+    // Carica i font dinamicamente
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap';
+    link.rel = 'stylesheet';
+    link.crossOrigin = 'anonymous';
+    document.head.appendChild(link);
+  }, [language]);
 
   return (
     <BrowserRouter>

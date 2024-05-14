@@ -7,7 +7,8 @@ import { featuresDetailsEn1, featuresDetailsEn2, featuresDetailsEn3, featuresDet
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
 import FeaturesStep from "./FeaturesStep";
-import { useEffect, useState } from 'react';
+//Utilities
+import { useLanguage } from '../utilities/useLanguage';
 
 interface FeaturesProps {
   id: string;
@@ -17,28 +18,20 @@ interface FeaturesProps {
 export default function Features({ id, accessToken }: FeaturesProps) {
 
   const { t } = useTranslation();
-
-  const [verificaLingua, setVerificaLingua] = useState("");
-
-  useEffect(() => {
-    const language = localStorage.getItem('language') || "it";
-    setVerificaLingua(language);
-  }, [verificaLingua]);
+  const language = useLanguage();
 
   return (
     <ContainerComponents id={id}>
-      {/* Intestazione */}
       <Intestazione
         accessToken={accessToken}
         badgeValue={t('featuresBadge').toUpperCase()}
         titleValue={t('featuresTitle')}
         descriptionValue={t('featuresDescription')} />
-      {/* Features step */}
       <div className=" flex flex-col gap-10 mt-10">
-        <FeaturesStep data={verificaLingua === 'it' ? featuresDetailsIt1 : featuresDetailsEn1} />
-        <FeaturesStep order1="md:order-2" order2="md:order-1" data={verificaLingua === 'it' ? featuresDetailsIt2 : featuresDetailsEn2} />
-        <FeaturesStep data={verificaLingua === 'it' ? featuresDetailsIt3 : featuresDetailsEn3} />
-        <FeaturesStep order1="md:order-2" order2="md:order-1" data={verificaLingua === 'it' ? featuresDetailsIt4 : featuresDetailsEn4} />
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1} />
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt2 : featuresDetailsEn2} order1="md:order-2" order2="md:order-1" />
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt3 : featuresDetailsEn3} />
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt4 : featuresDetailsEn4} order1="md:order-2" order2="md:order-1" />
       </div>
     </ContainerComponents>
   );

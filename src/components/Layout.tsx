@@ -45,3 +45,17 @@ export function ContainerInput({ children, flexOrentation }: ContainerInputProps
         </div>
     );
 }
+
+interface FooterColProps {
+    children: any;
+    mdWidth?: string;
+    mdItemsPosition?: string;
+}
+
+export function FooterCol({ children, mdWidth, mdItemsPosition }: FooterColProps) {
+    return (
+        <div className={`w-full flex flex-col items-center justify-center gap-5 md:gap-3 ${mdWidth ? mdWidth : 'md:w-1/5'} ${mdItemsPosition ? mdItemsPosition : 'md:items-center'}`}>
+            {children}
+        </div>
+    );
+}

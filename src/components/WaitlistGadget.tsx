@@ -3,16 +3,10 @@ import { useState } from "react";
 import axios from 'axios';
 //I18Next
 import { useTranslation } from 'react-i18next';
+//Utilities
+import { useEmail } from "../utilities/useEmail";
 //Components
 import ModalMessage from "./ModalMessage";
-
-// Funzione per validare l'email lato Client
-const validateEmail = (email: string) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-        return true;
-    }
-    return false;
-}
 
 interface WaitlistGadgetProps {
     mdWidth?: string;
@@ -47,7 +41,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
         e.preventDefault();
         setEmailLoading(true);
         setErrorInput("");
-        if (validateEmail(emailInput)) {
+        if (useEmail(emailInput)) {
             try {
                 const response = await axios.post('http://localhost:3000/signup-to-waitlist', { email: emailInput });
                 if (response.status === 200) {

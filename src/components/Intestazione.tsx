@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 //Utilities
-import { handleFade } from '../utilities/animations';
+import { handleFade } from '../utilities/useAnimations';
 //Flowbite
 import { Badge } from "flowbite-react";
 
@@ -24,8 +24,8 @@ export default function Intestazione({ badgeValue, titleValue, descriptionValue,
         const title = titleRef.current || "";
         const caption = captionRef.current || "";
         //Avvio delle animazioni
-        handleFade(title, 1.0, 0.0);
-        handleFade(caption, 1.0, 0.5);
+        handleFade(title, 0.5, 0.0);
+        handleFade(caption, 0.5, 0.5);
     }, [accessToken]);
 
     return (

@@ -4,35 +4,19 @@ import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 //Images
 import logo from '../assets/images/Logo.webp';
-//Utils
-import { handleScroll } from '../utilities/animations';
-
-interface FooterColProps {
-    children: any;
-    mdWidth?: string;
-    mdItemsPosition?: string;
-}
-
-function FooterCol({ children, mdWidth, mdItemsPosition }: FooterColProps) {
-    return (
-        <div className={`w-full flex flex-col items-center justify-center gap-5 md:gap-3 ${mdWidth ? mdWidth : 'md:w-1/5'} ${mdItemsPosition ? mdItemsPosition : 'md:items-center'}`}>
-            {children}
-        </div>
-    );
-}
+//Utilities
+import { handleScroll } from '../utilities/useAnimations';
+//Components
+import { FooterCol } from './Layout';
 
 export default function Footer() {
 
     const { t } = useTranslation();
 
-    //const handleScroll = (divId: string) => {
-    //    gsap.to(window, { duration: 1, scrollTo: { y: divId, offsetY: 50 } });
-    //}
-
     return (
         <div className="w-full flex items-center justify-center border-t border-custom-borderGray dark:border-dark-borderGray">
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
-                {/* Logo */}
+                {/* Logo e link social */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>
                     <img src={logo} className="w-1/2 md:w-2/6" alt='Logo Describify' />
                     <p className="max-w-md md:text-start text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
@@ -56,7 +40,7 @@ export default function Footer() {
                         </a>
                     </div>
                 </FooterCol>
-                {/* Link */}
+                {/* Link di navigazione della pagina */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Link</p>
                     <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</Link>
@@ -64,7 +48,7 @@ export default function Footer() {
                     <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</Link>
                     <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</Link>
                 </FooterCol>
-                {/* Company */}
+                {/* Terms & policy */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('footerTerms')}</p>
                     <Link to="/terms-conditions" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => handleScroll("Start")}>Terms & Conditions</Link>
