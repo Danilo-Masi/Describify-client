@@ -9,6 +9,7 @@ import { useLanguage } from "./utilities/useLanguage";
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
 import ErrorPage from "./pages/ErrorPage";
+import ProductPage from "./pages/ProductPage";
 //Components
 import ModalCookies from "./components/ModalCookies";
 import WaitlistModal from "./components/WaitlistModal";

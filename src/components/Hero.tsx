@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Intestazione from "./Intestazione";
 import WaitlistGadget from "./WaitlistGadget";
 import GridBackground from './GridBackground';
+import Product from './Product';
 
 interface HeroProps {
     id: string;
@@ -22,8 +23,7 @@ export default function Hero({ id }: HeroProps) {
                 titleValue={t('heroTitle')}
                 descriptionValue={t('heroDescription')} />
             <WaitlistGadget />
-            <div className="w-full md:w-3/4 h-[80svh] bg-custom-elevation3 dark:bg-dark-elevation3 rounded-lg mt-5 z-10">
-            </div>
+            <Product />
         </GridBackground>
     );
 }

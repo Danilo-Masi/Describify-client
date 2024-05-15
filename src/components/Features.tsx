@@ -9,6 +9,9 @@ import Intestazione from "./Intestazione";
 import FeaturesStep from "./FeaturesStep";
 //Utilities
 import { useLanguage } from '../utilities/useLanguage';
+//Images
+import image1 from '../assets/images/Features_graphic_1.png';
+import image2 from '../assets/images/features_graphic_2.png';
 
 interface FeaturesProps {
   id: string;
@@ -27,11 +30,11 @@ export default function Features({ id, accessToken }: FeaturesProps) {
         badgeValue={t('featuresBadge').toUpperCase()}
         titleValue={t('featuresTitle')}
         descriptionValue={t('featuresDescription')} />
-      <div className=" flex flex-col gap-10 mt-10">
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1} />
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt2 : featuresDetailsEn2} order1="md:order-2" order2="md:order-1" />
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt3 : featuresDetailsEn3} />
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt4 : featuresDetailsEn4} order1="md:order-2" order2="md:order-1" />
+      <div className="flex flex-col items-center gap-20 mt-10">
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1} imageUrl={image1}/>
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt2 : featuresDetailsEn2} imageUrl={image2} order1="md:order-2" order2="md:order-1" />
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt3 : featuresDetailsEn3} imageUrl={image1}/>
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt4 : featuresDetailsEn4} imageUrl={image1}order1="md:order-2" order2="md:order-1" />
       </div>
     </ContainerComponents>
   );

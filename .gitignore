@@ -3,6 +3,7 @@ src/services/
 src/data/data.tsx
 src/pages/SigninPage.tsx
 src/pages/SignupPage.tsx
+src/pages/ProductPage.tsx
 src/components/SkeletonForm.tsx
 src/components/ModalUsage.tsx
 src/components/ModalSettings.tsx

@@ -54,7 +54,7 @@ interface FooterColProps {
 
 export function FooterCol({ children, mdWidth, mdItemsPosition }: FooterColProps) {
     return (
-        <div className={`w-full flex flex-col items-center justify-center gap-5 md:gap-3 ${mdWidth ? mdWidth : 'md:w-1/5'} ${mdItemsPosition ? mdItemsPosition : 'md:items-center'}`}>
+        <div className={`w-full flex flex-col items-center justify-center gap-3 md:gap-2 ${mdWidth ? mdWidth : 'md:w-1/5'} ${mdItemsPosition ? mdItemsPosition : 'md:items-center'}`}>
             {children}
         </div>
     );
