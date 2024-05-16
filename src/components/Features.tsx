@@ -26,15 +26,17 @@ export default function Features({ id, accessToken }: FeaturesProps) {
   return (
     <ContainerComponents id={id}>
       <Intestazione
-        accessToken={accessToken}
         badgeValue={t('featuresBadge').toUpperCase()}
         titleValue={t('featuresTitle')}
-        descriptionValue={t('featuresDescription')} />
+        descriptionValue={t('featuresDescription')}
+        accessToken={accessToken}
+        titleStyle="text-5xl md:text-6xl"
+        descriptionStyle="text-lg" />
       <div className="flex flex-col items-center gap-20 mt-10">
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1} imageUrl={image1}/>
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1} imageUrl={image1} />
         <FeaturesStep data={language === 'it' ? featuresDetailsIt2 : featuresDetailsEn2} imageUrl={image2} order1="md:order-2" order2="md:order-1" />
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt3 : featuresDetailsEn3} imageUrl={image1}/>
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt4 : featuresDetailsEn4} imageUrl={image1}order1="md:order-2" order2="md:order-1" />
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt3 : featuresDetailsEn3} imageUrl={image1} />
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt4 : featuresDetailsEn4} imageUrl={image1} order1="md:order-2" order2="md:order-1" />
       </div>
     </ContainerComponents>
   );

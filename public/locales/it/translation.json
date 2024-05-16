@@ -25,6 +25,17 @@
     "heroTitle": "Trasforma ogni click in vendita",
     "heroDescription": "Ottimizza gli annunci e incrementa le vendite su eBay, Vinted e altre piattaforme con la potenza dell'AI",
     
+    "productDetails": "Crea la descrizione perfetta per i tuoi annunci",
+    "productCategoryLabel":"Scegli la categoria del prodotto",
+    "productBrandLabel": "Marca del prodotto",
+    "productSizeLabel": "Scegli la dimensione",
+    "productColorLabel": "Scegli un colore",
+    "productGenerateButton": "Genera descrizione",
+    "productFormTitleLabel": "Titolo",
+    "productFormDescriptionLabel": "Descrizione",
+    "productCopyButton": "Copia",
+    "productCopiedButton": "Copiato",
+    
     "featuresBadge": "Come funziona?",
     "featuresTitle": "Semplifica la Vendita",
     "featuresDescription": "Il nostro AI crea per te descrizioni che catturano l'attenzione e si distinguono. Più interesse significa più vendite. Risparmia tempo e aumenta i profitti con Describify.",

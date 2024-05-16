@@ -6,7 +6,7 @@ import { Layout } from "../components/Layout";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-interface PrivacyPolicyProps {
+interface TermsDataProps {
     setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -21,7 +21,7 @@ interface PrivacyDataProps {
     paragraphs: ParagraphProps[],
 }
 
-export default function LegalPage({ setModalWaitListOpen }: PrivacyPolicyProps) {
+export default function LegalPage({ setModalWaitListOpen }: TermsDataProps) {
 
     const location = useLocation();
 
@@ -30,15 +30,15 @@ export default function LegalPage({ setModalWaitListOpen }: PrivacyPolicyProps) 
     useEffect(() => {
         const currentURL = location.pathname; //Ottiene l'URL corrente della pagina
         if (currentURL.includes("terms-&-conditions")) {
-            import("../data/terms_&_conditions.json").then((data) => {
+            import("../data/legalData/terms_&_conditions.json").then((data) => {
                 setData(data);
             });
         } else if (currentURL.includes("privacy-policy")) {
-            import("../data/privacy_policy.json").then((data) => {
+            import("../data/legalData/privacy_policy.json").then((data) => {
                 setData(data);
             });
         } else {
-            import("../data/cookie_policy.json").then((data) => {
+            import("../data/legalData/cookie_policy.json").then((data) => {
                 setData(data);
             });
         }

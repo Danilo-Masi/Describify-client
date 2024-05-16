@@ -1,8 +1,34 @@
+import { useCallback, useState } from 'react';
+//I18Next
+import { useTranslation } from 'react-i18next';
+//data
+import { taglie, colori, categorie } from '../data/options_it';
+//Components
+import WaitlistModal from "./WaitlistModal";
+import ModalDropdown from "./ModalDropdow";
+
+//Type definitions
 interface InputSelectProps {
     mdWidth?: string,
     valoreLabel: string,
     valoreInput: string,
-    onClick: () => void
+    onClick: () => void,
+}
+
+interface TextInputProps {
+    valoreLabel: string;
+    valoreInput: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+interface ButtonGenerateProps {
+    labelButton: string;
+    onClick: () => void;
+}
+
+interface ModalItem {
+    value: string;
+    children?: ModalItem[];
 }
 
 function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelectProps) {
@@ -24,34 +50,24 @@ function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelect
     );
 }
 
-interface TextInputProps {
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    valoreLabel: string;
-}
-
-function TextInput({ onChange, valoreLabel }: TextInputProps) {
+function TextInput({ valoreLabel, valoreInput, onChange }: TextInputProps) {
     return (
         <div className="w-full flex flex-col gap-2">
             <label htmlFor={valoreLabel} className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
                 {valoreLabel}
             </label>
             <input
-                type="text"
-                placeholder="Zara, Apple, Canon"
-                className="w-full rounded-lg p-3 bg-custom-elevation3 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
                 id={valoreLabel}
-                required
+                type="text"
+                placeholder="Massimo Dutti"
+                className="w-full rounded-lg p-3 bg-custom-elevation3 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textSecondaryGray dark:text-dark-textSecondaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
+                value={valoreInput}
                 onChange={onChange} />
         </div>
     );
 }
 
-interface ButtonGenerateProps {
-    onClick: () => void;
-    labelButton: string;
-}
-
-function ButtonGenerate({ onClick, labelButton }: ButtonGenerateProps) {
+function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
     return (
         <button
             onClick={onClick}
@@ -66,13 +82,52 @@ function ButtonGenerate({ onClick, labelButton }: ButtonGenerateProps) {
 }
 
 export default function ProductForm() {
+    const { t } = useTranslation();
+    //Valori inseriti dall'utente
+    const [selectedCategory, setSelectedCategory] = useState("Camicie");
+    const [selectedBrand, setSelectedBrand] = useState("");
+    const [selectedSize, setSelectedSize] = useState("M");
+    const [selectedColor, setSelectedColor] = useState("Azzurro");
+    //Valori del modalDrowpdow
+    const [modalTitle, setModalTitle] = useState("");
+    const [modalData, setModalData] = useState<ModalItem[]>([]);
+    const [modalContext, setModalContext] = useState("");
+    //Booleani per l'apertura dei modal
+    const [isDropdownModalOpen, setModalDropdownOpen] = useState(false);
+    const [isWaitlistModalOpen, setModalWaitlistOpen] = useState(false);
+
+    const handleDropwdown = useCallback((titoloModal: string, datiModal: ModalItem[], context: string) => {
+        setModalTitle(titoloModal);
+        setModalData(datiModal);
+        setModalDropdownOpen(true);
+        setModalContext(context)
+    }, []);
+
+    const handleSelect = (value: string, context: string) => {
+        switch (context) {
+            case "categoria":
+                setSelectedCategory(value);
+                break;
+            case "dimensione":
+                setSelectedSize(value);
+                break;
+            case "colore":
+                setSelectedColor(value);
+                break;
+            default:
+                break;
+        }
+    }
+
     return (
         <div className="w-full h-fit flex flex-wrap items-start justify-start gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
-            <InputSelect valoreLabel="Scegli la categoria del prodotto" valoreInput="Fotocamera, Pantaloni" />
-            <TextInput valoreLabel="Marca del prodotto"/>
-            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel="Scegli la taglia" valoreInput="XS, M, XL" />
-            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel="Scegli un colore" valoreInput="Amaranto, Verde" />
-            <ButtonGenerate labelButton="Genera descrizione" />
+            <InputSelect valoreLabel={t('productCategoryLabel')} valoreInput={selectedCategory} onClick={() => handleDropwdown(t('productCategoryLabel'), categorie, "categoria")} />
+            <TextInput valoreLabel={t('productBrandLabel')} valoreInput={selectedBrand} onChange={e => setSelectedBrand(e.target.value)} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productSizeLabel')} valoreInput={selectedSize} onClick={() => handleDropwdown(t('productSizeLabel'), taglie, "dimensione")} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productColorLabel')} valoreInput={selectedColor} onClick={() => handleDropwdown(t('productColorLabel'), colori, "colore")} />
+            <ButtonGenerate labelButton={t('productGenerateButton')} onClick={() => setModalWaitlistOpen(true)} />
+            {isDropdownModalOpen && <ModalDropdown onClose={() => setModalDropdownOpen(false)} valoreTitoloModal={modalTitle} arrayDati={modalData} context={modalContext} onSelect={handleSelect} />}
+            {isWaitlistModalOpen && <WaitlistModal onClose={() => setModalWaitlistOpen(false)} />}
         </div>
     );
 }

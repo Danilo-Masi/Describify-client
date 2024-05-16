@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 //Utilities
-import { handleFade } from '../utilities/useAnimations';
+import { fadeInElement } from '../utilities/useAnimations';
 
 interface FeaturesStepProps {
     order1?: string;
@@ -21,9 +21,9 @@ export default function FeaturesStep({ order1, order2, data, imageUrl }: Feature
         const caption = captionRef.current || "";
         const image = imgRef.current || "";
         //Avvio delle animazioni
-        handleFade(title, 0.5, 0.0);
-        handleFade(caption, 0.5, 0.5);
-        handleFade(image, 0.5, 1.0);
+        fadeInElement(title, 0.5, 0.0);
+        fadeInElement(caption, 0.5, 0.5);
+        fadeInElement(image, 0.5, 1.0);
     }, []);
 
     return (

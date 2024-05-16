@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 //I18Next
 import { useTranslation } from 'react-i18next';
 //Utilities
-import { handleFade } from '../utilities/useAnimations';
+import { fadeInElement } from '../utilities/useAnimations';
 import { useLanguage } from '../utilities/useLanguage';
 //Data
 import { freePlanIt, standardPlanIt, premiumPlanIt } from '../data/card_details_it';
@@ -33,19 +33,21 @@ export default function Prices({ id, accessToken, setModalWaitListOpen }: Prices
     const price2 = priceCardRef2.current || "";
     const price3 = priceCardRef3.current || "";
     //Avvio delle animazioni
-    handleFade(price1, 0.5, 0.0);
-    handleFade(price2, 0.5, 0.5);
-    handleFade(price3, 0.5, 1.0);
+    fadeInElement(price1, 0.5, 0.0);
+    fadeInElement(price2, 0.5, 0.5);
+    fadeInElement(price3, 0.5, 1.0);
   }, []);
 
   return (
     <ContainerComponents id={id}>
       {/* Intestazione */}
       <Intestazione
-        accessToken={accessToken}
         badgeValue={t('pricesBadge').toUpperCase()}
         titleValue={t('pricesTitle')}
-        descriptionValue={t('pricesDescription')} />
+        descriptionValue={t('pricesDescription')}
+        accessToken={accessToken}
+        titleStyle="text-5xl md:text-6xl"
+        descriptionStyle="text-lg" />
       <div className='w-full md:w-4/5 h-auto flex flex-col md:flex-row gap-x-5 gap-y-12'>
         <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? freePlanIt : freePlanEn} reference={priceCardRef1} />
         <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? standardPlanIt : standardPlanEn} reference={priceCardRef2} />

@@ -1,5 +1,4 @@
 //Components
-
 import ProductForm from "./ProductForm";
 import ProductCaption from "./ProductCaption";
 import ProductTitle from "./ProductTitle";

@@ -11,7 +11,7 @@ interface LayoutProps {
 
 export function Layout({ children, padding, mdFlexOrientation, mdHeight, justifyPosition, bgColor }: LayoutProps) {
     return (
-        <div className={`w-full h-auto flex flex-col items-center font-inter ${justifyPosition ? justifyPosition : 'justify-start'} ${mdHeight} ${mdFlexOrientation} ${padding} ${bgColor ? bgColor : 'bg-custom-background dark:bg-dark-background'}`}>
+        <div className={`w-full h-auto flex flex-col items-center font-inter ${justifyPosition ?? 'justify-start'} ${mdHeight} ${mdFlexOrientation ?? ''} ${padding ?? ''} ${bgColor ?? 'bg-custom-background dark:bg-dark-background'}`}>
             {children}
         </div>
     );
@@ -20,13 +20,13 @@ export function Layout({ children, padding, mdFlexOrientation, mdHeight, justify
 interface ContainerComponentsProps {
     children: ReactNode;
     id?: string;
-    gap?: string;
+    spacing?: string;
 }
 
-export function ContainerComponents({ children, id, gap }: ContainerComponentsProps) {
+export function ContainerComponents({ children, id, spacing }: ContainerComponentsProps) {
     return (
         <div
-            className={`w-[90%] h-auto flex flex-col items-center justify-start py-16 ${gap ? gap : 'gap-y-10'}`}
+            className={`w-[90%] h-auto flex flex-col items-center justify-start py-16 ${spacing ?? 'gap-y-10'}`}
             id={id}>
             {children}
         </div>
@@ -35,26 +35,26 @@ export function ContainerComponents({ children, id, gap }: ContainerComponentsPr
 
 interface ContainerInputProps {
     children: ReactNode;
-    flexOrentation: string;
+    flexOrientation: string;
 }
 
-export function ContainerInput({ children, flexOrentation }: ContainerInputProps) {
+export function ContainerInput({ children, flexOrientation }: ContainerInputProps) {
     return (
-        <div className={`w-full flex items-start justify-between ${flexOrentation}`}>
+        <div className={`w-full flex items-start justify-between ${flexOrientation}`}>
             {children}
         </div>
     );
 }
 
 interface FooterColProps {
-    children: any;
+    children: ReactNode;
     mdWidth?: string;
     mdItemsPosition?: string;
 }
 
 export function FooterCol({ children, mdWidth, mdItemsPosition }: FooterColProps) {
     return (
-        <div className={`w-full flex flex-col items-center justify-center gap-3 md:gap-2 ${mdWidth ? mdWidth : 'md:w-1/5'} ${mdItemsPosition ? mdItemsPosition : 'md:items-center'}`}>
+        <div className={`w-full flex flex-col items-center justify-center gap-3 md:gap-2 ${mdWidth ?? 'md:w-1/5'} ${mdItemsPosition ?? 'md:items-center'}`}>
             {children}
         </div>
     );

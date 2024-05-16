@@ -18,10 +18,12 @@ export default function Faqs({ id, accessToken }: FaqsProps) {
     <ContainerComponents id={id}>
       {/* Intestazione */}
       <Intestazione
-        accessToken={accessToken}
         badgeValue="FAQs"
         titleValue={t('faqsTitle')}
-        descriptionValue={t('faqsDescription')} />
+        descriptionValue={t('faqsDescription')}
+        accessToken={accessToken}
+        titleStyle="text-5xl md:text-6xl"
+        descriptionStyle="text-lg" />
       {/* Faqs box */}
       <FaqsAccordition />
     </ContainerComponents>

@@ -24,6 +24,17 @@
 
     "heroTitle": "Turn every click into a sale.",
     "heroDescription": "Optimize ads and increase sales on eBay, Vinted, and other platforms with the power of AI",
+
+    "productDetails": "Create the perfect description for your listings",
+    "productCategoryLabel": "Choose the product category",
+    "productBrandLabel": "Product brand",
+    "productSizeLabel": "Choose the size",
+    "productColorLabel": "Choose a color",
+    "productGenerateButton": "Generate description",
+    "productFormTitleLabel": "Title",
+    "productFormDescriptionLabel": "Description",
+    "productCopyButton": "Copy",
+    "productCopiedButton": "Copied",
     
     "featuresBadge": "How does it work?",
     "featuresTitle": "Effortless Selling Starts Here",

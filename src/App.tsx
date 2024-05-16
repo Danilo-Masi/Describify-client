@@ -9,7 +9,6 @@ import { useLanguage } from "./utilities/useLanguage";
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
 import ErrorPage from "./pages/ErrorPage";
-import ProductPage from "./pages/ProductPage";
 //Components
 import ModalCookies from "./components/ModalCookies";
 import WaitlistModal from "./components/WaitlistModal";
@@ -18,8 +17,8 @@ export default function App() {
 
   const language = useLanguage();
   const [cookies] = useCookies(['userCookieConsent']);
-  const [cookieModalOpen, setCookieModalOpen] = useState(true);
-  const [modalWaitListOpen, setModalWaitListOpen] = useState(false);
+  const [isCookieModalOpen, setCookieModalOpen] = useState(true);
+  const [isWaitlistModalOpen, setWaitlistModalOpen] = useState(false);
 
   useEffect(() => {
     if (cookies.userCookieConsent === undefined || cookies.userCookieConsent === null) {
@@ -43,15 +42,15 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<HomePage setModalWaitListOpen={setModalWaitListOpen} />} />
-        <Route path="/" element={<HomePage setModalWaitListOpen={setModalWaitListOpen} />} />
-        <Route path="/terms-conditions" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
-        <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
-        <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setModalWaitListOpen} />} />
+        <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/terms-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-      {cookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}
-      {modalWaitListOpen && <WaitlistModal onClose={() => setModalWaitListOpen(false)} />}
+      {isCookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}
+      {isWaitlistModalOpen && <WaitlistModal onClose={() => setWaitlistModalOpen(false)} />}
     </BrowserRouter>
   );
 }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 //Images
 import logo from '../assets/images/Logo.webp';
 //Utilities
-import { handleScroll } from '../utilities/useAnimations';
+import { scrollToElement } from '../utilities/useAnimations';
 //Components
 import { FooterCol } from './Layout';
 
@@ -40,10 +40,10 @@ export default function Footer() {
                 {/* Link di navigazione della pagina */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">Link</p>
-                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Home")}>Home</Link>
-                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</Link>
-                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</Link>
-                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => handleScroll("#Faqs")}>Faqs</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Home")}>Home</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Features")}>{t('linkFeatures')}</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Prices")}>{t('linkPrices')}</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Faqs")}>Faqs</Link>
                 </FooterCol>
                 {/* Social */}
                 <FooterCol>
@@ -56,9 +56,9 @@ export default function Footer() {
                 {/* Terms & policy */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">{t('footerTerms')}</p>
-                    <Link to="/terms-conditions" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => handleScroll("Start")}>Terms & Conditions</Link>
-                    <Link to="/privacy-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => handleScroll("Start")}>Privacy policy</Link>
-                    <Link to="/cookie-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => handleScroll("Start")}>Cookies policy</Link>
+                    <Link to="/terms-conditions" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Terms & Conditions</Link>
+                    <Link to="/privacy-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Privacy policy</Link>
+                    <Link to="/cookie-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Cookies policy</Link>
                 </FooterCol>
             </div>
         </div>

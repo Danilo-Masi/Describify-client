@@ -2,7 +2,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from "react";
 //React-router
 import { Link } from "react-router-dom";
 //Utils
-import { handleScroll } from '../utilities/useAnimations.tsx';
+import { scrollToElement } from '../utilities/useAnimations.tsx';
 //I18Next
 import { useTranslation } from 'react-i18next';
 //Images
@@ -108,7 +108,7 @@ function UserProfile({ emailUser }: UserProfileProps) {
 function Logo() {
     return (
         <div className="w-1/2 md:w-1/4 p-y-10">
-            <Link to="/" onClick={() => handleScroll("#Home")} aria-label="link logo home">
+            <Link to="/" onClick={() => scrollToElement("#Home")} aria-label="link logo home">
                 <img src={logo} className="w-full md:w-3/5" alt='Logo Describify' />
             </Link>
         </div>
@@ -120,10 +120,10 @@ function MenuElements() {
     const { t } = useTranslation();
     return (
         <div className="md:w-2/4 hidden md:flex items-center justify-center gap-8">
-            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => handleScroll("#Home")}>Home</Link>
-            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => handleScroll("#Features")}>{t('linkFeatures')}</Link>
-            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => handleScroll("#Prices")}>{t('linkPrices')}</Link>
-            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => handleScroll("#Faqs")}>Faqs</Link>
+            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => scrollToElement("#Home")}>Home</Link>
+            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => scrollToElement("#Features")}>{t('linkFeatures')}</Link>
+            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => scrollToElement("#Prices")}>{t('linkPrices')}</Link>
+            <Link to="/" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-medium cursor-pointer" onClick={() => scrollToElement("#Faqs")}>Faqs</Link>
         </div >
     );
 }

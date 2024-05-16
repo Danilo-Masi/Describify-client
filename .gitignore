@@ -9,7 +9,6 @@ src/components/ModalUsage.tsx
 src/components/ModalSettings.tsx
 src/components/ModalResetPassword.tsx
 src/components/ModalLogout.tsx
-src/components/ModalDropdown.tsx
 src/components/ModalConfirmAccount.tsx
 src/components/Home.tsx
 src/components/GenerateOutput.tsx
