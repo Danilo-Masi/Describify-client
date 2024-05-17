@@ -1,19 +1,31 @@
-import { useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 //Utilities
 import { fadeInElement } from '../utilities/useAnimations';
+//Components
+import { Sparkling, ArrowDown, ArrowRight } from './SvgComponents';
 
-interface FeaturesStepProps {
-    order1?: string;
-    order2?: string;
-    data: any;
-    imageUrl: string;
+interface DataFeaturesProps {
+    title: string;
+    caption: string;
 }
 
-export default function FeaturesStep({ order1, order2, data, imageUrl }: FeaturesStepProps) {
+interface FeaturesStepProps {
+    justifyPosition: string;
+    order1?: string;
+    order2?: string;
+    data: DataFeaturesProps;
+    component: ReactNode;
+    arrow?: boolean;
+    sparkling?: boolean;
+}
+
+export default function FeaturesStep({ justifyPosition, order1, order2, data, component, arrow, sparkling }: FeaturesStepProps) {
 
     const titleRef = useRef(null);
     const captionRef = useRef(null);
     const imgRef = useRef(null);
+
+    const [arrowComponent, setArrowComponent] = useState<any>();
 
     useEffect(() => {
         //Reference
@@ -26,17 +38,39 @@ export default function FeaturesStep({ order1, order2, data, imageUrl }: Feature
         fadeInElement(image, 0.5, 1.0);
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            const windowSize = window.innerWidth;
+            setArrowComponent(windowSize > 728 ? <ArrowRight width="150" height="150" /> : <ArrowDown width="100" height="100" />);
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Call it initially to set the correct arrow
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
-        <div className="w-full md:w-5/6 flex flex-col md:flex-row gap-y-10 gap-x-5">
+        <div className="w-full md:w-3/4 flex flex-col md:flex-row gap-y-10 gap-x-5">
             {/* Features text */}
-            <div className={`w-full md:w-1/2 flex flex-col items-center justify-center gap-y-5 text-center  ${order1} `}>
-                <h1 className="text-4xl text-custom-textPrimaryGray dark:text-dark-textPrimaryGray text-balance font-semibold" ref={titleRef}>{data.title}</h1>
-                <p className="md:max-w-[70%] text-lg text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance font-light" ref={captionRef}>{data.caption}</p>
+            <div className={`w-full md:w-2/3 flex flex-col items-center gap-y-5 text-center ${justifyPosition} ${order1}`}>
+                {sparkling &&
+                    <div className='flex'>
+                        <Sparkling width="100" height="100" />
+                        <Sparkling width="150" height="150" />
+                        <Sparkling width="100" height="100" />
+                    </div>
+                }
+                <h1 className="md:max-w-[70%] text-4xl text-balance font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray " ref={titleRef}>{data.title}</h1>
+                <p className="md:max-w-[70%] text-lg text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray " ref={captionRef}>{data.caption}</p>
+                {arrow && arrowComponent}
             </div>
-            {/* Features img */}
-            <div className={`w-full md:w-1/2 max-h-[60svh] flex items-center justify-center rounded-xl ${order2}`} ref={imgRef}>
-                <img src={imageUrl} className='md:w-3/4 rounded-xl'/>
+            {/* Components */}
+            <div className={`w-full md:w-1/2 flex items-center justify-center ${order2}`} ref={imgRef}>
+                {component}
             </div>
         </div>
-    )
+    );
 }

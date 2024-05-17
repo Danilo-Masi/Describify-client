@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Dispatch, SetStateAction, Suspense } from 'react';
 //I18Next
 import { useTranslation } from 'react-i18next';
 //Components
@@ -9,9 +9,10 @@ const Product = React.lazy(() => import('./Product'));
 
 interface HeroProps {
     id: string;
+    setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Hero({ id }: HeroProps) {
+export default function Hero({ id, setModalWaitListOpen }: HeroProps) {
 
     const { t } = useTranslation();
 
@@ -24,7 +25,7 @@ export default function Hero({ id }: HeroProps) {
                 descriptionStyle="text-lg md:text-xl" />
             <WaitlistGadget />
             <Suspense fallback={<div>Loading...</div>}>
-                <Product />
+                <Product setModalWaitListOpen={setModalWaitListOpen}/>
             </Suspense>
         </GridBackground>
     );

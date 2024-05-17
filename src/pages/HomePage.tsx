@@ -16,8 +16,8 @@ export default function HomePage({ setModalWaitListOpen }: HomePageProps) {
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
             <Navbar setModalWaitListOpen={setModalWaitListOpen} />
-            <Hero id="Home" />
-            <Features id="Features" accessToken={false} />
+            <Hero id="Home" setModalWaitListOpen={setModalWaitListOpen}/>
+            <Features id="Features" accessToken={false} setModalWaitListOpen={setModalWaitListOpen}/>
             <Prices id="Prices" accessToken={false} setModalWaitListOpen={setModalWaitListOpen} />
             <Faqs id="Faqs" accessToken={false} />
             <Footer />

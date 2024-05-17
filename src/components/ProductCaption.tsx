@@ -6,11 +6,15 @@ import { useTranslation } from 'react-i18next';
 //Utilities
 import { useCopy } from "../utilities/useCopy";
 
-export default function ProductOutput() {
+interface ProductCaptionProps {
+    descriptionGenerated: string;
+}
+
+export default function ProductCaption({ descriptionGenerated }: ProductCaptionProps) {
 
     const { t } = useTranslation();
 
-    const [valoreDescrizione, setValoreDescrizione] = useState("");
+    const [valoreDescrizione, setValoreDescrizione] = useState(descriptionGenerated);
     const [copiato, setCopiato] = useState(false);
 
     const handleCopy = () => {
