@@ -134,10 +134,25 @@ interface JoinWaitllistButtonProps {
 
 //Bottone 'iscriviti' della NavBar
 function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps) {
+
     const { t } = useTranslation();
+    const [buttonText, setButtonText] = useState("");
+
+    //Funzione per modificare il testo nel button
+    const handleResize = () => {
+        const windowSize = window.innerWidth;
+        setButtonText(windowSize > 728 ? t('buttonSubscribeLong') : t('buttonSubscribe'));
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className="w-1/2 md:w-1/4 flex items-center justify-end">
-            <ActiveButton text={t('buttonSubscribe')} onClick={() => setModalWaitlistOpen(true)} />
+            <ActiveButton text={buttonText} onClick={() => setModalWaitlistOpen(true)} />
         </div>
     );
 }

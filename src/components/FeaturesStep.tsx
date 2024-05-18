@@ -38,18 +38,16 @@ export default function FeaturesStep({ justifyPosition, order1, order2, data, co
         fadeInElement(image, 0.5, 1.0);
     }, []);
 
+    //Funzione per modificare l'SVG corrente
+    const handleResize = () => {
+        const windowSize = window.innerWidth;
+        setArrowComponent(windowSize > 728 ? <ArrowRight width="150" height="150" /> : <ArrowDown width="100" height="100" />);
+    };
+
     useEffect(() => {
-        const handleResize = () => {
-            const windowSize = window.innerWidth;
-            setArrowComponent(windowSize > 728 ? <ArrowRight width="150" height="150" /> : <ArrowDown width="100" height="100" />);
-        };
-
         window.addEventListener('resize', handleResize);
-        handleResize(); // Call it initially to set the correct arrow
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return (
@@ -68,7 +66,7 @@ export default function FeaturesStep({ justifyPosition, order1, order2, data, co
                 {arrow && arrowComponent}
             </div>
             {/* Components */}
-            <div className={`w-full md:w-1/2 flex items-center justify-center ${order2}`} ref={imgRef}>
+            <div className={`md:w-1/2 flex items-center justify-center ${order2}`} ref={imgRef}>
                 {component}
             </div>
         </div>

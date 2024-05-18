@@ -21,6 +21,7 @@
     "linkFeatures": "Funzionalità",
     "linkPrices": "Prezzi",
     "buttonSubscribe": "Iscriviti",
+    "buttonSubscribeLong": "Iscriviti alla waitlist",
 
     "heroTitle": "Trasforma ogni click in vendita",
     "heroDescription": "Ottimizza gli annunci e incrementa le vendite su eBay, Vinted e altre piattaforme con la potenza dell'AI",
@@ -71,6 +72,6 @@
     "messageBannerButton": "Capito",
 
     "waitlistBannerTitle": "Manca pochissimo...",
-    "waitlistBannerContent": "Unisciti alla community di Describify oggi stesso e ricevi un bonus esclusivo di 5 token al tuo primo accesso! Non perdere l'opportunità di essere tra i primi a sperimentare tutto ciò che abbiamo da offrire.",
+    "waitlistBannerContent": "Unisciti alla community di Describify oggi stesso e ricevi un bonus esclusivo di 5 token al tuo primo accesso!",
     "waitlistGadgetError": "Inserisci un email valida"
 }

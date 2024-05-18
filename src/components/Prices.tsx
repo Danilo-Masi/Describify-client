@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { fadeInElement } from '../utilities/useAnimations';
 import { useLanguage } from '../utilities/useLanguage';
 //Data
-import { freePlanIt, standardPlanIt, premiumPlanIt } from '../data/card_details_it';
-import { freePlanEn, standardPlanEn, premiumPlanEn } from '../data/card_details_en';
+import { standardPlanIt, premiumPlanIt } from '../data/card_details_it';
+import { standardPlanEn, premiumPlanEn } from '../data/card_details_en';
 //Components
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
@@ -25,17 +25,14 @@ export default function Prices({ id, accessToken, setModalWaitListOpen }: Prices
 
   const priceCardRef1 = useRef(null);
   const priceCardRef2 = useRef(null);
-  const priceCardRef3 = useRef(null);
 
   useEffect(() => {
     //Reference
     const price1 = priceCardRef1.current || "";
     const price2 = priceCardRef2.current || "";
-    const price3 = priceCardRef3.current || "";
     //Avvio delle animazioni
     fadeInElement(price1, 0.5, 0.0);
     fadeInElement(price2, 0.5, 0.5);
-    fadeInElement(price3, 0.5, 1.0);
   }, []);
 
   return (
@@ -48,10 +45,9 @@ export default function Prices({ id, accessToken, setModalWaitListOpen }: Prices
         accessToken={accessToken}
         titleStyle="text-5xl md:text-6xl"
         descriptionStyle="text-lg" />
-      <div className='w-full md:w-4/5 h-auto flex flex-col md:flex-row gap-x-5 gap-y-12'>
-        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? freePlanIt : freePlanEn} reference={priceCardRef1} />
-        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? standardPlanIt : standardPlanEn} reference={priceCardRef2} />
-        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? premiumPlanIt : premiumPlanEn} reference={priceCardRef3} />
+      <div className='w-full md:w-7/12 h-auto flex flex-col md:flex-row gap-12 mt-10'>
+        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? standardPlanIt : standardPlanEn} reference={priceCardRef1} />
+        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? premiumPlanIt : premiumPlanEn} reference={priceCardRef2} />
       </div>
     </ContainerComponents>
   );

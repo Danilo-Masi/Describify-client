@@ -10,7 +10,7 @@ export default function PriceCard({ setModalWaitListOpen, planDetails, reference
   return (
     <div className="w-full h-auto flex flex-col rounded-lg p-5 gap-y-5 bg-custom-elevation dark:bg-dark-elevation2 border border-custom-borderColor dark:border-dark-borderColorxw" ref={reference}>
       <p className="text-2xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{planDetails.title}</p>
-      <p className="text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">${planDetails.prices}
+      <p className="text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">€{planDetails.prices}
         <span className="text-lg font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray"> / {planDetails.month}</span>
       </p>
       <p className="text-md font-light text-clip text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">{planDetails.description}</p>

@@ -20,7 +20,13 @@ export default function CardPrototype({ setModalWaitListOpen }: CardPrototypePro
             </div>
             <p className='font-medium text-lg text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>T-Shirt Vans Nera – Uomo Taglia M – Ottime condizioni</p>
             <p className='font-light text-md text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>Ciao! Sto vendendo la mia t-shirt Vans di colore nero, taglia M. L'ho comprata un po' di tempo fa,...</p>
-            <ActiveButton text='Aggiungi annuncio' buttonStyle='w-full' onClick={() => setModalWaitListOpen(true)} />
+            <button
+                name="button"
+                type="button"
+                disabled
+                className="w-full rounded-lg px-5 py-2.5 text-sm font-semibold text-dark-textPrimaryGray bg-green-500 hover:bg-green-700" >
+                Articolo venduto
+            </button>
         </div>
     );
 }

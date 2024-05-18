@@ -21,7 +21,7 @@ export default function FaqsAccordion() {
     }, [language]);
 
     return (
-        <Accordion className="w-full md:w-1/2 border border-custom-borderGray dark:border-dark-borderGray">
+        <Accordion className="w-full md:w-1/2 border border-custom-borderGray dark:border-dark-borderGray mt-10">
             {faqs && faqs.map((faq, index) => (
                 <AccordionPanel key={index}>
                     <AccordionTitle className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray text-balance bg-custom-elevation dark:bg-dark-elevation hover:bg-custom-elevation3 dark:hover:bg-dark-elevation3 focus:ring-0 font-medium">

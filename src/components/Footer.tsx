@@ -47,11 +47,10 @@ export default function Footer() {
                 </FooterCol>
                 {/* Social */}
                 <FooterCol>
-                    <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">Socials</p>
+                    <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">Social</p>
                     <a target='_blank' rel='noopener noreferrer' href='https://twitter.com/describify' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='Twitter link'>X (Twitter)</a>
                     <a target='_blank' rel='noopener noreferrer' href='https://www.tiktok.com/@describify' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='TikTok link'>TikTok</a>
                     <a target='_blank' rel='noopener noreferrer' href='https://www.instagram.com/describify' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='Instagram link'>Instagram</a>
-                    <a target='_blank' rel='noopener noreferrer' href='#' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='LinkedIn link'>LinkedIn</a>
                 </FooterCol>
                 {/* Terms & policy */}
                 <FooterCol>
