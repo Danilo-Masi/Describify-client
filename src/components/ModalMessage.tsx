@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 //Flowbite
 import { Modal } from "flowbite-react";
 //I18Next
@@ -7,11 +8,17 @@ import ActiveButton from "./ActiveButton";
 
 interface ModalMessageProps {
     onClose: () => void;
+    setExploding: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function ModalMessage({ onClose }: ModalMessageProps) {
+export default function ModalMessage({ onClose, setExploding }: ModalMessageProps) {
 
     const { t } = useTranslation();
+
+    const handleClick = () => {
+        setExploding(true);
+        onClose();
+    }
 
     return (
         <Modal show size="sm" className="bg-dark-background dark:bg-dark-background">
@@ -21,10 +28,10 @@ export default function ModalMessage({ onClose }: ModalMessageProps) {
                         {t('messageBannerTitle')} &#127881;
                     </h1>
                     <p className="text-md md:text-md text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
-                    {t('messageBannerContent')}
+                        {t('messageBannerContent')}
                     </p>
                 </div>
-                <ActiveButton text={t('messageBannerButton')} onClick={onClose}/>
+                <ActiveButton text={t('messageBannerButton')} onClick={handleClick} />
             </Modal.Body>
         </Modal >
     );

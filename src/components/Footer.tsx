@@ -2,12 +2,11 @@
 import { useTranslation } from 'react-i18next';
 //React-router
 import { Link } from "react-router-dom";
-//Images
-import logo from '../assets/images/Logo.webp';
 //Utilities
 import { scrollToElement } from '../utilities/useAnimations';
 //Components
 import { FooterCol } from './Layout';
+import Logo from './Logo';
 
 export default function Footer() {
 
@@ -18,8 +17,8 @@ export default function Footer() {
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
                 {/* Logo e link social */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>
-                    <img src={logo} className="w-1/2 md:w-2/6 mb-2" alt='Logo Describify' />
-                    <p className="max-w-md md:text-start text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+                    <Logo width='40' height='30'/>
+                    <p className="max-w-md md:text-start text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray mt-2">
                         {t('footerCaption')}
                     </p>
                     <a

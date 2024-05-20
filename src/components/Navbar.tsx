@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 import { scrollToElement } from '../utilities/useAnimations.tsx';
 //I18Next
 import { useTranslation } from 'react-i18next';
-//Images
-import logo from '../assets/images/Logo.webp';
 //Components
 import ActiveButton from "./ActiveButton.tsx";
+import Logo from "./Logo.tsx";
 
 {/* 
 function AccessButton() {
@@ -104,16 +103,6 @@ function UserProfile({ emailUser }: UserProfileProps) {
 
 */}
 
-//Logo della NavBar
-function Logo() {
-    return (
-        <div className="w-1/2 md:w-1/4 p-y-10">
-            <Link to="/" onClick={() => scrollToElement("#Home")} aria-label="link logo home">
-                <img src={logo} className="w-full md:w-3/5" alt='Logo Describify' />
-            </Link>
-        </div>
-    );
-}
 
 //Link di navigazione della NavBar
 function MenuElements() {
@@ -136,23 +125,10 @@ interface JoinWaitllistButtonProps {
 function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps) {
 
     const { t } = useTranslation();
-    const [buttonText, setButtonText] = useState("");
-
-    //Funzione per modificare il testo nel button
-    const handleResize = () => {
-        const windowSize = window.innerWidth;
-        setButtonText(windowSize > 728 ? t('buttonSubscribeLong') : t('buttonSubscribe'));
-    };
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize);
-        handleResize();
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     return (
-        <div className="w-1/2 md:w-1/4 flex items-center justify-end">
-            <ActiveButton text={buttonText} onClick={() => setModalWaitlistOpen(true)} />
+        <div className="w-full md:w-1/4 flex items-center justify-end">
+            <ActiveButton text={t('buttonSubscribeLong')} onClick={() => setModalWaitlistOpen(true)} />
         </div>
     );
 }
@@ -182,7 +158,7 @@ export default function Navbar({ setModalWaitListOpen }: NavbarProps) {
     return (
         <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-20 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-95'}`} >
             <div className="w-[90%] flex items-center">
-                <Logo />
+                <Logo width="40" height="40"/>
                 <MenuElements />
                 <JoinWaitllistButton setModalWaitlistOpen={setModalWaitListOpen} />
             </div>

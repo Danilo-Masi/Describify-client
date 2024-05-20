@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 //I18Next
 import { useTranslation } from 'react-i18next';
 //Data
@@ -51,7 +51,7 @@ Fammi sapere se sei interessato o se hai altre domande!`;
         titleStyle="text-5xl md:text-6xl"
         descriptionStyle="text-lg" />
       <div className="flex flex-col items-center gap-y-20 md:gap-y-32 mt-10">
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1} justifyPosition='justify-start' component={<ProductForm handleGeneration={() => setModalWaitListOpen(true)} />} arrow={true}/>
+        <FeaturesStep data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1} justifyPosition='justify-start' component={<ProductForm handleGeneration={() => setModalWaitListOpen(true)} />} arrow={true} />
         <FeaturesStep data={language === 'it' ? featuresDetailsIt2 : featuresDetailsEn2} justifyPosition='justify-center' component={<ProductCaption descriptionGenerated={descrizione} />} order1="md:order-2" order2="md:order-1" />
         <FeaturesStep data={language === 'it' ? featuresDetailsIt3 : featuresDetailsEn3} justifyPosition='justify-center' component={<ProductTitle titleGenerated={titolo} />} />
         <FeaturesStep data={language === 'it' ? featuresDetailsIt4 : featuresDetailsEn4} justifyPosition='justify-start' component={<CardPrototype setModalWaitListOpen={setModalWaitListOpen} />} sparkling={true} order1="md:order-2" order2="md:order-1" />

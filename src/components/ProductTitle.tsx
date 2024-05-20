@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 //Flowbite
 import { Textarea } from "flowbite-react";
 //I18Next
@@ -15,7 +15,7 @@ export default function ProductTitle({ titleGenerated }: ProductTitleProps) {
     const { t } = useTranslation();
 
     const [valoreTitolo, setValoreTitolo] = useState(titleGenerated);
-    const [copiato, setCopiato] = useState(false);
+    const [isCopiato, setCopiato] = useState(false);
 
     const handleCopy = () => {
         useCopy(valoreTitolo);
@@ -34,7 +34,7 @@ export default function ProductTitle({ titleGenerated }: ProductTitleProps) {
                     onClick={handleCopy}
                     type="button"
                     className="w-fit flex items-center justify-center gap-x-3 py-2.5 px-3 bg-custom-elevation3 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray rounded-xl text-custom-textPrimaryGray dark:text-dark-textPrimaryColor disabled:bg-custom-disabled dark:disabled:bg-dark-disabled">
-                    {!copiato ? (
+                    {!isCopiato ? (
                         <p className="flex gap-x-3">
                             {t('productCopyButton')}
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

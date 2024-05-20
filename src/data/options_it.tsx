@@ -101,37 +101,44 @@ export const categorie = [
             {
                 value: 'Borse',
                 children: [
-                    { value: 'Borse a mano' },
-                    { value: 'Borse a tracolla' },
                     { value: 'Zaini' },
-                    { value: 'Pochette e borse da sera' },
-                    { value: 'Borse da lavoro' },
-                    { value: 'Borse da viaggio' }
+                    { value: 'Borse da viaggio' },
+                    { value: 'Valigiette' },
+                    { value: 'Borse a secchiello' },
+                    { value: 'Marsupio' },
+                    { value: 'Pochette' },
+                    { value: 'Porta abiti' },
+                    { value: 'Borse da palestra' },
+                    { value: 'Borsette' },
+                    { value: 'Borse hobo' },
+                    { value: 'Borse e sacche da viaggio' },
+                    { value: 'Bagagli e valigie' },
+                    { value: 'Pochette per il make-up' },
+                    { value: 'Borse a cartella' },
+                    { value: 'Borse a spalla' },
+                    { value: 'Borse tote' },
+                    { value: 'Portafogli' },
+                    { value: 'Pochette da polso' },
                 ]
             },
             {
                 value: 'Accessori',
                 children: [
-                    { value: 'Cappelli' },
-                    { value: 'Sciarpe e foulard' },
+                    { value: 'Bandane e fazzoletti per la testa' },
                     { value: 'Cinture' },
                     { value: 'Guanti' },
-                    { value: 'Occhiali da sole' },
+                    { value: 'Accessori per capelli' },
+                    { value: 'Fazzoletti' },
+                    { value: 'Capelli e berretti' },
                     { value: 'Gioielli' },
+                    { value: 'Portachiavi' },
+                    { value: 'Sciarpe e scialli' },
+                    { value: 'Occhiali da sole' },
+                    { value: 'Accessori tecnologici' },
+                    { value: 'Ombrelli' },
                     { value: 'Orologi' },
-                    { value: 'Ombrelli' }
                 ]
             },
-            {
-                value: 'Bellezza',
-                children: [
-                    { value: 'Trucco' },
-                    { value: 'Cura della pelle' },
-                    { value: 'Cura dei capelli' },
-                    { value: 'Profumi' },
-                    { value: 'Accessori per la bellezza' }
-                ]
-            }
         ]
     },
     {
@@ -140,81 +147,54 @@ export const categorie = [
             {
                 value: 'Vestiti',
                 children: [
-                    { value: 'Abbigliamento da esterno' },
-                    { value: 'Maglioni e pullover' },
-                    { value: 'Completi e blazer' },
-                    { value: 'Camicie' },
-                    { value: 'Pantaloni' },
                     { value: 'Jeans' },
-                    { value: 'T-shirt e polo' },
-                    { value: 'Pantaloncini e bermuda' },
+                    { value: 'Abbigliamento da esterno' },
+                    { value: 'Camicie e t-shirt' },
+                    { value: 'Completi e blazer' },
+                    { value: 'Maglioni e pullover' },
+                    { value: 'Pantaloni' },
+                    { value: 'Pantaloncini' },
+                    { value: 'Calzini e intimo' },
+                    { value: 'Pigiama' },
+                    { value: 'Costumi da bagno' },
                     { value: 'Abbigliamento sportivo' },
-                    { value: 'Biancheria intima' }
+                    { value: 'Costumi e vestiti speciali' },
                 ]
             },
             {
                 value: 'Scarpe',
                 children: [
-                    { value: 'Scarpe eleganti' },
-                    { value: 'Scarpe casual' },
-                    { value: 'Scarpe sportive' },
+                    { value: 'Scarpe da barca, loafer e mocassini' },
                     { value: 'Stivali' },
-                    { value: 'Sandali e infradito' },
-                    { value: 'Pantofole' }
+                    { value: 'Zoccoli e sabot' },
+                    { value: 'Espadrillas' },
+                    { value: 'Infradito e ciabatte' },
+                    { value: 'Scarpe formali' },
+                    { value: 'Sandali' },
+                    { value: 'Pantofole' },
+                    { value: 'Scarpe sportive' },
+                    { value: 'Scarpe da ginnastica' },
                 ]
             },
             {
                 value: 'Accessori',
                 children: [
-                    { value: 'Cappelli' },
-                    { value: 'Sciarpe' },
+                    { value: 'Borse e zaini' },
+                    { value: 'Bandana e fazzoletti per la testa' },
                     { value: 'Cinture' },
+                    { value: 'Bretelle' },
                     { value: 'Guanti' },
-                    { value: 'Occhiali da sole' },
+                    { value: 'Fazzoletti' },
+                    { value: 'Cappelli e berretti' },
                     { value: 'Gioielli' },
+                    { value: 'Fazzoletto da taschino' },
+                    { value: 'Sciarpe e scialli' },
+                    { value: 'Occhiali da sole' },
+                    { value: 'Cravatte e papillon' },
                     { value: 'Orologi' },
-                    { value: 'Portafogli' }
-                ]
-            },
-            {
-                value: 'Cura del corpo',
-                children: [
-                    { value: 'Cura della pelle' },
-                    { value: 'Cura dei capelli' },
-                    { value: 'Profumi' },
-                    { value: 'Rasatura e depilazione' }
-                ]
-            }
-        ]
-    },
-    {
-        value: 'Bambini',
-        children: [
-            {
-                value: 'Abbigliamento bambina',
-                children: [
-                    { value: 'Vestiti' },
-                    { value: 'Maglie e felpe' },
-                    { value: 'Pantaloni e jeans' },
-                    { value: 'Gonne' },
-                    { value: 'T-shirt e top' },
-                    { value: 'Costumi da bagno' },
-                    { value: 'Abbigliamento sportivo' },
-                    { value: 'Pigiami' }
-                ]
-            },
-            {
-                value: 'Abbigliamento bambino',
-                children: [
-                    { value: 'Maglie e felpe' },
-                    { value: 'Pantaloni e jeans' },
-                    { value: 'T-shirt e camicie' },
-                    { value: 'Costumi da bagno' },
-                    { value: 'Abbigliamento sportivo' },
-                    { value: 'Pigiami' }
                 ]
             },
         ]
-    },
+    }
 ];
 

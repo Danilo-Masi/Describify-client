@@ -21,11 +21,11 @@ export default function Hero({ id, setModalWaitListOpen }: HeroProps) {
             <Intestazione
                 titleValue={t('heroTitle')}
                 descriptionValue={t('heroDescription')}
-                titleStyle="text-6xl md:text-8xl"
+                titleStyle="text-6xl md:text-8xl tracking-tighter"
                 descriptionStyle="text-lg md:text-xl" />
             <WaitlistGadget />
-            <Suspense fallback={<div>Loading...</div>}>
-                <Product setModalWaitListOpen={setModalWaitListOpen}/>
+            <Suspense fallback={<div >Loading...</div>}>
+                <Product setModalWaitListOpen={setModalWaitListOpen} />
             </Suspense>
         </GridBackground>
     );

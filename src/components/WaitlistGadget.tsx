@@ -3,6 +3,8 @@ import { useState } from "react";
 import axios from 'axios';
 //I18Next
 import { useTranslation } from 'react-i18next';
+//Confetti-explosion
+import ConfettiExplosion from 'react-confetti-explosion';
 //Utilities
 import { useEmail } from "../utilities/useEmail";
 //Components
@@ -19,8 +21,9 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
 
     const [emailInput, setEmailInput] = useState(""); //Valore dell'email inserita dall'utente
     const [errorInput, setErrorInput] = useState(""); //Imposta messaggio di errore
-    const [emailLoading, setEmailLoading] = useState(false); //Imposta in stato di loading
-    const [emailSend, setEmailSend] = useState(false); //Imposta in stato di inviato
+    const [isEmailLoading, setEmailLoading] = useState(false); //Imposta in stato di loading
+    const [isEmailSend, setEmailSend] = useState(false); //Imposta in stato di inviato
+    const [isExploding, setExploding] = useState(false); //Attiva l'animazione dei coriandoli
 
     //Funzione per inviare l'email una volta iscritti alla waitlist (Resend)
     const sendWaitlistEmail = async () => {
@@ -92,7 +95,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                 </p>
             </div>
             {/* Buttons */}
-            {emailLoading ? (
+            {isEmailLoading ? (
                 <button disabled type="button" className=" inline-flex items-center justify-center w-full md:w-min py-3 px-5 md:ms-2 text-sm font-semibold text-dark-textPrimaryGray rounded-lg border bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
                     <svg aria-hidden="true" role="status" className="inline w-4 h-4 me-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB" />
@@ -109,7 +112,9 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                 </button>
             )}
             {/* Modal */}
-            {emailSend && <ModalMessage onClose={() => setEmailSend(false)} />}
+            {isEmailSend && <ModalMessage onClose={() => setEmailSend(false)} setExploding={setExploding} />}
+            {/* Confetti explosion */}
+            {isExploding && <ConfettiExplosion zIndex={100} force={0.8} duration={3000} particleCount={250} />}
         </form >
     );
 }
