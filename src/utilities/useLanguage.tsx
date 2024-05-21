@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+//i18next
 import { useTranslation } from 'react-i18next';
 
 //Funzione per verifica la lingua corrente impostata

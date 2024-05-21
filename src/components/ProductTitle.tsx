@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useState } from "react";
 //Flowbite
 import { Textarea } from "flowbite-react";
 //I18Next
@@ -58,5 +58,5 @@ export default function ProductTitle({ titleGenerated }: ProductTitleProps) {
                 placeholder="Elegante Camicia Massimo Dutti a Righe Azzurro Chiaro e Bianco, Taglia M - 100% Cotone 🌟👔"
                 className="w-full h-[10svh] overflow-scroll resize-none px-0 bg-custom-elevation4 dark:bg-dark-elevation4 border-0 focus:border-0 focus:ring-0 text-md text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray" />
         </div>
-    )
+    );
 }

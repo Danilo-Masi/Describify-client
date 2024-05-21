@@ -2,10 +2,14 @@ import { useCallback, useState } from 'react';
 //I18Next
 import { useTranslation } from 'react-i18next';
 //data
-import { taglie, colori, categorie } from '../data/options_it';
+import category from '../data/productOptions/category.json';
+import sizes from '../data/productOptions/sizes.json';
+import colors_en from '../data/productOptions/colors_en.json';
+import colors_it from '../data/productOptions/colors_it.json';
 //Components
 import WaitlistModal from "./WaitlistModal";
 import ModalDropdown from "./ModalDropdow";
+import { useLanguage } from '../utilities/useLanguage';
 
 //Type definitions
 interface InputSelectProps {
@@ -100,11 +104,11 @@ export default function ProductForm({ handleGeneration }: ProductFormProps) {
     const [isDropdownModalOpen, setModalDropdownOpen] = useState(false);
     const [isWaitlistModalOpen, setModalWaitlistOpen] = useState(false);
 
-    const handleDropwdown = useCallback((titoloModal: string, datiModal: ModalItem[], context: string) => {
-        setModalTitle(titoloModal);
-        setModalData(datiModal);
-        setModalDropdownOpen(true);
-        setModalContext(context)
+    const handleDropwdown = useCallback((titoloModal: string, datiModal: any, context: string) => {
+        setModalTitle(titoloModal); //Label modal
+        setModalData(datiModal)     //Dati modal
+        setModalDropdownOpen(true); //Stato modal
+        setModalContext(context) //Tipologia del model (es: Categorie, colori o dimensioni)
     }, []);
 
     const handleSelect = (value: string, context: string) => {
@@ -123,12 +127,14 @@ export default function ProductForm({ handleGeneration }: ProductFormProps) {
         }
     }
 
+    const linguaCorrente = useLanguage();
+
     return (
         <div className="w-full h-fit flex flex-wrap items-start justify-start gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
-            <InputSelect valoreLabel={t('productCategoryLabel')} valoreInput={selectedCategory} onClick={() => handleDropwdown(t('productCategoryLabel'), categorie, "categoria")} />
+            <InputSelect valoreLabel={t('productCategoryLabel')} valoreInput={selectedCategory} onClick={() => handleDropwdown(t('productCategoryLabel'), category, "categoria")} />
             <TextInput valoreLabel={t('productBrandLabel')} valoreInput={selectedBrand} onChange={e => setSelectedBrand(e.target.value)} />
-            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productSizeLabel')} valoreInput={selectedSize} onClick={() => handleDropwdown(t('productSizeLabel'), taglie, "dimensione")} />
-            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productColorLabel')} valoreInput={selectedColor} onClick={() => handleDropwdown(t('productColorLabel'), colori, "colore")} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productSizeLabel')} valoreInput={selectedSize} onClick={() => handleDropwdown(t('productSizeLabel'), sizes, "dimensione")} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productColorLabel')} valoreInput={selectedColor} onClick={() => handleDropwdown(t('productColorLabel'), linguaCorrente === "it" ? colors_it : colors_en, "colore")} />
             <ButtonGenerate labelButton={t('productGenerateButton')} onClick={() => handleGeneration()} />
             {isDropdownModalOpen && <ModalDropdown onClose={() => setModalDropdownOpen(false)} valoreTitoloModal={modalTitle} arrayDati={modalData} context={modalContext} onSelect={handleSelect} />}
             {isWaitlistModalOpen && <WaitlistModal onClose={() => setModalWaitlistOpen(false)} />}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //Flowbite
 import { Modal } from 'flowbite-react';
 
@@ -9,16 +9,46 @@ interface Elemento {
 
 interface ModalDropdownProps {
     valoreTitoloModal: string;
-    arrayDati: Elemento[];
+    arrayDati: any;
     context: string;
     onClose: () => void;
     onSelect: (value: string, context: string) => void;
 }
 
+const convertJsonToTree = (jsonDati: { [key: string]: any }): Elemento[] => {
+    const map = new Map<number, Elemento>();
+    //Creazione degli elementi
+    Object.keys(jsonDati).forEach(key => {
+        const item = jsonDati[key];
+        map.set(item.id, { value: item.title, children: [] });
+    });
+    //Impostazioni delle relazioni padre-figlio
+    const tree: Elemento[] = [];
+    Object.keys(jsonDati).forEach(key => {
+        const item = jsonDati[key];
+        const element = map.get(item.id);
+        if (item.parent_id && item.parent_id !== 0) {
+            const parent = map.get(item.parent_id);
+            if (parent) {
+                parent.children?.push(element!);
+            }
+        } else {
+            tree.push(element!);
+        }
+    });
+    return tree;
+}
+
 export default function ModalDropdown({ valoreTitoloModal, arrayDati, context, onClose, onSelect }: ModalDropdownProps) {
 
     //Stato per impostare la lista degli elementi da visualizzare
-    const [elementiVisualizzati, setElementiVisualizzati] = useState<Elemento[]>(arrayDati);
+    const [elementiVisualizzati, setElementiVisualizzati] = useState<Elemento[]>([]);
+
+    //Funzione che carica i dati del json se disponibile
+    useEffect(() => {
+        const treeData = convertJsonToTree(arrayDati);
+        setElementiVisualizzati(treeData);
+    }, [arrayDati]);
 
     //Funzione per impostare l'elemento selezionato o nel caso avesse sotto elementi mostrare quelli
     const handleSelect = (elemento: Elemento) => {
