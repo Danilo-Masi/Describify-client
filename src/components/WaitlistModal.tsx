@@ -23,10 +23,10 @@ export default function WaitlistModal({ onClose }: WaitlistModalProps) {
             <Modal.Body className="bg-custom-elevation dark:bg-dark-elevation4 rounded-b-lg pb-10">
                 <div className="flex items-center justify-center flex-wrap gap-y-7 font-inter">
                     <h1 className="text-4xl text-balance text-center font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-                        &#128640; {t('waitlistBannerTitle')}
+                        &#128640; {t('modalWaitlistTitle')}
                     </h1>
                     <p className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance text-center font-light">
-                        {t('waitlistBannerContent')}
+                        {t('modalWaitlistContent')}
                     </p>
                     <WaitlistGadget mdWidth="w-full" />
                 </div>

@@ -20,6 +20,7 @@ interface InputSelectProps {
 }
 
 interface TextInputProps {
+    valoreId: string;
     valoreLabel: string;
     valoreInput: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -38,11 +39,10 @@ interface ModalItem {
 function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelectProps) {
     return (
         <div className={`${mdWidth} w-full h-auto flex flex-col gap-2`}>
-            <label htmlFor={valoreLabel} className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+            <label className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
                 {valoreLabel}
             </label>
             <div
-                id={valoreLabel}
                 onClick={onClick}
                 className="flex items-center justify-between p-3 rounded-lg cursor-pointer bg-custom-elevation3 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
                 <p>{valoreInput}</p>
@@ -54,14 +54,14 @@ function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelect
     );
 }
 
-function TextInput({ valoreLabel, valoreInput, onChange }: TextInputProps) {
+function TextInput({ valoreId, valoreLabel, valoreInput, onChange }: TextInputProps) {
     return (
         <div className="w-full flex flex-col gap-2">
-            <label htmlFor={valoreLabel} className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+            <label htmlFor={valoreId} className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
                 {valoreLabel}
             </label>
             <input
-                id={valoreLabel}
+                id={valoreId}
                 type="text"
                 placeholder="Massimo Dutti"
                 className="w-full rounded-lg p-3 bg-custom-elevation3 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textSecondaryGray dark:text-dark-textSecondaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
@@ -86,10 +86,11 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
 }
 
 interface ProductFormProps {
+    brandInputId: string;
     handleGeneration: () => void;
 }
 
-export default function ProductForm({ handleGeneration }: ProductFormProps) {
+export default function ProductForm({ brandInputId, handleGeneration }: ProductFormProps) {
     const { t } = useTranslation();
     //Valori inseriti dall'utente
     const [selectedCategory, setSelectedCategory] = useState("Camicie");
@@ -132,7 +133,7 @@ export default function ProductForm({ handleGeneration }: ProductFormProps) {
     return (
         <div className="w-full h-fit flex flex-wrap items-start justify-start gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
             <InputSelect valoreLabel={t('productCategoryLabel')} valoreInput={selectedCategory} onClick={() => handleDropwdown(t('productCategoryLabel'), category, "categoria")} />
-            <TextInput valoreLabel={t('productBrandLabel')} valoreInput={selectedBrand} onChange={e => setSelectedBrand(e.target.value)} />
+            <TextInput valoreLabel={t('productBrandLabel')} valoreId={brandInputId} valoreInput={selectedBrand} onChange={e => setSelectedBrand(e.target.value)} />
             <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productSizeLabel')} valoreInput={selectedSize} onClick={() => handleDropwdown(t('productSizeLabel'), sizes, "dimensione")} />
             <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productColorLabel')} valoreInput={selectedColor} onClick={() => handleDropwdown(t('productColorLabel'), linguaCorrente === "it" ? colors_it : colors_en, "colore")} />
             <ButtonGenerate labelButton={t('productGenerateButton')} onClick={() => handleGeneration()} />

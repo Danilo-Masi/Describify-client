@@ -1,30 +1,11 @@
 {   
-    "signinWelcome": "Bentornato",
-    "signinEmailLabel": "La tua email",
-    "signinPasswordLabel": "La tua password",
-    "signinCheckboxLabel": "Ricordami",
-    "signinForgetLabel": "Hai dimenticato la password?",
-    "signinButton": "Accedi",
-    "signinRedirectLabel": "Non hai un account Descrify?",
-    "signinRedirectLink": "Registrati qui",
-
-    "signupWelcome": "Genera annunci velocemente e aumenta le vendite",
-    "signupEmailLabel": "La tua email",
-    "signupPasswordLabel": "La tua password",
-    "signupConfirmPasswordLabel": "Ripeti la tua password",
-    "signupCheckboxLabel": "Accetto i",
-    "singupCheckboxLink": "termini di servizio e condizioni",
-    "signupButton": "Registra account",
-    "signupRedirectLabel": "Hai già un account?",
-    "signupRedirectLink": "Accedi qui",
-    
     "linkFeatures": "Funzionalità",
     "linkPrices": "Prezzi",
     "buttonSubscribe": "Iscriviti",
     "buttonSubscribeLong": "Iscriviti alla waitlist",
 
-    "heroTitle": "Trasforma ogni click in vendita",
-    "heroDescription": "Ottimizza gli annunci e incrementa le vendite su eBay, Vinted e altre piattaforme con la potenza dell'AI",
+    "heroTitle": "Meno stress e più vendite",
+    "heroDescription": "Velocizza la creazione di annunci e  incrementa le vendite su Vinted, Ebay e altre piattaforme con la potenza dell'AI",
     
     "productDetails": "Crea la descrizione perfetta per i tuoi annunci",
     "productCategoryLabel":"Scegli la categoria del prodotto",
@@ -38,40 +19,32 @@
     "productCopiedButton": "Copiato",
     
     "featuresBadge": "Come funziona?",
-    "featuresTitle": "Semplifica la Vendita",
-    "featuresDescription": "Il nostro AI crea per te descrizioni che catturano l'attenzione e si distinguono. Più interesse significa più vendite. Risparmia tempo e aumenta i profitti con Describify.",
+    "featuresTitle": "Risparmia tempo",
+    "featuresDescription": "Non perdere tempo a cercare la descrizione perfetta per i tuoi annunci, ci pensiamo noi per te",
     
     "pricesBadge": "Prezzi",
     "pricesTitle": "Eslora i nostri piani",
-    "pricesDescription": "Scegli un piano di abbonamento che si adatti alle tue esigenze. Il nostro piano gratuito ti permette di testare il servizio, mentre i piani Standard e Premium offrono funzionalità avanzate per venditori seri",
+    "pricesDescription": "Scegli un piano di abbonamento che si adatti alle tue esigenze e al tuo stile di vendita",
     
     "faqsTitle": "Hai delle domande?",
-    "faqsDescription": "Abbiamo le risposte che cerci. Scopri di più su come Describify può aiutarti nelle tue vendite.",
+    "faqsDescription": "Abbiamo tutte le risposte che cerci. Scopri di più su come possiamo aiutarti nella creazione dei tuoi annunci",
 
-    "footerCaption": "Il modo più intelligente per vendere. Sfrutta la potenza dell'AI per annunci che si distinguono e vendono velocemente.",
+    "footerCaption": "Sfrutta la potenza dell'AI per creare annunci di prodotti di seconda mano in pochi secondi.",
     "footerTerms": "Termini e condizioni",
 
-    "labelCategory": "Seleziona una categoria",
-    "labelBrand": "Immeti un brand",
-    "labelSize": "Seleziona una dimensione",
-    "labelColor": "Seleziona un colore",
-    "labelButtonGenerate": "Genera",
+    "emailErrorDigit": "Inserisci un email valida",
+    "emailErrorSend": "Errore nell'invio dell'email",
+    "emailErrorWaitlist": "Errore durante l'iscrizione alla waitlist",
 
-    "modalSetting": "Impostazioni",
-    "modalSettingTitle1": "Lingua",
-    "modalSettingCaption1": "Seleziona la lingua della piattaforma",
-    "modalSettingTitle2": "Tema",
-    "modalSettingCaption2": "Personalizza il tema della piattaforma",
+    "modalCookieText": "Utilizziamo cookie di terze parti per personalizzare i servizi e analizzare il traffico sulla piattaforma. Per ulteriori informazioni, leggi: ",
+    "modalCookieButtonAccept": "Accetta",
+    "modalCookieButtonDecline": "Rifiuta",
 
-    "cookieBannerText": "Utilizziamo cookie di terze parti per personalizzare i servizi e analizzare il traffico sulla piattaforma. Per ulteriori informazioni, leggi: ",
-    "cookieBannerAccept": "Accetta",
-    "cookieBannerDecline": "Declina",
+    "modalWaitlistTitle": "Ci siamo quasi...",
+    "modalWaitlistContent": "Unisciti subito alla waitlist di Describify e ricevi 5 token bonus al tuo primo accesso!",
 
-    "messageBannerTitle": "Complimenti, sei entrato a far parte di Describify!!",
-    "messageBannerContent": "Appena saremo pronti con il lancio della versione Beta ti invieremo un email di notifica",
-    "messageBannerButton": "Capito",
+    "modalMessageTitle": "Benvenuto nella Community di Describify!",
+    "modalMessageContent": "Grazie per esserti unito a noi! Riceverai aggiornamenti esclusivi via email e sarai tra i primi a provare le nostre nuove funzionalità.",
+    "modalMessageButton": "Capito"
 
-    "waitlistBannerTitle": "Manca pochissimo...",
-    "waitlistBannerContent": "Unisciti alla community di Describify oggi stesso e ricevi un bonus esclusivo di 5 token al tuo primo accesso!",
-    "waitlistGadgetError": "Inserisci un email valida"
 }

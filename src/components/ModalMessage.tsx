@@ -21,17 +21,17 @@ export default function ModalMessage({ onClose, setExploding }: ModalMessageProp
     }
 
     return (
-        <Modal show size="sm" className="bg-dark-background dark:bg-dark-background">
+        <Modal show size="md" className="bg-dark-background dark:bg-dark-background">
             <Modal.Body className="bg-custom-elevation dark:bg-dark-elevation4 rounded-lg py-10 flex flex-col gap-y-5 items-center justify-center">
                 <div className="flex flex-col justify-center items-center gap-y-5 text-center">
-                    <h1 className="text-4xl text-balance font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-                        {t('messageBannerTitle')} &#127881;
+                    <h1 className="text-4xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+                        {t('modalMessageTitle')} &#127881;
                     </h1>
-                    <p className="text-md md:text-md text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
-                        {t('messageBannerContent')}
+                    <p className="text-lg font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+                        {t('modalMessageContent')}
                     </p>
                 </div>
-                <ActiveButton text={t('messageBannerButton')} onClick={handleClick} />
+                <ActiveButton text={t('modalMessageButton')} onClick={handleClick} />
             </Modal.Body>
         </Modal >
     );

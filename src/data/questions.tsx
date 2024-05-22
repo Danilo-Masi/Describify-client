@@ -36,11 +36,11 @@ export const questions = {
     it: [
         {
             title: "Cos'è Descrify?",
-            content: "Descrify è un servizio basato sull'intelligenza artificiale che genera descrizioni efficaci e personalizzate per i tuoi prodotti. Questo può aiutarti a migliorare le vendite su piattaforme come Ebay, Vinted, Subito e molte altre."
+            content: "Descrify è un servizio basato sull'AI che genera annunci efficaci e personalizzati per i tuoi prodotti. Questo può aiutarti a migliorare le vendite su piattaforme come Ebay, Vinted, Subito e molte altre."
         },
         {
             title: "Perché usare Descrify?",
-            content: "Con pochi clic, Descrify ti consente di creare descrizioni efficaci per i tuoi prodotti, risparmiandoti tempo per concentrarti su ciò che conta di più per te."
+            content: "Con pochi clic, Descrify ti consente di creare annunci efficaci per i tuoi prodotti, risparmiandoti tempo per concentrarti su ciò che conta di più per te."
         },
         {
             title: "Quanto vale un token?",
@@ -56,7 +56,7 @@ export const questions = {
         },
         {
             title: "Posso aggiornare il mio abbonamento?",
-            content: "Assolutamente. Puoi effettuare l'upgrade del tuo abbonamento in qualsiasi momento. L'aggiornamento sarà attivo al successivo rinnovo mensile."
+            content: "Assolutamente. Puoi effettuare l'upgrade del tuo abbonamento in qualsiasi momento."
         },
         {
             title: "Come posso segnalare una descrizione non valida?",

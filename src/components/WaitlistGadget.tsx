@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from 'axios';
 //I18Next
 import { useTranslation } from 'react-i18next';
-//Confetti-explosion
+//Confetti-Explosion
 import ConfettiExplosion from 'react-confetti-explosion';
 //Utilities
 import { useEmail } from "../utilities/useEmail";
@@ -50,29 +50,33 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                 if (response.status === 200) {
                     const emailSent = await sendWaitlistEmail();
                     if (emailSent) {
-                        //AGGIUNGERE MESSAGGIO E VISIBILITA ALERT
+                        setEmailLoading(false);
+                        setEmailInput("");
+                        setEmailSend(true);
                     } else {
-                        //Errore nell'invio dell'email (Resend)
+                        setEmailLoading(false);
+                        setEmailInput("");
+                        //Errore nell'invio dell'email
                         console.error("Iscrizione alla waitlist effettuata, invio email non andato a buon fine");
+                        alert((t('emailErrorWaitlist'))); //*** MOSTRARE ALERT CON ERRORE ***//
                     }
-                    setEmailLoading(false);
-                    setEmailInput("");
-                    setEmailSend(true);
                 } else {
                     //Errore nell'iscrizione alla waitlist
                     console.error("Errore durante l'iscrizione alla waitlist")
-                    alert("Errore durante l'iscrizione alla waitlist."); //AGGIUNGERE MESSAGGIO E VISIBILITA ALERT
+                    alert(t('emailErrorWaitlist')); //*** MOSTRARE ALERT CON ERRORE ***//
                     setEmailLoading(false);
+                    setEmailInput("");
                 }
             } catch (error) {
                 //Errore "imprevisto" nell'iscrizione alla waitlist
-                console.error("Errore imprevisto durante l'iscrizione alla waitlist:", error);
-                setErrorInput("Si è verificato un errore durante l'iscrizione alla waitlist."); //TRADURRE
+                console.error("Errore imprevisto durante l'iscrizione alla waitlist", error);
+                setErrorInput(t('emailErrorDigit'));
                 setEmailLoading(false);
+                setEmailInput("");
             }
         } else {
             //Email digitata male
-            const erroreEmail = t('waitlistGadgetError');
+            const erroreEmail = t('emailErrorDigit');
             setErrorInput(erroreEmail);
             setEmailLoading(false);
         }
@@ -111,9 +115,9 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                     {t('buttonSubscribe')}
                 </button>
             )}
-            {/* Modal */}
+            {/* Modal message */}
             {isEmailSend && <ModalMessage onClose={() => setEmailSend(false)} setExploding={setExploding} />}
-            {/* Confetti explosion */}
+            {/* Confetti-Explosion */}
             {isExploding && <ConfettiExplosion zIndex={100} force={0.8} duration={3000} particleCount={250} />}
         </form >
     );
