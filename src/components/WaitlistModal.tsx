@@ -4,12 +4,15 @@ import { useTranslation } from 'react-i18next';
 import { Modal, ModalHeader } from "flowbite-react";
 //Components
 import WaitlistGadget from "./WaitlistGadget";
+import { Dispatch, SetStateAction } from 'react';
 
 interface WaitlistModalProps {
     onClose: () => void;
+    setAlertOpen: Dispatch<SetStateAction<boolean>>;
+    setAlertMessage: Dispatch<SetStateAction<string>>;
 }
 
-export default function WaitlistModal({ onClose }: WaitlistModalProps) {
+export default function WaitlistModal({ onClose, setAlertOpen, setAlertMessage }: WaitlistModalProps) {
 
     const { t } = useTranslation();
 
@@ -28,7 +31,7 @@ export default function WaitlistModal({ onClose }: WaitlistModalProps) {
                     <p className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance text-center font-light">
                         {t('modalWaitlistContent')}
                     </p>
-                    <WaitlistGadget mdWidth="w-full" />
+                    <WaitlistGadget mdWidth="w-full" setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />
                 </div>
             </Modal.Body>
         </Modal>

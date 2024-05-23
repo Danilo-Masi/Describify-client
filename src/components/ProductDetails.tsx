@@ -7,9 +7,9 @@ export default function ProductDetails() {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center p-5 rounded-lg bg-custom-solidColor dark:bg-dark-solidColor">
-      <h1 className="text-md text-center text-balance font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-        {t('productDetails')} &#128200;
-      </h1>
+      <p className='font-medium text-center text-balance'>
+        <span role="img" aria-label="Magic">✨</span> {t('productDetails')}
+      </p>
     </div>
   );
 }

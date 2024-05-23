@@ -29,7 +29,7 @@ export default function LegalPage({ setModalWaitListOpen }: TermsDataProps) {
 
     useEffect(() => {
         const currentURL = location.pathname; //Ottiene l'URL corrente della pagina
-        if (currentURL.includes("terms-&-conditions")) {
+        if (currentURL.includes("terms-and-conditions")) {
             import("../data/legalData/terms_&_conditions.json").then((data) => {
                 setData(data);
             });

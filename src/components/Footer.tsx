@@ -54,7 +54,7 @@ export default function Footer() {
                 {/* Terms & policy */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">{t('footerTerms')}</p>
-                    <Link to="/terms-conditions" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Terms & Conditions</Link>
+                    <Link to="/terms-and-conditions" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Terms & Conditions</Link>
                     <Link to="/privacy-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Privacy policy</Link>
                     <Link to="/cookie-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Cookies policy</Link>
                 </FooterCol>

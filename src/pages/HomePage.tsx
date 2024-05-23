@@ -10,13 +10,15 @@ import Hero from "../components/Hero";
 
 interface HomePageProps {
     setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
+    setAlertOpen: Dispatch<SetStateAction<boolean>>;
+    setAlertMessage: Dispatch<SetStateAction<string>>;
 }
 
-export default function HomePage({ setModalWaitListOpen }: HomePageProps) {
+export default function HomePage({ setModalWaitListOpen, setAlertOpen, setAlertMessage }: HomePageProps) {
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
             <Navbar setModalWaitListOpen={setModalWaitListOpen} />
-            <Hero id="Home" setModalWaitListOpen={setModalWaitListOpen}/>
+            <Hero id="Home" setModalWaitListOpen={setModalWaitListOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage}/>
             <Features id="Features" accessToken={false} setModalWaitListOpen={setModalWaitListOpen}/>
             <Prices id="Prices" accessToken={false} setModalWaitListOpen={setModalWaitListOpen} />
             <Faqs id="Faqs" accessToken={false} />

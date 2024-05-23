@@ -34,7 +34,7 @@ export default function Product({ setModalWaitListOpen }: ProductProps) {
             </div>
             <div className="w-full md:w-1/2 h-auto flex flex-col items-center justify-center gap-y-6">
                 {isLaoding ? <SkeltonPlaceholder skeletonStyle="h-[25svh]" /> : <ProductTitle titleGenerated={titleGenerated} />}
-                {isLaoding ? <SkeltonPlaceholder skeletonStyle="h-full min-h-[35svh]" /> : <ProductCaption descriptionGenerated={descriptionGenerated} />}
+                {isLaoding ? <SkeltonPlaceholder skeletonStyle="min-h-[47svh]" /> : <ProductCaption descriptionGenerated={descriptionGenerated} />}
             </div>
         </div>
     );

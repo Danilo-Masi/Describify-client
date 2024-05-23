@@ -12,6 +12,7 @@ import ErrorPage from "./pages/ErrorPage";
 //Components
 import ModalCookies from "./components/ModalCookies";
 import WaitlistModal from "./components/WaitlistModal";
+import AlertMessage from "./components/AlertMessage";
 
 export default function App() {
 
@@ -19,6 +20,8 @@ export default function App() {
   const [cookies] = useCookies(['userCookieConsent']);
   const [isCookieModalOpen, setCookieModalOpen] = useState(true);
   const [isWaitlistModalOpen, setWaitlistModalOpen] = useState(false);
+  const [isAlertOpen, setAlertOpen] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
     if (cookies.userCookieConsent === undefined || cookies.userCookieConsent === null) {
@@ -42,15 +45,16 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
-        <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
-        <Route path="/terms-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage}/>} />
+        <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage}/>} />
+        <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       {isCookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}
-      {isWaitlistModalOpen && <WaitlistModal onClose={() => setWaitlistModalOpen(false)} />}
+      {isWaitlistModalOpen && <WaitlistModal onClose={() => setWaitlistModalOpen(false)} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage}/>}
+      {isAlertOpen && <AlertMessage message={alertMessage} setAlertOpen={setAlertOpen}/>}
     </BrowserRouter>
   );
 }

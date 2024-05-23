@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 //Axios
 import axios from 'axios';
 //I18Next
@@ -13,9 +13,11 @@ import ModalMessage from "./ModalMessage";
 interface WaitlistGadgetProps {
     mdWidth?: string;
     buttonColor?: string;
+    setAlertOpen: Dispatch<SetStateAction<boolean>>;
+    setAlertMessage: Dispatch<SetStateAction<string>>;
 }
 
-export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetProps) {
+export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, setAlertMessage }: WaitlistGadgetProps) {
 
     const { t } = useTranslation();
 
@@ -58,26 +60,28 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                         setEmailInput("");
                         //Errore nell'invio dell'email
                         console.error("Iscrizione alla waitlist effettuata, invio email non andato a buon fine");
-                        alert((t('emailErrorWaitlist'))); //*** MOSTRARE ALERT CON ERRORE ***//
+                        setAlertMessage(t('emailErrorSend'));
+                        setAlertOpen(true);
                     }
                 } else {
-                    //Errore nell'iscrizione alla waitlist
-                    console.error("Errore durante l'iscrizione alla waitlist")
-                    alert(t('emailErrorWaitlist')); //*** MOSTRARE ALERT CON ERRORE ***//
                     setEmailLoading(false);
                     setEmailInput("");
+                    //Errore nell'iscrizione alla waitlist
+                    console.error("Errore durante l'iscrizione alla waitlist");
+                    setAlertMessage(t('emailErrorWaitlist'));
+                    setAlertOpen(true);
                 }
             } catch (error) {
-                //Errore "imprevisto" nell'iscrizione alla waitlist
-                console.error("Errore imprevisto durante l'iscrizione alla waitlist", error);
-                setErrorInput(t('emailErrorDigit'));
                 setEmailLoading(false);
                 setEmailInput("");
+                //Errore "imprevisto" nell'iscrizione alla waitlist
+                console.error("Errore imprevisto durante l'iscrizione alla waitlist", error);
+                setAlertMessage(t('emailErrorWaitlist'));
+                setAlertOpen(true);
             }
         } else {
             //Email digitata male
-            const erroreEmail = t('emailErrorDigit');
-            setErrorInput(erroreEmail);
+            setErrorInput(t('emailErrorDigit'));
             setEmailLoading(false);
         }
     };
