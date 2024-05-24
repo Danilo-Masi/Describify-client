@@ -8,9 +8,10 @@ import { useCopy } from "../utilities/useCopy";
 
 interface ProductCaptionProps {
     descriptionGenerated: string;
+    descriptionPlaceholder: string;
 }
 
-export default function ProductCaption({ descriptionGenerated }: ProductCaptionProps) {
+export default function ProductCaption({ descriptionGenerated, descriptionPlaceholder }: ProductCaptionProps) {
 
     const { t } = useTranslation();
 
@@ -56,27 +57,7 @@ export default function ProductCaption({ descriptionGenerated }: ProductCaptionP
                 name="textarea descrizione"
                 onChange={e => setValoreDescrizione(e.target.value)}
                 value={valoreDescrizione}
-                placeholder={
-                    `💼 Camicia Elegante Massimo Dutti 💼
-                
-Ideale per ogni occasione, questa camicia presenta un design classico con righe color azzurro chiaro e bianco, perfetto per aggiungere un tocco di eleganza al tuo guardaroba.
-                
-🌟 Caratteristiche principali:
-    - Taglia: M
-    - Materiale: 100% cotone di alta qualità
-    - Colore: Azzurro chiaro e bianco a righe
-    - Condizione: Nuova, mai indossata
-                
-Questa camicia è incredibilmente comoda e traspirante, ideale sia per l'ufficio che per una serata fuori. Il tessuto in cotone puro assicura una sensazione di morbidezza sulla pelle e una vestibilità perfetta.
-                
-🔹 Perché scegliere questa camicia?
-    - Stile senza tempo e versatile
-    - Perfetta per abbinamenti sia formali che casual
-    - Qualità superiore garantita da Massimo Dutti
-                
-Non perdere l'occasione di aggiungere questo pezzo unico al tuo guardaroba! 👔✨
-                
-📞 Contattami per maggiori dettagli o per organizzare una prova. Sono a tua disposizione per qualsiasi domanda!`}
+                placeholder={descriptionPlaceholder}
                 className="w-full h-[30svh] overflow-scroll resize-none px-0 bg-custom-elevation4 dark:bg-dark-elevation4 border-0 focus:border-0 focus:ring-0 text-md text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray" />
         </div>
     );

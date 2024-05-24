@@ -8,9 +8,10 @@ import { useCopy } from "../utilities/useCopy";
 
 interface ProductTitleProps {
     titleGenerated: string;
+    titlePlaceholder: string;
 }
 
-export default function ProductTitle({ titleGenerated }: ProductTitleProps) {
+export default function ProductTitle({ titleGenerated, titlePlaceholder }: ProductTitleProps) {
 
     const { t } = useTranslation();
 
@@ -55,7 +56,7 @@ export default function ProductTitle({ titleGenerated }: ProductTitleProps) {
                 name="textarea titolo"
                 onChange={e => setValoreTitolo(e.target.value)}
                 value={titleGenerated}
-                placeholder="Elegante Camicia Massimo Dutti a Righe Azzurro Chiaro e Bianco, Taglia M - 100% Cotone 🌟👔"
+                placeholder={titlePlaceholder}
                 className="w-full h-[10svh] overflow-scroll resize-none px-0 bg-custom-elevation4 dark:bg-dark-elevation4 border-0 focus:border-0 focus:ring-0 text-md text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray" />
         </div>
     );

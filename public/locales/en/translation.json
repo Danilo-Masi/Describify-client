@@ -4,7 +4,7 @@
     "buttonSubscribe": "Subscribe",
     "buttonSubscribeLong": "Join the waitlist",
 
-    "heroTitle": "Less Stress, More Sales",
+    "heroTitle": "less stress more sales",
     "heroDescription": "Speed up your listing creation and boost sales on Vinted, eBay, and more with the power of AI",
 
     "productDetails": "Create the perfect listing for your second-hand products",
@@ -17,11 +17,15 @@
     "productFormDescriptionLabel": "Description",
     "productCopyButton": "Copy",
     "productCopiedButton": "Copied",
+    "productPlaceholderTitle": "Elegant Light Blue and White Striped Massimo Dutti Shirt, Size M - 100% Cotton 🌟👔",
+    "produtctPlaceholderDescription": "💼 Elegant Massimo Dutti Shirt 💼\n\nIdeal for any occasion, this shirt features a classic design with light blue and white stripes, perfect for adding a touch of elegance to your wardrobe.\n\n🌟 Key Features:\n- Size: M\n- Material: 100% high-quality cotton\n- Color: Light blue and white stripes\n- Condition: New, never worn\n\nThis shirt is incredibly comfortable and breathable, ideal for both the office and a night out. The pure cotton fabric ensures a soft feel against the skin and a perfect fit.\n\n🔹 Why Choose This Shirt?\n- Timeless and versatile style\n- Perfect for both formal and casual wear\n- Superior quality guaranteed by Massimo Dutti\n\nDon't miss the opportunity to add this unique piece to your wardrobe! 👔✨\n\n📞 Contact me for more details or to arrange a fitting. I'm available for any questions!",
 
     "featuresBadge": "How it works?",
     "featuresTitle": "Save Time",
     "featuresDescription": "Don't waste time searching for the perfect listing description, we've got you covered",
-
+    "featuresProductTitle": "Black Vans T-Shirt - Men's Size M - Excellent Condition",
+    "featuresProductDescription": "Hello! I'm selling my black Vans t-shirt, size M. I bought it a while ago, but I've only worn it a couple of times and now it doesn't fit me as I would like. It's really in excellent condition, like new!\n\nProduct Details:\n- Brand: Vans\n- Color: Black\n- Size: M\n- Condition: Used but kept very well\n\nThis t-shirt is made of 100% cotton, so it's super comfortable and perfect for summer, but also great to wear under a sweatshirt or jacket in colder months. It has the Vans logo on the chest, not too big, just that extra touch that never hurts.\n\nI've always washed it carefully and kept it folded in the closet, so it has no tears, stains, or signs of wear. I'm honestly sorry to sell it because it's a really nice t-shirt, but I'd rather someone wear it than leave it unused.\n\nLet me know if you're interested or if you have any other questions!",
+    
     "pricesBadge": "Pricing",
     "pricesTitle": "Explore our plans",
     "pricesDescription": "Choose a subscription plan that fits your needs and selling style",
@@ -45,5 +49,9 @@
 
     "modalMessageTitle": "Welcome to the Describify Community!",
     "modalMessageContent": "Thanks for joining us! You'll get exclusive updates via email and be among the first to try out our new features.",
-    "modalMessageButton": "Got it"
+    "modalMessageButton": "Got it",
+
+    "cardTitle": "Black Vans T-Shirt - Men's Size M - Excellent Condition",
+    "cardCaption": "Hello! I'm selling my black Vans t-shirt, size M. I bought it a while ago,...",
+    "cardButton": "Item sold"
 }
