@@ -1,18 +1,29 @@
 import { Dispatch, MutableRefObject, SetStateAction } from "react";
 
 interface PriceCardProps {
-  setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
+  percentSaved: string;
+  isYearly: boolean;
+  subscriptionPrice: string;
   planDetails: any;
   reference: MutableRefObject<null>;
+  setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function PriceCard({ setModalWaitListOpen, planDetails, reference }: PriceCardProps) {
+export default function PriceCard({ percentSaved, isYearly, subscriptionPrice, planDetails, reference, setModalWaitListOpen }: PriceCardProps) {
   return (
     <div className="w-full h-auto flex flex-col rounded-lg p-5 gap-y-5 bg-custom-elevation dark:bg-dark-elevation2 border border-custom-borderColor dark:border-dark-borderColorxw" ref={reference}>
-      <p className="text-2xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{planDetails.title}</p>
-      <p className="text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">€{planDetails.prices}
-        <span className="text-lg font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray"> / {planDetails.month}</span>
-      </p>
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-3">
+        <p className="text-2xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+          {planDetails.title}
+        </p>
+        {isYearly && <p className="text-md font-medium text-green-700 bg-green-300 px-4 py-1 rounded-full">Save {percentSaved}%</p>}
+      </div>
+      <div className="flex items-center justify-start gap-x-3">
+        <p className="text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">€{subscriptionPrice}</p>
+        <p className="max-w-[50%] text-sm font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+          {isYearly ? planDetails.yearly : planDetails.monthly}
+        </p>
+      </div>
       <p className="text-md font-light text-clip text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">{planDetails.description}</p>
       <button
         onClick={() => setModalWaitListOpen(true)}

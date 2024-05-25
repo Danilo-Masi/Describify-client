@@ -12,12 +12,12 @@ export default function AlertMessage({ message, setAlertOpen }: AlertMessageProp
   useEffect(() => {
     const interval = setTimeout(() => {
       setAlertOpen(false);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-full flex items-center justify-start px-10 fixed top-[90%] z-[100]">
+    <div className="w-full flex items-center justify-center md:justify-start md:px-2 fixed top-[85%] md:top-[90%] z-[100]">
       <Alert color="failure">
         <p className="flex items-center justify-center gap-x-3">
           <span>

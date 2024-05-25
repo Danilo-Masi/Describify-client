@@ -17,7 +17,7 @@ export default function Footer() {
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
                 {/* Logo e link social */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>
-                    <Logo width='40' height='30'/>
+                    <Logo width='50' height='50'/>
                     <p className="max-w-md md:text-start text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray mt-2">
                         {t('footerCaption')}
                     </p>

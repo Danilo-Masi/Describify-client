@@ -1,8 +1,9 @@
 export const standardPlanEn = {
     title: "Standard Plan",
-    prices: "3.99",
     month: "month",
-    description: "Ideal for those who want to speed up the creation of product listings",
+    monthly: "per month billed monthly",
+    yearly: "per month billed annually",
+    description: "For quick generation that boosts your ads and helps you sell more efficiently",
     button: "Subscribe",
     points: [
         "50 monthly tokens",
@@ -14,9 +15,9 @@ export const standardPlanEn = {
 
 export const premiumPlanEn = {
     title: "Premium Plan",
-    prices: "21.99",
-    month: "month",
-    description: "Perfect for those who want to sell quickly and effectively, without missing the human touch",
+    monthly: "per month billed monthly",
+    yearly: "per month billed annually",
+    description: "For more advanced, human-touched generations thanks to Describify's most advanced AI models",
     button: "Subscribe",
     points: [
         "200 monthly tokens",

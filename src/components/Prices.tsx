@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 //I18Next
 import { useTranslation } from 'react-i18next';
 //Utilities
@@ -11,6 +11,7 @@ import { standardPlanEn, premiumPlanEn } from '../data/card_details_en';
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
 import PriceCard from './PriceCard';
+import SwitchButton from './SwitchButton';
 
 interface PricesProps {
   id: string;
@@ -19,6 +20,10 @@ interface PricesProps {
 }
 
 export default function Prices({ id, accessToken, setModalWaitListOpen }: PricesProps) {
+
+  const [isYearly, setYearly] = useState(true);
+  const [standardPrice, setStandardPrice] = useState("");
+  const [premiumPrice, setPremiumPrice] = useState("");
 
   const { t } = useTranslation();
   const language = useLanguage();
@@ -35,6 +40,16 @@ export default function Prices({ id, accessToken, setModalWaitListOpen }: Prices
     fadeInElement(price2, 0.5, 0.5);
   }, []);
 
+  useEffect(() => {
+    if (isYearly) {
+      setStandardPrice("2.99");
+      setPremiumPrice("18.99");
+    } else {
+      setStandardPrice("3.99");
+      setPremiumPrice("21.99");
+    }
+  }, [isYearly]);
+
   return (
     <ContainerComponents id={id}>
       {/* Intestazione */}
@@ -45,9 +60,10 @@ export default function Prices({ id, accessToken, setModalWaitListOpen }: Prices
         accessToken={accessToken}
         titleStyle="text-5xl md:text-6xl"
         descriptionStyle="text-lg" />
+      <SwitchButton isYearly={isYearly} setYearly={setYearly} />
       <div className='w-full md:w-7/12 h-auto flex flex-col md:flex-row gap-12 mt-10'>
-        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? standardPlanIt : standardPlanEn} reference={priceCardRef1} />
-        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? premiumPlanIt : premiumPlanEn} reference={priceCardRef2} />
+        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? standardPlanIt : standardPlanEn} reference={priceCardRef1} subscriptionPrice={standardPrice} isYearly={isYearly} percentSaved="25"/>
+        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? premiumPlanIt : premiumPlanEn} reference={priceCardRef2} subscriptionPrice={premiumPrice} isYearly={isYearly} percentSaved="10"/>
       </div>
     </ContainerComponents>
   );

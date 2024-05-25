@@ -21,7 +21,7 @@ export default function ModalMessage({ onClose, setExploding }: ModalMessageProp
     }
 
     return (
-        <Modal show size="md" className="bg-dark-background dark:bg-dark-background">
+        <Modal show position="center" size="md" className="bg-dark-background dark:bg-dark-background">
             <Modal.Body className="bg-custom-elevation dark:bg-dark-elevation4 rounded-lg py-10 flex flex-col gap-y-5 items-center justify-center">
                 <div className="flex flex-col justify-center items-center gap-y-5 text-center">
                     <h1 className="text-4xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">

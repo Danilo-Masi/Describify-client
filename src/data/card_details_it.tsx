@@ -1,8 +1,8 @@
 export const standardPlanIt = {
     title: "Piano Standard",
-    prices: "3.99",
-    month: "mese",
-    description: "Ideale per chi desidera velocizzare la creazione degli annunci per i suoi prodotti",
+    monthly: "al mese fatturato mensilmente",
+    yearly: "al mese fatturato annualmente",
+    description: "Per una generazione rapida che potenzia i tuoi annunci e ti aiuta a vendere più efficentemente",
     button: "Abbonati",
     points: [
         "50 token mensili",
@@ -14,9 +14,9 @@ export const standardPlanIt = {
 
 export const premiumPlanIt = {
     title: "Piano Premium",
-    prices: "21.99",
-    month: "mese",
-    description: "Perfetto per chi vuole vendere rapidamente ed efficacemente, senza tralasciare il tocco umano",
+    monthly: "al mese fatturato mensilmente",
+    yearly: "al mese fatturato annualmente",
+    description: "Per generazioni più avanzate dal tocco umano grazie ai modelli di AI di Describify più avanzati",
     button: "Abbonati",
     points: [
         "200 token mensili",

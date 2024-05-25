@@ -29,6 +29,8 @@
     "pricesBadge": "Pricing",
     "pricesTitle": "Explore our plans",
     "pricesDescription": "Choose a subscription plan that fits your needs and selling style",
+    "priceMonthly":"Monthly",
+    "priceYearly":"Yearly",
 
     "faqsTitle": "Got Questions?",
     "faqsDescription": "We've got all the answers you need. Learn more about how we can help you create your listings",

@@ -21,7 +21,7 @@ export default function Logo({ width, height }: LogoProps) {
         return () => window.removeEventListener('resize', handleResize);
     })
     return (
-        <div className="w-fit md:w-1/4 p-y-10">
+        <div className="md:w-1/4 p-y-10">
             <Link to="/" onClick={() => scrollToElement("#Home")} aria-label="link logo home" className="flex items-center gap-x-3">
                 <IconaLogo width={width} height={height} />
                 {isVisible && <h1 className="text-xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>}
