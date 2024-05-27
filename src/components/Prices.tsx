@@ -43,10 +43,10 @@ export default function Prices({ id, accessToken, setModalWaitListOpen }: Prices
   useEffect(() => {
     if (isYearly) {
       setStandardPrice("2.99");
-      setPremiumPrice("18.99");
+      setPremiumPrice("15.99");
     } else {
       setStandardPrice("3.99");
-      setPremiumPrice("21.99");
+      setPremiumPrice("17.99");
     }
   }, [isYearly]);
 
@@ -63,7 +63,7 @@ export default function Prices({ id, accessToken, setModalWaitListOpen }: Prices
       <SwitchButton isYearly={isYearly} setYearly={setYearly} />
       <div className='w-full md:w-7/12 h-auto flex flex-col md:flex-row gap-12 mt-10'>
         <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? standardPlanIt : standardPlanEn} reference={priceCardRef1} subscriptionPrice={standardPrice} isYearly={isYearly} percentSaved="25"/>
-        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? premiumPlanIt : premiumPlanEn} reference={priceCardRef2} subscriptionPrice={premiumPrice} isYearly={isYearly} percentSaved="10"/>
+        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? premiumPlanIt : premiumPlanEn} reference={priceCardRef2} subscriptionPrice={premiumPrice} isYearly={isYearly} percentSaved="11"/>
       </div>
     </ContainerComponents>
   );

@@ -1,0 +1,1046 @@
+{
+    "1": {
+        "id": 1,
+        "title": "Donna",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "7": {
+        "id": 7,
+        "title": "Vestiti",
+        "parent_id": 1,
+        "parent": "Donna"
+    },
+    "12": {
+        "id": 12,
+        "title": "Abbigliamento da esterno",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "13": {
+        "id": 13,
+        "title": "Maglioni e pullover",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "14": {
+        "id": 14,
+        "title": "Completi e blazer",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "15": {
+        "id": 15,
+        "title": "Abiti",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "16": {
+        "id": 16,
+        "title": "Gonne",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "17": {
+        "id": 17,
+        "title": "Top e t-shirt",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "18": {
+        "id": 18,
+        "title": "Jeans",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "19": {
+        "id": 19,
+        "title": "Pantaloni e leggins",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "20": {
+        "id": 20,
+        "title": "Pantalincini e pantalini corti",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "21": {
+        "id": 21,
+        "title": "Tute jumpsuite e playsuite",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "22": {
+        "id": 22,
+        "title": "Costumi da bagno",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "23": {
+        "id": 23,
+        "title": "Lingerie e indumenti da notte",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "24": {
+        "id": 24,
+        "title": "Vestiti premam",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "25": {
+        "id": 25,
+        "title": "Abbigliamento sportivo",
+        "parent_id": 7,
+        "parent": "Vestiti"
+    },
+    "8": {
+        "id": 8,
+        "title": "Scarpe",
+        "parent_id": 1,
+        "parent": "Donna"
+    },
+    "26": {
+        "id": 26,
+        "title": "Ballerine",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "27": {
+        "id": 27,
+        "title": "Scarpe da barca, loafer e mocassini",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "28": {
+        "id": 28,
+        "title": "Stivali",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "29": {
+        "id": 29,
+        "title": "Zoccoli e sabot",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "30": {
+        "id": 30,
+        "title": "Espadrillas",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "31": {
+        "id": 31,
+        "title": "Infradito e ciabatte",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "32": {
+        "id": 32,
+        "title": "Scarpe con tacchi alti",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "33": {
+        "id": 33,
+        "title": "Mary Jane e scarpe a T",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "34": {
+        "id": 34,
+        "title": "Sandali",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "35": {
+        "id": 35,
+        "title": "Pantofole",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "36": {
+        "id": 36,
+        "title": "Scarpe da ginnastica",
+        "parent_id": 8,
+        "parent": "Scarpe"
+    },
+    "9": {
+        "id": 9,
+        "title": "Borse",
+        "parent_id": 1,
+        "parent": "Donna"
+    },
+    "37": {
+        "id": 37,
+        "title": "Zaini",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "38": {
+        "id": 38,
+        "title": "Borse da spiaggia",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "39": {
+        "id": 39,
+        "title": "Valigette",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "40": {
+        "id": 40,
+        "title": "Marsupio",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "41": {
+        "id": 41,
+        "title": "Pochette",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "42": {
+        "id": 42,
+        "title": "Porta abiti",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "43": {
+        "id": 43,
+        "title": "Borse da palestra",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "44": {
+        "id": 44,
+        "title": "Borsette",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "45": {
+        "id": 45,
+        "title": "Borse e sacche da viaggio",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "46": {
+        "id": 46,
+        "title": "Bagagli e valigie",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "47": {
+        "id": 47,
+        "title": "Pochette per il make-up",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "48": {
+        "id": 37,
+        "title": "Borse a spalla",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "49": {
+        "id": 49,
+        "title": "Borse tote",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "50": {
+        "id": 50,
+        "title": "Portafogli",
+        "parent_id": 9,
+        "parent": "Borse"
+    },
+    "10": {
+        "id": 10,
+        "title": "Accessori",
+        "parent_id": 1,
+        "parent": "Donna"
+    },
+    "51": {
+        "id": 51,
+        "title": "Bandana e fazzoletti per la testa",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "52": {
+        "id": 52,
+        "title": "Cinture",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "53": {
+        "id": 53,
+        "title": "Guanti",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "54": {
+        "id": 54,
+        "title": "Accessori per capelli",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "55": {
+        "id": 55,
+        "title": "Cappelli e berretti",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "56": {
+        "id": 56,
+        "title": "Gioielli",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "57": {
+        "id": 57,
+        "title": "Portachiavi",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "58": {
+        "id": 58,
+        "title": "Sciarpe e scialli",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "59": {
+        "id": 59,
+        "title": "Occhiali da sole",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "60": {
+        "id": 60,
+        "title": "Ombrelli",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "61": {
+        "id": 61,
+        "title": "Orologi",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "11": {
+        "id": 11,
+        "title": "Bellezza",
+        "parent_id": 1,
+        "parent": "Donna"
+    },
+    "62": {
+        "id": 62,
+        "title": "Make-up",
+        "parent_id": 11,
+        "parent": "Bellezza"
+    },
+    "63": {
+        "id": 63,
+        "title": "Profumi",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "64": {
+        "id": 64,
+        "title": "Cura del viso",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "65": {
+        "id": 65,
+        "title": "Cura delle mani",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "66": {
+        "id": 66,
+        "title": "Cura delle unghie",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "67": {
+        "id": 67,
+        "title": "Cura del corpo",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "68": {
+        "id": 68,
+        "title": "Cura dei capelli",
+        "parent_id": 10,
+        "parent": "Accessori"
+    },
+    "2": {
+        "id": 2,
+        "title": "Uomo",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "69": {
+        "id": 69,
+        "title": "Vestiti",
+        "parent_id": 2,
+        "parent": "Uomo"
+    },
+    "73": {
+        "id": 73,
+        "title": "Jeans",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "74": {
+        "id": 74,
+        "title": "Abbigliamento da esterno",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "75": {
+        "id": 75,
+        "title": "Camicie e t-shirt",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "76": {
+        "id": 76,
+        "title": "Completi e blazer",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "77": {
+        "id": 77,
+        "title": "Maglioni e pullover",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "78": {
+        "id": 78,
+        "title": "Pantaloni",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "79": {
+        "id": 79,
+        "title": "Pantalincini e pantaloni corti",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "80": {
+        "id": 80,
+        "title": "Calzini e intimo",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "81": {
+        "id": 81,
+        "title": "Pigiama",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "82": {
+        "id": 82,
+        "title": "Costumi da bagno",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "83": {
+        "id": 83,
+        "title": "Abbigliamento sportivo",
+        "parent_id": 69,
+        "parent": "Vestiti"
+    },
+    "70": {
+        "id": 70,
+        "title": "Scarpe",
+        "parent_id": 2,
+        "parent": "Uomo"
+    },
+    "84": {
+        "id": 84,
+        "title": "Scarpe da barca, loafer e mocassini",
+        "parent_id": 70,
+        "parent": "Scarpe"
+    },
+    "85": {
+        "id": 85,
+        "title": "Stivali",
+        "parent_id": 70,
+        "parent": "Scarpe"
+    },
+    "86": {
+        "id": 86,
+        "title": "Zoccoli e sabot",
+        "parent_id": 70,
+        "parent": "Scarpe"
+    },
+    "87": {
+        "id": 87,
+        "title": "Espadrillas",
+        "parent_id": 70,
+        "parent": "Scarpe"
+    },
+    "88": {
+        "id": 88,
+        "title": "Infradito e ciabatte",
+        "parent_id": 70,
+        "parent": "Scarpe"
+    },
+    "89": {
+        "id": 89,
+        "title": "Scarpe formali",
+        "parent_id": 70,
+        "parent": "Scarpe"
+    },
+    "90": {
+        "id": 90,
+        "title": "Sandali",
+        "parent_id": 70,
+        "parent": "Scarpe"
+    },
+    "91": {
+        "id": 91,
+        "title": "Pantofole",
+        "parent_id": 70,
+        "parent": "Scarpe"
+    },
+    "92": {
+        "id": 92,
+        "title": "Scarpe da ginnastica",
+        "parent_id": 70,
+        "parent": "Scarpe"
+    },
+    "71": {
+        "id": 71,
+        "title": "Accessori",
+        "parent_id": 2,
+        "parent": "Uomo"
+    },
+    "93": {
+        "id": 93,
+        "title": "Borse e zaini",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "94": {
+        "id": 94,
+        "title": "Bandana e fazzoletti per la testa",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "95": {
+        "id": 95,
+        "title": "Cinture",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "96": {
+        "id": 96,
+        "title": "Bretelle",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "97": {
+        "id": 97,
+        "title": "Guanti",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "98": {
+        "id": 98,
+        "title": "Cappelli e berretti",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "99": {
+        "id": 99,
+        "title": "Gioielli",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "100": {
+        "id": 100,
+        "title": "Sciarpe e scialli",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "101": {
+        "id": 101,
+        "title": "Occhiali da sole",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "102": {
+        "id": 102,
+        "title": "Orologi",
+        "parent_id": 71,
+        "parent": "Accessori"
+    },
+    "72": {
+        "id": 72,
+        "title": "Cura del corpo",
+        "parent_id": 2,
+        "parent": "Uomo"
+    },
+    "103": {
+        "id": 103,
+        "title": "Cura del viso",
+        "parent_id": 72,
+        "parent": "Cura del corpo"
+    },
+    "104": {
+        "id": 104,
+        "title": "Cura dei capelli",
+        "parent_id": 72,
+        "parent": "Cura del corpo"
+    },
+    "105": {
+        "id": 105,
+        "title": "Cura del corpo",
+        "parent_id": 72,
+        "parent": "Cura del corpo"
+    },
+    "106": {
+        "id": 106,
+        "title": "Cura delle mani e delle unghie",
+        "parent_id": 72,
+        "parent": "Cura del corpo"
+    },
+    "107": {
+        "id": 107,
+        "title": "Dopobarba e colonia",
+        "parent_id": 72,
+        "parent": "Cura del corpo"
+    },
+    "108": {
+        "id": 108,
+        "title": "Kit per la rasatura",
+        "parent_id": 72,
+        "parent": "Cura del corpo"
+    },
+    "3": {
+        "id": 3,
+        "title": "Casa",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "109": {
+        "id": 109,
+        "title": "Tessili",
+        "parent_id": 3,
+        "parent": "Casa"
+    },
+    "113": {
+        "id": 113,
+        "title": "Biancheria da letto",
+        "parent_id": 109,
+        "parent": "Tessili"
+    },
+    "114": {
+        "id": 114,
+        "title": "Coperte",
+        "parent_id": 109,
+        "parent": "Tessili"
+    },
+    "115": {
+        "id": 115,
+        "title": "Tende e drappi",
+        "parent_id": 109,
+        "parent": "Tessili"
+    },
+    "116": {
+        "id": 116,
+        "title": "Cuscini",
+        "parent_id": 109,
+        "parent": "Tessili"
+    },
+    "117": {
+        "id": 117,
+        "title": "Tappeti",
+        "parent_id": 109,
+        "parent": "Tessili"
+    },
+    "118": {
+        "id": 118,
+        "title": "Tovaglie",
+        "parent_id": 109,
+        "parent": "Tessili"
+    },
+    "119": {
+        "id": 119,
+        "title": "Arazzi e tele da parete",
+        "parent_id": 109,
+        "parent": "Tessili"
+    },
+    "120": {
+        "id": 120,
+        "title": "Asciugamani",
+        "parent_id": 109,
+        "parent": "Tessili"
+    },
+    "110": {
+        "id": 110,
+        "title": "Accessori per la casa",
+        "parent_id": 3,
+        "parent": "Casa"
+    },
+    "121": {
+        "id": 121,
+        "title": "Candele e porta candele",
+        "parent_id": 110,
+        "parent": "Accessori per la casa" 
+    },
+    "122": {
+        "id": 122,
+        "title": "Orologi",
+        "parent_id": 110,
+        "parent": "Accessori per la casa" 
+    },
+    "123": {
+        "id": 123,
+        "title": "Espositori",
+        "parent_id": 110,
+        "parent": "Accessori per la casa" 
+    },
+    "124": {
+        "id": 124,
+        "title": "Cornici per foto e quadri",
+        "parent_id": 110,
+        "parent": "Accessori per la casa" 
+    },
+    "125": {
+        "id": 125,
+        "title": "Specchi",
+        "parent_id": 110,
+        "parent": "Accessori per la casa" 
+    },
+    "126": {
+        "id": 126,
+        "title": "Organizzatori",
+        "parent_id": 110,
+        "parent": "Accessori per la casa" 
+    },
+    "127": {
+        "id": 127,
+        "title": "Vasi",
+        "parent_id": 110,
+        "parent": "Accessori per la casa" 
+    },
+    "111": {
+        "id": 111,
+        "title": "Stoviglie",
+        "parent_id": 3,
+        "parent": "Casa"
+    },
+    "128": {
+        "id": 128,
+        "title": "Posate",
+        "parent_id": 111,
+        "parent": "Stoviglie" 
+    },
+    "129": {
+        "id": 129,
+        "title": "Stoviglie",
+        "parent_id": 111,
+        "parent": "Stoviglie" 
+    },
+    "130": {
+        "id": 130,
+        "title": "Bicchieri",
+        "parent_id": 111,
+        "parent": "Stoviglie" 
+    },
+    "112": {
+        "id": 112,
+        "title": "Festeggiamenti e feste",
+        "parent_id": 3,
+        "parent": "Casa"
+    },
+    "131": {
+        "id": 131,
+        "title": "Striscioni e bandiere",
+        "parent_id": 112,
+        "parent": "Festeggiamenti e feste" 
+    },
+    "132": {
+        "id": 132,
+        "title": "Biglietti e buste",
+        "parent_id": 112,
+        "parent": "Festeggiamenti e feste" 
+    },
+    "133": {
+        "id": 133,
+        "title": "Luci decorative",
+        "parent_id": 112,
+        "parent": "Festeggiamenti e feste" 
+    },
+    "134": {
+        "id": 134,
+        "title": "Carte e buste regalo",
+        "parent_id": 112,
+        "parent": "Festeggiamenti e feste" 
+    },
+    "135": {
+        "id": 135,
+        "title": "Decorazioni festive",
+        "parent_id": 112,
+        "parent": "Festeggiamenti e feste" 
+    },
+    "136": {
+        "id": 136,
+        "title": "Decorazioni da tavola",
+        "parent_id": 112,
+        "parent": "Festeggiamenti e feste" 
+    },
+    "137": {
+        "id": 137,
+        "title": "Decorazioni per l'albero",
+        "parent_id": 112,
+        "parent": "Festeggiamenti e feste" 
+    },
+    "138": {
+        "id": 138,
+        "title": "Ghirlande",
+        "parent_id": 112,
+        "parent": "Festeggiamenti e feste" 
+    },
+    "4": {
+        "id": 4,
+        "title": "Intrattenimento",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "139": {
+        "id": 139,
+        "title": "Videogiochi e console",
+        "parent_id": 4,
+        "parent": "Intrattenimento" 
+    },
+    "143": {
+        "id": 143,
+        "title": "Xbox Series X e S",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "144": {
+        "id": 144,
+        "title": "Xbox One",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "145": {
+        "id": 145,
+        "title": "Xbox precedenti",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "146": {
+        "id": 146,
+        "title": "Playstation 5",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "147": {
+        "id": 147,
+        "title": "Playstation 4",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "148": {
+        "id": 148,
+        "title": "Playstation precedenti",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "149": {
+        "id": 149,
+        "title": "Ninendo Switch",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "150": {
+        "id": 150,
+        "title": "Nintendo Wii e Wii U",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "151": {
+        "id": 151,
+        "title": "Nintendo 3DS e 2DS",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "152": {
+        "id": 152,
+        "title": "Nintendo Game Boy",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "153": {
+        "id": 153,
+        "title": "Nintendo precedenti",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "154": {
+        "id": 154,
+        "title": "Giochi per PC",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "155": {
+        "id": 155,
+        "title": "Realtà virtuale",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "156": {
+        "id": 156,
+        "title": "Retrogaming",
+        "parent_id": 139,
+        "parent": "Videogiochi e console" 
+    },
+    "140": {
+        "id": 140,
+        "title": "Giochi e rompicapo",
+        "parent_id": 4,
+        "parent": "Intrattenimento" 
+    },
+    "157": {
+        "id": 157,
+        "title": "Giochi da tavolo",
+        "parent_id": 140,
+        "parent": "Giochi e rompicapo" 
+    },
+    "158": {
+        "id": 158,
+        "title": "Giochi con tessere",
+        "parent_id": 140,
+        "parent": "Giochi e rompicapo" 
+    },
+    "159": {
+        "id": 159,
+        "title": "Giochi con le carte",
+        "parent_id": 140,
+        "parent": "Giochi e rompicapo" 
+    },
+    "160": {
+        "id": 160,
+        "title": "Puzzle",
+        "parent_id": 140,
+        "parent": "Giochi e rompicapo" 
+    },
+    "161": {
+        "id": 161,
+        "title": "Rompicapo e giochi di logica",
+        "parent_id": 140,
+        "parent": "Giochi e rompicapo" 
+    },
+    "162": {
+        "id": 162,
+        "title": "Giochi tascabili",
+        "parent_id": 140,
+        "parent": "Giochi e rompicapo" 
+    },
+    "163": {
+        "id": 157,
+        "title": "Giochi di equilibrio",
+        "parent_id": 140,
+        "parent": "Giochi e rompicapo" 
+    },
+    "141": {
+        "id": 141,
+        "title": "Musica e video",
+        "parent_id": 4,
+        "parent": "Intrattenimento" 
+    },
+    "164": {
+        "id": 164,
+        "title": "Musica",
+        "parent_id": 141,
+        "parent": "Musica e video" 
+    },
+    "166": {
+        "id": 166,
+        "title": "CD",
+        "parent_id": 164,
+        "parent": "Musica" 
+    },
+    "167": {
+        "id": 167,
+        "title": "Cassette",
+        "parent_id": 164,
+        "parent": "Musica" 
+    },
+    "168": {
+        "id": 168,
+        "title": "Vinili",
+        "parent_id": 164,
+        "parent": "Musica" 
+    },
+    "165": {
+        "id": 165,
+        "title": "Video",
+        "parent_id": 141,
+        "parent": "Musica e video" 
+    },
+    "169": {
+        "id": 169,
+        "title": "Blu-ray",
+        "parent_id": 165,
+        "parent": "Video" 
+    },
+    "170": {
+        "id": 170,
+        "title": "DVD",
+        "parent_id": 165,
+        "parent": "Video" 
+    },
+    "171": {
+        "id": 171,
+        "title": "VHS",
+        "parent_id": 165,
+        "parent": "Video" 
+    },
+    "142": {
+        "id": 142,
+        "title": "Libri",
+        "parent_id": 4,
+        "parent": "Intrattenimento" 
+    },
+    "172": {
+        "id": 172,
+        "title": "Letteratura e narrativa",
+        "parent_id": 142,
+        "parent": "Libri" 
+    },
+    "173": {
+        "id": 173,
+        "title": "Saggistica",
+        "parent_id": 142,
+        "parent": "Libri" 
+    },
+    "174": {
+        "id": 174,
+        "title": "Bambini e ragazzi",
+        "parent_id": 142,
+        "parent": "Libri" 
+    },
+    "5": {
+        "id": 5,
+        "title": "Animali",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "6": {
+        "id": 6,
+        "title": "Bambini",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    }
+}

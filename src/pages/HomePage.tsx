@@ -18,8 +18,8 @@ export default function HomePage({ setModalWaitListOpen, setAlertOpen, setAlertM
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
             <Navbar setModalWaitListOpen={setModalWaitListOpen} />
-            <Hero id="Home" setModalWaitListOpen={setModalWaitListOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage}/>
-            <Features id="Features" accessToken={false} setModalWaitListOpen={setModalWaitListOpen}/>
+            <Hero id="Home" setModalWaitListOpen={setModalWaitListOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />
+            <Features id="Features" accessToken={false} setModalWaitListOpen={setModalWaitListOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />
             <Prices id="Prices" accessToken={false} setModalWaitListOpen={setModalWaitListOpen} />
             <Faqs id="Faqs" accessToken={false} />
             <Footer />

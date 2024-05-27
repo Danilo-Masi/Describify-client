@@ -1,15 +1,18 @@
-import { useCallback, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 //I18Next
 import { useTranslation } from 'react-i18next';
+//Utilities
+import { useLanguage } from '../utilities/useLanguage';
 //data
-import category from '../data/productOptions/category.json';
+import category_it from '../data/productOptions/category_it.json';
+import category_en from '../data/productOptions/category_en.json';
 import sizes from '../data/productOptions/sizes.json';
 import colors_en from '../data/productOptions/colors_en.json';
 import colors_it from '../data/productOptions/colors_it.json';
 //Components
 import WaitlistModal from "./WaitlistModal";
 import ModalDropdown from "./ModalDropdow";
-import { useLanguage } from '../utilities/useLanguage';
+
 
 //Type definitions
 interface InputSelectProps {
@@ -86,17 +89,23 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
 }
 
 interface ProductFormProps {
+    placeholderCategory: string;
+    placeholderBrand: string;
+    placeholderColor: string;
     brandInputId: string;
+    setAlertOpen: Dispatch<SetStateAction<boolean>>;
+    setAlertMessage: Dispatch<SetStateAction<string>>;
     handleGeneration: () => void;
 }
 
-export default function ProductForm({ brandInputId, handleGeneration }: ProductFormProps) {
+export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setAlertOpen, setAlertMessage, handleGeneration }: ProductFormProps) {
+    const language = useLanguage();
     const { t } = useTranslation();
     //Valori inseriti dall'utente
-    const [selectedCategory, setSelectedCategory] = useState("Camicie");
-    const [selectedBrand, setSelectedBrand] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState(placeholderCategory);
+    const [selectedBrand, setSelectedBrand] = useState(placeholderBrand);
     const [selectedSize, setSelectedSize] = useState("M");
-    const [selectedColor, setSelectedColor] = useState("Azzurro");
+    const [selectedColor, setSelectedColor] = useState(placeholderColor);
     //Valori del modalDrowpdow
     const [modalTitle, setModalTitle] = useState("");
     const [modalData, setModalData] = useState<ModalItem[]>([]);
@@ -128,17 +137,15 @@ export default function ProductForm({ brandInputId, handleGeneration }: ProductF
         }
     }
 
-    const linguaCorrente = useLanguage();
-
     return (
         <div className="w-full h-fit flex flex-wrap items-start justify-start gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
-            <InputSelect valoreLabel={t('productCategoryLabel')} valoreInput={selectedCategory} onClick={() => handleDropwdown(t('productCategoryLabel'), category, "categoria")} />
+            <InputSelect valoreLabel={t('productCategoryLabel')} valoreInput={selectedCategory} onClick={() => handleDropwdown(t('productCategoryLabel'), language === 'it' ? category_it : category_en, "categoria")} />
             <TextInput valoreLabel={t('productBrandLabel')} valoreId={brandInputId} valoreInput={selectedBrand} onChange={e => setSelectedBrand(e.target.value)} />
             <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productSizeLabel')} valoreInput={selectedSize} onClick={() => handleDropwdown(t('productSizeLabel'), sizes, "dimensione")} />
-            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productColorLabel')} valoreInput={selectedColor} onClick={() => handleDropwdown(t('productColorLabel'), linguaCorrente === "it" ? colors_it : colors_en, "colore")} />
+            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productColorLabel')} valoreInput={selectedColor} onClick={() => handleDropwdown(t('productColorLabel'), language === "it" ? colors_it : colors_en, "colore")} />
             <ButtonGenerate labelButton={t('productGenerateButton')} onClick={() => handleGeneration()} />
             {isDropdownModalOpen && <ModalDropdown onClose={() => setModalDropdownOpen(false)} valoreTitoloModal={modalTitle} arrayDati={modalData} context={modalContext} onSelect={handleSelect} />}
-            {isWaitlistModalOpen && <WaitlistModal onClose={() => setModalWaitlistOpen(false)} />}
+            {isWaitlistModalOpen && <WaitlistModal onClose={() => setModalWaitlistOpen(false)} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />}
         </div>
     );
 }

@@ -10,9 +10,11 @@ import SkeltonPlaceholder from "./SkeltonPlaceholder";
 
 interface ProductProps {
     setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
+    setAlertOpen: Dispatch<SetStateAction<boolean>>;
+    setAlertMessage: Dispatch<SetStateAction<string>>;
 }
 
-export default function Product({ setModalWaitListOpen }: ProductProps) {
+export default function Product({ setModalWaitListOpen, setAlertOpen, setAlertMessage }: ProductProps) {
 
     const { t } = useTranslation();
 
@@ -33,7 +35,12 @@ export default function Product({ setModalWaitListOpen }: ProductProps) {
             <div className="w-full md:w-1/2 h-auto flex flex-col items-center justify-center gap-y-6">
                 <ProductDetails />
                 <ProductForm
+                    placeholderCategory={t('placeholderCategory')}
+                    placeholderBrand="Massimo Dutti"
+                    placeholderColor={t('placeholderColor')}
                     brandInputId="text brand input hero"
+                    setAlertOpen={setAlertOpen}
+                    setAlertMessage={setAlertMessage}
                     handleGeneration={() => setModalWaitListOpen(true)} />
             </div>
             <div className="w-full md:w-1/2 h-auto flex flex-col items-center justify-center gap-y-6">

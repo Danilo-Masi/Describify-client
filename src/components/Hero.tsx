@@ -25,9 +25,9 @@ export default function Hero({ id, setModalWaitListOpen, setAlertOpen, setAlertM
                 descriptionValue={t('heroDescription')}
                 titleStyle="text-6xl md:text-8xl tracking-tighter"
                 descriptionStyle="text-lg md:text-xl" />
-            <WaitlistGadget setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage}/>
+            <WaitlistGadget setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />
             <Suspense fallback={<div >Loading...</div>}>
-                <Product setModalWaitListOpen={setModalWaitListOpen} />
+                <Product setModalWaitListOpen={setModalWaitListOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage}/>
             </Suspense>
         </GridBackground>
     );

@@ -55,6 +55,10 @@
 
     "cardTitle": "T-Shirt Vans Nera – Uomo Taglia M – Ottime condizioni",
     "cardCaption": "Ciao! Sto vendendo la mia t-shirt Vans di colore nero, taglia M. L'ho comprata un po' di tempo fa,...",
-    "cardButton": "Articolo venduto"
+    "cardButton": "Articolo venduto",
+
+    "placeholderCategory": "Camicie",
+    "placeholderColor:": "Azzurro",
+    "placeholderColor2": "Nero"
 
 }

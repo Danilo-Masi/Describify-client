@@ -18,10 +18,12 @@ import CardPrototype from './CardPrototype';
 interface FeaturesProps {
   id: string;
   accessToken: boolean;
+  setAlertOpen: Dispatch<SetStateAction<boolean>>;
+  setAlertMessage: Dispatch<SetStateAction<string>>;
   setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Features({ id, accessToken, setModalWaitListOpen }: FeaturesProps) {
+export default function Features({ id, accessToken, setAlertOpen, setAlertMessage, setModalWaitListOpen }: FeaturesProps) {
 
   const { t } = useTranslation();
   const language = useLanguage();
@@ -40,7 +42,12 @@ export default function Features({ id, accessToken, setModalWaitListOpen }: Feat
           data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1}
           justifyPosition='justify-start'
           component={<ProductForm
+            placeholderCategory='T-shirt'
+            placeholderBrand='Vans'
+            placeholderColor={t('placeholderColor2')}
             brandInputId="text brand input features"
+            setAlertOpen={setAlertOpen}
+            setAlertMessage={setAlertMessage}
             handleGeneration={() => setModalWaitListOpen(true)} />}
           arrow={true} />
         <FeaturesStep data={language === 'it' ? featuresDetailsIt2 : featuresDetailsEn2} justifyPosition='justify-center' component={<ProductCaption descriptionGenerated={t('featuresProductDescription')} descriptionPlaceholder='' />} order1="md:order-2" order2="md:order-1" />

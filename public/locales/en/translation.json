@@ -55,5 +55,9 @@
 
     "cardTitle": "Black Vans T-Shirt - Men's Size M - Excellent Condition",
     "cardCaption": "Hello! I'm selling my black Vans t-shirt, size M. I bought it a while ago,...",
-    "cardButton": "Item sold"
+    "cardButton": "Item sold",
+
+    "placeholderCategory": "Shirts",
+    "placeholderColor:": "Sky blue",
+    "placeholderColor2": "Black"
 }
