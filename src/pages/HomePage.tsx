@@ -15,6 +15,7 @@ interface HomePageProps {
 }
 
 export default function HomePage({ setModalWaitListOpen, setAlertOpen, setAlertMessage }: HomePageProps) {
+
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
             <Navbar setModalWaitListOpen={setModalWaitListOpen} />

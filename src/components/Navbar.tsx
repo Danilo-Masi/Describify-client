@@ -8,6 +8,8 @@ import { useTranslation } from 'react-i18next';
 //Components
 import ActiveButton from "./ActiveButton.tsx";
 import Logo from "./Logo.tsx";
+//PostHog analytics
+import posthog from "posthog-js";
 
 {/* 
 function AccessButton() {
@@ -126,9 +128,16 @@ function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps)
 
     const { t } = useTranslation();
 
+    const handleOpenWaitlist = () => {
+        posthog.capture('navbar_waitlist_button', {
+            'title': 'waitlist aperta dalla navbar'
+        });
+        setModalWaitlistOpen(true);
+    }
+
     return (
         <div className="w-full md:w-1/4 flex items-center justify-end">
-            <ActiveButton text={t('buttonSubscribeLong')} onClick={() => setModalWaitlistOpen(true)} />
+            <ActiveButton text={t('buttonSubscribeLong')} onClick={() => handleOpenWaitlist()} />
         </div>
     );
 }
@@ -158,7 +167,7 @@ export default function Navbar({ setModalWaitListOpen }: NavbarProps) {
     return (
         <div className={`w-full h-[12svh] flex items-center justify-center sticky top-0 z-20 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-95'}`} >
             <div className="w-[90%] flex items-center">
-                <Logo width="40" height="40"/>
+                <Logo width="40" height="40" />
                 <MenuElements />
                 <JoinWaitllistButton setModalWaitlistOpen={setModalWaitListOpen} />
             </div>

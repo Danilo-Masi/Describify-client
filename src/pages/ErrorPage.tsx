@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "../components/Layout";
 
 export default function ErrorPage() {
+
   return (
     <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-svh" justifyPosition="justify-center">
       <div className="w-[90%] h-svh flex flex-col justify-center items-center text-center gap-5">

@@ -37,7 +37,7 @@ export default function Product({ setModalWaitListOpen, setAlertOpen, setAlertMe
                 <ProductForm
                     placeholderCategory={t('placeholderCategory')}
                     placeholderBrand="Massimo Dutti"
-                    placeholderColor={t('placeholderColor')}
+                    placeholderColor={t('placeholderColor2')}
                     brandInputId="text brand input hero"
                     setAlertOpen={setAlertOpen}
                     setAlertMessage={setAlertMessage}
