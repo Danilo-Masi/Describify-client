@@ -13,39 +13,48 @@ import ErrorPage from "./pages/ErrorPage";
 import ModalCookies from "./components/ModalCookies";
 import WaitlistModal from "./components/WaitlistModal";
 import AlertMessage from "./components/AlertMessage";
-import PageViewAnalytics from "./components/PageViewAnalytics";
 
 export default function App() {
 
   const language = useLanguage();
   const [cookies] = useCookies(['userCookieConsent']);
-  const [isCookieModalOpen, setCookieModalOpen] = useState(true);
+  const [isCookieModalOpen, setCookieModalOpen] = useState(false);
   const [isWaitlistModalOpen, setWaitlistModalOpen] = useState(false);
   const [isAlertOpen, setAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
+    // Verifica se il banner dei cookie è gia stato visualizzato
     if (cookies.userCookieConsent === undefined || cookies.userCookieConsent === null) {
       setCookieModalOpen(true);
     } else {
       setCookieModalOpen(false);
+      // Carica Fathom Analytics 
+      const script = document.createElement('script');
+      script.src = "https://cdn.usefathom.com/script.js";
+      script.setAttribute('data-site', 'FHKBQKIP');
+      script.setAttribute('data-spa', 'auto');
+      script.defer = true;
+      document.head.appendChild(script);
     }
   }, [cookies.userCookieConsent]);
 
   useEffect(() => {
-    // Modica la lingua del file index.html
-    document.documentElement.lang = language;
     // Carica i font dinamicamente
     const link = document.createElement('link');
     link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap';
     link.rel = 'stylesheet';
     link.crossOrigin = 'anonymous';
     document.head.appendChild(link);
+  }, []);
+
+  useEffect(() => {
+    // Modica la lingua del file index.html
+    document.documentElement.lang = language;
   }, [language]);
 
   return (
     <BrowserRouter>
-      <PageViewAnalytics />
       <Routes>
         <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
         <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />

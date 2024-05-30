@@ -42,9 +42,8 @@
     "emailErrorSend": "Errore nell'invio dell'email",
     "emailErrorWaitlist": "Errore durante l'iscrizione alla waitlist",
 
-    "modalCookieText": "Utilizziamo cookie di terze parti per personalizzare i servizi e analizzare il traffico sulla piattaforma. Per ulteriori informazioni, leggi: ",
-    "modalCookieButtonAccept": "Accetta",
-    "modalCookieButtonDecline": "Rifiuta",
+    "modalCookieText": "Monitoriamo il traffico di Describify utilizzando piattaforme esterne, ma senza impiegare cookie di terze parti. Per maggiori dettagli, leggi qui: ",
+    "modalCookieButton": "Capito",
 
     "modalWaitlistTitle": "Ci siamo quasi...",
     "modalWaitlistContent": "Unisciti subito alla waitlist di Describify e ricevi 5 token bonus al tuo primo accesso!",

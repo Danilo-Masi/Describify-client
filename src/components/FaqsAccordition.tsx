@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flo
 //Utilities
 import { useLanguage } from "../utilities/useLanguage";
 //Data
-import { questions } from "../data/questions";
+import { questions_it, questions_en } from "../data/questions";
 
 // Interfaccia per la struttura delle FAQ
 interface Faq {
@@ -17,7 +17,11 @@ export default function FaqsAccordion() {
     const [faqs, setFaqs] = useState<Faq[]>([]);
 
     useEffect(() => {
-        setFaqs(questions[language]);
+        if (language === 'it') {
+            setFaqs(questions_it);
+        } else {
+            setFaqs(questions_en);
+        }
     }, [language]);
 
     return (

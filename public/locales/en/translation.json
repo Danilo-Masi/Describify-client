@@ -42,9 +42,8 @@
     "emailErrorSend": "Error sending email",
     "emailErrorWaitlist": "Error joining the waitlist",
 
-    "modalCookieText": "We use third-party cookies to personalize services and analyze platform traffic. For more info, read: ",
-    "modalCookieButtonAccept": "Accept",
-    "modalCookieButtonDecline": "Decline",
+    "modalCookieText": "We monitor Describify's traffic using external platforms, but we do not use any third-party cookies. For more information, read here:",
+    "modalCookieButton": "Got it",
 
     "modalWaitlistTitle": "Almost there...",
     "modalWaitlistContent": "Join the Describify waitlist now and get 5 bonus tokens on your first login!",

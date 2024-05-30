@@ -8,8 +8,6 @@ import { useTranslation } from 'react-i18next';
 //Components
 import ActiveButton from "./ActiveButton.tsx";
 import Logo from "./Logo.tsx";
-//PostHog analytics
-import posthog from "posthog-js";
 
 {/* 
 function AccessButton() {
@@ -129,9 +127,6 @@ function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps)
     const { t } = useTranslation();
 
     const handleOpenWaitlist = () => {
-        posthog.capture('navbar_waitlist_button', {
-            'title': 'waitlist aperta dalla navbar'
-        });
         setModalWaitlistOpen(true);
     }
 
