@@ -1,0 +1,296 @@
+{
+    "1": {
+        "id": 1,
+        "title": "Clothing",
+        "parent_id": 0,
+        "parent": "No parent"
+    },
+    "2": {
+        "id": 2,
+        "title": "XXS",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "3": {
+        "id": 3,
+        "title": "XS",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "4": {
+        "id": 4,
+        "title": "S",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "5": {
+        "id": 5,
+        "title": "M",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "6": {
+        "id": 6,
+        "title": "L",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "7": {
+        "id": 7,
+        "title": "XL",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "8": {
+        "id": 8,
+        "title": "XXL",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "9": {
+        "id": 9,
+        "title": "XXXL",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "10": {
+        "id": 10,
+        "title": "4XL",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "11": {
+        "id": 11,
+        "title": "5XL",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "12": {
+        "id": 12,
+        "title": "6XL",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "13": {
+        "id": 13,
+        "title": "7XL",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "14": {
+        "id": 14,
+        "title": "8XL",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "15": {
+        "id": 15,
+        "title": "One Size",
+        "parent_id": 1,
+        "parent": "Clothing"
+    },
+    "16": {
+        "id": 16,
+        "title": "Shoes",
+        "parent_id": 0,
+        "parent": "No parent"
+    },
+    "17": {
+        "id": 17,
+        "title": "34",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "18": {
+        "id": 18,
+        "title": "35",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "19": {
+        "id": 19,
+        "title": "36",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "20": {
+        "id": 20,
+        "title": "37",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "21": {
+        "id": 21,
+        "title": "38",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "22": {
+        "id": 22,
+        "title": "39",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "23": {
+        "id": 23,
+        "title": "40",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "24": {
+        "id": 24,
+        "title": "41",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "25": {
+        "id": 25,
+        "title": "42",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "26": {
+        "id": 26,
+        "title": "43",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "27": {
+        "id": 27,
+        "title": "44",
+        "parent_id": 16,
+        "parent": "Shoes"
+    },
+    "28": {
+        "id": 28,
+        "title": "Watches",
+        "parent_id": 0,
+        "parent": "No parent"
+    },
+    "29": {
+        "id": 29,
+        "title": "Up to 30 mm",
+        "parent_id": 28,
+        "parent": "Watches"
+    },
+    "30": {
+        "id": 30,
+        "title": "30–38 mm",
+        "parent_id": 28,
+        "parent": "Watches"
+    },
+    "31": {
+        "id": 31,
+        "title": "39–42 mm",
+        "parent_id": 28,
+        "parent": "Watches"
+    },
+    "32": {
+        "id": 32,
+        "title": "43–46 mm",
+        "parent_id": 28,
+        "parent": "Watches"
+    },
+    "33": {
+        "id": 33,
+        "title": "47 mm and over",
+        "parent_id": 28,
+        "parent": "Watches"
+    },
+    "34": {
+        "id": 34,
+        "title": "One Size",
+        "parent_id": 28,
+        "parent": "Watches"
+    },
+    "35": {
+        "id": 35,
+        "title": "Belts",
+        "parent_id": 0,
+        "parent": "No parent"
+    },
+    "36": {
+        "id": 36,
+        "title": "0 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "37": {
+        "id": 37,
+        "title": "75 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "38": {
+        "id": 38,
+        "title": "80 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "39": {
+        "id": 39,
+        "title": "85 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "40": {
+        "id": 40,
+        "title": "90 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "41": {
+        "id": 41,
+        "title": "95 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "42": {
+        "id": 42,
+        "title": "100 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "43": {
+        "id": 43,
+        "title": "105 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "44": {
+        "id": 44,
+        "title": "110 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "45": {
+        "id": 45,
+        "title": "115 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "46": {
+        "id": 46,
+        "title": "120 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "47": {
+        "id": 47,
+        "title": "125 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "48": {
+        "id": 48,
+        "title": "130 cm",
+        "parent_id": 35,
+        "parent": "Belts"
+    },
+    "49": {
+        "id": 49,
+        "title": "Adjustable",
+        "parent_id": 35,
+        "parent": "Belts"
+    }
+}

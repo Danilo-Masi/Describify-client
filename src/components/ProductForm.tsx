@@ -6,7 +6,8 @@ import { useLanguage } from '../utilities/useLanguage';
 //data
 import category_it from '../data/productOptions/category_it.json';
 import category_en from '../data/productOptions/category_en.json';
-import sizes from '../data/productOptions/sizes.json';
+import sizes_it from '../data/productOptions/sizes_it.json';
+import sizes_en from '../data/productOptions/sized_en.json';
 import colors_en from '../data/productOptions/colors_en.json';
 import colors_it from '../data/productOptions/colors_it.json';
 //Components
@@ -34,9 +35,21 @@ interface ButtonGenerateProps {
     onClick: () => void;
 }
 
-interface ModalItem {
-    value: string;
-    children?: ModalItem[];
+interface Elemento {
+    id: number;
+    title: string;
+    parent_id: number;
+    parent: string;
+}
+
+interface ProductFormProps {
+    placeholderCategory: string;
+    placeholderBrand: string;
+    placeholderColor: string;
+    brandInputId: string;
+    setAlertOpen: Dispatch<SetStateAction<boolean>>;
+    setAlertMessage: Dispatch<SetStateAction<string>>;
+    handleGeneration: () => void;
 }
 
 function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelectProps) {
@@ -88,39 +101,35 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
     );
 }
 
-interface ProductFormProps {
-    placeholderCategory: string;
-    placeholderBrand: string;
-    placeholderColor: string;
-    brandInputId: string;
-    setAlertOpen: Dispatch<SetStateAction<boolean>>;
-    setAlertMessage: Dispatch<SetStateAction<string>>;
-    handleGeneration: () => void;
-}
 
 export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setAlertOpen, setAlertMessage, handleGeneration }: ProductFormProps) {
     const language = useLanguage();
     const { t } = useTranslation();
+
     //Valori inseriti dall'utente
     const [selectedCategory, setSelectedCategory] = useState(placeholderCategory);
     const [selectedBrand, setSelectedBrand] = useState(placeholderBrand);
     const [selectedSize, setSelectedSize] = useState("M");
     const [selectedColor, setSelectedColor] = useState(placeholderColor);
+
     //Valori del modalDrowpdow
     const [modalTitle, setModalTitle] = useState("");
-    const [modalData, setModalData] = useState<ModalItem[]>([]);
+    const [modalData, setModalData] = useState<Elemento[]>([]);
     const [modalContext, setModalContext] = useState("");
+
     //Booleani per l'apertura dei modal
     const [isDropdownModalOpen, setModalDropdownOpen] = useState(false);
     const [isWaitlistModalOpen, setModalWaitlistOpen] = useState(false);
 
+    //Funzione che apre il modal per inserire i dati e inserisce i giusti dati in base a cosa si è cliccato (categorie, colore, dimensione)
     const handleDropwdown = useCallback((titoloModal: string, datiModal: any, context: string) => {
-        setModalTitle(titoloModal); //Label modal
-        setModalData(datiModal)     //Dati modal
-        setModalDropdownOpen(true); //Stato modal
-        setModalContext(context) //Tipologia del model (es: Categorie, colori o dimensioni)
+        setModalTitle(titoloModal);
+        setModalData(datiModal);
+        setModalContext(context);
+        setModalDropdownOpen(true);
     }, []);
 
+    //Funzione che imposta il valore selezionato nel giusto stato
     const handleSelect = (value: string, context: string) => {
         switch (context) {
             case "categoria":
@@ -137,15 +146,91 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
         }
     }
 
+    const handleFilterDimension = useCallback((sizes: any): Elemento[] => {
+        const categoryToParentIdMap: { [key: string]: number } = {
+            'Cinture': 35,
+            'Orologi': 28,
+            'Scarpe da barca, loafer e mocassini': 16,
+            'Stivali': 16,
+            'Zoccoli e sabot': 16,
+            'Espadrillas': 16,
+            'Infradito e ciabatte': 16,
+            'Scarpe formali': 16,
+            'Sandali': 16,
+            'Pantofole': 16,
+            'Scarpe da ginnastica': 16,
+            'Ballerine': 16,
+            'Scarpe con tacchi alti': 16,
+            'Mary Jane e scarpe a T': 16,
+            'Abbigliamento da esterno': 1,
+            'Maglioni e pullover': 1,
+            'Completi e blazer': 1,
+            'Abiti': 1,
+            'Gonne': 1,
+            'Top e t-shirt': 1,
+            'Jeans': 1,
+            'Pantaloni e leggins': 1,
+            'Pantaloncini e pantaloni corti': 1,
+            'Tute jumpsuite e playsuite': 1,
+            'Costumi da bagno': 1,
+            'Lingerie e indumenti da notte': 1,
+            'Vestiti premam': 1,
+            'Abbigliamento sportivo': 1,
+            'Camicie e t-shirt': 1,
+            'Pantaloni': 1,
+            'Calzini e intimo': 1,
+            'Pigiama': 1,
+        };
+        const parentId = categoryToParentIdMap[selectedCategory];
+        if (parentId !== undefined) {
+            return Object.values(sizes).filter((item: any) => item.parent_id === parentId) as Elemento[];
+        }
+        return [];
+    }, [selectedCategory]);
+
     return (
         <div className="w-full h-fit flex flex-wrap items-start justify-start gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
-            <InputSelect valoreLabel={t('productCategoryLabel')} valoreInput={selectedCategory} onClick={() => handleDropwdown(t('productCategoryLabel'), language === 'it' ? category_it : category_en, "categoria")} />
-            <TextInput valoreLabel={t('productBrandLabel')} valoreId={brandInputId} valoreInput={selectedBrand} onChange={e => setSelectedBrand(e.target.value)} />
-            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productSizeLabel')} valoreInput={selectedSize} onClick={() => handleDropwdown(t('productSizeLabel'), sizes, "dimensione")} />
-            <InputSelect mdWidth="md:w-[calc(50%-0.75rem)]" valoreLabel={t('productColorLabel')} valoreInput={selectedColor} onClick={() => handleDropwdown(t('productColorLabel'), language === "it" ? colors_it : colors_en, "colore")} />
-            <ButtonGenerate labelButton={t('productGenerateButton')} onClick={() => handleGeneration()} />
-            {isDropdownModalOpen && <ModalDropdown onClose={() => setModalDropdownOpen(false)} valoreTitoloModal={modalTitle} arrayDati={modalData} context={modalContext} onSelect={handleSelect} />}
-            {isWaitlistModalOpen && <WaitlistModal onClose={() => setModalWaitlistOpen(false)} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />}
+            <InputSelect
+                valoreLabel={t('productCategoryLabel')}
+                valoreInput={selectedCategory}
+                onClick={() => handleDropwdown(t('productCategoryLabel'), language === 'it' ? category_it : category_en, "categoria")}
+            />
+            <TextInput
+                valoreLabel={t('productBrandLabel')}
+                valoreId={brandInputId}
+                valoreInput={selectedBrand}
+                onChange={e => setSelectedBrand(e.target.value)}
+            />
+            <InputSelect
+                mdWidth="md:w-[calc(50%-0.75rem)]"
+                valoreLabel={t('productSizeLabel')}
+                valoreInput={selectedSize}
+                onClick={() => handleDropwdown(t('productSizeLabel'), handleFilterDimension(language === 'it' ? sizes_it : sizes_en), "dimensione",)}
+            />
+            <InputSelect
+                mdWidth="md:w-[calc(50%-0.75rem)]"
+                valoreLabel={t('productColorLabel')}
+                valoreInput={selectedColor}
+                onClick={() => handleDropwdown(t('productColorLabel'), language === "it" ? colors_it : colors_en, "colore")}
+            />
+            <ButtonGenerate
+                labelButton={t('productGenerateButton')}
+                onClick={() => handleGeneration()}
+            />
+            {isDropdownModalOpen &&
+                <ModalDropdown
+                    onClose={() => setModalDropdownOpen(false)}
+                    valoreTitoloModal={modalTitle}
+                    arrayDati={modalData}
+                    context={modalContext}
+                    onSelect={handleSelect} />
+            }
+            {isWaitlistModalOpen &&
+                <WaitlistModal
+                    onClose={() => setModalWaitlistOpen(false)}
+                    setAlertOpen={setAlertOpen}
+                    setAlertMessage={setAlertMessage} />
+            }
         </div>
     );
 }

@@ -1,9 +1,10 @@
 {
     "name": "Describify",
     "short_name": "Describify",
-    "description": "Una piattaforma basata sull'IA per ottimizzare le descrizioni dei prodotti di seconda mano e migliorare la tua esperienza di vendita online.",
+    "description": "Describify è una piattaforma basata sull'AI che genera in modo rapido gli annunci dei tuoi prodotti di seconda mano per aiutarti a vendere di più ed in modo più rapido",
     "lang": "it",
     "categories": [
+        "Saas",
         "Shopping",
         "E-commerce"
     ],
@@ -40,7 +41,7 @@
         "enctype": "application/x-www-form-urlencoded",
         "params": {
             "title": "Describify",
-            "text": "Sfrutta l'intelligenza artificiale per massimizzare la visibilità e l'efficacia delle tue vendite online con Describify. Ottimizza rapidamente le descrizioni dei tuoi prodotti di seconda mano per le piattaforme principali come Vinted, Ebay e altro ancora. Scopri come migliorare la tua presenza online e aumentare le conversioni oggi stesso.",
+            "text": "Sfrutta l'intelligenza artificiale per massimizzare la visibilità e l'efficacia delle tue vendite online con Describify. Ottimizza rapidamente gli annunci dei tuoi prodotti di seconda mano per piattaforme di vendita come Vinted, Ebay e altro ancora.",
             "url": "https://www.describify.it"
         }
     },

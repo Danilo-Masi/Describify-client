@@ -1,54 +1,170 @@
 {
-    "9": {
-        "id": 9,
-        "title": "Blu"
-    },
-    "27": {
-        "id": 27,
-        "title": "Blu navy"
-    },
-    "26": {
-        "id": 26,
-        "title": "Azzurro"
-    },
     "1": {
         "id": 1,
-        "title": "Nero"
+        "title": "Albicocca",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "2": {
+        "id": 2,
+        "title": "Arancione",
+        "parent_id": 0,
+        "parent": "Nessun parente"
     },
     "3": {
         "id": 3,
-        "title": "Grigio"
+        "title": "Argento",
+        "parent_id": 0,
+        "parent": "Nessun parente"
     },
-    "12": {
-        "id": 12,
-        "title": "Bianco"
+    "4": {
+        "id": 4,
+        "title": "Azzurro",
+        "parent_id": 0,
+        "parent": "Nessun parente"
     },
-    "15": {
-        "id": 15,
-        "title": "Multicolore"
+    "5": {
+        "id": 5,
+        "title": "Bianco",
+        "parent_id": 0,
+        "parent": "Nessun parente"
     },
-    "16": {
-        "id": 16,
-        "title": "Cachi"
+    "6": {
+        "id": 6,
+        "title": "Borgogna",
+        "parent_id": 0,
+        "parent": "Nessun parente"
     },
-    "23": {
-        "id": 23,
-        "title": "Bordeaux"
-    },
-    "28": {
-        "id": 28,
-        "title": "Verde scuro"
-    },
-    "29": {
-        "id": 29,
-        "title": "Senape"
-    },
-    "30": {
-        "id": 30,
-        "title": "Menta"
+    "7": {
+        "id": 7,
+        "title": "Blu",
+        "parent_id": 0,
+        "parent": "Nessun parente"
     },
     "8": {
         "id": 8,
-        "title": "Giallo"
+        "title": "Blu marino",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "9": {
+        "id": 9,
+        "title": "Beige",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "10": {
+        "id": 10,
+        "title": "Cachi",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "11": {
+        "id": 11,
+        "title": "Giallo",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "12": {
+        "id": 12,
+        "title": "Grigio",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "13": {
+        "id": 13,
+        "title": "Lilla",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "14": {
+        "id": 14,
+        "title": "Marrone",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "15": {
+        "id": 15,
+        "title": "Menta",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "16": {
+        "id": 16,
+        "title": "Multi",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "17": {
+        "id": 17,
+        "title": "Nero",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "18": {
+        "id": 18,
+        "title": "Oro",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "19": {
+        "id": 19,
+        "title": "Panna",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "20": {
+        "id": 20,
+        "title": "Peach",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "21": {
+        "id": 21,
+        "title": "Rosa",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "22": {
+        "id": 22,
+        "title": "Rosso",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "23": {
+        "id": 23,
+        "title": "Senape",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "24": {
+        "id": 24,
+        "title": "Turchese",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "25": {
+        "id": 25,
+        "title": "Verde",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "26": {
+        "id": 26,
+        "title": "Verde scuro",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "27": {
+        "id": 27,
+        "title": "Viola",
+        "parent_id": 0,
+        "parent": "Nessun parente"
+    },
+    "28": {
+        "id": 28,
+        "title": "Viola chiaro",
+        "parent_id": 0,
+        "parent": "Nessun parente"
     }
 }

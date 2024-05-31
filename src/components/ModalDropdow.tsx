@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { Modal } from 'flowbite-react';
 
 interface Elemento {
-    value: string;
-    children?: Elemento[];
+    id: number;
+    title: string;
+    parent_id: number;
+    parent: string;
 }
 
 interface ModalDropdownProps {
@@ -15,47 +17,29 @@ interface ModalDropdownProps {
     onSelect: (value: string, context: string) => void;
 }
 
-const convertJsonToTree = (jsonDati: { [key: string]: any }): Elemento[] => {
-    const map = new Map<number, Elemento>();
-    //Creazione degli elementi
-    Object.keys(jsonDati).forEach(key => {
-        const item = jsonDati[key];
-        map.set(item.id, { value: item.title, children: [] });
-    });
-    //Impostazioni delle relazioni padre-figlio
-    const tree: Elemento[] = [];
-    Object.keys(jsonDati).forEach(key => {
-        const item = jsonDati[key];
-        const element = map.get(item.id);
-        if (item.parent_id && item.parent_id !== 0) {
-            const parent = map.get(item.parent_id);
-            if (parent) {
-                parent.children?.push(element!);
-            }
-        } else {
-            tree.push(element!);
-        }
-    });
-    return tree;
-}
-
 export default function ModalDropdown({ valoreTitoloModal, arrayDati, context, onClose, onSelect }: ModalDropdownProps) {
 
-    //Stato per impostare la lista degli elementi da visualizzare
+    // Stato per impostare la lista degli elementi da visualizzare
     const [elementiVisualizzati, setElementiVisualizzati] = useState<Elemento[]>([]);
 
-    //Funzione che carica i dati del json se disponibile
+    // Funzione che carica i dati del json se disponibile
     useEffect(() => {
-        const treeData = convertJsonToTree(arrayDati);
-        setElementiVisualizzati(treeData);
+        let filteredData: Elemento[] = [];
+        if (context === 'categoria' || context === 'colore') {
+            filteredData = Object.values(arrayDati).filter((item: any) => item.parent_id === 0) as Elemento[];
+        } else if (context === 'dimensione') {
+            filteredData = Object.values(arrayDati);
+        }
+        setElementiVisualizzati(filteredData);
     }, [arrayDati]);
 
-    //Funzione per impostare l'elemento selezionato o nel caso avesse sotto elementi mostrare quelli
+    // Funzione per impostare l'elemento selezionato
     const handleSelect = (elemento: Elemento) => {
-        if (elemento.children && elemento.children.length > 0) {
-            setElementiVisualizzati(elemento.children);
+        const children = Object.values(arrayDati).filter((item: any) => item.parent_id === elemento.id) as Elemento[];
+        if (children.length > 0) {
+            setElementiVisualizzati(children);
         } else {
-            onSelect(elemento.value, context);
+            onSelect(elemento.title, context);
             onClose();
         }
     };
@@ -70,18 +54,16 @@ export default function ModalDropdown({ valoreTitoloModal, arrayDati, context, o
                 {valoreTitoloModal}
             </Modal.Header>
             <Modal.Body className=" max-h-[80svh] py-3 rounded-b-lg bg-custom-elevation dark:bg-dark-elevation4 ">
-                <>
-                    <ul className="flex flex-col gap-y-3">
-                        {elementiVisualizzati && elementiVisualizzati.map((elemento, key) => (
-                            <li
-                                key={key}
-                                onClick={() => handleSelect(elemento)}
-                                className="flex items-center justify-between p-2.5 text-md rounded-lg cursor-pointer border bg-custom-elevation dark:bg-dark-elevation3 border-custom-borderGray dark:border-dark-borderGray text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-                                <p>{elemento.value}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </>
+                <ul className="flex flex-col gap-y-3">
+                    {elementiVisualizzati && elementiVisualizzati.map((elemento, key) => (
+                        <li
+                            key={key}
+                            onClick={() => handleSelect(elemento)}
+                            className="flex items-center justify-between p-2.5 text-md rounded-lg cursor-pointer border bg-custom-elevation dark:bg-dark-elevation3 border-custom-borderGray dark:border-dark-borderGray text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+                            <p>{elemento.title}</p>
+                        </li>
+                    ))}
+                </ul>
             </Modal.Body>
         </Modal>
     );

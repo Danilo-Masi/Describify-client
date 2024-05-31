@@ -61,7 +61,7 @@
     },
     "20": {
         "id": 20,
-        "title": "Pantalincini e pantalini corti",
+        "title": "Pantaloncini e pantaloni corti",
         "parent_id": 7,
         "parent": "Vestiti"
     },
@@ -344,38 +344,38 @@
     "63": {
         "id": 63,
         "title": "Profumi",
-        "parent_id": 10,
-        "parent": "Accessori"
+        "parent_id": 11,
+        "parent": "Bellezza"
     },
     "64": {
         "id": 64,
         "title": "Cura del viso",
-        "parent_id": 10,
-        "parent": "Accessori"
+        "parent_id": 11,
+        "parent": "Bellezza"
     },
     "65": {
         "id": 65,
         "title": "Cura delle mani",
-        "parent_id": 10,
-        "parent": "Accessori"
+        "parent_id": 11,
+        "parent": "Bellezza"
     },
     "66": {
         "id": 66,
         "title": "Cura delle unghie",
-        "parent_id": 10,
-        "parent": "Accessori"
+        "parent_id": 11,
+        "parent": "Bellezza"
     },
     "67": {
         "id": 67,
         "title": "Cura del corpo",
-        "parent_id": 10,
-        "parent": "Accessori"
+        "parent_id": 11,
+        "parent": "Bellezza"
     },
     "68": {
         "id": 68,
         "title": "Cura dei capelli",
-        "parent_id": 10,
-        "parent": "Accessori"
+        "parent_id": 11,
+        "parent": "Bellezza"
     },
     "2": {
         "id": 2,
@@ -427,7 +427,7 @@
     },
     "79": {
         "id": 79,
-        "title": "Pantalincini e pantaloni corti",
+        "title": "Pantaloncini e pantaloni corti",
         "parent_id": 69,
         "parent": "Vestiti"
     },
