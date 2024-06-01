@@ -37,12 +37,27 @@ export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, set
                 email: emailInput,
                 language: language,
             });
+
+            // Verifica se la richiesta è stata eseguita con successo
             if (response.status === 200) {
                 return true;
+            } else {
+                // Se la richiesta non ha avuto successo, registra un errore
+                console.error("Errore nell'invio dell'email: risposta inattesa dal server");
+                return false;
             }
-            return false;
-        } catch (error) {
-            console.error("Errore nel metodo dell'invio dell'email", error);
+        } catch (error: any) {
+            // Gestione degli errori di rete o di server
+            if (error.response) {
+                // Il server ha risposto con un codice di stato al di fuori del range 2xx
+                console.error("Errore nell'invio dell'email: risposta dal server con codice di stato", error.response.status);
+            } else if (error.request) {
+                // La richiesta è stata fatta ma non è stata ricevuta alcuna risposta
+                console.error("Errore nell'invio dell'email: nessuna risposta dal server");
+            } else {
+                // Altri tipi di errori
+                console.error("Errore nell'invio dell'email:", error.message);
+            }
             return false;
         }
     }
