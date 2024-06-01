@@ -28,7 +28,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, set
     const [isExploding, setExploding] = useState(false); //Attiva l'animazione dei coriandoli
 
     //Url del server
-    const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3000';
+    const SERVER_URL = import.meta.env.REACT_APP_SERVER_URL || 'http://localhost:3000';
 
     //Funzione per inviare l'email una volta iscritti alla waitlist (Resend)
     const sendWaitlistEmail = async (language: string) => {
