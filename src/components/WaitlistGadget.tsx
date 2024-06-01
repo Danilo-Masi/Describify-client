@@ -27,10 +27,16 @@ export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, set
     const [isEmailSend, setEmailSend] = useState(false); //Imposta in stato di inviato
     const [isExploding, setExploding] = useState(false); //Attiva l'animazione dei coriandoli
 
+    //Url del server
+    const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3000';
+
     //Funzione per inviare l'email una volta iscritti alla waitlist (Resend)
-    const sendWaitlistEmail = async () => {
+    const sendWaitlistEmail = async (language: string) => {
         try {
-            const response = await axios.post('http://localhost:3000/send-email', { email: emailInput });
+            const response = await axios.post(`${SERVER_URL}/send-email`, {
+                email: emailInput,
+                language: language,
+            });
             if (response.status === 200) {
                 return true;
             }
@@ -48,9 +54,10 @@ export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, set
         setErrorInput("");
         if (useEmail(emailInput)) {
             try {
-                const response = await axios.post('http://localhost:3000/signup-to-waitlist', { email: emailInput });
+                const response = await axios.post(`${SERVER_URL}/signup-to-waitlist`, { email: emailInput });
                 if (response.status === 200) {
-                    const emailSent = await sendWaitlistEmail();
+                    const language = localStorage.getItem('i18nextLng') || 'it';
+                    const emailSent = await sendWaitlistEmail(language);
                     if (emailSent) {
                         setEmailLoading(false);
                         setEmailInput("");

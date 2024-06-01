@@ -1,25 +1,15 @@
 #File esclusi
 src/services/
-src/data/data.tsx
 src/pages/SigninPage.tsx
 src/pages/SignupPage.tsx
-src/pages/ProductPage.tsx
-src/components/SkeletonForm.tsx
 src/components/ModalUsage.tsx
 src/components/ModalSettings.tsx
 src/components/ModalResetPassword.tsx
 src/components/ModalLogout.tsx
 src/components/ModalConfirmAccount.tsx
-src/components/Home.tsx
-src/components/GenerateOutput.tsx
-src/components/GenerateForm.tsx
-src/components/FormCredit.tsx
-src/components/Chart.tsx
 src/components/AccessBox.tsx
 
 node_modules
-dist
-dist-ssr
 *.local
 *.env
 

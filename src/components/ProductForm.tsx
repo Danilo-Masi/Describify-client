@@ -101,7 +101,6 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
     );
 }
 
-
 export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setAlertOpen, setAlertMessage, handleGeneration }: ProductFormProps) {
     const language = useLanguage();
     const { t } = useTranslation();
@@ -180,6 +179,37 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
             'Pantaloni': 1,
             'Calzini e intimo': 1,
             'Pigiama': 1,
+            "Belts": 35,
+            "Watches": 28,
+            "Boat shoes, loafers, and moccasins": 16,
+            "Boots": 16,
+            "Clogs and mules": 16,
+            "Espadrilles": 16,
+            "Flip-flops and slippers": 16,
+            "Formal shoes": 16,
+            "Sandals": 16,
+            "Slippers": 16,
+            "Sneakers": 16,
+            "Ballet flats": 16,
+            "High-heeled shoes": 16,
+            "Mary Jane and T-strap shoes": 16,
+            "Outerwear": 1,
+            "Sweaters and pullovers": 1,
+            "Suits and blazers": 1,
+            "Dresses": 1,
+            "Skirts": 1,
+            "Tops and t-shirts": 1,
+            "Pants and leggings": 1,
+            "Shorts and short pants": 1,
+            "Jumpsuits and playsuits": 1,
+            "Swimwear": 1,
+            "Lingerie and nightwear": 1,
+            "Maternity clothes": 1,
+            "Sportswear": 1,
+            "Shirts and t-shirts": 1,
+            "Pants": 1,
+            "Socks and underwear": 1,
+            "Pajamas": 1
         };
         const parentId = categoryToParentIdMap[selectedCategory];
         if (parentId !== undefined) {

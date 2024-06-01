@@ -1,6 +1,6 @@
 {
     "titlePrimary": "Privacy Policy",
-    "captionPrimary": "Updated at 2024-05-01",
+    "captionPrimary": "Updated at 2024-06-01",
     "paragraphs": [
         {
             "title": "",
@@ -85,18 +85,6 @@
         {
             "title": "Individual Data Subject's Rights - Data Access, Portability and Deletion",
             "content": "We are committed to helping our customers meet the data subject rights requirements of GDPR. Describify processes or stores all personal data in fully vetted, DPA compliant vendors. We do store all conversation and personal data for up to 6 years unless your account is deleted. In which case, we dispose of all data in accordance with our Terms of Service and Privacy Policy, but we will not hold it longer than 60 days. We are aware that if you are working with EU customers, you need to be able to provide them with the ability to access, update, retrieve and remove personal data. We got you! We've been set up as self service from the start and have always given you access to your data and your customers data. Our customer support team is here for you to answer any questions you might have about working with the API."
-        },
-        {
-            "title": "California Residents",
-            "content": "The California Consumer Privacy Act (CCPA) requires us to disclose categories of Personal Information we collect and how we use it, the categories of sources from whom we collect Personal Information, and the third parties with whom we share it, which we have explained above."
-        },
-        {
-            "title": "We are also required to communicate information about rights California residents have under California law. You may exercise the following rights:",
-            "content": "- Right to Know and Access. You may submit a verifiable request for information regarding the: (1) categories of Personal Information we collect, use, or share; (2) purposes for which categories of Personal Information are collected or used by us; (3) categories of sources from which we collect Personal Information; and (4) specific pieces of Personal Information we have collected about you. \n- Right to Equal Service. We will not discriminate against you if you exercise your privacy rights. \n- Right to Delete. You may submit a verifiable request to close your account and we will delete Personal Information about you that we have collected. \n- Request that a business that sells a consumer's personal data, not sell the consumer's personal data. If you make a request, we have one month to respond to you. \n\nIf you would like to exercise any of these rights, please contact us. We do not sell the Personal Information of our users. For more information about these rights, please contact us."
-        },
-        {
-            "title": "California Online Privacy Protection Act (CalOPPA)",
-            "content": "CalOPPA requires us to disclose categories of Personal Information we collect and how we use it, the categories of sources from whom we collect Personal Information, and the third parties with whom we share it, which we have explained above."
         },
         {
             "title": "CalOPPA users have the following rights:",
