@@ -35,12 +35,12 @@ export function ContainerComponents({ children, id, spacing }: ContainerComponen
 
 interface ContainerInputProps {
     children: ReactNode;
-    flexOrientation: string;
+    containerStyle: string;
 }
 
-export function ContainerInput({ children, flexOrientation }: ContainerInputProps) {
+export function ContainerInput({ children, containerStyle }: ContainerInputProps) {
     return (
-        <div className={`w-full flex items-start justify-between ${flexOrientation}`}>
+        <div className={`w-full flex items-start justify-between ${containerStyle}`}>
             {children}
         </div>
     );

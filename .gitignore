@@ -1,13 +1,10 @@
 #File esclusi
 src/services/
-src/pages/SigninPage.tsx
-src/pages/SignupPage.tsx
 src/components/ModalUsage.tsx
 src/components/ModalSettings.tsx
 src/components/ModalResetPassword.tsx
 src/components/ModalLogout.tsx
 src/components/ModalConfirmAccount.tsx
-src/components/AccessBox.tsx
 
 node_modules
 *.local

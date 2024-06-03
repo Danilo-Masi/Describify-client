@@ -3,8 +3,6 @@ import { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 //I18Next
 import { useTranslation } from 'react-i18next';
-//Cookie-consent
-import { useCookies } from "react-cookie";
 //Flowbite
 import { Modal } from "flowbite-react";
 
@@ -16,12 +14,8 @@ export default function ModalCookies({ setCookieModalOpen }: ModalCookiesProps) 
 
     const { t } = useTranslation();
 
-    const [cookies, setCookie] = useCookies(['userCookieConsent', 'name']);
-
     const handleAccept = () => {
-        // Imposta i cookie a true
-        setCookie('userCookieConsent', 'true', { path: '/' });
-        // Chiude il modal dei cookie
+        localStorage.setItem('cookieBanner', 'showed');
         setCookieModalOpen(false);
     }
 

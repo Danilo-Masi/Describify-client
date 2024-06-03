@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 //React-router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//Cookie-consent
-import { useCookies } from "react-cookie";
 //Utilities
 import { useLanguage } from "./utilities/useLanguage";
 //Pages
@@ -13,21 +11,21 @@ import ErrorPage from "./pages/ErrorPage";
 import ModalCookies from "./components/ModalCookies";
 import WaitlistModal from "./components/WaitlistModal";
 import AlertMessage from "./components/AlertMessage";
+import ProductPage from "./pages/ProductPage";
+import SigninPage from "./pages/SigninPage";
+import SignupPage from "./pages/SignupPage";
 
 export default function App() {
 
   const language = useLanguage();
-  const [cookies] = useCookies(['userCookieConsent']);
   const [isCookieModalOpen, setCookieModalOpen] = useState(false);
   const [isWaitlistModalOpen, setWaitlistModalOpen] = useState(false);
   const [isAlertOpen, setAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
-    // Verifica se il banner dei cookie è gia stato visualizzato
-    if (cookies.userCookieConsent === undefined || cookies.userCookieConsent === null) {
-      setCookieModalOpen(true);
-    } else {
+    // Verifica se il banner dei cookie è già stato visualizzato
+    if (localStorage.getItem('cookieBanner')) {
       setCookieModalOpen(false);
       // Carica Fathom Analytics 
       const script = document.createElement('script');
@@ -36,8 +34,10 @@ export default function App() {
       script.setAttribute('data-spa', 'auto');
       script.defer = true;
       document.head.appendChild(script);
+    } else {
+      setCookieModalOpen(true);
     }
-  }, [cookies.userCookieConsent]);
+  }, []);
 
   useEffect(() => {
     // Carica i font dinamicamente
@@ -58,6 +58,11 @@ export default function App() {
       <Routes>
         <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
         <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
+        {/* 
+        <Route path="/product" element={<ProductPage />} />
+        <Route path="/signin" element={<SigninPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        */}
         <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
