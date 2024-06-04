@@ -57,6 +57,24 @@
     "cardButton": "Articolo venduto",
 
     "placeholderCategory": "Camicie e t-shirt",
-    "placeholderColor2": "Nero"
+    "placeholderColor2": "Nero",
+
+    "signinWelcome": "Bentornato su Describify",
+    "signinEmailLabel": "Inserisci il tuo indirizzo email",
+    "signinPasswordLabel": "Inserisci la tua password",
+    "signinLostPassword": "Hai dimenticato la password?",
+    "signinButton": "Accedi",
+    "signinRedirectLabel": "Non hai un account?",
+    "signinRedirectLink": "Registrati",
+
+    "signupWelcome": "Benvenuto su Describify",
+    "signupEmailLabel": "Inserisci il tuo indirizzo email",
+    "signupPasswordLabel": "Inserisci la tua password",
+    "signupConfirmPasswordLabel": "Conferma la password",
+    "signupCheckboxLabel": "Accetto i ",
+    "singupCheckboxLink": "termini e le condizioni",
+    "signupButton": "Crea un nuovo account",
+    "signupRedirectLabel": "Hai già un account?",
+    "signupRedirectLink": "Accedi"
 
 }

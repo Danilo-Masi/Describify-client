@@ -58,5 +58,24 @@
 
     "placeholderCategory": "Shirts",
     "placeholderColor1:": "blue",
-    "placeholderColor2": "Black"
+    "placeholderColor2": "Black",
+
+    "signinWelcome": "Welcome back to Describify",
+    "signinEmailLabel": "Enter your email address",
+    "signinPasswordLabel": "Enter your password",
+    "signinLostPassword": "Forgot your password?",
+    "signinButton": "Sign In",
+    "signinRedirectLabel": "Don't have an account?",
+    "signinRedirectLink": "Sign Up",
+
+    "signupWelcome": "Welcome to Describify",
+    "signupEmailLabel": "Enter your email address",
+    "signupPasswordLabel": "Enter your password",
+    "signupConfirmPasswordLabel": "Confirm your password",
+    "signupCheckboxLabel": "I accept the ",
+    "signupCheckboxLink": "Terms and Conditions",
+    "signupButton": "Sign Up",
+    "signupRedirectLabel": "Already have an account?",
+    "signupRedirectLink": "Sign In"
+
 }
