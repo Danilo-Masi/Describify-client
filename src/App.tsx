@@ -58,7 +58,7 @@ export default function App() {
       <Routes>
         <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
         <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
-        {/*
+        {/* 
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />

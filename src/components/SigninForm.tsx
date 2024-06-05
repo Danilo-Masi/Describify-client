@@ -8,12 +8,13 @@ import { ContainerInput } from "../components/Layout";
 import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
 
 interface SigninFormProps {
-    setModalOpen: Dispatch<SetStateAction<boolean>>;
+    setModalResetPassword: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function SigninForm({ setModalOpen }: SigninFormProps) {
+export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
 
     const { t } = useTranslation();
+
     const navigate: NavigateFunction = useNavigate();
 
     const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -102,7 +103,7 @@ export default function SigninForm({ setModalOpen }: SigninFormProps) {
             <ContainerInput containerStyle="flex-row">
                 <p
                     className="text-sm font-light cursor-pointer text-custom-textSecondaryGray dark:text-dark-textSecondaryGray"
-                    onClick={() => setModalOpen(true)}>
+                    onClick={() => setModalResetPassword(true)}>
                     {t('signinLostPassword')}
                 </p>
             </ContainerInput>

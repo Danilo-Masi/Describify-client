@@ -76,6 +76,12 @@
     "signupCheckboxLink": "Terms and Conditions",
     "signupButton": "Sign Up",
     "signupRedirectLabel": "Already have an account?",
-    "signupRedirectLink": "Sign In"
+    "signupRedirectLink": "Sign In",
+
+    "accessBoxTitle": "Sell your items easily and quickly",
+    "accessBoxCaption": "Describify uses AI to create engaging descriptions that help you sell faster on platforms like Vinted, Wallpop, and many others",
+
+    "modalResetPasswordCaption": "Check your inbox to proceed with the password reset",
+    "modalResetPasswordButton": "Send password reset"
 
 }

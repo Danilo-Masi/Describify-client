@@ -9,13 +9,13 @@ export default function SigninPage() {
 
     //**** Verificare che l'utente non sia già loggato ****//
 
-    const [isModalResetPassOpen, setIsModalResetPassOpen] = useState(false);
+    const [isModalResetPassword, setModalResetPassword] = useState(false);
 
     return (
         <Layout padding="p-0" mdFlexOrientation="md:flex-row" mdHeight="md:h-svh">
-            <SigninForm setModalOpen={setIsModalResetPassOpen} />
+            <SigninForm setModalResetPassword={setModalResetPassword} />
             <AccessBox />
-            {isModalResetPassOpen && <ModalResetPassword onClose={() => setIsModalResetPassOpen(false)} />}
+            {isModalResetPassword && <ModalResetPassword onClose={() => setModalResetPassword(false)} />}
         </Layout>
     )
 }
