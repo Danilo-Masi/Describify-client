@@ -102,7 +102,7 @@ export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
             {/* Link recupera password */}
             <ContainerInput containerStyle="flex-row">
                 <p
-                    className="text-sm font-light cursor-pointer text-custom-textSecondaryGray dark:text-dark-textSecondaryGray"
+                    className="text-sm font-light cursor-pointer text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-textSecondaryColor dark:hover:text-dark-textSecondaryColor"
                     onClick={() => setModalResetPassword(true)}>
                     {t('signinLostPassword')}
                 </p>
@@ -119,7 +119,7 @@ export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
             <ContainerInput containerStyle="flex-row">
                 <p className="text-sm font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
                     {t('signinRedirectLabel')}
-                    <Link to="/signup" className="text-custom-textPrimaryColor dark:text-dark-textPrimaryColor hover:text-dark-textSecondaryColor dark:hover:text-custom-textSecondaryColor ms-2">
+                    <Link to="/signup" className="text-custom-textSecondaryColor dark:text-dark-textSecondaryColor hover:text-custom-solidColor dark:hover:text-dark-solidColor ms-2">
                         {t('signinRedirectLink')}
                     </Link>
                 </p>

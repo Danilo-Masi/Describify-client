@@ -138,7 +138,7 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
             onChange={() => setTermsCheckbox(!termsCheckbox)} />
           <label htmlFor="terms" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray ms-2">
             {t('signupCheckboxLabel')}
-            <Link to="/terms-and-conditions" className="text-custom-accent dark:text-dark-accent">
+            <Link to="/terms-and-conditions" className="text-custom-textSecondaryColor dark:text-dark-textSecondaryColor hover:text-custom-solidColor dark:hover:text-dark-solidColor">
               {t('singupCheckboxLink')}
             </Link>
           </label>
@@ -156,7 +156,7 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
       <ContainerInput containerStyle="flex-row">
         <p className="text-sm font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
           {t('signupRedirectLabel')}
-          <Link to="/signin" className="text-custom-textPrimaryColor dark:text-dark-textPrimaryColor hover:text-dark-textSecondaryColor dark:hover:text-custom-textSecondaryColor ms-2">
+          <Link to="/signin" className="text-custom-textSecondaryColor dark:text-dark-textSecondaryColor hover:text-custom-solidColor dark:hover:text-dark-solidColor ms-2">
             {t('signupRedirectLink')}
           </Link>
         </p>
