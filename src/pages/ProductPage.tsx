@@ -1,18 +1,17 @@
 //Components
-import Footer from "../components/Footer"
-import GridBackground from "../components/GridBackground"
-import { Layout } from "../components/Layout"
-import Navbar from "../components/Navbar"
-import Product from "../components/Product"
+import { Layout } from "../components/Layout";
+import SideBar from "../components/SideBar";
+import Product from "../components/Product";
+
 
 export default function ProductPage() {
     return (
-        <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar />
-            <GridBackground>
+        <div className="w-full h-auto min-h-svh flex items-center justify-center p-5 bg-custom-background dark:bg-dark-background">
+            <div className="w-[90%] md:w-full flex flex-col md:flex-row items-center justify-between gap-5">
+                <SideBar />
                 <Product />
-            </GridBackground>
-            <Footer />
-        </Layout>
-    )
+            </div>
+        </div>
+
+    );
 }
