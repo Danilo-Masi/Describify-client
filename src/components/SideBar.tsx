@@ -18,10 +18,12 @@ export default function SideBar() {
 
     const [isSideBarOpen, setSideBarOpen] = useState(false);
 
+    const shouldShowMenu = window.innerWidth > 728 || isSideBarOpen;
+
     return (
         <div className="w-full md:w-1/5 h-fit md:h-[calc(100svh-2.5rem)] flex flex-col items-start justify-start gap-y-5 p-5 rounded-xl bg-custom-elevation2 dark:bg-dark-elevation2">
             {/* Logo/Bottone apertura */}
-            <div className="w-full flex items-center justify-center gap-x-2 mb-10">
+            <div className="w-full flex items-center justify-start gap-x-2 mb-5">
                 <IconaLogo width="40" height="40" />
                 <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>
                 {
@@ -34,7 +36,7 @@ export default function SideBar() {
                     </button>
                 }
             </div>
-            {window.innerWidth < 728 && isSideBarOpen && (
+            {shouldShowMenu &&
                 <>
                     <ContainerItem>
                         <p className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray font-medium text-lg">Dashboard</p>
@@ -55,7 +57,7 @@ export default function SideBar() {
                         <p className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray font-medium text-lg">Help</p>
                     </ContainerItem>
                 </>
-            )}
+            }
         </div>
     );
 }

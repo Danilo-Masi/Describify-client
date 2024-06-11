@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction, useState } from "react";
 //I18Next
 import { useTranslation } from 'react-i18next';
+//Axios
+import axios from 'axios';
 //React router
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 //Components
@@ -14,7 +16,6 @@ interface SigninFormProps {
 export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
 
     const { t } = useTranslation();
-
     const navigate: NavigateFunction = useNavigate();
 
     const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -31,29 +32,26 @@ export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
         }))
     }
 
-    //Funzione per effettuare l'accesso all'account 
-    /*const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
+    // Funzione per effettuare l'accesso all'account
+    const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // VALIDAZIONE DAT INSERITI //
         try {
-            const { error } = await supabase.auth.signInWithPassword({
+            const response = await axios.post(`http://localhost:3000/signin`, {
                 email: signinForm.email,
                 password: signinForm.password,
             });
-            if (error) {
-                alert('Credenziali errate');
-                console.error("Errore nelle credenziali:", error);
-            } else {
+            if (response.status === 200) {
                 alert('Accesso effettuato correttamente');
-                navigate('/'); // Naviga verso la homepage o la dashboard
+                navigate('/product');
+            } else {
+                alert('Credenziali errate');
+                return;
             }
-        } catch (error) {
-            console.error("Error during signin:", error);
+        } catch (error: any) {
+            console.error("Unexpected Server Error", error.response.status);
+            console.error(error.message);
         }
-    };*/
-
-    const handleSignin = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log('Signin ciao');
     }
 
     return (

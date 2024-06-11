@@ -1,8 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
+//Axios
+import axios from 'axios';
 //I18Next
 import { useTranslation } from 'react-i18next';
 //React-router
-import { Link } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 //Components
 import { ContainerInput } from "../components/Layout";
 import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
@@ -15,6 +17,7 @@ interface SignupFormProps {
 export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProps) {
 
   const { t } = useTranslation();
+  const navigate: NavigateFunction = useNavigate();
 
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
@@ -33,32 +36,26 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
     }))
   }
 
-  //Funzione per effettuare la registrazione di un nuovo utente
-  /*const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      try {
-          const { error } = await supabase.auth.signUp({
-              email: signupForm.email,
-              password: signupForm.password,
-          });
-          if (error) {
-              console.error("Error during signup:", error);
-              alert('Error during signup: ' + error.message);
-          } else {
-              alert('Check your email to confirm the account');
-              // Apri modal di conferma email
-              setEmailPut(signupForm.email);
-              setModalOpen(true);
-          }
-      } catch (error) {
-          console.error("Error during signup:", error);
-          alert('Error during signup');
-      }
-  };*/
-
-  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
+  // Funzione per registrare un nuovo account
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Signup ciao');
+    // VALIDAZIONE DATI INSERITI //
+    try {
+      const response = await axios.post(`http://localhost:3000/signup`, {
+        email: signupForm.email,
+        password: signupForm.password,
+      });
+      if (response.status === 200) {
+        alert('Utente registrato correttamente');
+        navigate('/product');
+      } else {
+        alert('Credenziali errate');
+        return;
+      }
+    } catch (error: any) {
+      console.error("Unexpected Server Error", error.response.status);
+      console.error(error.message);
+    }
   }
 
   return (
