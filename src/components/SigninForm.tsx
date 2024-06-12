@@ -32,12 +32,16 @@ export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
         }))
     }
 
+    //Url del server
+    //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL || 'http://localhost:3000';
+    const SERVER_URL = 'http://localhost:3000';
+
     // Funzione per effettuare l'accesso all'account
     const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // VALIDAZIONE DAT INSERITI //
         try {
-            const response = await axios.post(`http://localhost:3000/signin`, {
+            const response = await axios.post(`${SERVER_URL}/signin`, {
                 email: signinForm.email,
                 password: signinForm.password,
             });

@@ -36,12 +36,16 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
     }))
   }
 
+  //Url del server
+  //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL || 'http://localhost:3000';
+  const SERVER_URL = 'http://localhost:3000';
+
   // Funzione per registrare un nuovo account
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // VALIDAZIONE DATI INSERITI //
     try {
-      const response = await axios.post(`http://localhost:3000/signup`, {
+      const response = await axios.post(`${SERVER_URL}/signup`, {
         email: signupForm.email,
         password: signupForm.password,
       });
