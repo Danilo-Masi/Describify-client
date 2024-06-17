@@ -9,101 +9,6 @@ import { useTranslation } from 'react-i18next';
 import ActiveButton from "./ActiveButton.tsx";
 import Logo from "./Logo.tsx";
 
-{/* 
-function AccessButton() {
-    return (
-        <>
-            <div className="md:w-1/4 hidden md:flex items-center justify-end gap-2">
-                <Link to="/signin">
-                    <button
-                        type="button"
-                        className="focus:ring-1 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 bg-trasparent hover:bg-custom-accent dark:hover:bg-dark-accent text-custom-accent dark:text-dark-textPrimary hover:text-dark-textPrimary dark:hover:text-dark-textPrimary border border-custom-accent dark:border-dark-accent">
-                        Login
-                    </button>
-                </Link>
-                <Link to="/signup">
-                    <button
-                        type="button"
-                        className="font-medium rounded-lg text-sm px-5 py-2.5 bg-custom-accent dark:bg-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent text-dark-textPrimary">
-                        Signup
-                    </button>
-                </Link>
-            </div>
-            <div className="md:hidden w-1/2 flex items-center justify-end">
-                <Link to="/signin">
-                    <button
-                        type="button"
-                        className="font-medium rounded-lg text-sm px-5 py-2.5 bg-custom-accent dark:bg-dark-accent hover:bg-dark-accent dark:hover:bg-custom-accent text-dark-textPrimary">
-                        Get started
-                    </button>
-                </Link>
-            </div>
-        </>
-    );
-}
-
-interface UserProfileProps {
-    emailUser: string;
-}
-
-//Costanti per i Modal che devono essere aperti
-const ModalType = {
-    NONE: 'NONE',
-    USAGE: 'USAGE',
-    SETTINGS: 'SETTINGS',
-    SIGNOUT: 'SIGNOUT',
-};
-
-function UserProfile({ emailUser }: UserProfileProps) {
-
-    const navigate = useNavigate();
-
-    const [currentModal, setCurrentModal] = useState(ModalType.NONE);
-
-    //Funzione per permettere all'utente di effettuare il logout dall'app
-    const handleSignout = useCallback(async () => {
-        try {
-            const { error } = await supabase.auth.signOut();
-            if (error) {
-                console.error('Errore durante la fase di logout', error);
-                // Qui potresti decidere di mostrare un messaggio di errore all'utente. //
-                return;
-            }
-            // Redirezione all'utente verso la pagina di signin dopo il logout. //
-            navigate('/signin');
-        } catch (error) {
-            console.error('Errore', error);
-        }
-    }, [navigate]);
-
-
-    //Formattazione dell'email dell'utente
-    const emailUtente: string = emailUser.length > 10 ? emailUser.slice(0, emailUser.indexOf('@')) : emailUser;
-
-    //Funzione per chiudere i Modal
-    const closeModal = useCallback(() => setCurrentModal(ModalType.NONE), []);
-
-    return (
-        <div className="w-1/2 md:w-1/4 flex flex-col h-auto items-end">
-            <Dropdown label={emailUtente} color="blue">
-                <Dropdown.Header>
-                    <span className="block truncate text-sm font-medium">{emailUser}</span>
-                </Dropdown.Header>
-                <Dropdown.Item onClick={() => setCurrentModal(ModalType.USAGE)}>Usage</Dropdown.Item>
-                <Dropdown.Item onClick={() => setCurrentModal(ModalType.SETTINGS)}>Settings</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={() => setCurrentModal(ModalType.SIGNOUT)} className="text-red-600 dark:text-red-500">Sign out</Dropdown.Item>
-            </Dropdown>
-            {currentModal === ModalType.SIGNOUT && <ModalLogout onClose={closeModal} onConfirm={() => handleSignout()} />}
-            {currentModal === ModalType.USAGE && <ModalUsage onClose={closeModal} />}
-            {currentModal === ModalType.SETTINGS && <ModalSettings onClose={closeModal} />}
-        </div>
-    );
-}
-
-*/}
-
-
 //Link di navigazione della NavBar
 function MenuElements() {
     const { t } = useTranslation();
@@ -121,7 +26,6 @@ interface JoinWaitllistButtonProps {
     setModalWaitlistOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-//Bottone 'iscriviti' della NavBar
 function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps) {
 
     const { t } = useTranslation();

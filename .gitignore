@@ -1,8 +1,5 @@
 #File esclusi
 src/services/
-src/components/ModalUsage.tsx
-src/components/ModalSettings.tsx
-src/components/ModalLogout.tsx
 src/components/ModalConfirmAccount.tsx
 
 node_modules

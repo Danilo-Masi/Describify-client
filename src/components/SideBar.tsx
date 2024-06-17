@@ -32,7 +32,7 @@ export default function SideBar({ pageSelected, setPageSelected }: SideBarProps)
     const shouldShowMenu = window.innerWidth > 728 || isSideBarOpen;
 
     return (
-        <div className="w-full md:w-1/5 h-fit md:h-[calc(100svh-2.5rem)] flex flex-col items-start justify-start gap-y-3 p-5 rounded-xl bg-custom-elevation2 dark:bg-dark-elevation2">
+        <div className="w-full md:w-1/4 h-fit md:h-[calc(100svh-2.5rem)] flex flex-col items-start justify-start gap-y-3 p-5 rounded-xl bg-custom-elevation2 dark:bg-dark-elevation2">
             {/* Logo/Bottone apertura */}
             <div className="w-full flex items-center justify-center md:justify-start gap-x-2 mb-5">
                 <IconaLogo width="40" height="40" />
