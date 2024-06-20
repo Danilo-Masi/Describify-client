@@ -1,4 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
+//I18Next
+import { useTranslation } from 'react-i18next';
 //Components
 import ModalBase from "./ModalBase";
 
@@ -7,8 +9,11 @@ interface ModalUsageProps {
 }
 
 export default function ModalUsage({ setPageSelected }: ModalUsageProps) {
+
+    const { t } = useTranslation();
+
     return (
-        <ModalBase size="md" modalTitle="Utilizzo" onClose={() => setPageSelected("Genera")}>
+        <ModalBase size="md" modalTitle={t('modalUsageTitle')} onClose={() => setPageSelected("Genera")}>
             <h1>ciao</h1>
         </ModalBase>
     );

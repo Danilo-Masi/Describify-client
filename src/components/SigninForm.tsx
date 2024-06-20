@@ -46,15 +46,23 @@ export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
                 password: signinForm.password,
             });
             if (response.status === 200) {
-                alert('Accesso effettuato correttamente');
+                alert('Accesso effettuato correttamente'); //MODIFICARE GLI ALERT //
                 navigate('/product');
             } else {
-                alert('Credenziali errate');
+                alert('Credenziali errate'); //MODIFICARE GLI ALERT //
                 return;
             }
         } catch (error: any) {
-            console.error("Unexpected Server Error", error.response.status);
-            console.error(error.message);
+            if (axios.isAxiosError(error)) {
+                console.error("Unexpected Server Error", {
+                    message: error.message,
+                    status: error.response?.status,
+                    statusText: error.response?.statusText,
+                    data: error.response?.data,
+                });
+            } else {
+                console.error("An unexpected error occurred", error);
+            }
         }
     }
 

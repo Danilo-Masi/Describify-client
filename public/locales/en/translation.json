@@ -82,6 +82,27 @@
     "accessBoxCaption": "Describify uses AI to create engaging descriptions that help you sell faster on platforms like Vinted, Wallpop, and many others",
 
     "modalResetPasswordCaption": "Check your inbox to proceed with the password reset",
-    "modalResetPasswordButton": "Send password reset"
+    "modalResetPasswordButton": "Send password reset",
+
+    "modalUsageTitle": "Usage",
+
+    "modalSettingsTitle": "Settings",
+    "modalSettingsLanguageTitle": "Change Language",
+    "modalSettingsLanguageCaption": "Modify the platform language",
+    "modalSettingsThemeTitle": "Change Theme",
+    "modalSettingsThemeCaption": "Modify the platform theme",
+
+    "modalHelpTitle": "Help",
+
+    "modalLogoutTitle": "Are you sure?",
+    "modalLogoutCaption": "If you click yes, I’m sure you will log out from the platform and when you want to log in again you will have to re-enter your login details",
+    "modalLogoutAcceptButton": "Yes, I’m sure",
+    "modalLogoutCancelButton": "No, cancel",
+
+    "sideBarGenerate": "Generate",
+    "sideBarUsage": "Usage",
+    "sideBarSettings": "Settings",
+    "sideBarHelp": "Help",
+    "sideBarUpgrade": "Upgrade to pro"
 
 }

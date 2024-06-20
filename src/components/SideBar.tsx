@@ -1,4 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction, useState } from "react";
+//I18Next
+import { useTranslation } from 'react-i18next';
 //Components
 import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, IconaLogo, SettingsIcon, SignoutIcon, UpgradeIcon, UsageIcon } from "./SvgComponents";
 
@@ -27,8 +29,9 @@ interface SideBarProps {
 
 export default function SideBar({ pageSelected, setPageSelected }: SideBarProps) {
 
-    const [isSideBarOpen, setSideBarOpen] = useState(false);
+    const { t } = useTranslation();
 
+    const [isSideBarOpen, setSideBarOpen] = useState(false);
     const shouldShowMenu = window.innerWidth > 728 || isSideBarOpen;
 
     return (
@@ -47,32 +50,33 @@ export default function SideBar({ pageSelected, setPageSelected }: SideBarProps)
                     </button>
                 }
             </div>
+            {/* Menu con elementi */}
             {shouldShowMenu &&
                 <>
                     <ContainerItem id="Genera" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <GenerateIcon />
-                        <p className="font-medium text-lg">Genera</p>
+                        <p className="font-medium text-lg">{t('sideBarGenerate')}</p>
                     </ContainerItem>
                     <ContainerItem id="Utilizzo" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <UsageIcon />
-                        <p className="font-medium text-lg">Utilizzo</p>
+                        <p className="font-medium text-lg">{t('sideBarUsage')}</p>
                     </ContainerItem>
                     <ContainerItem id="Impostazioni" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <SettingsIcon />
-                        <p className="font-medium text-lg">Impostazioni</p>
+                        <p className="font-medium text-lg">{t('sideBarSettings')}</p>
                     </ContainerItem>
                     <ContainerItem id="Aiuto" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <HelpIcon />
-                        <p className="font-medium text-lg">Aiuto</p>
+                        <p className="font-medium text-lg">{t('sideBarHelp')}</p>
                     </ContainerItem>
                     <div className="w-full border-t border-custom-borderGray dark:border-dark-borderGray" />
-                    <ContainerItem id="Uograde" pageSelected={pageSelected} setPageSelected={setPageSelected}>
+                    <ContainerItem id="Upgrade" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <UpgradeIcon />
-                        <p className="font-medium text-lg">Upgrade to pro</p>
+                        <p className="font-medium text-lg">{t('sideBarUpgrade')}</p>
                     </ContainerItem>
                     <ContainerItem id="Signout" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <SignoutIcon />
-                        <p className="font-medium text-lg">Sign-out</p>
+                        <p className="font-medium text-lg">Log-out</p>
                     </ContainerItem>
                 </>
             }
