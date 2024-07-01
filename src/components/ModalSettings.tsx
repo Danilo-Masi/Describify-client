@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Select } from "flowbite-react";
 //Components
 import ModalBase from "./ModalBase";
+import Divider from "./Divider";
 
 const languages: string[] = ['English', 'Italiano'];
 const themes: string[] = ['Dark', 'Light'];
@@ -101,7 +102,7 @@ export default function ModalSettings({ setPageSelected }: ModalSettingsProps) {
                 onChange={handleLanguageChoose}
                 selectedOption={selectedLanguage} />
             {/* Divider */}
-            <div className="w-full h-1 my-4 bg-custom-textSecondaryGray dark:bg-dark-textSecondaryGray" />
+            <Divider dividerStyle="my-4" />
             {/* Theme */}
             <SettingsBlock
                 title={t('modalSettingsThemeTitle')}

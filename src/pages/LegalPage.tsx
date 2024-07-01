@@ -28,7 +28,7 @@ export default function LegalPage({ setModalWaitListOpen }: TermsDataProps) {
     const [data, setData] = useState<PrivacyDataProps | null>(null);
 
     useEffect(() => {
-        const currentURL = location.pathname; //Ottiene l'URL corrente della pagina
+        const currentURL = location.pathname;
         if (currentURL.includes("terms-and-conditions")) {
             import("../data/legalData/terms_&_conditions.json").then((data) => {
                 setData(data);

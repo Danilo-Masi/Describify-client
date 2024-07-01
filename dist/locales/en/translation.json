@@ -58,5 +58,55 @@
 
     "placeholderCategory": "Shirts",
     "placeholderColor1:": "blue",
-    "placeholderColor2": "Black"
+    "placeholderColor2": "Black",
+
+    "signinWelcome": "Welcome back to Describify",
+    "signinEmailLabel": "Enter your email address",
+    "signinPasswordLabel": "Enter your password",
+    "signinLostPassword": "Forgot your password?",
+    "signinButton": "Sign In",
+    "signinRedirectLabel": "Don't have an account?",
+    "signinRedirectLink": "Sign Up",
+
+    "signupWelcome": "Welcome to Describify",
+    "signupEmailLabel": "Enter your email address",
+    "signupPasswordLabel": "Enter your password",
+    "signupConfirmPasswordLabel": "Confirm your password",
+    "signupCheckboxLabel": "I accept the ",
+    "signupCheckboxLink": "Terms and Conditions",
+    "signupButton": "Sign Up",
+    "signupRedirectLabel": "Already have an account?",
+    "signupRedirectLink": "Sign In",
+
+    "accessBoxTitle": "Sell your items easily and quickly",
+    "accessBoxCaption": "Describify uses AI to create engaging descriptions that help you sell faster on platforms like Vinted, Wallpop, and many others",
+
+    "modalResetPasswordCaption": "Check your inbox to proceed with the password reset",
+    "modalResetPasswordButton": "Send password reset",
+
+    "modalUsageTitle": "Usage",
+
+    "modalSettingsTitle": "Settings",
+    "modalSettingsLanguageTitle": "Change Language",
+    "modalSettingsLanguageCaption": "Modify the platform language",
+    "modalSettingsThemeTitle": "Change Theme",
+    "modalSettingsThemeCaption": "Modify the platform theme",
+
+    "modalHelpTitle": "Help",
+
+    "modalLogoutTitle": "Are you sure?",
+    "modalLogoutCaption": "If you click yes, I’m sure you will log out from the platform and when you want to log in again you will have to re-enter your login details",
+    "modalLogoutAcceptButton": "Yes, I’m sure",
+    "modalLogoutCancelButton": "No, cancel",
+
+    "sideBarGenerate": "Generate",
+    "sideBarUsage": "Usage",
+    "sideBarSettings": "Settings",
+    "sideBarHelp": "Help",
+    "sideBarUpgrade": "Upgrade to pro",
+
+    "errorPageTitle": "THIS PAGE DOES NOT EXIST",
+    "errorPageCaption": "Try reloading the page, or go back to the homepage :(",
+    "errorPageButton": "Go to Homepage"
+
 }

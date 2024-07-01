@@ -9,6 +9,7 @@ interface AlertMessageProps {
 
 export default function AlertMessage({ message, setAlertOpen }: AlertMessageProps) {
 
+  //Funzione che chiude l'alert dopo alcuni secondi che è stato aperto
   useEffect(() => {
     const interval = setTimeout(() => {
       setAlertOpen(false);

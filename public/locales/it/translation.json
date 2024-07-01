@@ -102,6 +102,10 @@
     "sideBarUsage": "Utilizzo",
     "sideBarSettings": "Impostazioni",
     "sideBarHelp": "Aiuto",
-    "sideBarUpgrade": "Passa a pro"
+    "sideBarUpgrade": "Passa a pro",
+
+    "errorPageTitle": "QUESTA PAGINA NON ESISTE",
+    "errorPageCaption": "Prova a ricaricare la pagina, oppure torna alla home :(",
+    "errorPageButton": "Vai alla Home"
 
 }

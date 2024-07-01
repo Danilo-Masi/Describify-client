@@ -103,6 +103,10 @@
     "sideBarUsage": "Usage",
     "sideBarSettings": "Settings",
     "sideBarHelp": "Help",
-    "sideBarUpgrade": "Upgrade to pro"
+    "sideBarUpgrade": "Upgrade to pro",
+
+    "errorPageTitle": "THIS PAGE DOES NOT EXIST",
+    "errorPageCaption": "Try reloading the page, or go back to the homepage :(",
+    "errorPageButton": "Go to Homepage"
 
 }

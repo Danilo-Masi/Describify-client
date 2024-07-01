@@ -7,13 +7,13 @@ import { useLanguage } from "./utilities/useLanguage";
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
 import ErrorPage from "./pages/ErrorPage";
+import ProductPage from "./pages/ProductPage";
+import SigninPage from "./pages/SigninPage";
+import SignupPage from "./pages/SignupPage";
 //Components
 import ModalCookies from "./components/ModalCookies";
 import WaitlistModal from "./components/WaitlistModal";
 import AlertMessage from "./components/AlertMessage";
-import ProductPage from "./pages/ProductPage";
-import SigninPage from "./pages/SigninPage";
-import SignupPage from "./pages/SignupPage";
 
 export default function App() {
 
@@ -27,11 +27,10 @@ export default function App() {
     // Verifica se il banner dei cookie è già stato visualizzato
     if (localStorage.getItem('cookieBanner')) {
       setCookieModalOpen(false);
-      // Carica Fathom Analytics 
+      // LogLib analytics
       const script = document.createElement('script');
-      script.src = "https://cdn.usefathom.com/script.js";
-      script.setAttribute('data-site', 'FHKBQKIP');
-      script.setAttribute('data-spa', 'auto');
+      script.src = "https://cdn.jsdelivr.net/npm/@loglib/tracker@latest/dist/index.global.js";
+      script.setAttribute('data-id', 'describify');
       script.defer = true;
       document.head.appendChild(script);
     } else {
@@ -58,11 +57,11 @@ export default function App() {
       <Routes>
         <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
         <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
-        
+        {/* 
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        
+        */}
         <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />

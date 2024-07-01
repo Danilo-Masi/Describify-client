@@ -57,6 +57,55 @@
     "cardButton": "Articolo venduto",
 
     "placeholderCategory": "Camicie e t-shirt",
-    "placeholderColor2": "Nero"
+    "placeholderColor2": "Nero",
+
+    "signinWelcome": "Bentornato su Describify",
+    "signinEmailLabel": "Inserisci il tuo indirizzo email",
+    "signinPasswordLabel": "Inserisci la tua password",
+    "signinLostPassword": "Hai dimenticato la password?",
+    "signinButton": "Accedi",
+    "signinRedirectLabel": "Non hai un account?",
+    "signinRedirectLink": "Registrati",
+
+    "signupWelcome": "Benvenuto su Describify",
+    "signupEmailLabel": "Inserisci il tuo indirizzo email",
+    "signupPasswordLabel": "Inserisci la tua password",
+    "signupConfirmPasswordLabel": "Conferma la password",
+    "signupCheckboxLabel": "Accetto i ",
+    "singupCheckboxLink": "termini e le condizioni",
+    "signupButton": "Crea un nuovo account",
+    "signupRedirectLabel": "Hai già un account?",
+    "signupRedirectLink": "Accedi",
+
+    "accessBoxTitle": "Vendi i tuoi articoli in maniera facile e veloce",
+    "accessBoxCaption": "Describify utilizza l'AI per creare descrizioni accattivanti che ti aiutano a vendere in maniera più rapida su piattaforme come Vinted, Wallpop e molte altre",
+
+    "modalResetPasswordCaption": "Entra nella tua casella di posta per procedere con il reset della password",
+    "modalResetPasswordButton": "Invia reset password",
+
+    "modalUsageTitle": "Utilizzo",
+
+    "modalSettingsTitle": "Impostazioni",
+    "modalSettingsLanguageTitle": "Cambia la lingua",
+    "modalSettingsLanguageCaption": "Modifica la lingua della piattaforma",
+    "modalSettingsThemeTitle": "Cambia il tema",
+    "modalSettingsThemeCaption": "Modifica il tema della piattaforma",
+
+    "modalHelpTitle": "Aiuto",
+
+    "modalLogoutTitle": "Sei sicuro?",
+    "modalLogoutCaption": "Se clicci si, sono sicuro effettuerai il logout dalla piattaforma e quando vorrai riaccedere dovrai inserire nuovamente i dati d'accesso",
+    "modalLogoutAcceptButton": "Si, sono sicuro",
+    "modalLogoutCancelButton": "No, cancella",
+
+    "sideBarGenerate": "Genera",
+    "sideBarUsage": "Utilizzo",
+    "sideBarSettings": "Impostazioni",
+    "sideBarHelp": "Aiuto",
+    "sideBarUpgrade": "Passa a pro",
+
+    "errorPageTitle": "QUESTA PAGINA NON ESISTE",
+    "errorPageCaption": "Prova a ricaricare la pagina, oppure torna alla home :(",
+    "errorPageButton": "Vai alla Home"
 
 }

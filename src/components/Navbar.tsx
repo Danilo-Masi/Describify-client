@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { scrollToElement } from '../utilities/useAnimations.tsx';
 //I18Next
 import { useTranslation } from 'react-i18next';
+//LogLib
+import { loglib } from "@loglib/tracker"
 //Components
 import ActiveButton from "./ActiveButton.tsx";
 import Logo from "./Logo.tsx";
@@ -31,6 +33,7 @@ function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps)
     const { t } = useTranslation();
 
     const handleOpenWaitlist = () => {
+        loglib.track("click 'iscriviti alla waitlist' navbar");
         setModalWaitlistOpen(true);
     }
 

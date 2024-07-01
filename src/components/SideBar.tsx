@@ -3,6 +3,7 @@ import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import { useTranslation } from 'react-i18next';
 //Components
 import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, IconaLogo, SettingsIcon, SignoutIcon, UpgradeIcon, UsageIcon } from "./SvgComponents";
+import Divider from "./Divider";
 
 interface ContainerItemProps {
     children: ReactNode;
@@ -69,7 +70,7 @@ export default function SideBar({ pageSelected, setPageSelected }: SideBarProps)
                         <HelpIcon />
                         <p className="font-medium text-lg">{t('sideBarHelp')}</p>
                     </ContainerItem>
-                    <div className="w-full border-t border-custom-borderGray dark:border-dark-borderGray" />
+                    <Divider />
                     <ContainerItem id="Upgrade" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <UpgradeIcon />
                         <p className="font-medium text-lg">{t('sideBarUpgrade')}</p>

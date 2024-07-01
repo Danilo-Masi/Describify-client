@@ -15,9 +15,9 @@ export default function Footer() {
     return (
         <div className="w-full flex items-center justify-center border-t border-custom-borderGray dark:border-dark-borderGray">
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
-                {/* Logo e link social */}
+                {/* Logo e email */}
                 <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>
-                    <Logo width='50' height='50'/>
+                    <Logo width='50' height='50' />
                     <p className="max-w-md md:text-start text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray mt-2">
                         {t('footerCaption')}
                     </p>
@@ -51,7 +51,7 @@ export default function Footer() {
                     <a target='_blank' rel='noopener noreferrer' href='https://www.tiktok.com/@describify' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='TikTok link'>TikTok</a>
                     <a target='_blank' rel='noopener noreferrer' href='https://www.instagram.com/describify' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='Instagram link'>Instagram</a>
                 </FooterCol>
-                {/* Terms & policy */}
+                {/* Termini e condizioni */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">{t('footerTerms')}</p>
                     <Link to="/terms-and-conditions" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Terms & Conditions</Link>

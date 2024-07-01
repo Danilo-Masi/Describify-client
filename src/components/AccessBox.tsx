@@ -1,6 +1,6 @@
 //I18next
 import { useTranslation } from 'react-i18next';
-import Logo from './Logo';
+//Components
 import { IconaLogo } from './SvgComponents';
 
 export default function AccessBox() {
