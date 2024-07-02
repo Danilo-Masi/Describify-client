@@ -20,12 +20,11 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
   const navigate: NavigateFunction = useNavigate();
 
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const [isConfirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [termsCheckbox, setTermsCheckbox] = useState(false);
   const [signupForm, setSignupForm] = useState({
+    name: '',
     email: '',
-    password: '',
-    confirmPassword: '',
+    password: ''
   })
 
   //Imposta lo stato dei vari input presenti nel form
@@ -74,6 +73,18 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
         </div>
         <h1 className="text-5xl text-center font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupWelcome')}</h1>
       </ContainerInput>
+      {/* Campo nome */}
+      <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
+        <label htmlFor="input-signup-name" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupNameLabel')}</label>
+        <input
+          type="text"
+          id="input-signup-name"
+          name="input-signup-name"
+          className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
+          placeholder="dmasiii"
+          value={signupForm.name}
+          onChange={event => handleChange(event, 'name')} />
+      </ContainerInput>
       {/* Campo email */}
       <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
         <label htmlFor="input-signup-email" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupEmailLabel')}</label>
@@ -103,26 +114,6 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
             onClick={() => setPasswordVisible(!isPasswordVisible)}
             className="absolute inset-y-0 right-0 px-3 flex items-center text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
             {isPasswordVisible ? <VisibilityIcon /> : <NonVisibilityIcon />}
-          </button>
-        </div>
-      </ContainerInput>
-      {/* Campo conferma password */}
-      <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
-        <label htmlFor="input-signup-repet-password" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupConfirmPasswordLabel')}</label>
-        <div className="w-full relative">
-          <input
-            placeholder="•••••••••"
-            type={isConfirmPasswordVisible ? "text" : "password"}
-            id="input-signup-repet-password"
-            name="input-signup-repet-password"
-            className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
-            value={signupForm.confirmPassword}
-            onChange={event => handleChange(event, 'confirmPassword')} />
-          <button
-            type="button"
-            onClick={() => setConfirmPasswordVisible(!isConfirmPasswordVisible)}
-            className="absolute inset-y-0 right-0 px-3 flex items-center text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-            {isConfirmPasswordVisible ? <VisibilityIcon /> : <NonVisibilityIcon />}
           </button>
         </div>
       </ContainerInput>

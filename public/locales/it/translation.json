@@ -68,6 +68,7 @@
     "signinRedirectLink": "Registrati",
 
     "signupWelcome": "Benvenuto su Describify",
+    "signupNameLabel": "Inserisci il tuo nome",
     "signupEmailLabel": "Inserisci il tuo indirizzo email",
     "signupPasswordLabel": "Inserisci la tua password",
     "signupConfirmPasswordLabel": "Conferma la password",

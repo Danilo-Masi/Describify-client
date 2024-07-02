@@ -69,6 +69,7 @@
     "signinRedirectLink": "Sign Up",
 
     "signupWelcome": "Welcome to Describify",
+    "signupNameLabel": "Enter your name",
     "signupEmailLabel": "Enter your email address",
     "signupPasswordLabel": "Enter your password",
     "signupConfirmPasswordLabel": "Confirm your password",
