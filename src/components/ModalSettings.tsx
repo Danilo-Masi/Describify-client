@@ -1,15 +1,23 @@
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 //I18Next
 import i18n from "../i18n";
 import { useTranslation } from 'react-i18next';
-import { Dispatch, SetStateAction } from "react";
 //Flowbite
 import { Select } from "flowbite-react";
 //Components
 import ModalBase from "./ModalBase";
 import Divider from "./Divider";
 
-const languages: string[] = ['English', 'Italiano'];
-const themes: string[] = ['Dark', 'Light'];
+const languages: string[] = ['en', 'it'];
+const languageLabels: { [key: string]: string } = {
+    en: 'English',
+    it: 'Italiano'
+};
+const themes: string[] = ['dark', 'light'];
+const themeLabels: { [key: string]: string } = {
+    dark: 'Dark',
+    light: 'Light'
+};
 
 interface SettingsBlockProps {
     title: string;
@@ -17,9 +25,10 @@ interface SettingsBlockProps {
     options: string[];
     selectedOption: string;
     onChange: (arg0: string) => void;
+    labels: { [key: string]: string };
 }
 
-function SettingsBlock({ title, description, options, selectedOption, onChange }: SettingsBlockProps) {
+function SettingsBlock({ title, description, options, selectedOption, onChange, labels }: SettingsBlockProps) {
 
     const passaValore = (event: any) => {
         onChange(event.target.value);
@@ -35,9 +44,8 @@ function SettingsBlock({ title, description, options, selectedOption, onChange }
             <div className="w-full md:w-1/3">
                 <Select id={title} onChange={passaValore} value={selectedOption}>
                     {options.map((option, key) => (
-                        <option
-                            key={key}>
-                            {option}
+                        <option key={key} value={option}>
+                            {labels[option]}
                         </option>
                     ))}
                 </Select>
@@ -54,42 +62,25 @@ export default function ModalSettings({ setPageSelected }: ModalSettingsProps) {
 
     const { t } = useTranslation();
 
-    const languageFromStorage = localStorage.getItem("language");
-    const selectedLanguage = languageFromStorage === "en" ? "English" : "Italiano";
-    const themeFromStorage = localStorage.getItem("tema");
-    const selectedTheme = themeFromStorage && themeFromStorage === 'dark' ? 'Dark' : 'Light';
+    const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem("language") || "it");
+    const [selectedTheme, setSelectedTheme] = useState(localStorage.getItem("theme") || "dark");
 
-    //Funzione per la modifica della lingua corrente
-    const handleLanguageChoose = (linguaSelezionata: string) => {
-        let lng = "";
-        if (linguaSelezionata === 'Italiano') {
-            lng = 'it';
-        } else {
-            lng = 'en';
-        }
-        try {
-            console.log('Lingua selezionata: ' + lng);
-            i18n.changeLanguage(lng);
-            localStorage.setItem('language', lng);
-        } catch (error) {
-            console.error('Errore nella selezione della lingua', error);
-            alert('Errore nel cambio della lingua');
-        }
+    useEffect(() => {
+        i18n.changeLanguage(selectedLanguage);
+        localStorage.setItem("language", selectedLanguage);
+    }, [selectedLanguage]);
+
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark', selectedTheme === 'dark');
+        localStorage.setItem("theme", selectedTheme);
+    }, [selectedTheme]);
+
+    const handleLanguageChange = (language: string) => {
+        setSelectedLanguage(language);
     }
 
-    //Funzione per la modifica del tema corrente
-    const handleThemeChoose = (temaSelezionato: string) => {
-        try {
-            localStorage.setItem("tema", temaSelezionato.toLowerCase());
-            if (temaSelezionato.toLowerCase() === 'dark') {
-                document.body.classList.add('dark');
-            } else {
-                document.body.classList.remove('dark');
-            }
-        } catch (error) {
-            console.error('Errore nella selezione del tema', error);
-            alert('Errore nel cambio del tema');
-        }
+    const handleThemeChange = (theme: string) => {
+        setSelectedTheme(theme);
     }
 
     return (
@@ -99,17 +90,19 @@ export default function ModalSettings({ setPageSelected }: ModalSettingsProps) {
                 title={t('modalSettingsLanguageTitle')}
                 description={t('modalSettingsLanguageCaption')}
                 options={languages}
-                onChange={handleLanguageChoose}
-                selectedOption={selectedLanguage} />
+                onChange={handleLanguageChange}
+                selectedOption={selectedLanguage}
+                labels={languageLabels} />
             {/* Divider */}
             <Divider dividerStyle="my-4" />
-            {/* Theme */}
+            {/* Tema */}
             <SettingsBlock
                 title={t('modalSettingsThemeTitle')}
                 description={t('modalSettingsThemeCaption')}
                 options={themes}
-                onChange={handleThemeChoose}
-                selectedOption={selectedTheme} />
+                onChange={handleThemeChange}
+                selectedOption={selectedTheme}
+                labels={themeLabels} />
         </ModalBase>
     );
 }

@@ -18,12 +18,19 @@ import AlertMessage from "./components/AlertMessage";
 export default function App() {
 
   const language = useLanguage();
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const [isCookieModalOpen, setCookieModalOpen] = useState(false);
   const [isWaitlistModalOpen, setWaitlistModalOpen] = useState(false);
   const [isAlertOpen, setAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
+    // Carica i font dinamicamente
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap';
+    link.rel = 'stylesheet';
+    link.crossOrigin = 'anonymous';
+    document.head.appendChild(link);
     // Verifica se il banner dei cookie è già stato visualizzato
     if (localStorage.getItem('cookieBanner')) {
       setCookieModalOpen(false);
@@ -39,18 +46,17 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    // Carica i font dinamicamente
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap';
-    link.rel = 'stylesheet';
-    link.crossOrigin = 'anonymous';
-    document.head.appendChild(link);
-  }, []);
-
-  useEffect(() => {
     // Modica la lingua del file index.html
     document.documentElement.lang = language;
   }, [language]);
+
+  useEffect(() => {
+    if (theme === 'light') {
+      document.body.classList.remove('dark');
+    } else {
+      document.body.classList.add('dark');
+    }
+  }, [theme]);
 
   return (
     <BrowserRouter>
@@ -61,7 +67,7 @@ export default function App() {
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        
+
         <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />

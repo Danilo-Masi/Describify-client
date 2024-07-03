@@ -21,13 +21,14 @@ export default function ModalLogout({ setPageSelected }: ModalLogoutProps) {
     const SERVER_URL = 'http://localhost:3000';
 
     const handleSingout = async () => {
+        console.log('Funzione Logout: Client'); // LOG //
         try {
             const response = await axios.post(`${SERVER_URL}/signout`);
             if (response.status === 200) {
-                alert('Accesso effettuato correttamente'); //MODIFICARE GLI ALERT //
+                alert('Logout effettuato correttamente'); // MODIFICARE GLI ALERT //
                 navigate('/');
             } else {
-                alert('Errore nella fase di logout'); //MODIFICARE GLI ALERT //
+                alert('Errore nella fase di logout'); // MODIFICARE GLI ALERT //
                 return;
             }
         } catch (error) {
