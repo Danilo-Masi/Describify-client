@@ -25,6 +25,7 @@ export default function ModalLogout({ setPageSelected }: ModalLogoutProps) {
         try {
             const response = await axios.post(`${SERVER_URL}/signout`);
             if (response.status === 200) {
+                localStorage.removeItem('authToken');
                 alert('Logout effettuato correttamente'); // MODIFICARE GLI ALERT //
                 navigate('/');
             } else {

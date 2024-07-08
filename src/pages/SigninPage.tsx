@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 //Utilities
-import { verifyLog } from '../utilities/useVerify.tsx';
+import { isAuthenticated } from '../utilities/useVerify.tsx';
 //React-router
-import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 //Components
 import { Layout } from "../components/Layout";
 import AccessBox from "../components/AccessBox";
@@ -13,18 +13,16 @@ export default function SigninPage() {
 
     const [isModalResetPassword, setModalResetPassword] = useState(false);
 
-    const verificaLog = verifyLog();
+    const isLogged = isAuthenticated();
     const navigate: NavigateFunction = useNavigate();
 
-    //**** Verifica che l'utente non sia già loggato ****//
+    //Funzione per verificare che l'utente sia già loggato nella piattaforma
     useEffect(() => {
-        if (verificaLog) {
-            alert('Utente già loggato nella piattaforma');
+        if (isLogged) {
+            alert('Utente già loggato nella piattaforma'); //MODIFICARE L'ALERT
             navigate('/product');
-        } else {
-            console.log('utente non ancora loggato');
         }
-    }, [verificaLog]);
+    }, [isLogged]);
 
     return (
         <Layout padding="p-0" mdFlexOrientation="md:flex-row" mdHeight="md:h-svh">

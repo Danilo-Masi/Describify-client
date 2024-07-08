@@ -46,6 +46,8 @@ export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
                 password: signinForm.password,
             });
             if (response.status === 200) {
+                const { token } = response.data;
+                localStorage.setItem('authToken', token);
                 alert('Accesso effettuato correttamente'); //MODIFICARE GLI ALERT //
                 navigate('/product');
             } else {
@@ -53,16 +55,7 @@ export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
                 return;
             }
         } catch (error: any) {
-            if (axios.isAxiosError(error)) {
-                console.error("Unexpected Server Error", {
-                    message: error.message,
-                    status: error.response?.status,
-                    statusText: error.response?.statusText,
-                    data: error.response?.data,
-                });
-            } else {
-                console.error("An unexpected error occurred", error);
-            }
+            console.error('Errore durante la fase di login', error);
         }
     }
 

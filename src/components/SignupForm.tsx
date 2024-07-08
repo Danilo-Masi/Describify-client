@@ -49,6 +49,8 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
         password: signupForm.password,
       });
       if (response.status === 200) {
+        const { token } = response.data;
+        localStorage.setItem('authToken', token);
         alert('Utente registrato correttamente');
         navigate('/product');
       } else {
@@ -56,8 +58,7 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
         return;
       }
     } catch (error: any) {
-      console.error("Unexpected Server Error", error.response.status);
-      console.error(error.message);
+      console.error('Errore durante la fase di signup', error);
     }
   }
 
