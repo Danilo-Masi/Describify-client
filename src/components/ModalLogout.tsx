@@ -18,10 +18,10 @@ export default function ModalLogout({ setPageSelected }: ModalLogoutProps) {
 
     const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
+    //Url server
     const SERVER_URL = 'http://localhost:3000';
 
     const handleSingout = async () => {
-        console.log('Funzione Logout: Client'); // LOG //
         try {
             const response = await axios.post(`${SERVER_URL}/signout`);
             if (response.status === 200) {

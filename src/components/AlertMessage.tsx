@@ -3,11 +3,12 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import { Alert } from "flowbite-react";
 
 interface AlertMessageProps {
+  color: string;
   message: string;
   setAlertOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function AlertMessage({ message, setAlertOpen }: AlertMessageProps) {
+export default function AlertMessage({ color, message, setAlertOpen }: AlertMessageProps) {
 
   //Funzione che chiude l'alert dopo alcuni secondi che è stato aperto
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function AlertMessage({ message, setAlertOpen }: AlertMessageProp
 
   return (
     <div className="w-full flex items-center justify-center md:justify-start md:px-2 fixed top-[85%] md:top-[90%] z-[100]">
-      <Alert color="failure">
+      <Alert color={color}>
         <p className="flex items-center justify-center gap-x-3">
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

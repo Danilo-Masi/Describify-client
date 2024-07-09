@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useState } from "react";
 //I18Next
 import { useTranslation } from 'react-i18next';
 //Axios
@@ -11,30 +11,67 @@ import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgC
 
 interface SigninFormProps {
     setModalResetPassword: Dispatch<SetStateAction<boolean>>;
+    setAlertOpen: Dispatch<SetStateAction<boolean>>;
+    setAlertMessage: Dispatch<SetStateAction<string>>;
+    setAlertColor: Dispatch<SetStateAction<string>>;
 }
 
-export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
+interface SigninFormState {
+    email: string;
+    password: string;
+}
+
+//Url del server
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
+const SERVER_URL = 'http://localhost:3000';
+
+export default function SigninForm({ setModalResetPassword, setAlertOpen, setAlertMessage, setAlertColor }: SigninFormProps) {
 
     const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
 
     const [isPasswordVisible, setPasswordVisible] = useState(false);
-    const [signinForm, setSigninForm] = useState({
+    const [signinForm, setSigninForm] = useState<SigninFormState>({
         email: '',
         password: ''
     });
 
-    //Imposta lo stato dei vari input presenti nel form
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
+    //Funzione per impostare i valori del form
+    const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
         setSigninForm(prevState => ({
             ...prevState,
             [fieldName]: event.target.value
-        }))
-    }
+        }));
+    }, []);
 
-    //Url del server
-    //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL || 'http://localhost:3000';
-    const SERVER_URL = 'http://localhost:3000';
+    //Funzione per gestire gli errori nella fase di accesso
+    const handleError = useCallback((error: any) => {
+        if (error.response) {
+            switch (error.response.status) {
+                case 401:
+                    setAlertMessage('Credenziali errate');
+                    break;
+                case 404:
+                    setAlertMessage('Server non trovato');
+                    break;
+                default:
+                    setAlertMessage('Errore durante la fase di login');
+            }
+        } else {
+            setAlertMessage('Errore di rete o problema imprevisto');
+        }
+        setAlertColor('failure');
+        setAlertOpen(true);
+    }, [setAlertMessage, setAlertColor, setAlertOpen]);
+
+    //Funzione per gestire il successo della fase di accesso
+    const handleSuccess = useCallback((token: string) => {
+        localStorage.setItem('authToken', token);
+        setAlertMessage('Accesso effettuato correttamente');
+        setAlertColor('success');
+        setAlertOpen(true);
+        navigate('/product');
+    }, [setAlertMessage, setAlertColor, setAlertOpen, navigate]);
 
     // Funzione per effettuare l'accesso all'account
     const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,16 +83,11 @@ export default function SigninForm({ setModalResetPassword }: SigninFormProps) {
                 password: signinForm.password,
             });
             if (response.status === 200) {
-                const { token } = response.data;
-                localStorage.setItem('authToken', token);
-                alert('Accesso effettuato correttamente'); //MODIFICARE GLI ALERT //
-                navigate('/product');
-            } else {
-                alert('Credenziali errate'); //MODIFICARE GLI ALERT //
-                return;
+                handleSuccess(response.data.token);
             }
         } catch (error: any) {
             console.error('Errore durante la fase di login', error);
+            handleError(error);
         }
     }
 

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useState } from "react";
 //Axios
 import axios from 'axios';
 //I18Next
@@ -11,35 +11,73 @@ import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgC
 
 interface SignupFormProps {
   setModalOpen: Dispatch<SetStateAction<boolean>>;
-  setEmailPut: Dispatch<SetStateAction<string>>
+  setEmailPut: Dispatch<SetStateAction<string>>;
+  setAlertOpen: Dispatch<SetStateAction<boolean>>;
+  setAlertMessage: Dispatch<SetStateAction<string>>;
+  setAlertColor: Dispatch<SetStateAction<string>>;
 }
 
-export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProps) {
+interface SignupFormState {
+  name: string;
+  email: string;
+  password: string;
+}
+
+//Url del server
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL';
+const SERVER_URL = 'http://localhost:3000';
+
+export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, setAlertMessage, setAlertColor }: SignupFormProps) {
 
   const { t } = useTranslation();
   const navigate: NavigateFunction = useNavigate();
 
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [termsCheckbox, setTermsCheckbox] = useState(false);
-  const [signupForm, setSignupForm] = useState({
+  const [signupForm, setSignupForm] = useState<SignupFormState>({
     name: '',
     email: '',
     password: ''
-  })
+  });
 
-  //Imposta lo stato dei vari input presenti nel form
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
+  //Funzione per impostare i valori del form
+  const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
     setSignupForm(prevState => ({
       ...prevState,
       [fieldName]: event.target.value
-    }))
-  }
+    }));
+  }, []);
 
-  //Url del server
-  //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL || 'http://localhost:3000';
-  const SERVER_URL = 'http://localhost:3000';
+  //Funzione per gestire gli errori nella fase di registrazione
+  const handleError = useCallback((error: any) => {
+    if (error.response) {
+      switch (error.response.status) {
+        case 401:
+          setAlertMessage('Credenziali errate');
+          break;
+        case 404:
+          setAlertMessage('Server non trovato');
+          break;
+        default:
+          setAlertMessage('Errore durante la fase di signup');
+      }
+    } else {
+      setAlertMessage('Errore di rete o problema imprevisto');
+    }
+    setAlertColor('failure');
+    setAlertOpen(true);
+  }, [setAlertMessage, setAlertColor, setAlertOpen]);
 
-  // Funzione per registrare un nuovo account
+  //Funzione per gestire il successo della fase di registrazione
+  const handleSuccess = useCallback((token: string) => {
+    localStorage.setItem('authToken', token);
+    setAlertMessage('Utente registrato correttamente');
+    setAlertColor('success');
+    setAlertOpen(true);
+    navigate('/product');
+  }, [setAlertMessage, setAlertColor, setAlertOpen, navigate]);
+
+  //Funzione per registrare un nuovo account
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // VALIDAZIONE DATI INSERITI //
@@ -49,16 +87,11 @@ export default function SignupForm({ setModalOpen, setEmailPut }: SignupFormProp
         password: signupForm.password,
       });
       if (response.status === 200) {
-        const { token } = response.data;
-        localStorage.setItem('authToken', token);
-        alert('Utente registrato correttamente');
-        navigate('/product');
-      } else {
-        alert('Credenziali errate');
-        return;
+        handleSuccess(response.data.token);
       }
     } catch (error: any) {
       console.error('Errore durante la fase di signup', error);
+      handleError(error);
     }
   }
 

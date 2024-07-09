@@ -23,6 +23,7 @@ export default function App() {
   const [isWaitlistModalOpen, setWaitlistModalOpen] = useState(false);
   const [isAlertOpen, setAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [alertColor, setAlertColor] = useState("");
 
   useEffect(() => {
     // Carica i font dinamicamente
@@ -63,11 +64,11 @@ export default function App() {
       <Routes>
         <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
         <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
-        {/* 
+         
         <Route path="/product" element={<ProductPage />} />
-        <Route path="/signin" element={<SigninPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        */}
+        <Route path="/signin" element={<SigninPage setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} setAlertColor={setAlertColor}/>} />
+        <Route path="/signup" element={<SignupPage setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} setAlertColor={setAlertColor}/>} />
+        
         <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
@@ -75,7 +76,7 @@ export default function App() {
       </Routes>
       {isCookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}
       {isWaitlistModalOpen && <WaitlistModal onClose={() => setWaitlistModalOpen(false)} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />}
-      {isAlertOpen && <AlertMessage message={alertMessage} setAlertOpen={setAlertOpen} />}
+      {isAlertOpen && <AlertMessage color={alertColor} message={alertMessage} setAlertOpen={setAlertOpen} />}
     </BrowserRouter>
   );
 }
