@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 //React-router
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+//Utilities
+import { useEmail } from "../utilities/useEmail.tsx";
 //Components
 import { ContainerInput } from "../components/Layout";
 import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
@@ -33,11 +35,17 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
   const navigate: NavigateFunction = useNavigate();
 
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const [errorLabel, setErrorLabel] = useState({
+    nameError: '',
+    emailError: '',
+    passwordError: '',
+    checkboxError: '',
+  });
   const [termsCheckbox, setTermsCheckbox] = useState(false);
   const [signupForm, setSignupForm] = useState<SignupFormState>({
     name: '',
     email: '',
-    password: ''
+    password: '',
   });
 
   //Funzione per impostare i valori del form
@@ -47,6 +55,68 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
       [fieldName]: event.target.value
     }));
   }, []);
+
+  //Funzione per validare i dati inseriti dall'utente nel form
+  const handleValidate = useCallback(() => {
+    let valid = true;
+    if (signupForm.name === "") {
+      setErrorLabel(prevState => ({
+        ...prevState,
+        nameError: 'Inserire un nome valido prima di procedere',
+      }));
+      valid = false;
+    } else {
+      setErrorLabel(prevState => ({
+        ...prevState,
+        nameError: '',
+      }));
+    }
+    if (signupForm.email === "" || !useEmail(signupForm.email)) {
+      setErrorLabel(prevState => ({
+        ...prevState,
+        emailError: 'Inserire un email valida prima di procedere',
+      }));
+      valid = false;
+    } else {
+      setErrorLabel(prevState => ({
+        ...prevState,
+        emailError: '',
+      }));
+    }
+    if (signupForm.password === "") {
+      setErrorLabel(prevState => ({
+        ...prevState,
+        passwordError: 'Inserire una password valida prima di procedere',
+      }));
+      valid = false;
+    } else if (signupForm.password.length < 6) {
+      setErrorLabel(prevState => ({
+        ...prevState,
+        passwordError: 'La password deve contenere almeno 6 caratteri',
+      }));
+      valid = false;
+    } else {
+      setErrorLabel(prevState => ({
+        ...prevState,
+        passwordError: '',
+      }));
+    }
+    if (!termsCheckbox) {
+      setErrorLabel(prevState => ({
+        ...prevState,
+        checkboxError: 'Devi accettare i termini e le condizioni prima di procedere',
+      }))
+    }
+    return valid;
+  }, [signupForm.name, signupForm.email, signupForm.password]);
+
+  //Funzione per resettare il valore della ErrorLabel
+  const handleResetLabel = (fieldName: string) => {
+    setErrorLabel(prevState => ({
+      ...prevState,
+      [fieldName]: '',
+    }));
+  }
 
   //Funzione per gestire gli errori nella fase di registrazione
   const handleError = useCallback((error: any) => {
@@ -80,32 +150,34 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
   //Funzione per registrare un nuovo account
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // VALIDAZIONE DATI INSERITI //
-    try {
-      const response = await axios.post(`${SERVER_URL}/signup`, {
-        email: signupForm.email,
-        password: signupForm.password,
-      });
-      if (response.status === 200) {
-        handleSuccess(response.data.token);
+    const validazioneDati = handleValidate();
+    if (validazioneDati) {
+      try {
+        const response = await axios.post(`${SERVER_URL}/signup`, {
+          email: signupForm.email,
+          password: signupForm.password,
+        });
+        if (response.status === 200) {
+          handleSuccess(response.data.token);
+        }
+      } catch (error: any) {
+        console.error('Errore durante la fase di signup', error);
+        handleError(error);
       }
-    } catch (error: any) {
-      console.error('Errore durante la fase di signup', error);
-      handleError(error);
     }
   }
 
   return (
     <form
       onSubmit={handleSignup}
-      className="w-full md:w-1/2 h-auto min-h-svh flex flex-col gap-5 items-center justify-center px-6 md:px-32">
+      className="w-full md:w-1/2 h-auto min-h-svh flex flex-col gap-4 items-center justify-center px-6 md:px-32 py-6 md:py-0">
       {/* Intestazione */}
       <ContainerInput containerStyle="w-full flex flex-col gap-y-3 mb-5">
         <div className="w-full flex items-center justify-center gap-x-2">
           <IconaLogo width="30" height="30" />
           <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>
         </div>
-        <h1 className="text-5xl text-center font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupWelcome')}</h1>
+        <h1 className="text-4xl text-center font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupWelcome')}</h1>
       </ContainerInput>
       {/* Campo nome */}
       <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
@@ -117,7 +189,9 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
           className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
           placeholder="dmasiii"
           value={signupForm.name}
+          onFocus={() => handleResetLabel('nameError')}
           onChange={event => handleChange(event, 'name')} />
+        {errorLabel.nameError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.nameError}</p>}
       </ContainerInput>
       {/* Campo email */}
       <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
@@ -129,7 +203,9 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
           className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
           placeholder="name@describify.com"
           value={signupForm.email}
+          onFocus={() => handleResetLabel('emailError')}
           onChange={event => handleChange(event, 'email')} />
+        {errorLabel.emailError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.emailError}</p>}
       </ContainerInput>
       {/* Campo password */}
       <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
@@ -142,6 +218,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
             name="input-signup-password"
             className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
             value={signupForm.password}
+            onFocus={() => handleResetLabel('passwordError')}
             onChange={event => handleChange(event, 'password')} />
           <button
             type="button"
@@ -150,9 +227,10 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
             {isPasswordVisible ? <VisibilityIcon /> : <NonVisibilityIcon />}
           </button>
         </div>
+        {errorLabel.passwordError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.passwordError}</p>}
       </ContainerInput>
       {/* Campo accetta termini e condizioni */}
-      <ContainerInput containerStyle="flex-row">
+      <ContainerInput containerStyle="flex-col gap-y-3">
         <div className="flex items-center justify-center">
           <input
             id="terms"
@@ -161,6 +239,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
             name="checkbox"
             className="w-4 h-4 border rounded focus:ring-1 border-custom-border bg-custom-background focus:ring-custom-accent checked:bg-custom-accent dark:border-dark-border dark:bg-dark-background dark:ring-dark-accent dark:checked:bg-dark-accent"
             checked={termsCheckbox}
+            onFocus={() => handleResetLabel('checkboxError')}
             onChange={() => setTermsCheckbox(!termsCheckbox)} />
           <label htmlFor="terms" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray ms-2">
             {t('signupCheckboxLabel')}
@@ -169,6 +248,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
             </Link>
           </label>
         </div>
+        {errorLabel.checkboxError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.checkboxError}</p>}
       </ContainerInput>
       {/* Bottone registrati */}
       <ContainerInput containerStyle="w-full flex flex-col gap-y-3">

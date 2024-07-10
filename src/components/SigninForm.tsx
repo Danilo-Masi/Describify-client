@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 //React router
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+//Utilities
+import { useEmail } from "../utilities/useEmail.tsx";
 //Components
 import { ContainerInput } from "../components/Layout";
 import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
@@ -31,9 +33,13 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
     const navigate: NavigateFunction = useNavigate();
 
     const [isPasswordVisible, setPasswordVisible] = useState(false);
+    const [errorLabel, setErrorLabel] = useState({
+        emailError: '',
+        passwordError: '',
+    });
     const [signinForm, setSigninForm] = useState<SigninFormState>({
         email: '',
-        password: ''
+        password: '',
     });
 
     //Funzione per impostare i valori del form
@@ -43,6 +49,50 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
             [fieldName]: event.target.value
         }));
     }, []);
+
+    //Funzione per validare i dati inseriti dall'utente nel form
+    const handleValidate = useCallback(() => {
+        let valid = true;
+        if (signinForm.email === "" || !useEmail(signinForm.email)) {
+            setErrorLabel(prevState => ({
+                ...prevState,
+                emailError: 'Inserire un email valida prima di procedere',
+            }));
+            valid = false;
+        } else {
+            setErrorLabel(prevState => ({
+                ...prevState,
+                emailError: '',
+            }));
+        }
+        if (signinForm.password === "") {
+            setErrorLabel(prevState => ({
+                ...prevState,
+                passwordError: 'Inserire una password valida prima di procedere',
+            }));
+            valid = false;
+        } else if (signinForm.password.length < 6) {
+            setErrorLabel(prevState => ({
+                ...prevState,
+                passwordError: 'La password deve contenere almeno 6 caratteri',
+            }));
+            valid = false;
+        } else {
+            setErrorLabel(prevState => ({
+                ...prevState,
+                passwordError: '',
+            }));
+        }
+        return valid;
+    }, [signinForm.email, signinForm.password]);
+
+    //Funzione per resettare il valore della ErrorLabel
+    const handleResetLabel = (fieldName: string) => {
+        setErrorLabel(prevState => ({
+            ...prevState,
+            [fieldName]: '',
+        }));
+    }
 
     //Funzione per gestire gli errori nella fase di accesso
     const handleError = useCallback((error: any) => {
@@ -76,18 +126,20 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
     // Funzione per effettuare l'accesso all'account
     const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // VALIDAZIONE DAT INSERITI //
-        try {
-            const response = await axios.post(`${SERVER_URL}/signin`, {
-                email: signinForm.email,
-                password: signinForm.password,
-            });
-            if (response.status === 200) {
-                handleSuccess(response.data.token);
+        const validazioneDati = handleValidate();
+        if (validazioneDati) {
+            try {
+                const response = await axios.post(`${SERVER_URL}/signin`, {
+                    email: signinForm.email,
+                    password: signinForm.password,
+                });
+                if (response.status === 200) {
+                    handleSuccess(response.data.token);
+                }
+            } catch (error: any) {
+                console.error('Errore durante la fase di login', error);
+                handleError(error);
             }
-        } catch (error: any) {
-            console.error('Errore durante la fase di login', error);
-            handleError(error);
         }
     }
 
@@ -113,7 +165,9 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
                     className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
                     placeholder="name@decribify.com"
                     value={signinForm.email}
+                    onFocus={() => handleResetLabel('emailError')}
                     onChange={event => handleChange(event, 'email')} />
+                {errorLabel.emailError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.emailError}</p>}
             </ContainerInput>
             {/* Campo password */}
             <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
@@ -125,6 +179,7 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
                         id="password"
                         className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
                         value={signinForm.password}
+                        onFocus={() => handleResetLabel('passwordError')}
                         onChange={event => handleChange(event, 'password')} />
                     <button
                         type="button"
@@ -133,6 +188,7 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
                         {isPasswordVisible ? <VisibilityIcon /> : <NonVisibilityIcon />}
                     </button>
                 </div>
+                {errorLabel.passwordError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.passwordError}</p>}
             </ContainerInput>
             {/* Link recupera password */}
             <ContainerInput containerStyle="flex-row">
