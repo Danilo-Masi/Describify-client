@@ -26,7 +26,7 @@ interface SignupFormState {
 }
 
 //Url del server
-//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL';
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 const SERVER_URL = 'http://localhost:3000';
 
 export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, setAlertMessage, setAlertColor }: SignupFormProps) {
@@ -59,6 +59,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
   //Funzione per validare i dati inseriti dall'utente nel form
   const handleValidate = useCallback(() => {
     let valid = true;
+    // Validazione input nome
     if (signupForm.name === "") {
       setErrorLabel(prevState => ({
         ...prevState,
@@ -71,6 +72,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
         nameError: '',
       }));
     }
+    // Validazione input email
     if (signupForm.email === "" || !useEmail(signupForm.email)) {
       setErrorLabel(prevState => ({
         ...prevState,
@@ -83,6 +85,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
         emailError: '',
       }));
     }
+    // Validazione input password
     if (signupForm.password === "") {
       setErrorLabel(prevState => ({
         ...prevState,
@@ -101,11 +104,18 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
         passwordError: '',
       }));
     }
-    if (!termsCheckbox) {
+    // Validazione checkbox
+    if (termsCheckbox === false) {
       setErrorLabel(prevState => ({
         ...prevState,
         checkboxError: 'Devi accettare i termini e le condizioni prima di procedere',
-      }))
+      }));
+      valid = false;
+    } else {
+      setErrorLabel(prevState => ({
+        ...prevState,
+        checkboxError: '',
+      }));
     }
     return valid;
   }, [signupForm.name, signupForm.email, signupForm.password]);

@@ -1,33 +1,55 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useState } from "react";
 //I18Next
 import { useTranslation } from 'react-i18next';
+//Axios
+import axios from 'axios';
+//Utilities
+import { useEmail } from "../utilities/useEmail";
 
 interface EmailResendProps {
-    onClose: () => void;
-    setEmailUsed: Dispatch<SetStateAction<string>>;
+    setResetEmailSend: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function EmailResend({ onClose, setEmailUsed }: EmailResendProps) {
+//Url del server
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
+const SERVER_URL = 'http://localhost:3000';
+
+export default function EmailResend({ setResetEmailSend }: EmailResendProps) {
 
     const { t } = useTranslation();
 
     const [emailDigit, setEmailDigit] = useState("");
     const [disableButton, setDisabledButton] = useState(false);
+    const [errorLabel, setErrorLabel] = useState("");
 
-    /*const handleResend = async () => {
-        console.log('Resend email to... ' + emailDigit);
-        try {
-            let { data, error } = await supabase.auth.resetPasswordForEmail(emailDigit);
-            console.log(data);
-            setEmailUsed(emailDigit);
-            setDisabledButton(true);
-        } catch (error) {
-            console.log(error);
+    // Funzione per validare l'email inserita dall'utente
+    const handleValidate = useCallback(() => {
+        let valid = true;
+        if (emailDigit === "" || !useEmail(emailDigit)) {
+            setErrorLabel('Inserire un email valida prima di procedere');
+            valid = false;
+        } else {
+            setErrorLabel('');
         }
-    }*/
+        return valid;
+    }, [emailDigit]);
 
-    const handleResend = () => {
-        console.log('Resend ciao');
+    // Funzione per inviare un email per reimpostare l'account dell'utente
+    const handleResend = async () => {
+        const validazioneDati = handleValidate();
+        if (validazioneDati) {
+            try {
+                const response = await axios.post(`${SERVER_URL}/reset-password`, {
+                    email: emailDigit,
+                });
+                if (response.status === 200) {
+                    setResetEmailSend(true);
+                    setDisabledButton(true);
+                }
+            } catch (error) {
+                console.error('Errore durante la fase di reset password', error);
+            }
+        }
     }
 
     return (
@@ -39,28 +61,23 @@ export default function EmailResend({ onClose, setEmailUsed }: EmailResendProps)
             </div>
             {/* Email input */}
             <input
-                required
+                autoComplete="email"
                 type="email"
-                id="input-email-reset"
-                className="w-full rounded-lg p-2.5 text-sm bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
-                placeholder="name@describify.com"
+                id="email"
+                className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
+                placeholder="name@decribify.com"
+                value={emailDigit}
+                onFocus={() => setErrorLabel('')}
                 onChange={(event) => setEmailDigit(event.target.value)} />
-            {/* Bottoni */}
+            {errorLabel !== "" && <p className="text-red-500 font-light text-sm">{errorLabel}</p>}
+            {/* Bottone */}
             <button
-                disabled={disableButton}
-                onClick={handleResend}
                 type="button"
-                className="w-full flex items-center justify-center gap-x-2 rounded-lg p-2.5 font-medium text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
+                className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor"
+                disabled={disableButton}
+                onClick={() => handleResend()}>
                 {t('modalResetPasswordButton')}
             </button>
-            <p className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-sm font-light">
-                Ora ricordi la password?
-                <span
-                    className="hover:text-custom-textPrimaryGray dark:hover:text-dark-textPrimaryGray cursor-pointer ml-2"
-                    onClick={onClose}>
-                    Chiudi
-                </span>
-            </p>
         </div>
     );
 }

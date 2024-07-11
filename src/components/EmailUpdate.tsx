@@ -37,34 +37,39 @@ export default function EmailUpdate({ emailUsed }: EmailUpdateProps) {
 
     return (
         <div className="w-full h-auto flex flex-wrap gap-y-6 gap-x-1">
-            <p className="text-xl font-semibold text-custom-textPrimary dark:text-dark-textPrimary text-balance">Reset password</p>
-            <ContainerInput containerStyle="">
-                <label htmlFor="input-signup-password" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">Reset password</label>
+            {/* Intestazione */}
+            <p className="text-2xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Reset password</p>
+            <p className="text-lg font-medium text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">Reimposta la password del tuo account</p>
+            {/* Input password */}
+            <ContainerInput containerStyle="flex-col">
+                <label htmlFor="input-signup-password" className="block mb-2 text-sm font-medium text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">Reset password</label>
                 <input
                     placeholder="•••••••••"
                     type="password"
                     id="input-signup-password"
                     name="input-signup-password"
-                    className="text-sm rounded-lg block w-full p-2.5 border bg-custom-elevation border-custom-border focus:border-custom-borderFocus text-custom-textPrimary dark:bg-dark-elevation dark:border-dark-border dark:focus:border-dark-borderFocus dark:text-dark-textPrimary"
+                    className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
                     required
                     onChange={(event) => setPass(event.target.value)} />
             </ContainerInput>
-            <ContainerInput containerStyle="">
-                <label htmlFor="input-signup-repet-password" className="block mb-2 text-sm font-medium text-custom-textSecondary dark:text-dark-textSecondary">Confirm password</label>
+            {/* Input conferma password */}
+            <ContainerInput containerStyle="flex-col">
+                <label htmlFor="input-signup-repet-password" className="block mb-2 text-sm font-medium text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">Confirm password</label>
                 <input
                     placeholder="•••••••••"
                     type="password"
                     id="input-signup-repet-password"
                     name="input-signup-repet-password"
-                    className="text-sm rounded-lg block w-full p-2.5 border bg-custom-elevation border-custom-border focus:border-custom-borderFocus text-custom-textPrimary dark:bg-dark-elevation dark:border-dark-border dark:focus:border-dark-borderFocus dark:text-dark-textPrimary"
+                    className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
                     required
                     onChange={(event) => setConfirmPass(event.target.value)} />
             </ContainerInput>
+            {/* Bottone di "Reset Password" */}
             <button
-                onClick={handleResetPassword}
                 type="button"
-                className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                Reset
+                className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor"
+                onClick={handleResetPassword}>
+                Reset password
             </button>
         </div>
     );
