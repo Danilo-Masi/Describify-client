@@ -105,7 +105,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
       }));
     }
     // Validazione checkbox
-    if (termsCheckbox === false) {
+    /*if (termsCheckbox === false) {
       setErrorLabel(prevState => ({
         ...prevState,
         checkboxError: 'Devi accettare i termini e le condizioni prima di procedere',
@@ -116,7 +116,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
         ...prevState,
         checkboxError: '',
       }));
-    }
+    }*/
     return valid;
   }, [signupForm.name, signupForm.email, signupForm.password]);
 

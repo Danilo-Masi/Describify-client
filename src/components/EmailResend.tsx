@@ -46,8 +46,13 @@ export default function EmailResend({ setResetEmailSend }: EmailResendProps) {
                     setResetEmailSend(true);
                     setDisabledButton(true);
                 }
-            } catch (error) {
-                console.error('Errore durante la fase di reset password', error);
+            } catch (error: any) {
+                console.error('CLIENT: Errore durante la fase di reset password', error);
+                if (error.response && error.response.status === 429) {
+                    setErrorLabel('Hai superato il limite di richieste. Riprova più tardi');
+                } else {
+                    setErrorLabel('Errore durante la fase di reset password. Riprova più tardi')
+                }
             }
         }
     }
@@ -69,6 +74,7 @@ export default function EmailResend({ setResetEmailSend }: EmailResendProps) {
                 value={emailDigit}
                 onFocus={() => setErrorLabel('')}
                 onChange={(event) => setEmailDigit(event.target.value)} />
+            {/* Label Errore */}
             {errorLabel !== "" && <p className="text-red-500 font-light text-sm">{errorLabel}</p>}
             {/* Bottone */}
             <button

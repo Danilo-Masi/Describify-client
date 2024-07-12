@@ -1,8 +1,14 @@
 import { useState } from "react";
 //React router
 import { NavigateFunction, useNavigate } from "react-router-dom";
+//Axios
+import axios from 'axios';
 //Components
 import { ContainerInput } from "../components/Layout";
+
+//Url del server
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
+const SERVER_URL = 'http://localhost:3000';
 
 interface EmailUpdateProps {
     emailUsed: string;
@@ -12,27 +18,41 @@ export default function EmailUpdate({ emailUsed }: EmailUpdateProps) {
 
     const navigate: NavigateFunction = useNavigate();
 
-    const [pass, setPass] = useState("");
-    const [confirmPass, setConfirmPass] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const [confirmNewPassword, setConfirmNewPassword] = useState("");
+    const [errorLabel, setErrorLabel] = useState("");
 
-    /*const handleResetPassword = async () => {
-        console.log(emailUsed);
-        if (pass !== "" && pass !== null && pass === confirmPass) {
-            const { data, error } = await supabase.auth.updateUser({
-                email: emailUsed,
-                password: pass,
-            });
-            console.log(data);
-            alert('pass modificata correttamente');
-            navigate('/');
-        } else {
-            alert('Errore nell inserimento della password');
-            return;
+    // Funzione per validare i dati inseriti dall'utente
+    const handleValidate = () => {
+        let valid = true;
+        if (newPassword.length < 6) {
+            setErrorLabel('La password deve contenere almento 6 caratteri');
+            valid = false;
+        } else if (newPassword !== confirmNewPassword) {
+            setErrorLabel('Le due password non coincidono');
+            valid = false;
         }
-    }*/
+        return valid;
+    }
 
-    const handleResetPassword = () => {
-        console.log('Reset password ciao');
+    // Funzione per fare la chiamata al server per aggiornare la password dell'utente
+    const handleResetPassword = async () => {
+        const validazioneDati = handleValidate();
+        if (validazioneDati) {
+            try {
+                const response = await axios.post(`${SERVER_URL}/update-user`, {
+                    email: 'danilomasi999@gmail.com',
+                    newPassword: newPassword,
+                });
+                if (response.status === 200) {
+                    alert('Profilo aggiornato correttamente'); //AGGIORNARE L'ALERT
+                    navigate('/');
+                }
+            } catch (error) {
+                console.error('CLIENT: Errore durante la fase di aggiornamento della password', error);
+                alert('Errore aggiornamento password');
+            }
+        }
     }
 
     return (
@@ -50,7 +70,7 @@ export default function EmailUpdate({ emailUsed }: EmailUpdateProps) {
                     name="input-signup-password"
                     className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
                     required
-                    onChange={(event) => setPass(event.target.value)} />
+                    onChange={(event) => setNewPassword(event.target.value)} />
             </ContainerInput>
             {/* Input conferma password */}
             <ContainerInput containerStyle="flex-col">
@@ -62,7 +82,7 @@ export default function EmailUpdate({ emailUsed }: EmailUpdateProps) {
                     name="input-signup-repet-password"
                     className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
                     required
-                    onChange={(event) => setConfirmPass(event.target.value)} />
+                    onChange={(event) => setConfirmNewPassword(event.target.value)} />
             </ContainerInput>
             {/* Bottone di "Reset Password" */}
             <button
