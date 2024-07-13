@@ -56,71 +56,61 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
     }));
   }, []);
 
-  //Funzione per validare i dati inseriti dall'utente nel form
-  const handleValidate = useCallback(() => {
-    let valid = true;
-    // Validazione input nome
-    if (signupForm.name === "") {
-      setErrorLabel(prevState => ({
-        ...prevState,
-        nameError: 'Inserire un nome valido prima di procedere',
-      }));
-      valid = false;
-    } else {
-      setErrorLabel(prevState => ({
-        ...prevState,
-        nameError: '',
-      }));
+  // Validazione nome
+  const validateName = (name: string) => {
+    if (name === "") {
+      return 'Inserire un nome valido prima di procedere';
     }
-    // Validazione input email
-    if (signupForm.email === "" || !useEmail(signupForm.email)) {
-      setErrorLabel(prevState => ({
-        ...prevState,
-        emailError: 'Inserire un email valida prima di procedere',
-      }));
-      valid = false;
-    } else {
-      setErrorLabel(prevState => ({
-        ...prevState,
-        emailError: '',
-      }));
-    }
-    // Validazione input password
-    if (signupForm.password === "") {
-      setErrorLabel(prevState => ({
-        ...prevState,
-        passwordError: 'Inserire una password valida prima di procedere',
-      }));
-      valid = false;
-    } else if (signupForm.password.length < 6) {
-      setErrorLabel(prevState => ({
-        ...prevState,
-        passwordError: 'La password deve contenere almeno 6 caratteri',
-      }));
-      valid = false;
-    } else {
-      setErrorLabel(prevState => ({
-        ...prevState,
-        passwordError: '',
-      }));
-    }
-    // Validazione checkbox
-    /*if (termsCheckbox === false) {
-      setErrorLabel(prevState => ({
-        ...prevState,
-        checkboxError: 'Devi accettare i termini e le condizioni prima di procedere',
-      }));
-      valid = false;
-    } else {
-      setErrorLabel(prevState => ({
-        ...prevState,
-        checkboxError: '',
-      }));
-    }*/
-    return valid;
-  }, [signupForm.name, signupForm.email, signupForm.password]);
+    return '';
+  }
 
-  //Funzione per resettare il valore della ErrorLabel
+  // Validazione email
+  const validateEmail = (email: string) => {
+    if (email === "" || !useEmail(email)) {
+      return 'Inserire un email valida prima di procedere';
+    }
+    return '';
+  }
+
+  // Validazione password
+  const validatePassword = (password: string) => {
+    if (password === "") {
+      return 'Inserire una password valida prima di procedere';
+    } else if (password.length < 6) {
+      return 'La password deve contenere almeno 6 caratteri';
+    }
+    return '';
+  };
+
+  // Validazione checkbox
+  const validateCheckbox = (isChecked: boolean) => {
+    if (!isChecked) {
+      return 'Devi accettare i termini e le condizioni prima di procedere';
+    }
+    return '';
+  };
+
+  // Regole di validazione 
+  const validationRules = {
+    name: validateName,
+    email: validateEmail,
+    password: validatePassword,
+    checkbox: validateCheckbox,
+  };
+
+  // Funzione per validare i dati inseriti dall'utente nel form
+  const handleValidate = useCallback(() => {
+    const errors = {
+      nameError: validationRules.name(signupForm.name),
+      emailError: validationRules.email(signupForm.email),
+      passwordError: validationRules.password(signupForm.password),
+      checkboxError: validationRules.checkbox(termsCheckbox),
+    }
+    setErrorLabel(errors);
+    return !Object.values(errors).some(error => error !== '');
+  }, [signupForm.name, signupForm.email, signupForm.password, termsCheckbox]);
+
+  // Funzione per resettare il valore della ErrorLabel
   const handleResetLabel = (fieldName: string) => {
     setErrorLabel(prevState => ({
       ...prevState,
@@ -155,7 +145,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
     setAlertColor('success');
     setAlertOpen(true);
     navigate('/product');
-  }, [setAlertMessage, setAlertColor, setAlertOpen, navigate]);
+  }, [setAlertMessage, setAlertColor, setAlertOpen]);
 
   //Funzione per registrare un nuovo account
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -164,6 +154,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
     if (validazioneDati) {
       try {
         const response = await axios.post(`${SERVER_URL}/signup`, {
+          name: signupForm.name,
           email: signupForm.email,
           password: signupForm.password,
         });

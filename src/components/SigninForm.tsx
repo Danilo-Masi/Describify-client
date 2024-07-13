@@ -23,7 +23,7 @@ interface SigninFormState {
     password: string;
 }
 
-//Url del server
+// Url del server
 //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 const SERVER_URL = 'http://localhost:3000';
 
@@ -42,7 +42,7 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
         password: '',
     });
 
-    //Funzione per impostare i valori del form
+    // Funzione per impostare i valori del form
     const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
         setSigninForm(prevState => ({
             ...prevState,
@@ -50,43 +50,41 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
         }));
     }, []);
 
-    //Funzione per validare i dati inseriti dall'utente nel form
+    // Validazione email
+    const validateEmail = (email: string) => {
+        if (email === "" || !useEmail(email)) {
+            return 'Inserire un email valida prima di procedere';
+        }
+        return '';
+    }
+
+    // Validazione password
+    const validatePassword = (password: string) => {
+        if (password === "") {
+            return 'Inserire una password valida prima di procedere';
+        } else if (password.length < 6) {
+            return 'La password deve contenere almeno 6 caratteri';
+        }
+        return '';
+    };
+
+    // Regole di validazione 
+    const validationRules = {
+        email: validateEmail,
+        password: validatePassword,
+    };
+
+    // Funzione per validare i dati inseriti dall'utente nel form
     const handleValidate = useCallback(() => {
-        let valid = true;
-        if (signinForm.email === "" || !useEmail(signinForm.email)) {
-            setErrorLabel(prevState => ({
-                ...prevState,
-                emailError: 'Inserire un email valida prima di procedere',
-            }));
-            valid = false;
-        } else {
-            setErrorLabel(prevState => ({
-                ...prevState,
-                emailError: '',
-            }));
+        const errors = {
+            emailError: validationRules.email(signinForm.email),
+            passwordError: validationRules.password(signinForm.password),
         }
-        if (signinForm.password === "") {
-            setErrorLabel(prevState => ({
-                ...prevState,
-                passwordError: 'Inserire una password valida prima di procedere',
-            }));
-            valid = false;
-        } else if (signinForm.password.length < 6) {
-            setErrorLabel(prevState => ({
-                ...prevState,
-                passwordError: 'La password deve contenere almeno 6 caratteri',
-            }));
-            valid = false;
-        } else {
-            setErrorLabel(prevState => ({
-                ...prevState,
-                passwordError: '',
-            }));
-        }
-        return valid;
+        setErrorLabel(errors);
+        return !Object.values(errors).some(error => error !== '');
     }, [signinForm.email, signinForm.password]);
 
-    //Funzione per resettare il valore della ErrorLabel
+    // Funzione per resettare il valore della ErrorLabel
     const handleResetLabel = (fieldName: string) => {
         setErrorLabel(prevState => ({
             ...prevState,
@@ -94,7 +92,7 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
         }));
     }
 
-    //Funzione per gestire gli errori nella fase di accesso
+    // Funzione per gestire gli errori nella fase di accesso
     const handleError = useCallback((error: any) => {
         if (error.response) {
             switch (error.response.status) {
@@ -114,7 +112,7 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
         setAlertOpen(true);
     }, [setAlertMessage, setAlertColor, setAlertOpen]);
 
-    //Funzione per gestire il successo della fase di accesso
+    // Funzione per gestire il successo della fase di accesso
     const handleSuccess = useCallback((token: string) => {
         localStorage.setItem('authToken', token);
         setAlertMessage('Accesso effettuato correttamente');
