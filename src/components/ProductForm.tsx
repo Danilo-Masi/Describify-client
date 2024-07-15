@@ -14,7 +14,6 @@ import colors_it from '../data/productOptions/colors_it.json';
 import WaitlistModal from "./WaitlistModal";
 import ModalDropdown from "./ModalDropdow";
 
-
 //Type definitions
 interface InputSelectProps {
     mdWidth?: string,
