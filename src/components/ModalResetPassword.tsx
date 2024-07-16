@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLocation } from 'react-router-dom';
 //Components
 import EmailResend from '../components/EmailResend';
 import EmailUpdate from "./EmailUpdate";
@@ -10,15 +10,18 @@ interface ModalResetPasswordProps {
 
 export default function ModalResetPassword({ onClose }: ModalResetPasswordProps) {
 
-    const [emailUsed, setEmailUsed] = useState("");
-    const [isResetEmailSend, setResetEmailSend] = useState(false);
+    const location = useLocation();
+    const accessToken = new URLSearchParams(location.hash).get('#access_token');
+    console.log(accessToken);
+    
 
     return (
-        <ModalBase size="md" modalTitle="" onClose={onClose}>
-            {isResetEmailSend
-                ? <EmailUpdate emailUsed={emailUsed} />
-                : <EmailResend setResetEmailSend={setResetEmailSend} />
-            }
+        <ModalBase size="md" modalTitle="Reset password" onClose={onClose}>
+            {accessToken ? (
+                <EmailUpdate accessToken={accessToken} />
+            ) : (
+                <EmailResend />
+            )}
         </ModalBase>
     );
 }

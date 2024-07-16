@@ -26,7 +26,8 @@ export default function SignupPage({ setAlertOpen, setAlertMessage, setAlertColo
     //Funzione per verificare che l'utente sia già loggato nella piattaforma
     useEffect(() => {
         if (isLogged) {
-            alert('Utente già loggato nella piattaforma'); //MODIFICARE L'ALERT
+            setAlertMessage('Utente già loggato nella piattaforma');
+            setAlertOpen(true);
             navigate('/product');
         }
     }, [isLogged]);

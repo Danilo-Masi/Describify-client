@@ -6,15 +6,11 @@ import axios from 'axios';
 //Utilities
 import { useEmail } from "../utilities/useEmail";
 
-interface EmailResendProps {
-    setResetEmailSend: Dispatch<SetStateAction<boolean>>;
-}
-
 //Url del server
 //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 const SERVER_URL = 'http://localhost:3000';
 
-export default function EmailResend({ setResetEmailSend }: EmailResendProps) {
+export default function EmailResend() {
 
     const { t } = useTranslation();
 
@@ -43,7 +39,6 @@ export default function EmailResend({ setResetEmailSend }: EmailResendProps) {
                     email: emailDigit,
                 });
                 if (response.status === 200) {
-                    setResetEmailSend(true);
                     setDisabledButton(true);
                 }
             } catch (error: any) {

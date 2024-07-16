@@ -11,10 +11,10 @@ import { ContainerInput } from "../components/Layout";
 const SERVER_URL = 'http://localhost:3000';
 
 interface EmailUpdateProps {
-    emailUsed: string;
+    accessToken: string;
 }
 
-export default function EmailUpdate({ emailUsed }: EmailUpdateProps) {
+export default function EmailUpdate({ accessToken }: EmailUpdateProps) {
 
     const navigate: NavigateFunction = useNavigate();
 
@@ -37,12 +37,12 @@ export default function EmailUpdate({ emailUsed }: EmailUpdateProps) {
 
     // Funzione per fare la chiamata al server per aggiornare la password dell'utente
     const handleResetPassword = async () => {
-        const validazioneDati = handleValidate();
-        if (validazioneDati) {
+        const valid = handleValidate();
+        if (valid) {
             try {
                 const response = await axios.post(`${SERVER_URL}/update-user`, {
-                    email: 'danilomasi999@gmail.com',
                     newPassword: newPassword,
+                    accessToken: accessToken,
                 });
                 if (response.status === 200) {
                     alert('Profilo aggiornato correttamente'); //AGGIORNARE L'ALERT
@@ -50,7 +50,7 @@ export default function EmailUpdate({ emailUsed }: EmailUpdateProps) {
                 }
             } catch (error) {
                 console.error('CLIENT: Errore durante la fase di aggiornamento della password', error);
-                alert('Errore aggiornamento password');
+                alert('Errore aggiornamento password'); //AGGIORNARE L'ALERT
             }
         }
     }

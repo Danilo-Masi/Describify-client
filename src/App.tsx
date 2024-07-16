@@ -14,6 +14,7 @@ import SignupPage from "./pages/SignupPage";
 import ModalCookies from "./components/ModalCookies";
 import WaitlistModal from "./components/WaitlistModal";
 import AlertMessage from "./components/AlertMessage";
+import ModalResetPassword from "./components/ModalResetPassword";
 
 export default function App() {
 
@@ -69,6 +70,8 @@ export default function App() {
         <Route path="/signin" element={<SigninPage setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} setAlertColor={setAlertColor}/>} />
         <Route path="/signup" element={<SignupPage setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} setAlertColor={setAlertColor}/>} />
         
+        <Route path="/reset-password" element={<ModalResetPassword onClose={() => {/* logic to close modal */}} />} /> {/* DA MODIFARE */}
+          
         <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
