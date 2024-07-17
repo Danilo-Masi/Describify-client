@@ -12,8 +12,6 @@ export default function ModalResetPassword({ onClose }: ModalResetPasswordProps)
 
     const location = useLocation();
     const accessToken = new URLSearchParams(location.hash).get('#access_token');
-    console.log(accessToken);
-    
 
     return (
         <ModalBase size="md" modalTitle="Reset password" onClose={onClose}>

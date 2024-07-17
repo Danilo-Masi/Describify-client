@@ -7,7 +7,6 @@ import axios from 'axios';
 import { ContainerInput } from "../components/Layout";
 
 //Url del server
-//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 const SERVER_URL = 'http://localhost:3000';
 
 interface EmailUpdateProps {
@@ -37,20 +36,28 @@ export default function EmailUpdate({ accessToken }: EmailUpdateProps) {
 
     // Funzione per fare la chiamata al server per aggiornare la password dell'utente
     const handleResetPassword = async () => {
+        console.log('CLIENT: UPDATE USER');
         const valid = handleValidate();
+        console.log('Password valida:', valid);
+
         if (valid) {
             try {
+                console.log('CLIENT: Invio richiesta al server', {
+                    newPassword: newPassword,
+                    accessToken: accessToken
+                });
                 const response = await axios.post(`${SERVER_URL}/update-user`, {
                     newPassword: newPassword,
-                    accessToken: accessToken,
+                    accessToken: accessToken
                 });
+                console.log('CLIENT: Stato della risposta:', response.status);
                 if (response.status === 200) {
-                    alert('Profilo aggiornato correttamente'); //AGGIORNARE L'ALERT
+                    alert('Profilo aggiornato correttamente');
                     navigate('/');
                 }
             } catch (error) {
                 console.error('CLIENT: Errore durante la fase di aggiornamento della password', error);
-                alert('Errore aggiornamento password'); //AGGIORNARE L'ALERT
+                alert('Errore aggiornamento password');
             }
         }
     }
@@ -69,8 +76,9 @@ export default function EmailUpdate({ accessToken }: EmailUpdateProps) {
                     id="input-signup-password"
                     name="input-signup-password"
                     className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
-                    required
+                    onFocus={() => setErrorLabel('')}
                     onChange={(event) => setNewPassword(event.target.value)} />
+                {errorLabel !== "" && <p className="text-red-500 font-light text-sm">{errorLabel}</p>}
             </ContainerInput>
             {/* Input conferma password */}
             <ContainerInput containerStyle="flex-col">
@@ -88,7 +96,7 @@ export default function EmailUpdate({ accessToken }: EmailUpdateProps) {
             <button
                 type="button"
                 className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor"
-                onClick={handleResetPassword}>
+                onClick={() => handleResetPassword()}>
                 Reset password
             </button>
         </div>
