@@ -1,7 +1,7 @@
 import { Dispatch, ReactNode, SetStateAction, useState } from "react";
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Components
+// Components
 import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, IconaLogo, SettingsIcon, SignoutIcon, UpgradeIcon, UsageIcon } from "./SvgComponents";
 import Divider from "./Divider";
 

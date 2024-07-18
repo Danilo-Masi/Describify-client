@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
-//React-router
+// React-router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//Utilities
+// Utilities
 import { useLanguage } from "./utilities/useLanguage";
-//Pages
+// Pages
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
 import ErrorPage from "./pages/ErrorPage";
 import ProductPage from "./pages/ProductPage";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
-//Components
+// Components
 import ModalCookies from "./components/ModalCookies";
 import WaitlistModal from "./components/WaitlistModal";
 import AlertMessage from "./components/AlertMessage";
-import ModalResetPassword from "./components/ModalResetPassword";
 
 export default function App() {
 
@@ -69,8 +68,6 @@ export default function App() {
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signin" element={<SigninPage setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} setAlertColor={setAlertColor}/>} />
         <Route path="/signup" element={<SignupPage setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} setAlertColor={setAlertColor}/>} />
-        
-        <Route path="/reset-password" element={<ModalResetPassword onClose={() => {/* logic to close modal */}} />} /> {/* DA MODIFARE */}
           
         <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />

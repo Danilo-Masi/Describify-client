@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-//I18next
+// I18next
 import { useTranslation } from 'react-i18next';
-//Components
+// Components
 import ProductForm from "./ProductForm";
 import ProductCaption from "./ProductCaption";
 import ProductTitle from "./ProductTitle";

@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-//Utilities
+// Utilities
 import { isAuthenticated } from '../utilities/useVerify.tsx';
-//React-router
+// React-router
 import { NavigateFunction, useNavigate } from "react-router-dom";
-//Components
+// Components
 import { Layout } from "../components/Layout";
 import AccessBox from "../components/AccessBox";
 import SignupForm from "../components/SignupForm.tsx";
@@ -23,7 +23,7 @@ export default function SignupPage({ setAlertOpen, setAlertMessage, setAlertColo
     const isLogged = isAuthenticated();
     const navigate: NavigateFunction = useNavigate();
 
-    //Funzione per verificare che l'utente sia già loggato nella piattaforma
+    // Funzione per verificare che l'utente sia già loggato nella piattaforma
     useEffect(() => {
         if (isLogged) {
             setAlertMessage('Utente già loggato nella piattaforma');

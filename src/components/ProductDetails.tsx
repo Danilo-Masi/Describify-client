@@ -1,4 +1,4 @@
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
 
 export default function ProductDetails() {

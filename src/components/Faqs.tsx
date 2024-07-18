@@ -1,6 +1,6 @@
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Components
+// Components
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
 import FaqsAccordition from "./FaqsAccordition";

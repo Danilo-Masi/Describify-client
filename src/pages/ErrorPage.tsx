@@ -1,8 +1,8 @@
-//React-router
+// React-router
 import { Link } from "react-router-dom";
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Components
+// Components
 import { Layout } from "../components/Layout";
 
 export default function ErrorPage() {

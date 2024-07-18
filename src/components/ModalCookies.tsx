@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
-//React-router
+// React-router
 import { Link } from "react-router-dom";
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Flowbite
+// Flowbite
 import { Modal } from "flowbite-react";
 
 interface ModalCookiesProps {
@@ -14,6 +14,7 @@ export default function ModalCookies({ setCookieModalOpen }: ModalCookiesProps) 
 
     const { t } = useTranslation();
 
+    // Funzione per settare nel localStorage l'apertura del banner
     const handleAccept = () => {
         localStorage.setItem('cookieBanner', 'showed');
         setCookieModalOpen(false);

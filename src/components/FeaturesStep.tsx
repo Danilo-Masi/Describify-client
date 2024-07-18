@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
-//Utilities
+// Utilities
 import { fadeInElement } from '../utilities/useAnimations';
-//Components
+// Components
 import { Sparkling, ArrowDown, ArrowRight } from './SvgComponents';
 
 interface DataFeaturesProps {
@@ -28,17 +28,17 @@ export default function FeaturesStep({ justifyPosition, order1, order2, data, co
     const [arrowComponent, setArrowComponent] = useState<any>();
 
     useEffect(() => {
-        //Reference
+        // Reference delle animazioni
         const title = titleRef.current || "";
         const caption = captionRef.current || "";
         const image = imgRef.current || "";
-        //Avvio delle animazioni
+        // Avvio delle animazioni
         fadeInElement(title, 0.5, 0.0);
         fadeInElement(caption, 0.5, 0.5);
         fadeInElement(image, 0.5, 1.0);
     }, []);
 
-    //Funzione per modificare l'SVG corrente
+    // Funzione per modificare l'SVG corrente
     const handleResize = () => {
         const windowSize = window.innerWidth;
         setArrowComponent(windowSize > 728 ? <ArrowRight width="150" height="150" /> : <ArrowDown width="100" height="100" />);

@@ -1,6 +1,6 @@
-//I18next
+// I18next
 import { useTranslation } from 'react-i18next';
-//Images
+// Images
 import maglia from '../assets/images/maglia.webp';
 
 export default function CardPrototype() {

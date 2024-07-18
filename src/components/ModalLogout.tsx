@@ -1,20 +1,20 @@
 import { Dispatch, SetStateAction } from "react";
-//Axios
+// Axios
 import axios from 'axios';
-//React router
+// React router
 import { NavigateFunction, useNavigate } from "react-router-dom";
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Flowbite
+// Flowbite
 import { Button } from "flowbite-react";
-//Components
+// Components
 import ModalBase from "./ModalBase";
 
 interface ModalLogoutProps {
     setPageSelected: Dispatch<SetStateAction<string>>;
 }
 
-//Url server
+//Url server produzione
 const SERVER_URL = 'http://localhost:3000';
 
 export default function ModalLogout({ setPageSelected }: ModalLogoutProps) {
@@ -22,6 +22,7 @@ export default function ModalLogout({ setPageSelected }: ModalLogoutProps) {
     const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
 
+    // Funzione per effettuare il logout dall'app
     const handleSingout = async () => {
         try {
             const response = await axios.post(`${SERVER_URL}/signout`);

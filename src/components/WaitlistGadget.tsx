@@ -1,14 +1,20 @@
 import { Dispatch, SetStateAction, useState } from "react";
-//Axios
+// Axios
 import axios from 'axios';
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Confetti-Explosion
+// Confetti-Explosion
 import ConfettiExplosion from 'react-confetti-explosion';
-//Utilities
+// Utilities
 import { useEmail } from "../utilities/useEmail";
-//Components
+// Components
 import ModalMessage from "./ModalMessage";
+
+// Url del server di produzione
+//const SERVER_URL = 'http://localhost:3000';
+
+// Url del server di rilascio
+const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
 interface WaitlistGadgetProps {
     mdWidth?: string;
@@ -26,9 +32,6 @@ export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, set
     const [isEmailLoading, setEmailLoading] = useState(false); //Imposta in stato di loading
     const [isEmailSend, setEmailSend] = useState(false); //Imposta in stato di inviato
     const [isExploding, setExploding] = useState(false); //Attiva l'animazione dei coriandoli
-
-    //Url del server
-    const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL || 'http://localhost:3000';
 
     //Funzione per inviare l'email una volta iscritti alla waitlist (Resend)
     const sendWaitlistEmail = async (language: string) => {
@@ -80,7 +83,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, set
                     } else {
                         setEmailLoading(false);
                         setEmailInput("");
-                        //Errore nell'invio dell'email
+                        // Errore nell'invio dell'email
                         console.error("Iscrizione alla waitlist effettuata, invio email non andato a buon fine");
                         setAlertMessage(t('emailErrorSend'));
                         setAlertOpen(true);
@@ -88,7 +91,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, set
                 } else {
                     setEmailLoading(false);
                     setEmailInput("");
-                    //Errore nell'iscrizione alla waitlist
+                    // Errore nell'iscrizione alla waitlist
                     console.error("Errore durante l'iscrizione alla waitlist");
                     setAlertMessage(t('emailErrorWaitlist'));
                     setAlertOpen(true);
@@ -96,13 +99,13 @@ export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, set
             } catch (error) {
                 setEmailLoading(false);
                 setEmailInput("");
-                //Errore "imprevisto" nell'iscrizione alla waitlist
+                // Errore "imprevisto" nell'iscrizione alla waitlist
                 console.error("Errore imprevisto durante l'iscrizione alla waitlist", error);
                 setAlertMessage(t('emailErrorWaitlist'));
                 setAlertOpen(true);
             }
         } else {
-            //Email digitata male
+            // Email digitata male
             setErrorInput(t('emailErrorDigit'));
             setEmailLoading(false);
         }

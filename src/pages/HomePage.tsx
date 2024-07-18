@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-//Components
+// Components
 import { Layout } from "../components/Layout";
 import Navbar from "../components/Navbar";
 import Features from "../components/Features";

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-//React-router
+// React-router
 import { useLocation } from "react-router-dom";
-//Components
+// Components
 import { Layout } from "../components/Layout";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";

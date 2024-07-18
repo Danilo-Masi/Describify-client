@@ -1,18 +1,17 @@
 import { Dispatch, SetStateAction, useCallback, useState } from "react";
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Axios
+// Axios
 import axios from 'axios';
-//React router
+// React router
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
-//Utilities
+// Utilities
 import { useEmail } from "../utilities/useEmail.tsx";
-//Components
+// Components
 import { ContainerInput } from "../components/Layout";
 import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
 
 interface SigninFormProps {
-    setModalResetPassword: Dispatch<SetStateAction<boolean>>;
     setAlertOpen: Dispatch<SetStateAction<boolean>>;
     setAlertMessage: Dispatch<SetStateAction<string>>;
     setAlertColor: Dispatch<SetStateAction<string>>;
@@ -23,11 +22,14 @@ interface SigninFormState {
     password: string;
 }
 
-// Url del server
-//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
+// Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
 
-export default function SigninForm({ setModalResetPassword, setAlertOpen, setAlertMessage, setAlertColor }: SigninFormProps) {
+// Url del server di rilascio
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
+
+
+export default function SigninForm({ setAlertOpen, setAlertMessage, setAlertColor }: SigninFormProps) {
 
     const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
@@ -187,14 +189,6 @@ export default function SigninForm({ setModalResetPassword, setAlertOpen, setAle
                     </button>
                 </div>
                 {errorLabel.passwordError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.passwordError}</p>}
-            </ContainerInput>
-            {/* Link recupera password */}
-            <ContainerInput containerStyle="flex-row">
-                <p
-                    className="text-sm font-light cursor-pointer text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-textSecondaryColor dark:hover:text-dark-textSecondaryColor"
-                    onClick={() => setModalResetPassword(true)}>
-                    {t('signinLostPassword')}
-                </p>
             </ContainerInput>
             {/* Bottone accedi */}
             <ContainerInput containerStyle="flex-col">

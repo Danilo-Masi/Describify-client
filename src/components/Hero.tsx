@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, Suspense } from 'react';
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Components
+// Components
 import Intestazione from "./Intestazione";
 import WaitlistGadget from "./WaitlistGadget";
 import GridBackground from './GridBackground';

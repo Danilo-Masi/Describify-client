@@ -1,9 +1,9 @@
 import { useState } from "react";
-//Flowbite
+// Flowbite
 import { Textarea } from "flowbite-react";
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Utilities
+// Utilities
 import { useCopy } from "../utilities/useCopy";
 
 interface ProductCaptionProps {

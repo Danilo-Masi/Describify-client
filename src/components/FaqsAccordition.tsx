@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-//Flowbite-react
+// Flowbite-react
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
-//Utilities
+// Utilities
 import { useLanguage } from "../utilities/useLanguage";
-//Data
+// Data
 import { questions_it, questions_en } from "../data/questions";
 
-// Interfaccia per la struttura delle FAQ
 interface Faq {
     title: string;
     content: string;

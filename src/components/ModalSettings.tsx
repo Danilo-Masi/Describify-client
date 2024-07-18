@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-//I18Next
+// I18Next
 import i18n from "../i18n";
 import { useTranslation } from 'react-i18next';
-//Flowbite
+// Flowbite
 import { Select } from "flowbite-react";
-//Components
+// Components
 import ModalBase from "./ModalBase";
 import Divider from "./Divider";
 

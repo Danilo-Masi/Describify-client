@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
 
 interface SwitchButtonProps {
@@ -16,14 +16,12 @@ export default function SwitchButton({ isYearly, setYearly }: SwitchButtonProps)
             <div className="flex rounded-xl p-1 bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
                 <button
                     onClick={() => setYearly(true)}
-                    className={`px-4 py-2 rounded-lg ${isYearly ? 'bg-custom-elevation3 shadow' : 'text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'}`}
-                >
+                    className={`px-4 py-2 rounded-lg ${isYearly ? 'bg-custom-elevation3 shadow' : 'text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'}`} >
                     {t('priceYearly')}
                 </button>
                 <button
                     onClick={() => setYearly(false)}
-                    className={`px-4 py-2 rounded-lg ${!isYearly ? 'bg-custom-elevation3' : 'text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'}`}
-                >
+                    className={`px-4 py-2 rounded-lg ${!isYearly ? 'bg-custom-elevation3' : 'text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'}`} >
                     {t('priceMonthly')}
                 </button>
             </div>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-//Utilities
+// Utilities
 import { isAuthenticated } from '../utilities/useVerify.tsx';
-//React-router
+// React-router
 import { NavigateFunction, useNavigate } from "react-router-dom";
-//Components
+// Components
 import SideBar from "../components/SideBar";
 import Product from "../components/Product";
 import ModalLogout from "../components/ModalLogout";
@@ -26,7 +26,7 @@ export default function ProductPage() {
     const isLogged = isAuthenticated();
     const navigate: NavigateFunction = useNavigate();
 
-    //Funzione per verificare se l'utente non è loggato
+    // Funzione per verificare se l'utente non è loggato
     useEffect(() => {
         if (!isLogged) {
             alert('Utente senza permessi'); //MODIFICARE L'ALERT

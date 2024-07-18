@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-//i18next
+// i18next
 import { useTranslation } from 'react-i18next';
 
-//Funzione per verifica la lingua corrente impostata
+// Funzione per verifica la lingua corrente impostata
 export const useLanguage = () => {
     const { i18n } = useTranslation();
     const languageStorage = localStorage.getItem("language");

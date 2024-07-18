@@ -1,10 +1,10 @@
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//React-router
+// React-router
 import { Link } from "react-router-dom";
-//Utilities
+// Utilities
 import { scrollToElement } from '../utilities/useAnimations';
-//Components
+// Components
 import { FooterCol } from './Layout';
 import Logo from './Logo';
 

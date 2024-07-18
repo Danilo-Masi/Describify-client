@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Flowbite
+// Flowbite
 import { Modal, ModalHeader } from "flowbite-react";
-//Components
+// Components
 import WaitlistGadget from "./WaitlistGadget";
 
 interface WaitlistModalProps {

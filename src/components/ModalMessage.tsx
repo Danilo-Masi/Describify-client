@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
-//Flowbite
+// Flowbite
 import { Modal } from "flowbite-react";
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Components
+// Components
 import ActiveButton from "./ActiveButton";
 
 interface ModalMessageProps {
@@ -15,6 +15,7 @@ export default function ModalMessage({ onClose, setExploding }: ModalMessageProp
 
     const { t } = useTranslation();
 
+    // Funzione per attivare i coriandoli e chiudere il modal
     const handleClick = () => {
         setExploding(true);
         onClose();

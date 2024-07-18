@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from 'react';
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Data
+// Data
 import { featuresDetailsIt1, featuresDetailsIt2, featuresDetailsIt3, featuresDetailsIt4 } from '../data/features_details_it';
 import { featuresDetailsEn1, featuresDetailsEn2, featuresDetailsEn3, featuresDetailsEn4 } from '../data/features_details_en';
-//Utilities
+// Utilities
 import { useLanguage } from '../utilities/useLanguage';
-//Components
+// Components
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
 import FeaturesStep from "./FeaturesStep";

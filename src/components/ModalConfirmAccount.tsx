@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-//React-router
+// React-router
 import { Link } from "react-router-dom";
-//Flowbite
+// Flowbite
 import { Modal } from "flowbite-react";
 
 interface ModalConfirmAccountProps {
@@ -22,6 +22,7 @@ export default function ModalConfirmAccount({ emailUser }: ModalConfirmAccountPr
         return () => authListener.subscription.unsubscribe();
     }, []);*/
 
+    // Funzione per inviare email di verifica account
     const handleResendEmail = async () => {
         console.log('Rinvia email di verifica a ' + emailUser);
     }
@@ -59,5 +60,5 @@ export default function ModalConfirmAccount({ emailUser }: ModalConfirmAccountPr
                 </div>
             </Modal.Body>
         </Modal>
-    )
+    );
 }

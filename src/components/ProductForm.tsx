@@ -1,20 +1,19 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Utilities
+// Utilities
 import { useLanguage } from '../utilities/useLanguage';
-//data
+// data
 import category_it from '../data/productOptions/category_it.json';
 import category_en from '../data/productOptions/category_en.json';
 import sizes_it from '../data/productOptions/sizes_it.json';
 import sizes_en from '../data/productOptions/sized_en.json';
 import colors_en from '../data/productOptions/colors_en.json';
 import colors_it from '../data/productOptions/colors_it.json';
-//Components
+// Components
 import WaitlistModal from "./WaitlistModal";
 import ModalDropdown from "./ModalDropdow";
 
-//Type definitions
 interface InputSelectProps {
     mdWidth?: string,
     valoreLabel: string,
@@ -104,22 +103,22 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
     const language = useLanguage();
     const { t } = useTranslation();
 
-    //Valori inseriti dall'utente
+    // Valori inseriti dall'utente
     const [selectedCategory, setSelectedCategory] = useState(placeholderCategory);
     const [selectedBrand, setSelectedBrand] = useState(placeholderBrand);
     const [selectedSize, setSelectedSize] = useState("M");
     const [selectedColor, setSelectedColor] = useState(placeholderColor);
 
-    //Valori del modalDrowpdow
+    // Valori del modalDrowpdow
     const [modalTitle, setModalTitle] = useState("");
     const [modalData, setModalData] = useState<Elemento[]>([]);
     const [modalContext, setModalContext] = useState("");
 
-    //Booleani per l'apertura dei modal
+    // Booleani per l'apertura dei modal
     const [isDropdownModalOpen, setModalDropdownOpen] = useState(false);
     const [isWaitlistModalOpen, setModalWaitlistOpen] = useState(false);
 
-    //Funzione che apre il modal per inserire i dati e inserisce i giusti dati in base a cosa si è cliccato (categorie, colore, dimensione)
+    // Funzione che apre il modal per inserire i dati e inserisce i giusti dati in base a cosa si è cliccato (categorie, colore, dimensione)
     const handleDropwdown = useCallback((titoloModal: string, datiModal: any, context: string) => {
         setModalTitle(titoloModal);
         setModalData(datiModal);
@@ -127,7 +126,7 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
         setModalDropdownOpen(true);
     }, []);
 
-    //Funzione che imposta il valore selezionato nel giusto stato
+    // Funzione che imposta il valore selezionato nel giusto stato
     const handleSelect = (value: string, context: string) => {
         switch (context) {
             case "categoria":

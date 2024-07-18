@@ -1,17 +1,17 @@
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
-//React-router
+// React-router
 import { Link } from "react-router-dom";
-//Utils
+// Utils
 import { scrollToElement } from '../utilities/useAnimations.tsx';
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//LogLib
+// LogLib
 import { loglib } from "@loglib/tracker"
-//Components
+// Components
 import ActiveButton from "./ActiveButton.tsx";
 import Logo from "./Logo.tsx";
 
-//Link di navigazione della NavBar
+// Link di navigazione della NavBar
 function MenuElements() {
     const { t } = useTranslation();
     return (
@@ -24,6 +24,7 @@ function MenuElements() {
     );
 }
 
+// Bottone di apertura della waitlist (DA MODIFICARE)
 interface JoinWaitllistButtonProps {
     setModalWaitlistOpen: Dispatch<SetStateAction<boolean>>;
 }
@@ -44,6 +45,7 @@ function JoinWaitllistButton({ setModalWaitlistOpen }: JoinWaitllistButtonProps)
     );
 }
 
+// Navbar completa
 interface NavbarProps {
     accessToken?: boolean;
     emailUser?: string;

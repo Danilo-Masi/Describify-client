@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//Components
+// Components
 import ModalBase from "./ModalBase";
 import { SendIcon } from "./SvgComponents";
 

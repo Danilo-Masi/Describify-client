@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-//Flowbite
+// Flowbite
 import { Modal, ModalHeader } from "flowbite-react";
 
 interface ModalBaseProps {
-  size: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   modalTitle: string;
   children: ReactNode;
   onClose: () => void;

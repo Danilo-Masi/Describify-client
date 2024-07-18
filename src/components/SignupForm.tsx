@@ -1,15 +1,21 @@
 import { Dispatch, SetStateAction, useCallback, useState } from "react";
-//Axios
+// Axios
 import axios from 'axios';
-//I18Next
+// I18Next
 import { useTranslation } from 'react-i18next';
-//React-router
+// React-router
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
-//Utilities
+// Utilities
 import { useEmail } from "../utilities/useEmail.tsx";
-//Components
+// Components
 import { ContainerInput } from "../components/Layout";
 import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
+
+// Url del server di produzione
+const SERVER_URL = 'http://localhost:3000';
+
+// Url del sever di rilascio
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
 interface SignupFormProps {
   setModalOpen: Dispatch<SetStateAction<boolean>>;
@@ -24,10 +30,6 @@ interface SignupFormState {
   email: string;
   password: string;
 }
-
-//Url del server
-//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
-const SERVER_URL = 'http://localhost:3000';
 
 export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, setAlertMessage, setAlertColor }: SignupFormProps) {
 
@@ -48,7 +50,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
     password: '',
   });
 
-  //Funzione per impostare i valori del form
+  // Funzione per impostare i valori del form
   const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
     setSignupForm(prevState => ({
       ...prevState,
@@ -118,7 +120,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
     }));
   }
 
-  //Funzione per gestire gli errori nella fase di registrazione
+  // Funzione per gestire gli errori nella fase di registrazione
   const handleError = useCallback((error: any) => {
     if (error.response) {
       switch (error.response.status) {
@@ -138,7 +140,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
     setAlertOpen(true);
   }, [setAlertMessage, setAlertColor, setAlertOpen]);
 
-  //Funzione per gestire il successo della fase di registrazione
+  // Funzione per gestire il successo della fase di registrazione
   const handleSuccess = useCallback((token: string) => {
     localStorage.setItem('authToken', token);
     setAlertMessage('Utente registrato correttamente');
@@ -147,7 +149,7 @@ export default function SignupForm({ setModalOpen, setEmailPut, setAlertOpen, se
     navigate('/product');
   }, [setAlertMessage, setAlertColor, setAlertOpen]);
 
-  //Funzione per registrare un nuovo account
+  // Funzione per registrare un nuovo account
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validazioneDati = handleValidate();

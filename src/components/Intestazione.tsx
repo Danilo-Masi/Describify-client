@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-//Utilities
+// Utilities
 import { fadeInElement } from '../utilities/useAnimations';
-//Flowbite
+// Flowbite
 import { Badge } from "flowbite-react";
 
 interface IntestazioneProps {
@@ -19,10 +19,10 @@ export default function Intestazione({ badgeValue, titleValue, descriptionValue,
     const captionRef = useRef(null);
 
     useEffect(() => {
-        //Reference
+        // Reference delle animazioni
         const title = titleRef.current || "";
         const caption = captionRef.current || "";
-        //Avvio delle animazioni
+        // Avvio delle animazioni
         fadeInElement(title, 0.5, 0.0);
         fadeInElement(caption, 0.5, 0.5);
     }, [accessToken]);
