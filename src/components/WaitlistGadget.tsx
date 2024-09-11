@@ -74,7 +74,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth, setAlertOpen, set
             try {
                 const response = await axios.post(`${SERVER_URL}/signup-to-waitlist`, { email: emailInput });
                 if (response.status === 200) {
-                    const language = localStorage.getItem('i18nextLng') || 'it';
+                    const language = localStorage.getItem('i18nextLng') || 'it';                    
                     const emailSent = await sendWaitlistEmail(language);
                     if (emailSent) {
                         setEmailLoading(false);

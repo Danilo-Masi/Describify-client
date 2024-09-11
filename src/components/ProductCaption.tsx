@@ -27,7 +27,7 @@ export default function ProductCaption({ descriptionGenerated, descriptionPlaceh
     }
 
     return (
-        <div className="w-full h-auto flex flex-col items-start justify-between gap-y-5 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
+        <div className="w-full h-2/3 min-h-fit  flex flex-col items-start justify-between gap-y-5 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
             <div className="w-full flex items-center justify-between">
                 <h1 className="text-lg font-medium text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('productFormDescriptionLabel')}</h1>
                 <button
@@ -58,7 +58,7 @@ export default function ProductCaption({ descriptionGenerated, descriptionPlaceh
                 onChange={e => setValoreDescrizione(e.target.value)}
                 value={valoreDescrizione}
                 placeholder={descriptionPlaceholder}
-                className="w-full h-[30svh] overflow-scroll resize-none px-0 bg-custom-elevation4 dark:bg-dark-elevation4 border-0 focus:border-0 focus:ring-0 text-md text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray" />
+                className="w-full h-[40svh] overflow-scroll resize-none px-0 bg-custom-elevation4 dark:bg-dark-elevation4 border-0 focus:border-0 focus:ring-0 text-md text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray" />
         </div>
     );
 }

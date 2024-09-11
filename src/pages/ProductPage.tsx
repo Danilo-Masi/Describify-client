@@ -27,16 +27,16 @@ export default function ProductPage() {
     const navigate: NavigateFunction = useNavigate();
 
     // Funzione per verificare se l'utente non è loggato
-    useEffect(() => {
+    /*useEffect(() => {
         if (!isLogged) {
             alert('Utente senza permessi'); //MODIFICARE L'ALERT
             navigate('/');
         }
-    }, [isLogged]);
+    }, [isLogged]);*/
 
     return (
         <div className="w-full h-auto min-h-svh flex items-center justify-center p-5 bg-custom-background dark:bg-dark-background">
-            <div className="w-full flex flex-col md:flex-row items-start justify-start gap-5">
+            <div className="w-full h-auto md:h-[calc(100svh-2.5rem)] flex flex-col md:flex-row items-start justify-start gap-5">
                 <SideBar pageSelected={pageSelected} setPageSelected={setPageSelected} />
                 <Product setModalWaitListOpen={() => false} setAlertMessage={() => ""} setAlertOpen={() => false} />
                 {ModalComponent && <ModalComponent setPageSelected={setPageSelected} />}

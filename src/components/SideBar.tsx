@@ -38,7 +38,7 @@ export default function SideBar({ pageSelected, setPageSelected }: SideBarProps)
     return (
         <div className="w-full md:w-1/4 h-fit md:h-[calc(100svh-2.5rem)] flex flex-col items-start justify-start gap-y-3 p-5 rounded-xl bg-custom-elevation2 dark:bg-dark-elevation2">
             {/* Logo/Bottone apertura */}
-            <div className={`w-full flex items-center justify-between md:justify-start gap-x-2 ${isSideBarOpen && 'mb-5'}`}>
+            <div className={`w-full flex items-center justify-between md:justify-start gap-x-2 ${isSideBarOpen || window.innerWidth > 728 && 'mb-5'}`}>
                 <div className="flex items-center justify-center gap-x-2">
                     <IconaLogo width="40" height="40" />
                     <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>

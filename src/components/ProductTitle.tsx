@@ -27,7 +27,7 @@ export default function ProductTitle({ titleGenerated, titlePlaceholder }: Produ
     }
 
     return (
-        <div className="w-full h-auto flex flex-col items-start justify-between gap-y-5 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
+        <div className="w-full h-1/3 min-h-fit flex flex-col items-start justify-between gap-y-5 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
             <div className="w-full flex items-center justify-between">
                 <h1 className="text-lg font-medium text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('productFormTitleLabel')}</h1>
                 <button
