@@ -1,12 +1,20 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 // I18next
 import { useTranslation } from 'react-i18next';
+// Axios
+import axios from 'axios';
 // Components
 import ProductForm from "./ProductForm";
 import ProductCaption from "./ProductCaption";
 import ProductTitle from "./ProductTitle";
 import ProductDetails from "./ProductDetails";
 import SkeltonPlaceholder from "./SkeltonPlaceholder";
+
+// Url del server di produzione
+const SERVER_URL = 'http://localhost:3000';
+
+// Url del sever di rilascio
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
 interface ProductProps {
     setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
@@ -23,15 +31,28 @@ export default function Product({ setModalWaitListOpen, setAlertOpen, setAlertMe
     const [isLaoding, setLoading] = useState(false);
 
     // Funzione per generare la caption
-    const handleGeneration = () => {
+    const handleGeneration = async () => {
         alert('Inizio generazione...');
         const validazioneDati = handleValidate();
-        
+        if (validazioneDati) {
+            try {
+                const response = await axios.post(`${SERVER_URL}/product-generation`, {
+                    prompt: 'Maglia nera con logo Nike',
+                });
+                if (response.status === 200) {
+                    alert('SUCCESSO');
+                    console.log(response.data);
+                }
+            } catch (error) {
+                alert('ERRORE');
+                console.error(error);
+            }
+        }
     }
 
     const handleValidate = () => {
         alert('Validazione dati...');
-        
+        return true;
     }
 
     return (
