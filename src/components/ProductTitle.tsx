@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Flowbite
 import { Textarea } from "flowbite-react";
 // I18Next
@@ -17,6 +17,10 @@ export default function ProductTitle({ titleGenerated, titlePlaceholder }: Produ
 
     const [valoreTitolo, setValoreTitolo] = useState(titleGenerated);
     const [isCopiato, setCopiato] = useState(false);
+
+    useEffect(() => {
+        setValoreTitolo(titleGenerated);
+    }, [titleGenerated]);
 
     const handleCopy = () => {
         useCopy(valoreTitolo);

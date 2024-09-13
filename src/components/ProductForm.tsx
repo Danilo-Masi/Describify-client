@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 // I18Next
 import { useTranslation } from 'react-i18next';
+// Axios
+import axios from 'axios';
 // Utilities
 import { useLanguage } from '../utilities/useLanguage';
 // data
@@ -13,6 +15,12 @@ import colors_it from '../data/productOptions/colors_it.json';
 // Components
 import WaitlistModal from "./WaitlistModal";
 import ModalDropdown from "./ModalDropdow";
+
+// Url del server di produzione
+const SERVER_URL = 'http://localhost:3000';
+
+// Url del sever di rilascio
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
 interface InputSelectProps {
     mdWidth?: string,
@@ -47,7 +55,8 @@ interface ProductFormProps {
     brandInputId: string;
     setAlertOpen: Dispatch<SetStateAction<boolean>>;
     setAlertMessage: Dispatch<SetStateAction<string>>;
-    handleGeneration: () => void;
+    setTitleGenerated: Dispatch<SetStateAction<string>>;
+    setDescriptionGenerated: Dispatch<SetStateAction<string>>;
 }
 
 function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelectProps) {
@@ -99,7 +108,7 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
     );
 }
 
-export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setAlertOpen, setAlertMessage, handleGeneration }: ProductFormProps) {
+export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setAlertOpen, setAlertMessage, setTitleGenerated, setDescriptionGenerated }: ProductFormProps) {
     const language = useLanguage();
     const { t } = useTranslation();
 
@@ -216,6 +225,36 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
         return [];
     }, [selectedCategory]);
 
+    // Funzione per generare la caption
+    const handleGenerate = async () => {
+        const validazioneDati = handleValidate({selectedCategory, selectedBrand, selectedSize, selectedColor});
+        if (validazioneDati) {
+            try {
+                const response = await axios.post(`${SERVER_URL}/product-generation`, {
+                    prompt: `Categoria del prodotto: ${selectedCategory}, Marca: ${selectedBrand}, Taglia: ${selectedSize}, Colore: ${selectedColor}`,
+                });
+                if (response.status === 200) {
+                    const description = response.data.description;
+                    alert('SUCCESSO');
+                    //setTitleGenerated(title);
+                    setDescriptionGenerated(description);
+                }
+            } catch (error) {
+                alert('ERRORE');
+                console.error(error);
+            }
+        }
+    }
+
+    const handleValidate = ({ selectedCategory, selectedBrand, selectedSize, selectedColor }: any) => {
+        alert('Validazione dati...');
+        if (selectedCategory === "" || selectedBrand === "" || selectedSize === "" || selectedColor === "") {
+            alert('Validazione non andata a buon fine...');
+            return false;
+        }
+        return true;
+    }
+
     return (
         <div className="w-full h-fit flex flex-wrap items-start justify-start gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
             <InputSelect
@@ -243,7 +282,7 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
             />
             <ButtonGenerate
                 labelButton={t('productGenerateButton')}
-                onClick={() => handleGeneration()}
+                onClick={handleGenerate}
             />
             {isDropdownModalOpen &&
                 <ModalDropdown
