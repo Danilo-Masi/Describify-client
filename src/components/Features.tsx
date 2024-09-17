@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 // I18Next
 import { useTranslation } from 'react-i18next';
 // Data
@@ -10,20 +9,18 @@ import { useLanguage } from '../utilities/useLanguage';
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
 import FeaturesStep from "./FeaturesStep";
-import ProductForm from './ProductForm';
-import ProductTitle from './ProductTitle';
-import ProductCaption from './ProductCaption';
 import CardPrototype from './CardPrototype';
+//Assets
+import formscreen from '../assets/images/form_screen.png';
+import titlescreen from '../assets/images/title_screen.png';
+import captionscreen from '../assets/images/caption_screen.png';
 
 interface FeaturesProps {
   id: string;
   accessToken: boolean;
-  setAlertOpen: Dispatch<SetStateAction<boolean>>;
-  setAlertMessage: Dispatch<SetStateAction<string>>;
-  setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Features({ id, accessToken, setAlertOpen, setAlertMessage, setModalWaitListOpen }: FeaturesProps) {
+export default function Features({ id, accessToken }: FeaturesProps) {
 
   const { t } = useTranslation();
   const language = useLanguage();
@@ -41,18 +38,24 @@ export default function Features({ id, accessToken, setAlertOpen, setAlertMessag
         <FeaturesStep
           data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1}
           justifyPosition='justify-start'
-          component={<ProductForm
-            placeholderCategory='T-shirt'
-            placeholderBrand='Vans'
-            placeholderColor={t('placeholderColor2')}
-            brandInputId="text brand input features"
-            setAlertOpen={setAlertOpen}
-            setAlertMessage={setAlertMessage}
-            handleGeneration={() => setModalWaitListOpen(true)} />}
+          component={<div className='w-full rounded-xl object-cover'><img src={formscreen} className='rounded-xl' /></div>}
           arrow={true} />
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt2 : featuresDetailsEn2} justifyPosition='justify-center' component={<ProductCaption descriptionGenerated={t('featuresProductDescription')} descriptionPlaceholder='' />} order1="md:order-2" order2="md:order-1" />
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt3 : featuresDetailsEn3} justifyPosition='justify-center' component={<ProductTitle titleGenerated={t('featuresProductTitle')} titlePlaceholder='' />} />
-        <FeaturesStep data={language === 'it' ? featuresDetailsIt4 : featuresDetailsEn4} justifyPosition='justify-start' component={<CardPrototype />} sparkling={true} order1="md:order-2" order2="md:order-1" />
+        <FeaturesStep
+          data={language === 'it' ? featuresDetailsIt2 : featuresDetailsEn2}
+          justifyPosition='justify-center'
+          component={<div className='w-full rounded-xl object-cover'><img src={captionscreen} className='rounded-xl' /></div>}
+          order1="md:order-2"
+          order2="md:order-1" />
+        <FeaturesStep
+          data={language === 'it' ? featuresDetailsIt3 : featuresDetailsEn3}
+          justifyPosition='justify-center'
+          component={<div className='w-full rounded-xl object-cover'><img src={titlescreen} className='rounded-xl' /></div>} />
+        <FeaturesStep
+          data={language === 'it' ? featuresDetailsIt4 : featuresDetailsEn4}
+          justifyPosition='justify-start' component={<CardPrototype />}
+          sparkling={true}
+          order1="md:order-2"
+          order2="md:order-1" />
       </div>
     </ContainerComponents>
   );

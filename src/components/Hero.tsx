@@ -1,6 +1,8 @@
 import React, { Dispatch, SetStateAction, Suspense } from 'react';
 // I18Next
 import { useTranslation } from 'react-i18next';
+//Assets
+import heroscreen from '../assets/images/hero_screen.png';
 // Components
 import Intestazione from "./Intestazione";
 import WaitlistGadget from "./WaitlistGadget";
@@ -27,7 +29,9 @@ export default function Hero({ id, setModalWaitListOpen, setAlertOpen, setAlertM
                 descriptionStyle="text-lg md:text-xl" />
             <WaitlistGadget setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />
             <Suspense fallback={<div >Loading...</div>}>
-                <Product setModalWaitListOpen={setModalWaitListOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage}/>
+                <div className='w-full md:w-3/4 h-auto flex items-center justify-center rounded-xl object-cover border border-dark-borderColor'>
+                    <img src={heroscreen} className='rounded-xl' />
+                </div>
             </Suspense>
         </GridBackground>
     );
