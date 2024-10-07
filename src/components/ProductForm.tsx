@@ -57,6 +57,7 @@ interface ProductFormProps {
     setAlertMessage: Dispatch<SetStateAction<string>>;
     setTitleGenerated: Dispatch<SetStateAction<string>>;
     setDescriptionGenerated: Dispatch<SetStateAction<string>>;
+    setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelectProps) {
@@ -108,7 +109,7 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
     );
 }
 
-export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setAlertOpen, setAlertMessage, setTitleGenerated, setDescriptionGenerated }: ProductFormProps) {
+export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setAlertOpen, setAlertMessage, setTitleGenerated, setDescriptionGenerated, setLoading }: ProductFormProps) {
     const language = useLanguage();
     const { t } = useTranslation();
 
@@ -227,27 +228,30 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
 
     // Funzione per generare la caption
     const handleGenerate = async () => {
-        const validazioneDati = handleValidate({selectedCategory, selectedBrand, selectedSize, selectedColor});
+        setLoading(true);
+        const validazioneDati = handleValidate({ selectedCategory, selectedBrand, selectedSize, selectedColor });
         if (validazioneDati) {
             try {
                 const response = await axios.post(`${SERVER_URL}/product-generation`, {
                     prompt: `Categoria del prodotto: ${selectedCategory}, Marca: ${selectedBrand}, Taglia: ${selectedSize}, Colore: ${selectedColor}`,
                 });
                 if (response.status === 200) {
+                    const title = response.data.title;
                     const description = response.data.description;
-                    alert('SUCCESSO');
-                    //setTitleGenerated(title);
+                    setTitleGenerated(title);
                     setDescriptionGenerated(description);
+                    // Fine caricamento
+                    setLoading(false);
                 }
             } catch (error) {
                 alert('ERRORE');
                 console.error(error);
+                setLoading(false);
             }
         }
     }
 
     const handleValidate = ({ selectedCategory, selectedBrand, selectedSize, selectedColor }: any) => {
-        alert('Validazione dati...');
         if (selectedCategory === "" || selectedBrand === "" || selectedSize === "" || selectedColor === "") {
             alert('Validazione non andata a buon fine...');
             return false;
@@ -256,7 +260,7 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
     }
 
     return (
-        <div className="w-full h-fit flex flex-wrap items-start justify-start gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
+        <div className="w-full h-full flex flex-wrap items-start justify-start gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
             <InputSelect
                 valoreLabel={t('productCategoryLabel')}
                 valoreInput={selectedCategory}

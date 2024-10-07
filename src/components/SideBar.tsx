@@ -73,16 +73,15 @@ export default function SideBar({ pageSelected, setPageSelected }: SideBarProps)
                         <p className="font-medium text-lg">{t('sideBarHelp')}</p>
                     </ContainerItem>
                     <Divider />
-                    <ContainerItem id="Upgrade" pageSelected={pageSelected} setPageSelected={setPageSelected}>
-                        <UpgradeIcon />
-                        <p className="font-medium text-lg">{t('sideBarUpgrade')}</p>
-                    </ContainerItem>
                     <ContainerItem id="Signout" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <SignoutIcon />
                         <p className="font-medium text-lg">Log-out</p>
                     </ContainerItem>
                 </>
             }
+            <div className="w-full h-[30svh] md:h-full flex items-center justify-center rounded-2xl bg-red-500">
+                grafico
+            </div>
         </div>
     );
 }
