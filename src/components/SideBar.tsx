@@ -77,11 +77,11 @@ export default function SideBar({ pageSelected, setPageSelected }: SideBarProps)
                         <SignoutIcon />
                         <p className="font-medium text-lg">Log-out</p>
                     </ContainerItem>
+                    <div className="w-full h-[30svh] md:h-full flex items-center justify-center rounded-2xl bg-red-500">
+                        grafico
+                    </div>
                 </>
             }
-            <div className="w-full h-[30svh] md:h-full flex items-center justify-center rounded-2xl bg-red-500">
-                grafico
-            </div>
         </div>
     );
 }

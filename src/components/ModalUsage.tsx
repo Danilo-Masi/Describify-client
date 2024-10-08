@@ -14,7 +14,7 @@ export default function ModalUsage({ setPageSelected }: ModalUsageProps) {
 
     return (
         <ModalBase size="md" modalTitle={t('modalUsageTitle')} onClose={() => setPageSelected("Genera")}>
-            <h1>ciao</h1>
+            <h1 className="text-white">Grafico di utilizzo</h1>
         </ModalBase>
     );
 }
