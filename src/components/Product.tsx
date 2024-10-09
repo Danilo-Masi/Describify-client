@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 // I18next
 import { useTranslation } from 'react-i18next';
 // Components
@@ -10,26 +10,29 @@ import SkeltonPlaceholder from "./SkeltonPlaceholder";
 import ProductImage from "./ProductImage";
 
 interface ProductProps {
-    setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
     setAlertOpen: Dispatch<SetStateAction<boolean>>;
     setAlertMessage: Dispatch<SetStateAction<string>>;
 }
 
-export default function Product({ setModalWaitListOpen, setAlertOpen, setAlertMessage }: ProductProps) {
+export default function Product({ setAlertOpen, setAlertMessage }: ProductProps) {
 
     const { t } = useTranslation();
 
-    const [titleGenerated, setTitleGenerated] = useState("");
-    const [descriptionGenerated, setDescriptionGenerated] = useState("");
-    const [isLaoding, setLoading] = useState(false);
-    const [isImage, setImage] = useState(false); //Stato per far impostare l'immagine o il form con i dettagli
+    const [isLaoding, setLoading] = useState<boolean>(false); // Stato per il caricamento
+    const [titleGenerated, setTitleGenerated] = useState<string>(""); // Stato che contiene il titolo dell'annuncio generato
+    const [descriptionGenerated, setDescriptionGenerated] = useState<string>(""); // Stato che contiene la descrizione dell'annuncio generata
+    const [fileSelected, setFileSelected] = useState<string>(""); // Stato che verifica se l'immagine è presente o deve esseree caricata
+    const [isImageSelected, setImageSelected] = useState<boolean>(false); // Stato che verifica se l'immagine è stata analizzata e quindi si può passare al form dei dettagli
 
     return (
         <div className="w-full md:w-3/4 h-auto min-h-full flex flex-col md:flex-row gap-5 p-5 mb-10 rounded-xl z-10 bg-custom-elevation2 dark:bg-dark-elevation2">
             <div className="w-full md:w-1/2 h-auto flex flex-col items-start justify-start gap-y-6">
-                <ProductDetails isImage={isImage} setImage={setImage} />
-                {isImage
-                    ? <ProductImage setImage={setImage} />
+                <ProductDetails isImageSelected={isImageSelected} setImageSelected={setImageSelected} />
+                {isImageSelected
+                    ? <ProductImage
+                        setImageSelected={setImageSelected}
+                        setFileSelected={setFileSelected}
+                        fileSelected={fileSelected} />
                     : <ProductForm
                         placeholderCategory={t('placeholderCategory')}
                         placeholderBrand="Massimo Dutti"
