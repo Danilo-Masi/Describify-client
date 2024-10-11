@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@loglib/tracker": "^0.8.0",
+    "@react-email/components": "^0.0.25",
+    "@react-email/render": "1.0.1",
     "axios": "^1.6.8",
     "clsx": "^2.1.1",
     "flowbite": "^2.3.0",
@@ -24,6 +26,7 @@
     "react-confetti-explosion": "^2.1.2",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.1.1",
+    "resend": "^4.0.0",
     "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {

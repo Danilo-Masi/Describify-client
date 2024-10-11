@@ -21,7 +21,7 @@ export default function Product({ setAlertOpen, setAlertMessage }: ProductProps)
     const [isLaoding, setLoading] = useState<boolean>(false); // Stato per il caricamento
     const [titleGenerated, setTitleGenerated] = useState<string>(""); // Stato che contiene il titolo dell'annuncio generato
     const [descriptionGenerated, setDescriptionGenerated] = useState<string>(""); // Stato che contiene la descrizione dell'annuncio generata
-    const [fileSelected, setFileSelected] = useState<string>(""); // Stato che verifica se l'immagine è presente o deve esseree caricata
+    const [fileSelected, setFileSelected] = useState<File | null>(null); // Stato che verifica se l'immagine è presente o deve esseree caricata
     const [isImageSelected, setImageSelected] = useState<boolean>(false); // Stato che verifica se l'immagine è stata analizzata e quindi si può passare al form dei dettagli
 
     return (

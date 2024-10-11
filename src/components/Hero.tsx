@@ -16,7 +16,7 @@ interface HeroProps {
     setAlertMessage: Dispatch<SetStateAction<string>>;
 }
 
-export default function Hero({ id, setModalWaitListOpen, setAlertOpen, setAlertMessage }: HeroProps) {
+export default function Hero({ id, setAlertOpen, setAlertMessage }: HeroProps) {
 
     const { t } = useTranslation();
 
