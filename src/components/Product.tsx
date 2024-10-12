@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction, useState } from "react";
+// React
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 // I18next
 import { useTranslation } from 'react-i18next';
 // Components
