@@ -23,8 +23,8 @@ export const checkAuth = async () => {
         });
         // Se il server risponde con successo, il token è valido
         return response.status === 200;
-    } catch (error) {
-        console.error("Token non valido o scaduto", error);
+    } catch (error: any) {
+        console.error("Token non valido o scaduto", error.message);
         // Rimuovi il token se non è valido
         localStorage.removeItem('authToken');
         return false;

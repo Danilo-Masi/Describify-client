@@ -34,7 +34,7 @@ export default function ProductPage() {
             }
         };
         verifyUser();
-    }, []);
+    }, [navigate]);
 
     return (
         <div className="w-full h-auto min-h-svh flex items-center justify-center p-5 bg-custom-background dark:bg-dark-background">
