@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 // React-router
 import { NavigateFunction, useNavigate } from "react-router-dom";
+// React-tostify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // Components
 import SideBar from "../components/SideBar";
 import Product from "../components/Product";
@@ -29,8 +32,9 @@ export default function ProductPage() {
         const verifyUser = async () => {
             const isAuthenticated = await checkAuth();
             if (!isAuthenticated) {
-                alert('Utente senza permessi');
-                navigate('/signin');
+                toast.info('Effettua il login prima di accedere alla piattaforma', {
+                    onClose: () => navigate('/signin'),
+                });
             }
         };
         verifyUser();
@@ -42,6 +46,7 @@ export default function ProductPage() {
                 <SideBar pageSelected={pageSelected} setPageSelected={setPageSelected} />
                 <Product setAlertMessage={() => ""} setAlertOpen={() => false} />
                 {ModalComponent && <ModalComponent setPageSelected={setPageSelected} />}
+                <ToastContainer autoClose={1000} pauseOnHover={false}/>
             </div>
         </div>
     );
