@@ -1,32 +1,29 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+// React
+import { useEffect } from "react";
 // React-router
 import { NavigateFunction, useNavigate } from "react-router-dom";
 // React-tostify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// Utilities
+import { checkAuth } from "../utilities/useVerify";
 // Components
 import { Layout } from "../components/Layout";
 import AccessBox from "../components/AccessBox";
 import SigninForm from "../components/SigninForm.tsx";
-// Utilities
-import { checkAuth } from "../utilities/useVerify";
 
-interface SigninPageProps {
-    setAlertOpen: Dispatch<SetStateAction<boolean>>;
-    setAlertMessage: Dispatch<SetStateAction<string>>;
-    setAlertColor: Dispatch<SetStateAction<string>>;
-}
-
-export default function SigninPage({ setAlertOpen, setAlertMessage, setAlertColor }: SigninPageProps) {
+export default function SigninPage() {
 
     const navigate: NavigateFunction = useNavigate();
 
+    // Effetto per verificare se l'utente è già loggato nella piattaforma
     useEffect(() => {
         const verifyUser = async () => {
             const isAuthenticated = await checkAuth();
             if (isAuthenticated) {
-                alert('Utente già loggato');
-                navigate('/product');
+                toast.info("Utente già loggato", {
+                    onClose: () => navigate('/product'),
+                });
             }
         };
         verifyUser();
@@ -34,11 +31,9 @@ export default function SigninPage({ setAlertOpen, setAlertMessage, setAlertColo
 
     return (
         <Layout padding="p-0" mdFlexOrientation="md:flex-row" mdHeight="md:h-svh">
-            <SigninForm
-                setAlertOpen={setAlertOpen}
-                setAlertMessage={setAlertMessage}
-                setAlertColor={setAlertColor} />
+            <SigninForm />
             <AccessBox />
+            <ToastContainer autoClose={1000} pauseOnHover={false} />
         </Layout>
     );
 }

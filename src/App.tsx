@@ -1,3 +1,4 @@
+// React
 import { useEffect, useState } from "react";
 // React-router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,17 +14,13 @@ import SignupPage from "./pages/SignupPage";
 // Components
 import ModalCookies from "./components/ModalCookies";
 import WaitlistModal from "./components/WaitlistModal";
-import AlertMessage from "./components/AlertMessage";
 
 export default function App() {
 
   const language = useLanguage();
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
-  const [isCookieModalOpen, setCookieModalOpen] = useState(false);
-  const [isWaitlistModalOpen, setWaitlistModalOpen] = useState(false);
-  const [isAlertOpen, setAlertOpen] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
-  const [alertColor, setAlertColor] = useState("");
+  const [theme, setTheme] = useState<string>(localStorage.getItem("theme") || "dark");
+  const [isCookieModalOpen, setCookieModalOpen] = useState<boolean>(false);
+  const [isWaitlistModalOpen, setWaitlistModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     // Carica i font dinamicamente
@@ -46,11 +43,12 @@ export default function App() {
     }
   }, []);
 
+  // Effetto per modicare la lingua del file index.html
   useEffect(() => {
-    // Modica la lingua del file index.html
     document.documentElement.lang = language;
   }, [language]);
 
+  // Effetto per modificare il tema della piattaforma
   useEffect(() => {
     if (theme === 'light') {
       document.body.classList.remove('dark');
@@ -62,21 +60,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
-        <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />} />
-         
+        <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/product" element={<ProductPage />} />
-        <Route path="/signin" element={<SigninPage setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} setAlertColor={setAlertColor}/>} />
-        <Route path="/signup" element={<SignupPage setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} setAlertColor={setAlertColor}/>} />
-          
+        <Route path="/signin" element={<SigninPage />} />
+        <Route path="/signup" element={<SignupPage />} />
         <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       {isCookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}
-      {isWaitlistModalOpen && <WaitlistModal onClose={() => setWaitlistModalOpen(false)} setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />}
-      {isAlertOpen && <AlertMessage color={alertColor} message={alertMessage} setAlertOpen={setAlertOpen} />}
+      {isWaitlistModalOpen && <WaitlistModal onClose={() => setWaitlistModalOpen(false)} />}
     </BrowserRouter>
   );
 }

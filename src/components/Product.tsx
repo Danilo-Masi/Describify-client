@@ -1,5 +1,5 @@
 // React
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 // I18next
 import { useTranslation } from 'react-i18next';
 // Components
@@ -10,12 +10,8 @@ import ProductDetails from "./ProductDetails";
 import SkeltonPlaceholder from "./SkeltonPlaceholder";
 import ProductImage from "./ProductImage";
 
-interface ProductProps {
-    setAlertOpen: Dispatch<SetStateAction<boolean>>;
-    setAlertMessage: Dispatch<SetStateAction<string>>;
-}
 
-export default function Product({ setAlertOpen, setAlertMessage }: ProductProps) {
+export default function Product() {
 
     const { t } = useTranslation();
 
@@ -39,8 +35,6 @@ export default function Product({ setAlertOpen, setAlertMessage }: ProductProps)
                         placeholderBrand="Massimo Dutti"
                         placeholderColor={t('placeholderColor2')}
                         brandInputId="text brand input hero"
-                        setAlertOpen={setAlertOpen}
-                        setAlertMessage={setAlertMessage}
                         setTitleGenerated={setTitleGenerated}
                         setDescriptionGenerated={setDescriptionGenerated}
                         setLoading={setLoading} />

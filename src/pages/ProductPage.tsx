@@ -28,6 +28,7 @@ export default function ProductPage() {
 
     const navigate: NavigateFunction = useNavigate();
 
+    // Effetto che verifica se l'utente è loggato prima di accedere alla piattaforma
     useEffect(() => {
         const verifyUser = async () => {
             const isAuthenticated = await checkAuth();
@@ -44,9 +45,9 @@ export default function ProductPage() {
         <div className="w-full h-auto min-h-svh flex items-center justify-center p-5 bg-custom-background dark:bg-dark-background">
             <div className="w-full h-auto md:h-[calc(100svh-2.5rem)] flex flex-col md:flex-row items-start justify-start gap-5">
                 <SideBar pageSelected={pageSelected} setPageSelected={setPageSelected} />
-                <Product setAlertMessage={() => ""} setAlertOpen={() => false} />
+                <Product />
                 {ModalComponent && <ModalComponent setPageSelected={setPageSelected} />}
-                <ToastContainer autoClose={1000} pauseOnHover={false}/>
+                <ToastContainer autoClose={1000} pauseOnHover={false} />
             </div>
         </div>
     );

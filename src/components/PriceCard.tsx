@@ -1,4 +1,4 @@
-import { Dispatch, MutableRefObject, SetStateAction } from "react";
+import { MutableRefObject } from "react";
 
 interface PriceCardProps {
   percentSaved: string;
@@ -6,10 +6,9 @@ interface PriceCardProps {
   subscriptionPrice: string;
   planDetails: any;
   reference: MutableRefObject<null>;
-  setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function PriceCard({ percentSaved, isYearly, subscriptionPrice, planDetails, reference, setModalWaitListOpen }: PriceCardProps) {
+export default function PriceCard({ percentSaved, isYearly, subscriptionPrice, planDetails, reference }: PriceCardProps) {
   return (
     <div className="w-full h-auto flex flex-col rounded-lg p-5 gap-y-5 bg-custom-elevation dark:bg-dark-elevation2 border border-custom-borderColor dark:border-dark-borderColorxw" ref={reference}>
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-3">
@@ -26,7 +25,6 @@ export default function PriceCard({ percentSaved, isYearly, subscriptionPrice, p
       </div>
       <p className="text-md font-light text-clip text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">{planDetails.description}</p>
       <button
-        onClick={() => setModalWaitListOpen(true)}
         type="button"
         className="text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor font-semibold rounded-lg text-sm px-5 py-2.5">
         {planDetails.button}

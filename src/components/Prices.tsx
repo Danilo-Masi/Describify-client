@@ -16,10 +16,9 @@ import SwitchButton from './SwitchButton';
 interface PricesProps {
   id: string;
   accessToken: boolean;
-  setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Prices({ id, accessToken, setModalWaitListOpen }: PricesProps) {
+export default function Prices({ id, accessToken }: PricesProps) {
 
   const [isYearly, setYearly] = useState(true);
   const [standardPrice, setStandardPrice] = useState("");
@@ -62,8 +61,8 @@ export default function Prices({ id, accessToken, setModalWaitListOpen }: Prices
         descriptionStyle="text-lg" />
       <SwitchButton isYearly={isYearly} setYearly={setYearly} />
       <div className='w-full md:w-7/12 h-auto flex flex-col md:flex-row gap-12 mt-10'>
-        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? standardPlanIt : standardPlanEn} reference={priceCardRef1} subscriptionPrice={standardPrice} isYearly={isYearly} percentSaved="25" />
-        <PriceCard setModalWaitListOpen={setModalWaitListOpen} planDetails={language === 'it' ? premiumPlanIt : premiumPlanEn} reference={priceCardRef2} subscriptionPrice={premiumPrice} isYearly={isYearly} percentSaved="11" />
+        <PriceCard planDetails={language === 'it' ? standardPlanIt : standardPlanEn} reference={priceCardRef1} subscriptionPrice={standardPrice} isYearly={isYearly} percentSaved="25" />
+        <PriceCard planDetails={language === 'it' ? premiumPlanIt : premiumPlanEn} reference={priceCardRef2} subscriptionPrice={premiumPrice} isYearly={isYearly} percentSaved="11" />
       </div>
     </ContainerComponents>
   );

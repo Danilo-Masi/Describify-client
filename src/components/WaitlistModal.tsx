@@ -8,11 +8,9 @@ import WaitlistGadget from "./WaitlistGadget";
 
 interface WaitlistModalProps {
     onClose: () => void;
-    setAlertOpen: Dispatch<SetStateAction<boolean>>;
-    setAlertMessage: Dispatch<SetStateAction<string>>;
 }
 
-export default function WaitlistModal({ onClose, setAlertOpen, setAlertMessage }: WaitlistModalProps) {
+export default function WaitlistModal({ onClose }: WaitlistModalProps) {
 
     const { t } = useTranslation();
 
@@ -31,7 +29,7 @@ export default function WaitlistModal({ onClose, setAlertOpen, setAlertMessage }
                     <p className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance text-center font-light">
                         {t('modalWaitlistContent')}
                     </p>
-                    <WaitlistGadget mdWidth="w-full" setAlertOpen={setAlertOpen} setAlertMessage={setAlertMessage} />
+                    <WaitlistGadget mdWidth="w-full" />
                 </div>
             </Modal.Body>
         </Modal>

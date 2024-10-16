@@ -1,3 +1,4 @@
+// React
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 // I18Next
 import { useTranslation } from 'react-i18next';
@@ -13,12 +14,10 @@ import sizes_en from '../data/productOptions/sized_en.json';
 import colors_en from '../data/productOptions/colors_en.json';
 import colors_it from '../data/productOptions/colors_it.json';
 // Components
-import WaitlistModal from "./WaitlistModal";
 import ModalDropdown from "./ModalDropdow";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
-
 // Url del sever di rilascio
 //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
@@ -53,8 +52,6 @@ interface ProductFormProps {
     placeholderBrand: string;
     placeholderColor: string;
     brandInputId: string;
-    setAlertOpen: Dispatch<SetStateAction<boolean>>;
-    setAlertMessage: Dispatch<SetStateAction<string>>;
     setTitleGenerated: Dispatch<SetStateAction<string>>;
     setDescriptionGenerated: Dispatch<SetStateAction<string>>;
     setLoading: Dispatch<SetStateAction<boolean>>;
@@ -109,7 +106,7 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
     );
 }
 
-export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setAlertOpen, setAlertMessage, setTitleGenerated, setDescriptionGenerated, setLoading }: ProductFormProps) {
+export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setTitleGenerated, setDescriptionGenerated, setLoading }: ProductFormProps) {
     const language = useLanguage();
     const { t } = useTranslation();
 
@@ -295,12 +292,6 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
                     arrayDati={modalData}
                     context={modalContext}
                     onSelect={handleSelect} />
-            }
-            {isWaitlistModalOpen &&
-                <WaitlistModal
-                    onClose={() => setModalWaitlistOpen(false)}
-                    setAlertOpen={setAlertOpen}
-                    setAlertMessage={setAlertMessage} />
             }
         </div>
     );
