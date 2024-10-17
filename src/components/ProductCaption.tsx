@@ -1,5 +1,6 @@
+// React
 import { useEffect, useState } from "react";
-// Flowbite
+// Flowbite-react
 import { Textarea } from "flowbite-react";
 // I18Next
 import { useTranslation } from 'react-i18next';

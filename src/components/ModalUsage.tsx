@@ -1,14 +1,11 @@
+// React
 import { Dispatch, SetStateAction } from "react";
 // I18Next
 import { useTranslation } from 'react-i18next';
 // Components
 import ModalBase from "./ModalBase";
 
-interface ModalUsageProps {
-    setPageSelected: Dispatch<SetStateAction<string>>;
-}
-
-export default function ModalUsage({ setPageSelected }: ModalUsageProps) {
+export default function ModalUsage({ setPageSelected }: { setPageSelected: Dispatch<SetStateAction<string>>; }) {
 
     const { t } = useTranslation();
 

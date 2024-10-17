@@ -1,3 +1,4 @@
+// React
 import { useEffect, useState } from "react";
 // React-router
 import { Link } from "react-router-dom";
@@ -28,7 +29,7 @@ export default function Logo({ width, height }: LogoProps) {
         <div className="md:w-1/4 p-y-10">
             <Link to="/" onClick={() => scrollToElement("#Home")} aria-label="link logo home" className="flex items-center gap-x-3">
                 <IconaLogo width={width} height={height} />
-                {isVisible && <h1 className="text-xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>}
+                {isVisible && <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>}
             </Link>
         </div>
     );

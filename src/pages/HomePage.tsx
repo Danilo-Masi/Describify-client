@@ -9,19 +9,15 @@ import Prices from "../components/Prices";
 import Faqs from "../components/Faqs";
 import Footer from "../components/Footer";
 
-interface HomePageProps {
-    setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-export default function HomePage({ setModalWaitListOpen }: HomePageProps) {
+export default function HomePage({ setModalWaitListOpen }: { setModalWaitListOpen: Dispatch<SetStateAction<boolean>>; }) {
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar setModalWaitListOpen={setModalWaitListOpen} />
+            <Navbar setModalWaitlistOpen={setModalWaitListOpen} />
             <Hero id="Home" />
-            <Features id="Features" accessToken={false} />
-            <Prices id="Prices" accessToken={false} />
-            <Faqs id="Faqs" accessToken={false} />
+            <Features id="Features" />
+            <Prices id="Prices" />
+            <Faqs id="Faqs" />
             <Footer />
         </Layout>
     );

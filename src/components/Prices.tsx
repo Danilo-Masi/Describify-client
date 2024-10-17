@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+// React
+import { useEffect, useRef, useState } from 'react';
 // I18Next
 import { useTranslation } from 'react-i18next';
 // Utilities
@@ -13,12 +14,7 @@ import Intestazione from "./Intestazione";
 import PriceCard from './PriceCard';
 import SwitchButton from './SwitchButton';
 
-interface PricesProps {
-  id: string;
-  accessToken: boolean;
-}
-
-export default function Prices({ id, accessToken }: PricesProps) {
+export default function Prices({ id }: { id: string; }) {
 
   const [isYearly, setYearly] = useState(true);
   const [standardPrice, setStandardPrice] = useState("");
@@ -56,7 +52,6 @@ export default function Prices({ id, accessToken }: PricesProps) {
         badgeValue={t('pricesBadge').toUpperCase()}
         titleValue={t('pricesTitle')}
         descriptionValue={t('pricesDescription')}
-        accessToken={accessToken}
         titleStyle="text-5xl md:text-6xl"
         descriptionStyle="text-lg" />
       <SwitchButton isYearly={isYearly} setYearly={setYearly} />

@@ -1,12 +1,12 @@
-// I18Next
-import { useTranslation } from 'react-i18next';
 // React-router
 import { Link } from "react-router-dom";
+// I18Next
+import { useTranslation } from 'react-i18next';
 // Utilities
 import { scrollToElement } from '../utilities/useAnimations';
 // Components
 import { FooterCol } from './Layout';
-import Logo from './Logo';
+import { IconaLogo } from './SvgComponents';
 
 export default function Footer() {
 
@@ -15,26 +15,19 @@ export default function Footer() {
     return (
         <div className="w-full flex items-center justify-center border-t border-custom-borderGray dark:border-dark-borderGray">
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
-                {/* Logo e email */}
-                <FooterCol mdWidth='md:w-2/5' mdItemsPosition='md:items-start'>
-                    <Logo width='50' height='50' />
-                    <p className="max-w-md md:text-start text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray mt-2">
-                        {t('footerCaption')}
+                {/* Logo e info */}
+                <FooterCol mdItemsPosition='md:items-start'>
+                    <div className='flex gap-x-2'>
+                        <IconaLogo width='30' height='30' />
+                        <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>
+                    </div>
+                    <p className='text-md font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
+                        Less stress, more sales.
                     </p>
-                    <a
-                        href="mailto:info@describify.it?subject=Hey!!%20👋"
-                        title='link to send email to Describify'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='flex gap-x-2 font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                                <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
-                                <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
-                            </svg>
-                        </span>
-                        info@describify.it
-                    </a>
+                    <p className='text-md font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
+                        Made with &#9749; and &#127829; by
+                        <span><a href='https://x.com/dmasiiii' target='_blank'> Danilo</a></span>
+                    </p>
                 </FooterCol>
                 {/* Link di navigazione della pagina */}
                 <FooterCol>
@@ -44,14 +37,14 @@ export default function Footer() {
                     <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Prices")}>{t('linkPrices')}</Link>
                     <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Faqs")}>Faqs</Link>
                 </FooterCol>
-                {/* Social */}
+                {/* Link social media */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">Social</p>
                     <a target='_blank' rel='noopener noreferrer' href='https://twitter.com/describify' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='Twitter link'>X (Twitter)</a>
                     <a target='_blank' rel='noopener noreferrer' href='https://www.tiktok.com/@describify' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='TikTok link'>TikTok</a>
                     <a target='_blank' rel='noopener noreferrer' href='https://www.instagram.com/describify' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='Instagram link'>Instagram</a>
                 </FooterCol>
-                {/* Termini e condizioni */}
+                {/* Link termini e condizioni */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">{t('footerTerms')}</p>
                     <Link to="/terms-and-conditions" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Terms & Conditions</Link>

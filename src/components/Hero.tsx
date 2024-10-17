@@ -1,18 +1,15 @@
+// React
 import { Suspense } from 'react';
 // I18Next
 import { useTranslation } from 'react-i18next';
-//Assets
-import heroscreen from '../assets/images/hero_screen.png';
 // Components
 import Intestazione from "./Intestazione";
 import WaitlistGadget from "./WaitlistGadget";
 import GridBackground from './GridBackground';
+//Assets
+import heroscreen from '../assets/images/hero_screen.png';
 
-interface HeroProps {
-    id: string;
-}
-
-export default function Hero({ id }: HeroProps) {
+export default function Hero({ id }: { id: string; }) {
 
     const { t } = useTranslation();
 

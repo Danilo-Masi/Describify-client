@@ -15,16 +15,15 @@ import { useEmail } from "../utilities/useEmail.tsx";
 import { ContainerInput } from "../components/Layout";
 import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
 
-interface SigninFormState {
-    email: string;
-    password: string;
-}
-
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
 // Url del server di rilascio
 //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
+interface SigninFormState {
+    email: string;
+    password: string;
+}
 
 export default function SigninForm() {
 

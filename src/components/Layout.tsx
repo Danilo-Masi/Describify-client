@@ -1,3 +1,4 @@
+// React
 import { ReactNode } from 'react';
 
 interface LayoutProps {
@@ -48,13 +49,12 @@ export function ContainerInput({ children, containerStyle }: ContainerInputProps
 
 interface FooterColProps {
     children: ReactNode;
-    mdWidth?: string;
     mdItemsPosition?: string;
 }
 
-export function FooterCol({ children, mdWidth, mdItemsPosition }: FooterColProps) {
+export function FooterCol({ children, mdItemsPosition }: FooterColProps) {
     return (
-        <div className={`w-full flex flex-col items-center justify-center gap-3 md:gap-2 ${mdWidth ?? 'md:w-1/5'} ${mdItemsPosition ?? 'md:items-center'}`}>
+        <div className={`w-full md:w-1/4 flex flex-col items-center justify-center gap-3 md:gap-2 ${mdItemsPosition ?? 'md:items-center'}`}>
             {children}
         </div>
     );

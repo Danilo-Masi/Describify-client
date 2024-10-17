@@ -9,7 +9,6 @@ import ActiveButton from "./ActiveButton";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
-
 // Url del sever di rilascio
 //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 

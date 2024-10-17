@@ -1,8 +1,4 @@
-interface SkeltonPlaceholderProps {
-    skeletonStyle: string;
-}
-
-export default function SkeltonPlaceholder({ skeletonStyle }: SkeltonPlaceholderProps) {
+export default function SkeltonPlaceholder({ skeletonStyle }: { skeletonStyle: string; }) {
     return (
         <div className={`w-full flex flex-col items-start justify-between gap-y-5 p-5 rounded-lg dark:bg-dark-elevation4 animate-pulse ${skeletonStyle}`}>
             <div className="w-full flex items-center justify-between">

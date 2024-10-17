@@ -1,16 +1,11 @@
-import { Dispatch, SetStateAction } from 'react';
+// Flowbite-react
+import { Modal, ModalHeader } from "flowbite-react";
 // I18Next
 import { useTranslation } from 'react-i18next';
-// Flowbite
-import { Modal, ModalHeader } from "flowbite-react";
 // Components
 import WaitlistGadget from "./WaitlistGadget";
 
-interface WaitlistModalProps {
-    onClose: () => void;
-}
-
-export default function WaitlistModal({ onClose }: WaitlistModalProps) {
+export default function WaitlistModal({ onClose }: { onClose: () => void; }) {
 
     const { t } = useTranslation();
 

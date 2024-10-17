@@ -19,11 +19,7 @@ const SERVER_URL = 'http://localhost:3000';
 // Url del server di rilascio
 //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
-interface ModalHelpProps {
-    setPageSelected: Dispatch<SetStateAction<string>>;
-}
-
-export default function ModalHelp({ setPageSelected }: ModalHelpProps) {
+export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispatch<SetStateAction<string>>; }) {
 
     const { t } = useTranslation();
     const [userText, setUserText] = useState<string>('');

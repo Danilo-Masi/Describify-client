@@ -1,8 +1,9 @@
+// React
 import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 // I18Next
 import { useTranslation } from 'react-i18next';
 // Components
-import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, IconaLogo, SettingsIcon, SignoutIcon, UpgradeIcon, UsageIcon } from "./SvgComponents";
+import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, IconaLogo, SettingsIcon, SignoutIcon, UsageIcon } from "./SvgComponents";
 import Divider from "./Divider";
 
 interface ContainerItemProps {

@@ -5,12 +5,7 @@ import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
 import FaqsAccordition from "./FaqsAccordition";
 
-interface FaqsProps {
-  id: string;
-  accessToken: boolean;
-}
-
-export default function Faqs({ id, accessToken }: FaqsProps) {
+export default function Faqs({ id }: { id: string; }) {
 
   const { t } = useTranslation();
 
@@ -21,7 +16,6 @@ export default function Faqs({ id, accessToken }: FaqsProps) {
         badgeValue="FAQs"
         titleValue={t('faqsTitle')}
         descriptionValue={t('faqsDescription')}
-        accessToken={accessToken}
         titleStyle="text-5xl md:text-6xl"
         descriptionStyle="text-lg" />
       {/* Faqs box */}

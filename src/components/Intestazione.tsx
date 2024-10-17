@@ -1,19 +1,19 @@
+// React
 import { useEffect, useRef } from "react";
+// Flowbite-react
+import { Badge } from "flowbite-react";
 // Utilities
 import { fadeInElement } from '../utilities/useAnimations';
-// Flowbite
-import { Badge } from "flowbite-react";
 
 interface IntestazioneProps {
     badgeValue?: string;
     titleValue: string;
     descriptionValue: string;
-    accessToken?: boolean;
     titleStyle: string;
     descriptionStyle: string;
 }
 
-export default function Intestazione({ badgeValue, titleValue, descriptionValue, accessToken, titleStyle, descriptionStyle }: IntestazioneProps) {
+export default function Intestazione({ badgeValue, titleValue, descriptionValue, titleStyle, descriptionStyle }: IntestazioneProps) {
 
     const titleRef = useRef(null);
     const captionRef = useRef(null);
@@ -25,7 +25,7 @@ export default function Intestazione({ badgeValue, titleValue, descriptionValue,
         // Avvio delle animazioni
         fadeInElement(title, 0.5, 0.0);
         fadeInElement(caption, 0.5, 0.5);
-    }, [accessToken]);
+    }, [window.onload]);
 
     return (
         <div className="md:w-2/4 h-auto flex flex-col items-center justify-center gap-y-5 z-10">

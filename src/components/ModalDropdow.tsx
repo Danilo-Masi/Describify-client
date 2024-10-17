@@ -1,5 +1,6 @@
+// React
 import { useEffect, useState } from "react";
-// Flowbite
+// Flowbite-react
 import { Modal } from 'flowbite-react';
 
 interface Elemento {

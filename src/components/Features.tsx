@@ -1,8 +1,5 @@
 // I18Next
 import { useTranslation } from 'react-i18next';
-// Data
-import { featuresDetailsIt1, featuresDetailsIt2, featuresDetailsIt3, featuresDetailsIt4 } from '../data/features_details_it';
-import { featuresDetailsEn1, featuresDetailsEn2, featuresDetailsEn3, featuresDetailsEn4 } from '../data/features_details_en';
 // Utilities
 import { useLanguage } from '../utilities/useLanguage';
 // Components
@@ -10,17 +7,15 @@ import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
 import FeaturesStep from "./FeaturesStep";
 import CardPrototype from './CardPrototype';
+// Data
+import { featuresDetailsIt1, featuresDetailsIt2, featuresDetailsIt3, featuresDetailsIt4 } from '../data/features_details_it';
+import { featuresDetailsEn1, featuresDetailsEn2, featuresDetailsEn3, featuresDetailsEn4 } from '../data/features_details_en';
 //Assets
 import formscreen from '../assets/images/form_screen.png';
 import titlescreen from '../assets/images/title_screen.png';
 import captionscreen from '../assets/images/caption_screen.png';
 
-interface FeaturesProps {
-  id: string;
-  accessToken: boolean;
-}
-
-export default function Features({ id, accessToken }: FeaturesProps) {
+export default function Features({ id }: {id: string;}) {
 
   const { t } = useTranslation();
   const language = useLanguage();
@@ -31,7 +26,6 @@ export default function Features({ id, accessToken }: FeaturesProps) {
         badgeValue={t('featuresBadge').toUpperCase()}
         titleValue={t('featuresTitle')}
         descriptionValue={t('featuresDescription')}
-        accessToken={accessToken}
         titleStyle="text-5xl md:text-6xl"
         descriptionStyle="text-lg" />
       <div className="flex flex-col items-center gap-y-20 md:gap-y-32 mt-10">

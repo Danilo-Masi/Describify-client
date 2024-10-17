@@ -1,5 +1,6 @@
+// React
 import { ReactNode } from "react";
-// Flowbite
+// Flowbite-react
 import { Modal, ModalHeader } from "flowbite-react";
 
 interface ModalBaseProps {

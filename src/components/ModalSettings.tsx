@@ -1,9 +1,10 @@
+// React
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+// Flowbite-react
+import { Select } from "flowbite-react";
 // I18Next
 import i18n from "../i18n";
 import { useTranslation } from 'react-i18next';
-// Flowbite
-import { Select } from "flowbite-react";
 // Components
 import ModalBase from "./ModalBase";
 import Divider from "./Divider";
@@ -54,11 +55,7 @@ function SettingsBlock({ title, description, options, selectedOption, onChange, 
     );
 }
 
-interface ModalSettingsProps {
-    setPageSelected: Dispatch<SetStateAction<string>>;
-}
-
-export default function ModalSettings({ setPageSelected }: ModalSettingsProps) {
+export default function ModalSettings({ setPageSelected }: { setPageSelected: Dispatch<SetStateAction<string>>; }) {
 
     const { t } = useTranslation();
 

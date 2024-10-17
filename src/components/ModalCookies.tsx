@@ -1,3 +1,4 @@
+// React
 import { Dispatch, SetStateAction } from "react";
 // React-router
 import { Link } from "react-router-dom";
@@ -6,11 +7,7 @@ import { useTranslation } from 'react-i18next';
 // Flowbite
 import { Modal } from "flowbite-react";
 
-interface ModalCookiesProps {
-    setCookieModalOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-export default function ModalCookies({ setCookieModalOpen }: ModalCookiesProps) {
+export default function ModalCookies({ setCookieModalOpen }: { setCookieModalOpen: Dispatch<SetStateAction<boolean>>; }) {
 
     const { t } = useTranslation();
 

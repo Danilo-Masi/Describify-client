@@ -1,5 +1,5 @@
 // React
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 // I18next
 import { useTranslation } from 'react-i18next';
 // Components
@@ -9,7 +9,6 @@ import ProductTitle from "./ProductTitle";
 import ProductDetails from "./ProductDetails";
 import SkeltonPlaceholder from "./SkeltonPlaceholder";
 import ProductImage from "./ProductImage";
-
 
 export default function Product() {
 

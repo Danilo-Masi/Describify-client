@@ -1,3 +1,4 @@
+// React
 import { ReactNode, useEffect, useRef, useState } from 'react';
 // Utilities
 import { fadeInElement } from '../utilities/useAnimations';

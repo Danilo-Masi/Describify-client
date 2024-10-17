@@ -1,3 +1,4 @@
+// React
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 // React-router
 import { useLocation } from "react-router-dom";
@@ -5,10 +6,6 @@ import { useLocation } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
-interface TermsDataProps {
-    setModalWaitListOpen: Dispatch<SetStateAction<boolean>>;
-}
 
 interface ParagraphProps {
     title: string;
@@ -21,7 +18,7 @@ interface PrivacyDataProps {
     paragraphs: ParagraphProps[],
 }
 
-export default function LegalPage({ setModalWaitListOpen }: TermsDataProps) {
+export default function LegalPage({ setModalWaitListOpen }: { setModalWaitListOpen: Dispatch<SetStateAction<boolean>>; }) {
 
     const location = useLocation();
 
@@ -46,7 +43,7 @@ export default function LegalPage({ setModalWaitListOpen }: TermsDataProps) {
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar setModalWaitListOpen={setModalWaitListOpen} />
+            <Navbar setModalWaitlistOpen={setModalWaitListOpen} />
             <div className="w-[90%] md:w-[50%] h-auto flex flex-col items-start justify-start gap-y-8 py-5 md:py-10" id="Start">
                 <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{data?.titlePrimary}</h1>
                 <p className="text-md font-medium text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">{data?.captionPrimary}</p>
