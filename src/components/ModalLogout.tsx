@@ -61,6 +61,7 @@ export default function ModalLogout({ setPageSelected }: { setPageSelected: Disp
                     </div>
                 </div>
             </ModalBase>
+            {/* Componente per le notifiche */}
             <ToastContainer />
         </>
     );

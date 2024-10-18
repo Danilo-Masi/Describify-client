@@ -28,11 +28,11 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
 
     const { t } = useTranslation();
 
-    const [emailInput, setEmailInput] = useState(""); //Valore dell'email inserita dall'utente
-    const [errorInput, setErrorInput] = useState(""); //Imposta messaggio di errore
-    const [isEmailLoading, setEmailLoading] = useState(false); //Imposta in stato di loading
-    const [isEmailSend, setEmailSend] = useState(false); //Imposta in stato di inviato
-    const [isExploding, setExploding] = useState(false); //Attiva l'animazione dei coriandoli
+    const [emailInput, setEmailInput] = useState<string>(""); //Valore dell'email inserita dall'utente
+    const [errorInput, setErrorInput] = useState<string>(""); //Imposta messaggio di errore
+    const [isEmailLoading, setEmailLoading] = useState<boolean>(false); //Imposta in stato di loading
+    const [isEmailSend, setEmailSend] = useState<boolean>(false); //Imposta in stato di inviato
+    const [isExploding, setExploding] = useState<boolean>(false); //Attiva l'animazione dei coriandoli
 
     //Funzione per inviare l'email una volta iscritti alla waitlist (Resend) //DA MODIFICARE
     const sendWaitlistEmail = async (language: string) => {

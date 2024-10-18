@@ -71,6 +71,7 @@ export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispat
                     </div>
                 </div>
             </ModalBase>
+            {/* Componente per le notifiche */}
             <ToastContainer />
         </>
     );
