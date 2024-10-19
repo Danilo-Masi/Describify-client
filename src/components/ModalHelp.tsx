@@ -29,28 +29,33 @@ export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispat
 
     const handleSendComment = async () => {
         setLoading(true);
-        try {
-            const response = await axios.post(`${SERVER_URL}/send-template`, {
-                email: htmlString,
-            });
-            if (response.status === 200) {
-                toast.success('Commento inviato correttamente');
-            } else {
-                toast.error('Si è verificato un errore durante l’invio del commento.');
+        if (userText.length > 0) {
+            try {
+                const response = await axios.post(`${SERVER_URL}/send-template`, {
+                    email: htmlString,
+                });
+                if (response.status === 200) {
+                    toast.success('Commento inviato correttamente');
+                } else {
+                    toast.error('Si è verificato un errore durante l’invio del commento.');
+                }
+            } catch (error: any) {
+                toast.error('Errore di rete: impossibile inviare il commento.');
+            } finally {
+                setLoading(false);
             }
-        } catch (error: any) {
-            toast.error('Errore di rete: impossibile inviare il commento.');
-        } finally {
+        } else {
+            toast.warn('Hai inserito un testo vuoto');
             setLoading(false);
         }
     };
 
     return (
         <>
-            <ModalBase size="md" modalTitle={t('modalHelpTitle')} onClose={() => setPageSelected("Genera")}>
+            <ModalBase size="lg" modalTitle={t('modalHelpTitle')} onClose={() => setPageSelected("Genera")}>
                 <div className="w-full h-auto flex flex-col rounded-lg bg-custom-elevation4 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray">
                     <div className="w-full p-3 rounded-t-lg border-b border-custom-borderGray dark:border-dark-borderGray">
-                        <p className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray text-balance">
+                        <p className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
                             Segnalaci il quesito d'errore che hai riscontrato, cerca di essere breve e conciso in modo da darci la possibilità di risponderti e risolvere il problema in tempi brevi. Grazie!!
                         </p>
                     </div>
@@ -72,7 +77,7 @@ export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispat
                 </div>
             </ModalBase>
             {/* Componente per le notifiche */}
-            <ToastContainer />
+            <ToastContainer autoClose={2000} />
         </>
     );
 }

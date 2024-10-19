@@ -1,37 +1,25 @@
 // React
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
+// React-tostify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // I18Next
 import { useTranslation } from 'react-i18next';
 // Axios
 import axios from 'axios';
 // Utilities
 import { useLanguage } from '../utilities/useLanguage';
-// data
-import category_it from '../data/productOptions/category_it.json';
-import category_en from '../data/productOptions/category_en.json';
-import sizes_it from '../data/productOptions/sizes_it.json';
-import sizes_en from '../data/productOptions/sized_en.json';
-import colors_en from '../data/productOptions/colors_en.json';
-import colors_it from '../data/productOptions/colors_it.json';
-// Components
-import ModalDropdown from "./ModalDropdow";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
 // Url del sever di rilascio
 //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
-interface InputSelectProps {
-    mdWidth?: string,
-    valoreLabel: string,
-    valoreInput: string,
-    onClick: () => void,
-}
-
 interface TextInputProps {
     valoreId: string;
     valoreLabel: string;
     valoreInput: string;
+    valorePlaceholder: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -40,42 +28,21 @@ interface ButtonGenerateProps {
     onClick: () => void;
 }
 
-interface Elemento {
-    id: number;
-    title: string;
-    parent_id: number;
-    parent: string;
-}
-
 interface ProductFormProps {
-    placeholderCategory: string;
-    placeholderBrand: string;
-    placeholderColor: string;
-    brandInputId: string;
+    selectedCategory: string;
+    selectedBrand: string;
+    selectedSize: string;
+    selectedColor: string;
+    setSelectedCategory: Dispatch<SetStateAction<string>>;
+    setSelectedBrand: Dispatch<SetStateAction<string>>;
+    setSelectedSize: Dispatch<SetStateAction<string>>;
+    setSelectedColor: Dispatch<SetStateAction<string>>;
     setTitleGenerated: Dispatch<SetStateAction<string>>;
     setDescriptionGenerated: Dispatch<SetStateAction<string>>;
     setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-function InputSelect({ mdWidth, valoreLabel, valoreInput, onClick }: InputSelectProps) {
-    return (
-        <div className={`${mdWidth} w-full h-auto flex flex-col gap-2`}>
-            <label className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-                {valoreLabel}
-            </label>
-            <div
-                onClick={onClick}
-                className="flex items-center justify-between p-3 rounded-lg cursor-pointer bg-custom-elevation3 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
-                <p>{valoreInput}</p>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-            </div>
-        </div>
-    );
-}
-
-function TextInput({ valoreId, valoreLabel, valoreInput, onChange }: TextInputProps) {
+function TextInput({ valoreId, valoreLabel, valoreInput, valorePlaceholder, onChange }: TextInputProps) {
     return (
         <div className="w-full flex flex-col gap-2">
             <label htmlFor={valoreId} className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
@@ -84,8 +51,8 @@ function TextInput({ valoreId, valoreLabel, valoreInput, onChange }: TextInputPr
             <input
                 id={valoreId}
                 type="text"
-                placeholder="Massimo Dutti"
-                className="w-full rounded-lg p-3 bg-custom-elevation3 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textSecondaryGray dark:text-dark-textSecondaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
+                placeholder={valorePlaceholder}
+                className="w-full rounded-lg p-3 capitalize bg-custom-elevation3 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
                 value={valoreInput}
                 onChange={onChange} />
         </div>
@@ -106,122 +73,10 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
     );
 }
 
-export default function ProductForm({ placeholderCategory, placeholderBrand, placeholderColor, brandInputId, setTitleGenerated, setDescriptionGenerated, setLoading }: ProductFormProps) {
+export default function ProductForm({ selectedCategory, selectedBrand, selectedSize, selectedColor, setSelectedCategory, setSelectedBrand, setSelectedColor, setSelectedSize, setTitleGenerated, setDescriptionGenerated, setLoading }: ProductFormProps) {
+
     const language = useLanguage();
     const { t } = useTranslation();
-
-    // Valori inseriti dall'utente
-    const [selectedCategory, setSelectedCategory] = useState(placeholderCategory);
-    const [selectedBrand, setSelectedBrand] = useState(placeholderBrand);
-    const [selectedSize, setSelectedSize] = useState("M");
-    const [selectedColor, setSelectedColor] = useState(placeholderColor);
-
-    // Valori del modalDrowpdow
-    const [modalTitle, setModalTitle] = useState("");
-    const [modalData, setModalData] = useState<Elemento[]>([]);
-    const [modalContext, setModalContext] = useState("");
-
-    // Booleani per l'apertura dei modal
-    const [isDropdownModalOpen, setModalDropdownOpen] = useState(false);
-    const [isWaitlistModalOpen, setModalWaitlistOpen] = useState(false);
-
-    // Funzione che apre il modal per inserire i dati e inserisce i giusti dati in base a cosa si è cliccato (categorie, colore, dimensione)
-    const handleDropwdown = useCallback((titoloModal: string, datiModal: any, context: string) => {
-        setModalTitle(titoloModal);
-        setModalData(datiModal);
-        setModalContext(context);
-        setModalDropdownOpen(true);
-    }, []);
-
-    // Funzione che imposta il valore selezionato nel giusto stato
-    const handleSelect = (value: string, context: string) => {
-        switch (context) {
-            case "categoria":
-                setSelectedCategory(value);
-                break;
-            case "dimensione":
-                setSelectedSize(value);
-                break;
-            case "colore":
-                setSelectedColor(value);
-                break;
-            default:
-                break;
-        }
-    }
-
-    const handleFilterDimension = useCallback((sizes: any): Elemento[] => {
-        const categoryToParentIdMap: { [key: string]: number } = {
-            'Cinture': 35,
-            'Orologi': 28,
-            'Scarpe da barca, loafer e mocassini': 16,
-            'Stivali': 16,
-            'Zoccoli e sabot': 16,
-            'Espadrillas': 16,
-            'Infradito e ciabatte': 16,
-            'Scarpe formali': 16,
-            'Sandali': 16,
-            'Pantofole': 16,
-            'Scarpe da ginnastica': 16,
-            'Ballerine': 16,
-            'Scarpe con tacchi alti': 16,
-            'Mary Jane e scarpe a T': 16,
-            'Abbigliamento da esterno': 1,
-            'Maglioni e pullover': 1,
-            'Completi e blazer': 1,
-            'Abiti': 1,
-            'Gonne': 1,
-            'Top e t-shirt': 1,
-            'Jeans': 1,
-            'Pantaloni e leggins': 1,
-            'Pantaloncini e pantaloni corti': 1,
-            'Tute jumpsuite e playsuite': 1,
-            'Costumi da bagno': 1,
-            'Lingerie e indumenti da notte': 1,
-            'Vestiti premam': 1,
-            'Abbigliamento sportivo': 1,
-            'Camicie e t-shirt': 1,
-            'Pantaloni': 1,
-            'Calzini e intimo': 1,
-            'Pigiama': 1,
-            "Belts": 35,
-            "Watches": 28,
-            "Boat shoes, loafers, and moccasins": 16,
-            "Boots": 16,
-            "Clogs and mules": 16,
-            "Espadrilles": 16,
-            "Flip-flops and slippers": 16,
-            "Formal shoes": 16,
-            "Sandals": 16,
-            "Slippers": 16,
-            "Sneakers": 16,
-            "Ballet flats": 16,
-            "High-heeled shoes": 16,
-            "Mary Jane and T-strap shoes": 16,
-            "Outerwear": 1,
-            "Sweaters and pullovers": 1,
-            "Suits and blazers": 1,
-            "Dresses": 1,
-            "Skirts": 1,
-            "Tops and t-shirts": 1,
-            "Pants and leggings": 1,
-            "Shorts and short pants": 1,
-            "Jumpsuits and playsuits": 1,
-            "Swimwear": 1,
-            "Lingerie and nightwear": 1,
-            "Maternity clothes": 1,
-            "Sportswear": 1,
-            "Shirts and t-shirts": 1,
-            "Pants": 1,
-            "Socks and underwear": 1,
-            "Pajamas": 1
-        };
-        const parentId = categoryToParentIdMap[selectedCategory];
-        if (parentId !== undefined) {
-            return Object.values(sizes).filter((item: any) => item.parent_id === parentId) as Elemento[];
-        }
-        return [];
-    }, [selectedCategory]);
 
     // Funzione per generare la caption
     const handleGenerate = async () => {
@@ -233,66 +88,92 @@ export default function ProductForm({ placeholderCategory, placeholderBrand, pla
                     prompt: `Categoria del prodotto: ${selectedCategory}, Marca: ${selectedBrand}, Taglia: ${selectedSize}, Colore: ${selectedColor}`,
                 });
                 if (response.status === 200) {
-                    const title = response.data.title;
-                    const description = response.data.description;
-                    setTitleGenerated(title);
-                    setDescriptionGenerated(description);
-                    // Fine caricamento
-                    setLoading(false);
+                    handelSuccess(response.data);
                 }
             } catch (error) {
-                alert('ERRORE');
-                console.error(error);
-                setLoading(false);
+                handleError(error);
             }
+        } else {
+            setLoading(false);
         }
     }
 
+    // Funzione per validare i dati prima di procedere con la generazione
     const handleValidate = ({ selectedCategory, selectedBrand, selectedSize, selectedColor }: any) => {
         if (selectedCategory === "" || selectedBrand === "" || selectedSize === "" || selectedColor === "") {
-            alert('Validazione non andata a buon fine...');
+            toast.warn("Controlla i dati inseriti prima di procedere");
             return false;
         }
         return true;
     }
 
+    // Funzione per gestire le operazioni nel caso in cui la generazione vada a buon fine
+    const handelSuccess = (data: any) => {
+        // Impostiamo i valori generati
+        const title = data.title;
+        const description = data.description;
+        setTitleGenerated(title);
+        setDescriptionGenerated(description);
+        // Fine caricamento dello skeleton
+        setLoading(false);
+        // Resettiamo i valori del form
+        setSelectedCategory("");
+        setSelectedBrand("");
+        setSelectedColor("");
+        setSelectedSize("");
+    }
+
+    // Funzione per gestire le operazioni nel caso in cui la generazione non vada a buon fine
+    const handleError = (error: any) => {
+        console.error(error.message);
+        toast.error('Errore durante la generazione...', {
+            onClose: () => setLoading(false),
+        });
+    }
+
     return (
-        <div className="w-full h-full flex flex-wrap items-start justify-start gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
-            <InputSelect
-                valoreLabel={t('productCategoryLabel')}
-                valoreInput={selectedCategory}
-                onClick={() => handleDropwdown(t('productCategoryLabel'), language === 'it' ? category_it : category_en, "categoria")}
-            />
-            <TextInput
-                valoreLabel={t('productBrandLabel')}
-                valoreId={brandInputId}
-                valoreInput={selectedBrand}
-                onChange={e => setSelectedBrand(e.target.value)}
-            />
-            <InputSelect
-                mdWidth="md:w-[calc(50%-0.75rem)]"
-                valoreLabel={t('productSizeLabel')}
-                valoreInput={selectedSize}
-                onClick={() => handleDropwdown(t('productSizeLabel'), handleFilterDimension(language === 'it' ? sizes_it : sizes_en), "dimensione",)}
-            />
-            <InputSelect
-                mdWidth="md:w-[calc(50%-0.75rem)]"
-                valoreLabel={t('productColorLabel')}
-                valoreInput={selectedColor}
-                onClick={() => handleDropwdown(t('productColorLabel'), language === "it" ? colors_it : colors_en, "colore")}
-            />
-            <ButtonGenerate
-                labelButton={t('productGenerateButton')}
-                onClick={handleGenerate}
-            />
-            {isDropdownModalOpen &&
-                <ModalDropdown
-                    onClose={() => setModalDropdownOpen(false)}
-                    valoreTitoloModal={modalTitle}
-                    arrayDati={modalData}
-                    context={modalContext}
-                    onSelect={handleSelect} />
-            }
-        </div>
+        <>
+            <div className="w-full h-full flex flex-wrap items-center justify-center gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
+                {/* Input categoria */}
+                <TextInput
+                    valoreId='inputCategoriaId'
+                    valoreLabel='Categoria'
+                    valoreInput={selectedCategory}
+                    valorePlaceholder='T-shirt'
+                    onChange={e => setSelectedCategory(e.target.value)}
+                />
+                {/* Input brand */}
+                <TextInput
+                    valoreId='inputBrandId'
+                    valoreLabel='Marca del prodotto'
+                    valoreInput={selectedBrand}
+                    valorePlaceholder='Prada'
+                    onChange={e => setSelectedBrand(e.target.value)}
+                />
+                {/* Input colore */}
+                <TextInput
+                    valoreId='inputColoreId'
+                    valoreLabel='Colore del prodotto'
+                    valoreInput={selectedColor}
+                    valorePlaceholder='Borgogna'
+                    onChange={e => setSelectedColor(e.target.value)}
+                />
+                {/* Input taglia */}
+                <TextInput
+                    valoreId='inputTagliaId'
+                    valoreLabel='Dimensione del prodotto'
+                    valoreInput={selectedSize}
+                    valorePlaceholder='M'
+                    onChange={e => setSelectedSize(e.target.value)}
+                />
+                {/* Bottone per la generazione */}
+                <ButtonGenerate
+                    labelButton={t('productGenerateButton')}
+                    onClick={handleGenerate}
+                />
+            </div>
+            {/* Componente per le notifiche */}
+            <ToastContainer autoClose={2000} />
+        </>
     );
 }

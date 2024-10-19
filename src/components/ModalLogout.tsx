@@ -62,7 +62,7 @@ export default function ModalLogout({ setPageSelected }: { setPageSelected: Disp
                 </div>
             </ModalBase>
             {/* Componente per le notifiche */}
-            <ToastContainer />
+            <ToastContainer autoClose={1000} pauseOnHover={false} />
         </>
     );
 }

@@ -29,7 +29,7 @@ interface SideBarProps {
     setPageSelected: Dispatch<SetStateAction<string>>;
 }
 
-export default function SideBar({ pageSelected, setPageSelected }: SideBarProps) {
+export default function ProductSideBar({ pageSelected, setPageSelected }: SideBarProps) {
 
     const { t } = useTranslation();
 

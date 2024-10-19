@@ -8,7 +8,7 @@ interface ProductDetailsProps {
   setImageSelected: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function ProductDetails({ isImageSelected, setImageSelected }: ProductDetailsProps) {
+export default function ProductSwitch({ isImageSelected, setImageSelected }: ProductDetailsProps) {
 
   const { t } = useTranslation();
 

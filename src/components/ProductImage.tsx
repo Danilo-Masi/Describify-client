@@ -1,11 +1,14 @@
 // React
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
-// Axios
-import axios from 'axios';
 // Flowbite-React
 import { FileInput, Label } from "flowbite-react";
 import { CloseIcon } from "./SvgComponents";
 import ActiveButton from "./ActiveButton";
+// React-tostify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// Axios
+import axios from 'axios';
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
@@ -16,9 +19,13 @@ interface ProductImageProps {
     fileSelected: File | null;
     setFileSelected: Dispatch<SetStateAction<File | null>>;
     setImageSelected: Dispatch<SetStateAction<boolean>>;
+    setSelectedCategory: Dispatch<SetStateAction<string>>;
+    setSelectedBrand: Dispatch<SetStateAction<string>>;
+    setSelectedSize: Dispatch<SetStateAction<string>>;
+    setSelectedColor: Dispatch<SetStateAction<string>>;
 }
 
-export default function ProductImage({ fileSelected, setImageSelected, setFileSelected }: ProductImageProps) {
+export default function ProductImage({ fileSelected, setImageSelected, setFileSelected, setSelectedCategory, setSelectedBrand, setSelectedSize, setSelectedColor }: ProductImageProps) {
 
     const [imageUrl, setImageUrl] = useState<string | null>(null); // Stato per l'URL dell'immagine
 
@@ -61,31 +68,34 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
             });
 
             if (response.status === 200) {
-                console.log("Risultato analisi: ", response.data);
+                // Contiene il testo di risposta
+                const analysisResult = response.data.responseText;
+                console.info(analysisResult); //LOG
 
-                // Supponiamo che response.data contenga il testo
-                const analysisResult = response.data.responseText; // Adatta questa parte secondo la tua risposta
-
-                // Estrai le informazioni
-                const categoriaMatch = analysisResult.match(/categoria:\s*([^,]+)/);
-                const coloreMatch = analysisResult.match(/colore:\s*([^,]+)/);
-                const marchioMatch = analysisResult.match(/marchio:\s*([^,]+)/);
+                // Estrai le informazioni con regex che si fermano alla parola chiave successiva
+                const categoriaMatch = analysisResult.match(/categoria:\s*(.*?)\s*(?=colore:)/i);
+                const coloreMatch = analysisResult.match(/colore:\s*(.*?)\s*(?=marchio:)/i);
+                const marchioMatch = analysisResult.match(/marchio:\s*(.*)/i);
 
                 // Ottieni i valori se trovati
                 const categoria = categoriaMatch ? categoriaMatch[1].trim() : 'N/A';
                 const colore = coloreMatch ? coloreMatch[1].trim() : 'N/A';
                 const marchio = marchioMatch ? marchioMatch[1].trim() : 'N/A';
 
-                // Log delle informazioni in un formato più conciso
-                console.log(`Categoria: ${categoria}`);
-                console.log(`Colore: ${colore}`);
-                console.log(`Marchio: ${marchio}`);
+                // Imposta i valori trovati nel form
+                setSelectedCategory(categoria);
+                setSelectedColor(colore);
+                setSelectedBrand(marchio);
 
                 // GESTISCI RISPOSTA DELL'ANALISI DELL'IMMAGINE
                 setImageSelected(false);
+                setFileSelected(null);
             }
         } catch (error: any) {
             console.error(`Errore CLIENT: ${error.message}`);
+            toast.error('Errore durante la procedura di carimento della immagine', {
+                onClose: () => setFileSelected(null),
+            });
         }
     };
 

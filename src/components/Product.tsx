@@ -3,37 +3,54 @@ import { useState } from "react";
 // I18next
 import { useTranslation } from 'react-i18next';
 // Components
-import ProductForm from "./ProductForm";
-import ProductCaption from "./ProductCaption";
-import ProductTitle from "./ProductTitle";
-import ProductDetails from "./ProductDetails";
-import SkeltonPlaceholder from "./SkeltonPlaceholder";
+import ProductSwitch from "./ProductSwitch";
 import ProductImage from "./ProductImage";
+import ProductForm from "./ProductForm";
+import SkeltonPlaceholder from "./SkeltonPlaceholder";
+import ProductTitle from "./ProductTitle";
+import ProductCaption from "./ProductCaption";
 
 export default function Product() {
 
     const { t } = useTranslation();
 
-    const [isLaoding, setLoading] = useState<boolean>(false); // Stato per il caricamento
-    const [titleGenerated, setTitleGenerated] = useState<string>(""); // Stato che contiene il titolo dell'annuncio generato
-    const [descriptionGenerated, setDescriptionGenerated] = useState<string>(""); // Stato che contiene la descrizione dell'annuncio generata
-    const [fileSelected, setFileSelected] = useState<File | null>(null); // Stato che verifica se l'immagine è presente o deve esseree caricata
-    const [isImageSelected, setImageSelected] = useState<boolean>(false); // Stato che verifica se l'immagine è stata analizzata e quindi si può passare al form dei dettagli
+    // Stato per il caricamento
+    const [isLaoding, setLoading] = useState<boolean>(false);
+    // Stato che verifica se l'immagine è presente o deve esseree caricata
+    const [fileSelected, setFileSelected] = useState<File | null>(null);
+    // Stato che verifica se l'immagine è stata analizzata e quindi si può passare al form dei dettagli
+    const [isImageSelected, setImageSelected] = useState<boolean>(true);
+    // Stato per tenere traccia dei valori presenti nei campi del form dei dettagli
+    const [selectedCategory, setSelectedCategory] = useState<string>("");
+    const [selectedBrand, setSelectedBrand] = useState<string>("");
+    const [selectedSize, setSelectedSize] = useState<string>("");
+    const [selectedColor, setSelectedColor] = useState<string>("");
+    // Stato per tenere traccia dei valori del titolo e della caption generati dall'AI
+    const [titleGenerated, setTitleGenerated] = useState<string>("");
+    const [descriptionGenerated, setDescriptionGenerated] = useState<string>("");
 
     return (
         <div className="w-full md:w-3/4 h-auto min-h-full flex flex-col md:flex-row gap-5 p-5 mb-10 rounded-xl z-10 bg-custom-elevation2 dark:bg-dark-elevation2">
             <div className="w-full md:w-1/2 h-auto flex flex-col items-start justify-start gap-y-6">
-                <ProductDetails isImageSelected={isImageSelected} setImageSelected={setImageSelected} />
+                <ProductSwitch isImageSelected={isImageSelected} setImageSelected={setImageSelected} />
                 {isImageSelected
                     ? <ProductImage
                         setImageSelected={setImageSelected}
                         setFileSelected={setFileSelected}
-                        fileSelected={fileSelected} />
+                        fileSelected={fileSelected}
+                        setSelectedCategory={setSelectedCategory}
+                        setSelectedBrand={setSelectedBrand}
+                        setSelectedSize={setSelectedSize}
+                        setSelectedColor={setSelectedColor} />
                     : <ProductForm
-                        placeholderCategory={t('placeholderCategory')}
-                        placeholderBrand="Massimo Dutti"
-                        placeholderColor={t('placeholderColor2')}
-                        brandInputId="text brand input hero"
+                        selectedCategory={selectedCategory}
+                        selectedBrand={selectedBrand}
+                        selectedSize={selectedSize}
+                        selectedColor={selectedColor}
+                        setSelectedCategory={setSelectedCategory}
+                        setSelectedBrand={setSelectedBrand}
+                        setSelectedSize={setSelectedSize}
+                        setSelectedColor={setSelectedColor}
                         setTitleGenerated={setTitleGenerated}
                         setDescriptionGenerated={setDescriptionGenerated}
                         setLoading={setLoading} />

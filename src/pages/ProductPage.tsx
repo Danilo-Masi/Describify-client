@@ -6,7 +6,7 @@ import { NavigateFunction, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Components
-import SideBar from "../components/SideBar";
+import ProductSideBar from "../components/ProductSideBar";
 import Product from "../components/Product";
 import ModalLogout from "../components/ModalLogout";
 import ModalUsage from "../components/ModalUsage";
@@ -45,9 +45,10 @@ export default function ProductPage() {
     return (
         <div className="w-full h-auto min-h-svh flex items-center justify-center p-5 bg-custom-background dark:bg-dark-background">
             <div className="w-full h-auto md:h-[calc(100svh-2.5rem)] flex flex-col md:flex-row items-start justify-start gap-5">
-                <SideBar pageSelected={pageSelected} setPageSelected={setPageSelected} />
+                <ProductSideBar pageSelected={pageSelected} setPageSelected={setPageSelected} />
                 <Product />
                 {ModalComponent && <ModalComponent setPageSelected={setPageSelected} />}
+                {/* Componente per le notifiche */}
                 <ToastContainer autoClose={1000} pauseOnHover={false} />
             </div>
         </div>
