@@ -249,7 +249,7 @@ export default function SignupForm() {
         </ContainerInput>
       </form>
       {/* Componente per le notifiche */}
-      <ToastContainer position="top-left" />
+      <ToastContainer autoClose={1000}/>
     </>
   );
 }

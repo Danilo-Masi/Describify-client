@@ -191,7 +191,7 @@ export default function SigninForm() {
                 </ContainerInput>
             </form>
             {/* Componente per le notifiche */}
-            <ToastContainer position="top-left" autoClose={1000}/>
+            <ToastContainer autoClose={1000}/>
         </>
     );
 }
