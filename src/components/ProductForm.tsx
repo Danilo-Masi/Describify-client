@@ -132,48 +132,44 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
     }
 
     return (
-        <>
-            <div className="w-full h-full flex flex-wrap items-center justify-center gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
-                {/* Input categoria */}
-                <TextInput
-                    valoreId='inputCategoriaId'
-                    valoreLabel='Categoria'
-                    valoreInput={selectedCategory}
-                    valorePlaceholder='T-shirt'
-                    onChange={e => setSelectedCategory(e.target.value)}
-                />
-                {/* Input brand */}
-                <TextInput
-                    valoreId='inputBrandId'
-                    valoreLabel='Marca del prodotto'
-                    valoreInput={selectedBrand}
-                    valorePlaceholder='Prada'
-                    onChange={e => setSelectedBrand(e.target.value)}
-                />
-                {/* Input colore */}
-                <TextInput
-                    valoreId='inputColoreId'
-                    valoreLabel='Colore del prodotto'
-                    valoreInput={selectedColor}
-                    valorePlaceholder='Borgogna'
-                    onChange={e => setSelectedColor(e.target.value)}
-                />
-                {/* Input taglia */}
-                <TextInput
-                    valoreId='inputTagliaId'
-                    valoreLabel='Dimensione del prodotto'
-                    valoreInput={selectedSize}
-                    valorePlaceholder='M'
-                    onChange={e => setSelectedSize(e.target.value)}
-                />
-                {/* Bottone per la generazione */}
-                <ButtonGenerate
-                    labelButton={t('productGenerateButton')}
-                    onClick={handleGenerate}
-                />
-            </div>
-            {/* Componente per le notifiche */}
-            <ToastContainer autoClose={2000} />
-        </>
+        <div className="w-full h-full flex flex-wrap items-center justify-center gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
+            {/* Input categoria */}
+            <TextInput
+                valoreId='inputCategoriaId'
+                valoreLabel='Categoria'
+                valoreInput={selectedCategory}
+                valorePlaceholder='T-shirt'
+                onChange={e => setSelectedCategory(e.target.value)}
+            />
+            {/* Input brand */}
+            <TextInput
+                valoreId='inputBrandId'
+                valoreLabel='Marca del prodotto'
+                valoreInput={selectedBrand}
+                valorePlaceholder='Prada'
+                onChange={e => setSelectedBrand(e.target.value)}
+            />
+            {/* Input colore */}
+            <TextInput
+                valoreId='inputColoreId'
+                valoreLabel='Colore del prodotto'
+                valoreInput={selectedColor}
+                valorePlaceholder='Borgogna'
+                onChange={e => setSelectedColor(e.target.value)}
+            />
+            {/* Input taglia */}
+            <TextInput
+                valoreId='inputTagliaId'
+                valoreLabel='Dimensione del prodotto'
+                valoreInput={selectedSize}
+                valorePlaceholder='M'
+                onChange={e => setSelectedSize(e.target.value)}
+            />
+            {/* Bottone per la generazione */}
+            <ButtonGenerate
+                labelButton={t('productGenerateButton')}
+                onClick={handleGenerate}
+            />
+        </div>
     );
 }
