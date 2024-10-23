@@ -32,6 +32,8 @@ export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispat
         if (userText.length > 0) {
             try {
                 const response = await axios.post(`${SERVER_URL}/send-template`, {
+                    emailReciver: 'info@describify.it',
+                    emailSubject: 'Feedback',
                     email: htmlString,
                 });
                 if (response.status === 200) {

@@ -81,12 +81,24 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
     // Funzione per generare la caption
     const handleGenerate = async () => {
         setLoading(true);
+        // Validazione dei dati
         const validazioneDati = handleValidate({ selectedCategory, selectedBrand, selectedSize, selectedColor });
         if (validazioneDati) {
             try {
-                const response = await axios.post(`${SERVER_URL}/product-generation`, {
-                    prompt: `Categoria del prodotto: ${selectedCategory}, Marca: ${selectedBrand}, Taglia: ${selectedSize}, Colore: ${selectedColor}`,
-                });
+                // Ottieni il token JWT salvato nel localStorage
+                const token = localStorage.getItem('authToken');
+                // Effettua la richiesta al backend con il token JWT nell'header Authorization
+                const response = await axios.post(
+                    `${SERVER_URL}/product-generation`,
+                    {
+                        prompt: `Categoria del prodotto: ${selectedCategory}, Marca: ${selectedBrand}, Taglia: ${selectedSize}, Colore: ${selectedColor}`,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
                 if (response.status === 200) {
                     handelSuccess(response.data);
                 }

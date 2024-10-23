@@ -1,5 +1,7 @@
 // React
 import { useState } from "react";
+// Rect-dom
+import { renderToString } from 'react-dom/server';
 // React-tostify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +15,7 @@ import ConfettiExplosion from 'react-confetti-explosion';
 import { useEmail } from "../utilities/useEmail";
 // Components
 import ModalMessage from "./ModalMessage";
+import EmailWaitlist from "./EmailWaitlist";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
@@ -34,34 +37,22 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
     const [isEmailSend, setEmailSend] = useState<boolean>(false); //Imposta in stato di inviato
     const [isExploding, setExploding] = useState<boolean>(false); //Attiva l'animazione dei coriandoli
 
-    //Funzione per inviare l'email una volta iscritti alla waitlist (Resend) //DA MODIFICARE
-    const sendWaitlistEmail = async (language: string) => {
-        try {
-            const response = await axios.post(`${SERVER_URL}/send-email`, {
-                email: emailInput,
-                language: language,
-            });
+    const htmlString = renderToString(<EmailWaitlist />);
 
-            // Verifica se la richiesta è stata eseguita con successo
+    const sendWaitlistEmail = async () => {
+        try {
+            const response = await axios.post(`${SERVER_URL}/send-template`, {
+                emailReciver: emailInput,
+                emailSubject: 'Benvenuto nella waitlist',
+                email: htmlString,
+            });
             if (response.status === 200) {
                 return true;
             } else {
-                // Se la richiesta non ha avuto successo, registra un errore
-                console.error("Errore nell'invio dell'email: risposta inattesa dal server");
                 return false;
             }
         } catch (error: any) {
-            // Gestione degli errori di rete o di server
-            if (error.response) {
-                // Il server ha risposto con un codice di stato al di fuori del range 2xx
-                console.error("Errore nell'invio dell'email: risposta dal server con codice di stato", error.response.status);
-            } else if (error.request) {
-                // La richiesta è stata fatta ma non è stata ricevuta alcuna risposta
-                console.error("Errore nell'invio dell'email: nessuna risposta dal server");
-            } else {
-                // Altri tipi di errori
-                console.error("Errore nell'invio dell'email:", error.message);
-            }
+            console.error("ERRORE CLIENT: ", error.message);
             return false;
         }
     }
@@ -76,7 +67,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                 const response = await axios.post(`${SERVER_URL}/signup-to-waitlist`, { email: emailInput });
                 if (response.status === 200) {
                     const language = localStorage.getItem('i18nextLng') || 'it';
-                    const emailSent = await sendWaitlistEmail(language);
+                    const emailSent = await sendWaitlistEmail();
                     if (emailSent) {
                         setEmailLoading(false);
                         setEmailInput("");
@@ -146,7 +137,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                 {/* Modal message */}
                 {isEmailSend && <ModalMessage onClose={() => setEmailSend(false)} setExploding={setExploding} />}
                 {/* Confetti-Explosion */}
-                {isExploding && <ConfettiExplosion zIndex={100} force={0.8} duration={3000} particleCount={250} />}
+                {isExploding && <ConfettiExplosion zIndex={100} force={0.8} duration={3000} particleCount={250} onComplete={() => setExploding(false)} />}
             </form >
             {/* Componente per le notifiche */}
             <ToastContainer position="top-left" />
