@@ -41,7 +41,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
 
     const sendWaitlistEmail = async () => {
         try {
-            const response = await axios.post(`${SERVER_URL}/send-template`, {
+            const response = await axios.post(`${SERVER_URL}/send-email`, {
                 emailReciver: emailInput,
                 emailSubject: 'Benvenuto nella waitlist',
                 email: htmlString,

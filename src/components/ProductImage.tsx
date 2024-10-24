@@ -3,12 +3,13 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react"
 // Flowbite-React
 import { FileInput, Label } from "flowbite-react";
 import { CloseIcon, CloudIcon } from "./SvgComponents";
-import ActiveButton from "./ActiveButton";
 // React-tostify
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Axios
 import axios from 'axios';
+// Components
+import ActiveButton from "./ActiveButton";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
@@ -23,9 +24,11 @@ interface ProductImageProps {
     setSelectedBrand: Dispatch<SetStateAction<string>>;
     setSelectedSize: Dispatch<SetStateAction<string>>;
     setSelectedColor: Dispatch<SetStateAction<string>>;
+    setCreditiUpdate: Dispatch<SetStateAction<boolean>>;
+    isCreditiUpdate: boolean;
 }
 
-export default function ProductImage({ fileSelected, setImageSelected, setFileSelected, setSelectedCategory, setSelectedBrand, setSelectedSize, setSelectedColor }: ProductImageProps) {
+export default function ProductImage({ fileSelected, setImageSelected, setFileSelected, setSelectedCategory, setSelectedBrand, setSelectedSize, setSelectedColor, setCreditiUpdate, isCreditiUpdate }: ProductImageProps) {
 
     const [imageUrl, setImageUrl] = useState<string | null>(null); // Stato per l'URL dell'immagine
 
@@ -58,11 +61,16 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
         // Aggiunge il file selezionato al formData
         const formData = new FormData();
         formData.append('image', fileSelected);
+
+        // Ottieni il token JWT salvato nel localStorage
+        const token = localStorage.getItem('authToken');
+
         // Chiama il backend e di conseguenza le API di OPEN AI per analizzare l'immagine
         try {
             const response = await axios.post(`${SERVER_URL}/analyze-image`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`,
                 }
             });
             // Risposta di successo
@@ -88,12 +96,21 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                 // GESTISCI RISPOSTA DELL'ANALISI DELL'IMMAGINE
                 setImageSelected(false);
                 setFileSelected(null);
+
+                // Aggiorna il valore dei crediti
+                setCreditiUpdate(!isCreditiUpdate);
             }
         } catch (error: any) {
-            console.error(`Errore CLIENT: ${error.message}`);
-            toast.error('Errore durante la procedura di carimento della immagine', {
-                onClose: () => setFileSelected(null),
-            });
+            if (error.status === 401) {
+                toast.warn('Crediti insufficienti per procedere', {
+                    onClose: () => setFileSelected(null),
+                });
+            } else {
+                console.error(`Errore CLIENT: ${error.message}`);
+                toast.error('Errore durante la procedura di carimento della immagine', {
+                    onClose: () => setFileSelected(null),
+                });
+            }
         }
     };
 

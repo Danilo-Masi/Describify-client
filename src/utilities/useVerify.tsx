@@ -17,16 +17,41 @@ export const checkAuth = async () => {
     try {
         // Fa la chiamata all'endpoint del server che si occupa di verificare il token
         const response = await axios.get(`${SERVER_URL}/verify-token`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        // Invia una risposta di successo
+        return response.status === 200;
+    } catch (error: any) {
+        // Gestione degli errori
+        console.error("Token non valido o scaduto", error.message);
+        // Rimuovi il token non valido dal localStorage
+        localStorage.removeItem('authToken');
+        return false;
+    }
+};
+
+// Funzione per verificare il numero di crediti disponibili dalla tabella nel DB di Supabase
+export const checkCredits = async () => {
+    try {
+        // Preleva il token dal local storage
+        const token = localStorage.getItem('authToken');
+        // Se non c'è un token, l'utente non è autenticato
+        if (!token) {
+            return null;
+        }
+        // Richiesta all'endpoint presente nel server
+        const response = await axios.get(`${SERVER_URL}/verify-credits`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         });
-        // Se il server risponde con successo, il token è valido
-        return response.status === 200;
+        // Risponde con il numero di crediti disponibili
+        if (response.status === 200) {
+            return response.data.numero_crediti;
+        }
     } catch (error: any) {
-        console.error("Token non valido o scaduto", error.message);
-        // Rimuovi il token se non è valido
-        localStorage.removeItem('authToken');
-        return false;
+        // Gestione degli errori
+        console.error('Errore nel recuperare i crediti', error.stack);
     }
+    return null;
 };

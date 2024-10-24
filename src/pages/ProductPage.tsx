@@ -9,14 +9,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import ProductSideBar from "../components/ProductSideBar";
 import Product from "../components/Product";
 import ModalLogout from "../components/ModalLogout";
-import ModalUsage from "../components/ModalUsage";
 import ModalSettings from "../components/ModalSettings";
 import ModalHelp from "../components/ModalHelp";
 // Utilities
-import { checkAuth } from "../utilities/useVerify";
+import { checkAuth, checkCredits } from "../utilities/useVerify";
 
 const modalComponents: any = {
-    Utilizzo: ModalUsage,
     Impostazioni: ModalSettings,
     Aiuto: ModalHelp,
     Signout: ModalLogout
@@ -42,10 +40,24 @@ export default function ProductPage() {
         verifyUser();
     }, [navigate]);
 
+    // Stato per gestire il valore dei crediti disponibiliF
+    const [creditiDisponibili, setCreditiDisponibili] = useState<null | any>(null);
+    // Stato per aggiornare la ricerca dei crediti
+    const [isCreditiUpdate, setCreditiUpdate] = useState(false);
+
+    // Effetto per recuperare i crediti quando il componente viene montato
+    useEffect(() => {
+        const fetchCrediti = async () => {
+            const crediti = await checkCredits();
+            setCreditiDisponibili(crediti);
+        }
+        fetchCrediti();
+    }, [isCreditiUpdate]);
+
     return (
         <div className="w-full h-auto md:h-screen flex flex-col md:flex-row items-center justify-between p-5 bg-custom-background dark:bg-dark-background">
-            <ProductSideBar pageSelected={pageSelected} setPageSelected={setPageSelected} />
-            <Product />
+            <ProductSideBar pageSelected={pageSelected} setPageSelected={setPageSelected} creditiDisponibili={creditiDisponibili} />
+            <Product isCreditiUpdate={isCreditiUpdate} setCreditiUpdate={setCreditiUpdate} />
             {ModalComponent && <ModalComponent setPageSelected={setPageSelected} />}
             {/* Componente per le notifiche */}
             <ToastContainer autoClose={1000} pauseOnHover={false} />

@@ -1,5 +1,5 @@
 // React
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 // React-tostify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,7 +13,7 @@ import SkeltonPlaceholder from "./SkeltonPlaceholder";
 import ProductTitle from "./ProductTitle";
 import ProductCaption from "./ProductCaption";
 
-export default function Product() {
+export default function Product({ isCreditiUpdate, setCreditiUpdate }: { isCreditiUpdate: boolean, setCreditiUpdate: Dispatch<SetStateAction<boolean>> }) {
 
     const { t } = useTranslation();
 
@@ -45,7 +45,9 @@ export default function Product() {
                             setSelectedCategory={setSelectedCategory}
                             setSelectedBrand={setSelectedBrand}
                             setSelectedSize={setSelectedSize}
-                            setSelectedColor={setSelectedColor} />
+                            setSelectedColor={setSelectedColor}
+                            setCreditiUpdate={setCreditiUpdate}
+                            isCreditiUpdate={isCreditiUpdate} />
                         : <ProductForm
                             selectedCategory={selectedCategory}
                             selectedBrand={selectedBrand}

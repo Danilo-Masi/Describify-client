@@ -32,12 +32,14 @@ export default function App() {
     // Verifica se il banner dei cookie è già stato visualizzato
     if (localStorage.getItem('cookieBanner')) {
       setCookieModalOpen(false);
-      // LogLib analytics
+      // LogLib analytics //ATTIVARE
+      /*
       const script = document.createElement('script');
       script.src = "https://cdn.jsdelivr.net/npm/@loglib/tracker@latest/dist/index.global.js";
       script.setAttribute('data-id', 'describify');
       script.defer = true;
       document.head.appendChild(script);
+      */
     } else {
       setCookieModalOpen(true);
     }

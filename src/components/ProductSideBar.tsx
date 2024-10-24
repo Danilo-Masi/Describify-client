@@ -6,6 +6,11 @@ import { useTranslation } from 'react-i18next';
 import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, IconaLogo, SettingsIcon, SignoutIcon, UsageIcon } from "./SvgComponents";
 import Divider from "./Divider";
 
+// Url del server di produzione
+const SERVER_URL = 'http://localhost:3000';
+// Url del sever di rilascio
+//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
+
 interface ContainerItemProps {
     children: ReactNode;
     id: string;
@@ -27,9 +32,10 @@ const ContainerItem = ({ children, id, pageSelected, setPageSelected }: Containe
 interface SideBarProps {
     pageSelected: string;
     setPageSelected: Dispatch<SetStateAction<string>>;
+    creditiDisponibili: any;
 }
 
-export default function ProductSideBar({ pageSelected, setPageSelected }: SideBarProps) {
+export default function ProductSideBar({ pageSelected, setPageSelected, creditiDisponibili }: SideBarProps) {
 
     const { t } = useTranslation();
 
@@ -61,10 +67,6 @@ export default function ProductSideBar({ pageSelected, setPageSelected }: SideBa
                         <GenerateIcon />
                         <p className="font-medium text-lg">{t('sideBarGenerate')}</p>
                     </ContainerItem>
-                    <ContainerItem id="Utilizzo" pageSelected={pageSelected} setPageSelected={setPageSelected}>
-                        <UsageIcon />
-                        <p className="font-medium text-lg">{t('sideBarUsage')}</p>
-                    </ContainerItem>
                     <ContainerItem id="Impostazioni" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <SettingsIcon />
                         <p className="font-medium text-lg">{t('sideBarSettings')}</p>
@@ -79,7 +81,7 @@ export default function ProductSideBar({ pageSelected, setPageSelected }: SideBa
                         <p className="font-medium text-lg">Log-out</p>
                     </ContainerItem>
                     <div className="w-full h-[30svh] md:h-full flex items-center justify-center rounded-2xl bg-red-500">
-                        grafico
+                        <p>Crediti disponibili: {creditiDisponibili !== null ? creditiDisponibili : 'Caricamento...'}</p>
                     </div>
                 </>
             }
