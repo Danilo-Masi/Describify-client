@@ -8,7 +8,6 @@ import { useLanguage } from '../utilities/useLanguage';
 // Components
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione"
-import PriceRangeSlider from './PriceRangeSlider';
 import PriceCard from './PriceCard';
 
 export default function Prices({ id }: { id: string; }) {
@@ -16,17 +15,15 @@ export default function Prices({ id }: { id: string; }) {
   const { t } = useTranslation();
   const language = useLanguage();
 
-  //Stato per gestire il valore attuale del prezzo in base ai token selezionati
-  const [priceValue, setPriceValue] = useState<number | number[]>(25);
 
-  const priceCard = useRef(null);
+  //const priceCard = useRef(null);
 
-  useEffect(() => {
+  /*useEffect(() => {
     // Reference delle animazioni
     const price1 = priceCard.current || "";
     // Avvio delle animazioni
     fadeInElement(price1, 0.5, 0.0);
-  }, [window.onload]);
+  }, [window.onload]);*/
 
 
   return (
@@ -38,10 +35,12 @@ export default function Prices({ id }: { id: string; }) {
         descriptionValue={t('pricesDescription')}
         titleStyle="text-5xl md:text-6xl"
         descriptionStyle="text-lg" />
-      {/* Price slider */}
-      <PriceRangeSlider reference={priceCard} setPriceValue={setPriceValue} />
       {/* Price card */}
-      <PriceCard priceValue={priceValue} />
+      <div className='w-full md:w-3/4 flex flex-col md:flex-row md:flex-wrap gap-8 md:gap-5'>
+        <PriceCard mdGrandezza='md:w-[calc(32%-0.85rem)]' cardTitle='Basic plan' cardTokenNum='25' cardDescription='Perfetto per chi vuole iniziare a esplorare la piattaforma senza impegno' cardPrice='4.50' cardPriceAfter='3.00' cardButtonText='Acquista 25 token' />
+        <PriceCard mdGrandezza='md:w-[calc(36%-0.80rem)]' cardTitle='Standard plan' cardBadge={true} cardTokenNum='50' cardDescription='Ideale per chi vuole vendere regolarmente e massimizzare i guadagni' cardPrice='8.00' cardPriceAfter='5.00' cardButtonText='Acquista 50 token' />
+        <PriceCard mdGrandezza='md:w-[calc(32%-0.85rem)]' cardTitle='Premium plan' cardTokenNum='150' cardDescription='Il piano perfetto per venditori professionali che vogliono crescere rapidamente' cardPrice='21.00' cardPriceAfter='12.00' cardButtonText='Acquista 150 token' />
+      </div>
     </ContainerComponents>
   );
 }

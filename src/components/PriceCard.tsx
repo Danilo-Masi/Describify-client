@@ -1,41 +1,57 @@
+// React-icons
+import { IoMdTrendingUp } from "react-icons/io";
+// Flowbite-react
+import { Badge } from "flowbite-react";
 // Components
-import Divider from './Divider';
-import { CheckIcon } from './SvgComponents'
-import ActiveButton from './ActiveButton'
+import ActiveButton from './ActiveButton';
 
-export default function PriceCard({ priceValue }: { priceValue: number | number[] }) {
+interface PriceCardProps {
+    mdGrandezza: string;
+    cardTitle: string;
+    cardBadge?: boolean;
+    cardTokenNum: string;
+    cardPrice: string;
+    cardPriceAfter: string;
+    cardDescription: string;
+    cardButtonText: string;
+}
 
-    // Funzione per mostrare il valore del prezzo corrispondente ai token selezionati
-    const calculatePrice = () => {
-        if (priceValue === 25) {
-            return 1.25;
-        } else if (priceValue === 50) {
-            return 2.50;
-        } else if (priceValue === 100) {
-            return 5.00;
-        } else if (priceValue === 200) {
-            return 8.00;
-        } else if (priceValue === 350) {
-            return 14.00;
-        }
-        return "N/A";
-    }
-
+export default function PriceCard({ mdGrandezza, cardTitle, cardBadge, cardTokenNum, cardPrice, cardPriceAfter, cardDescription, cardButtonText }: PriceCardProps) {
     return (
-        <div className='w-full md:w-1/3 flex flex-col items-center gap-y-6 py-8 px-5 rounded-xl border border-custom-borderColor dark:border-dark-borderColor bg-custom-elevation2 dark:bg-dark-elevation2'>
-            <h1 className='font-semibold text-xl text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Pay as you go</h1>
-            <p className='font-bold text-5xl text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>{calculatePrice()}€
-                <span className='font-medium text-lg text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>/one time</span>
-            </p>
-            <Divider />
-            <ul className='w-full flex flex-col gap-y-3 text-md text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
-                <li className='flex items-center gap-x-1'><CheckIcon />opzione 1</li>
-                <li className='flex items-center gap-x-1'><CheckIcon />opzione 2</li>
-                <li className='flex items-center gap-x-1'><CheckIcon />opzione 3</li>
-                <li className='flex items-center gap-x-1'><CheckIcon />opzione 4</li>
-                <li className='flex items-center gap-x-1'><CheckIcon />opzione 5</li>
-            </ul>
-            <ActiveButton text='Ottieni token' buttonStyle='w-full' onClick={() => console.log('DA IMPLEMENTARE')} />
+        <div className={`w-full ${mdGrandezza} flex flex-col items-start justify-start gap-y-6 py-8 px-5 rounded-xl shadow-lg border border-custom-borderColor dark:border-dark-borderColor bg-custom-elevation2 dark:bg-dark-elevation2 hover:shadow-2xl transition-shadow duration-300`}>
+
+            {/* Titolo e Badge */}
+            <div className='w-full flex flex-wrap items-center justify-between gap-y-2'>
+                <h1 className={`${cardBadge ? 'w-fit' : 'w-full'} text-xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray`}>
+                    {cardTitle}
+                </h1>
+                {cardBadge && (
+                    <Badge className="px-3 py-1 text-sm" color="green" icon={IoMdTrendingUp}>
+                        most popular
+                    </Badge>
+                )}
+            </div>
+
+            {/* Numero di token e descrizione */}
+            <p className='text-xl font-semibold text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>{cardTokenNum} token</p>
+            <p className='text-clip text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>{cardDescription}</p>
+
+            {/* Prezzi */}
+            <div className='w-full flex items-center gap-x-3'>
+                <p className='font-bold text-xl text-custom-textSecondaryGray dark:text-dark-textSecondaryGray line-through'>
+                    €{cardPrice}
+                </p>
+                <p className='font-bold text-2xl text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>
+                    €{cardPriceAfter}
+                </p>
+            </div>
+
+            {/* Pulsante Attivo */}
+            <ActiveButton
+                text={cardButtonText}
+                buttonStyle='w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg transition-all duration-300'
+                onClick={() => alert('Acquista 25 token')}
+            />
         </div>
-    )
+    );
 }

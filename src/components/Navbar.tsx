@@ -31,7 +31,7 @@ function JoinWaitllistButton({ setModalWaitlistOpen }: { setModalWaitlistOpen: D
     // Funzione per aprire il popup con il form per l'iscrizione alla waitlist
     // Questo evento viene tracciato tramite LogLib
     const handleOpenWaitlist = () => {
-        loglib.track("click 'iscriviti alla waitlist' navbar");
+        //loglib.track("click 'iscriviti alla waitlist' navbar"); //ATTIVARE
         setModalWaitlistOpen(true);
     }
     return (

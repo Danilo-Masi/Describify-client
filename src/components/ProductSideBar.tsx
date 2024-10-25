@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 // Components
 import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, IconaLogo, SettingsIcon, SignoutIcon, UsageIcon } from "./SvgComponents";
 import Divider from "./Divider";
+import CreditPieChart from "./CreditPieChart";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
@@ -22,7 +23,7 @@ const ContainerItem = ({ children, id, pageSelected, setPageSelected }: Containe
     return (
         <div
             id={id}
-            className={`w-full flex items-center justify-start gap-x-2 cursor-pointer p-3 rounded-lg text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:bg-custom-elevation4 dark:hover:bg-dark-elevation4 ${pageSelected === id && 'bg-custom-elevation4 dark:bg-dark-elevation4'}`}
+            className={`w-full flex items-center justify-start gap-x-2 cursor-pointer p-3 rounded-lg text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:bg-custom-elevation4 dark:hover:bg-dark-elevation4 ${pageSelected === id && 'bg-custom-elevation4 dark:bg-dark-elevation4'} ${id === 'Signout' && 'hover:bg-red-500 dark:hover:bg-red-600'}`}
             onClick={() => setPageSelected(id)}>
             {children}
         </div>
@@ -80,8 +81,8 @@ export default function ProductSideBar({ pageSelected, setPageSelected, creditiD
                         <SignoutIcon />
                         <p className="font-medium text-lg">Log-out</p>
                     </ContainerItem>
-                    <div className="w-full h-[30svh] md:h-full flex items-center justify-center rounded-2xl bg-red-500">
-                        <p>Crediti disponibili: {creditiDisponibili !== null ? creditiDisponibili : 'Caricamento...'}</p>
+                    <div className="w-full h-[30svh] md:h-full flex items-center justify-center">
+                        <CreditPieChart totalCredits={creditiDisponibili !== null ? creditiDisponibili : 0} usedCredits={15} />
                     </div>
                 </>
             }
