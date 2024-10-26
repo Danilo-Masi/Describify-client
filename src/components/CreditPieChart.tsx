@@ -3,17 +3,14 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 interface CreditPieChartProps {
     totalCredits: number;
-    usedCredits: number;
+    availableCredits: number;
 }
 
-export default function CreditPieChart({ totalCredits, usedCredits }: CreditPieChartProps) {
-
-    // Calcola i crediti disponibili
-    const availableCredits = totalCredits - usedCredits;
+export default function CreditPieChart({ totalCredits, availableCredits }: CreditPieChartProps) {
 
     // Dati per il pie chart
     const data = [
-        { name: 'Used', value: usedCredits },
+        { name: 'Total', value: totalCredits },
         { name: 'Available', value: availableCredits }
     ];
 
@@ -21,7 +18,7 @@ export default function CreditPieChart({ totalCredits, usedCredits }: CreditPieC
     const COLORS = ['#CAC1FF', '#8E64FF'];
 
     return (
-        <div className="w-full h-64">
+        <div className="w-full h-3/4">
             <ResponsiveContainer>
                 <PieChart>
                     <Pie
@@ -41,8 +38,8 @@ export default function CreditPieChart({ totalCredits, usedCredits }: CreditPieC
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill='white'
-                        className="text-xl font-bold">
-                        {availableCredits} crediti
+                        className="text-lg font-bold">
+                        {availableCredits} token
                     </text>
                 </PieChart>
             </ResponsiveContainer>

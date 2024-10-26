@@ -30,7 +30,9 @@ interface ProductImageProps {
 
 export default function ProductImage({ fileSelected, setImageSelected, setFileSelected, setSelectedCategory, setSelectedBrand, setSelectedSize, setSelectedColor, setCreditiUpdate, isCreditiUpdate }: ProductImageProps) {
 
-    const [imageUrl, setImageUrl] = useState<string | null>(null); // Stato per l'URL dell'immagine
+    // Stato per impostare l'URL temporaneo dell'immagine
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
+    const [isLoading, setLoading] = useState<boolean>(false);
 
     // Funzione per selezionare il file dal file system
     const handleSelectFile = (e: any) => {
@@ -53,6 +55,8 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
 
     // Funzione che fa la chiamata al backend e da li le API di OPENAI per analizzare l'immagine
     const handleAnalyzeImage = async () => {
+        // Imposta isLoading su true
+        setLoading(true);
         // Controlla che sia stato selezionato un file
         if (!fileSelected) {
             console.error("Nessun file selezionato");
@@ -96,7 +100,6 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                 // GESTISCI RISPOSTA DELL'ANALISI DELL'IMMAGINE
                 setImageSelected(false);
                 setFileSelected(null);
-
                 // Aggiorna il valore dei crediti
                 setCreditiUpdate(!isCreditiUpdate);
             }
@@ -111,6 +114,8 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                     onClose: () => setFileSelected(null),
                 });
             }
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -150,8 +155,8 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                         )}
 
                         <ActiveButton
-                            text="Continua"
-                            buttonStyle="w-full py-3.5"
+                            text={isLoading ? "Sta analizzando" : "Continua"}
+                            buttonStyle={`w-full py-3.5 ${isLoading && 'animate-pulse'}`}
                             onClick={handleAnalyzeImage} />
                     </div>
                 )}

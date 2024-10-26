@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, IconaLogo, SettingsIcon, SignoutIcon, UsageIcon } from "./SvgComponents";
 import Divider from "./Divider";
 import CreditPieChart from "./CreditPieChart";
+import ActiveButton from "./ActiveButton";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
@@ -81,8 +82,9 @@ export default function ProductSideBar({ pageSelected, setPageSelected, creditiD
                         <SignoutIcon />
                         <p className="font-medium text-lg">Log-out</p>
                     </ContainerItem>
-                    <div className="w-full h-[30svh] md:h-full flex items-center justify-center">
-                        <CreditPieChart totalCredits={creditiDisponibili !== null ? creditiDisponibili : 0} usedCredits={15} />
+                    <div className="w-full h-[30svh] md:h-full flex flex-col items-start justify-between rounded-xl p-3 bg-custom-solidColor dark:bg-green-500">
+                        <CreditPieChart totalCredits={150} availableCredits={creditiDisponibili} />
+                        <ActiveButton text="Aggiungi token" buttonStyle="w-full" onClick={() => alert('Acquista nuovi token')} />
                     </div>
                 </>
             }

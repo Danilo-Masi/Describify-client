@@ -54,17 +54,9 @@ export default function FeaturesStep({ justifyPosition, order1, order2, data, co
     return (
         <div className="w-full md:w-3/4 flex flex-col md:flex-row gap-y-10 gap-x-5">
             {/* Features text */}
-            <div className={`w-full md:w-2/3 flex flex-col items-center gap-y-5 text-center ${justifyPosition} ${order1}`}>
-                {sparkling &&
-                    <div className='flex'>
-                        <Sparkling width="100" height="100" />
-                        <Sparkling width="150" height="150" />
-                        <Sparkling width="100" height="100" />
-                    </div>
-                }
+            <div className={`w-full md:w-2/3 flex flex-col items-center justify-center gap-y-5 text-center ${order1}`}>
                 <h1 className="md:max-w-[70%] text-4xl text-balance font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray " ref={titleRef}>{data.title}</h1>
                 <p className="md:max-w-[70%] text-lg text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray " ref={captionRef}>{data.caption}</p>
-                {arrow && arrowComponent}
             </div>
             {/* Components */}
             <div className={`md:w-1/2 flex items-center justify-center ${order2}`} ref={imgRef}>
