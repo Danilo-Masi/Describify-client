@@ -22,15 +22,15 @@ export default function ModalMessage({ onClose, setExploding }: ModalMessageProp
     }
 
     return (
-        <ModalBase size="sm" modalTitle="Benvenuto in Describify" onClose={onClose}>
+        <ModalBase size="md" modalTitle="Benvenuto in Describify" onClose={onClose}>
             <div className="flex flex-col justify-center items-center gap-y-5 text-center">
-                <h1 className="text-4xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-                    {t('modalMessageTitle')} &#127881;
+                <h1 className="text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+                    Benvenuto nella community di Describify! 🎉
                 </h1>
                 <p className="text-lg font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
-                    {t('modalMessageContent')}
+                    Grazie per esserti unito alla nostra waitlist! Sarai tra i primi a sapere quando la piattaforma sarà pronta e riceverai un accesso prioritario a un prezzo esclusivo.
                 </p>
-                <ActiveButton text={t('modalMessageButton')} onClick={handleClick} />
+                <ActiveButton text="Perfetto, grazie!" onClick={handleClick} />
             </div>
         </ModalBase>
     );

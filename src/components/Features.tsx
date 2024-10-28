@@ -7,9 +7,6 @@ import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione";
 import FeaturesStep from "./FeaturesStep";
 import CardPrototype from './CardPrototype';
-// Data
-import { featuresDetailsIt1, featuresDetailsIt2, featuresDetailsIt3, featuresDetailsIt4 } from '../data/features_details_it';
-import { featuresDetailsEn1, featuresDetailsEn2, featuresDetailsEn3, featuresDetailsEn4 } from '../data/features_details_en';
 //Assets
 import uploadScreen from '../assets/images/upload_screen.png';
 import formScreen from '../assets/images/form_screen.png';
@@ -21,36 +18,35 @@ export default function Features({ id }: { id: string; }) {
   const language = useLanguage();
 
   return (
-      <ContainerComponents id={id}>
-        <Intestazione
-          badgeValue={t('featuresBadge').toUpperCase()}
-          titleValue={t('featuresTitle')}
-          descriptionValue={t('featuresDescription')}
-          titleStyle="text-5xl md:text-6xl"
-          descriptionStyle="text-lg" />
-        <div className="flex flex-col items-center gap-y-20 md:gap-y-32 mt-10">
-          <FeaturesStep
-            data={language === 'it' ? featuresDetailsIt1 : featuresDetailsEn1}
-            justifyPosition='justify-start'
-            component={<div className='w-full rounded-xl object-cover'><img src={uploadScreen} className='rounded-xl' /></div>}
-            arrow={true} />
-          <FeaturesStep
-            data={language === 'it' ? featuresDetailsIt2 : featuresDetailsEn2}
-            justifyPosition='justify-center'
-            component={<div className='w-full rounded-xl object-cover'><img src={formScreen} className='rounded-xl' /></div>}
-            order1="md:order-2"
-            order2="md:order-1" />
-          <FeaturesStep
-            data={language === 'it' ? featuresDetailsIt3 : featuresDetailsEn3}
-            justifyPosition='justify-center'
-            component={<div className='w-full rounded-xl object-cover'><img src={generatedScreen} className='rounded-xl' /></div>} />
-          <FeaturesStep
-            data={language === 'it' ? featuresDetailsIt4 : featuresDetailsEn4}
-            justifyPosition='justify-start' component={<CardPrototype />}
-            sparkling={true}
-            order1="md:order-2"
-            order2="md:order-1" />
-        </div>
-      </ContainerComponents>
+    <div className="w-[90%] h-auto flex flex-col items-center justify-start py-16 gap-y-5" id={id}>
+      <Intestazione
+        badgeValue={t('featuresBadge').toUpperCase()}
+        titleValue="Risparmia tempo e aumenta le vendite"
+        descriptionValue="Describify crea per te annunci ottimizzati, così puoi concentrarti su ciò che conta davvero: vendere di più"
+        titleStyle="text-5xl md:text-6xl"
+        descriptionStyle="text-lg" />
+      <div className="flex flex-col items-center gap-y-20 md:gap-y-32 mt-10">
+        <FeaturesStep
+          title="Carica l'immagine del tuo prodotto"
+          description="Scegli un’immagine chiara e dettagliata per risultati ottimali"
+          component={<div className='w-full rounded-xl object-cover'><img src={uploadScreen} className='rounded-xl' /></div>} />
+        <FeaturesStep
+          order1="md:order-2"
+          order2="md:order-1"
+          title="Dettagli generati in automatico"
+          description="Descrify riconosce e compila automaticamente i dettagli del tuo prodotto, sempre modificabili per una personalizzazione completa"
+          component={<div className='w-full rounded-xl object-cover'><img src={formScreen} className='rounded-xl' /></div>} />
+        <FeaturesStep
+          title="Annuncio pronto in pochi secondi"
+          description="Descrify ha creato l’annuncio per te in un istante, risparmiandoti tempo e fatica"
+          component={<div className='w-full rounded-xl object-cover'><img src={generatedScreen} className='rounded-xl' /></div>} />
+        <FeaturesStep
+          order1="md:order-2"
+          order2="md:order-1"
+          title="Vendi ed gudagna"
+          description="Carica l’annuncio sulla tua piattaforma di vendita preferita e inizia subito a incassare"
+          component={<CardPrototype />} />
+      </div>
+    </div>
   );
 }

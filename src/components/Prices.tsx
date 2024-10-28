@@ -1,21 +1,20 @@
 // React
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 // I18Next
 import { useTranslation } from 'react-i18next';
 // Utilities
 import { fadeInElement } from '../utilities/useAnimations';
 import { useLanguage } from '../utilities/useLanguage';
 // Components
+import GridBackground from './GridBackground';
 import { ContainerComponents } from "./Layout";
 import Intestazione from "./Intestazione"
 import PriceCard from './PriceCard';
-import GridBackground from './GridBackground';
 
 export default function Prices({ id }: { id: string; }) {
 
   const { t } = useTranslation();
   const language = useLanguage();
-
 
   //const priceCard = useRef(null);
 
@@ -26,15 +25,14 @@ export default function Prices({ id }: { id: string; }) {
     fadeInElement(price1, 0.5, 0.0);
   }, [window.onload]);*/
 
-
   return (
     <GridBackground id={id}>
       <ContainerComponents id={id}>
         {/* Intestazione */}
         <Intestazione
           badgeValue={t('pricesBadge').toUpperCase()}
-          titleValue={t('pricesTitle')}
-          descriptionValue={t('pricesDescription')}
+          titleValue="Paghi solo per ciò che usi"
+          descriptionValue="Nessuna scadenza, nessun abbonamento mensile o annuale, acquista direttamente il pacchetto con il numero di crediti che ti servono"
           titleStyle="text-5xl md:text-6xl"
           descriptionStyle="text-lg" />
         {/* Price card */}

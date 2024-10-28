@@ -2,8 +2,10 @@
 import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 // I18Next
 import { useTranslation } from 'react-i18next';
+// Assets
+import logo from '../assets/images/logo.svg';
 // Components
-import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, IconaLogo, SettingsIcon, SignoutIcon, UsageIcon } from "./SvgComponents";
+import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, SettingsIcon, SignoutIcon } from "./SvgComponents";
 import Divider from "./Divider";
 import CreditPieChart from "./CreditPieChart";
 import ActiveButton from "./ActiveButton";
@@ -49,8 +51,8 @@ export default function ProductSideBar({ pageSelected, setPageSelected, creditiD
             {/* Logo/Bottone apertura */}
             <div className={`w-full flex items-center justify-between md:justify-start gap-x-2 ${isSideBarOpen || window.innerWidth > 728 && 'mb-5'}`}>
                 <div className="flex items-center justify-center gap-x-2">
-                    <IconaLogo width="40" height="40" />
-                    <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>
+                    <img src={logo} className="w-full h-10" />
+                    <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>
                 </div>
                 {
                     window.innerWidth < 728 &&

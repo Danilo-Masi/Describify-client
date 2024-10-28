@@ -1,6 +1,6 @@
 import { Html, Body, Container, Heading, Text, Section, Img, Link } from "@react-email/components";
 // Images
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/logo.svg';
 
 export default function EmailWaitlist() {
     return (

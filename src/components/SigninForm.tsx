@@ -11,9 +11,11 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 // Utilities
 import { useEmail } from "../utilities/useEmail.tsx";
+// Assets
+import logo from '../assets/images/logo.svg';
 // Components
 import { ContainerInput } from "../components/Layout";
-import { IconaLogo, NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
+import { NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
@@ -130,10 +132,10 @@ export default function SigninForm() {
                 onSubmit={handleSignin}
                 className="w-full md:w-1/2 h-auto min-h-[90svh] flex flex-col gap-5 items-center justify-center px-6 md:px-32">
                 {/* Intestazione */}
-                <ContainerInput containerStyle="w-full flex flex-col gap-y-3 mb-5">
-                    <div className="w-full flex items-center justify-center gap-x-2">
-                        <IconaLogo width="30" height="30" />
-                        <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>
+                <ContainerInput containerStyle="w-full flex flex-col items-center gap-y-3 mb-5">
+                    <div className='flex items-center gap-x-2'>
+                        <img src={logo} className="w-full h-10" />
+                        <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>
                     </div>
                     <h1 className="text-5xl text-center font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signinWelcome')}</h1>
                 </ContainerInput>
@@ -191,7 +193,7 @@ export default function SigninForm() {
                 </ContainerInput>
             </form>
             {/* Componente per le notifiche */}
-            <ToastContainer autoClose={1000}/>
+            <ToastContainer autoClose={1000} />
         </>
     );
 }

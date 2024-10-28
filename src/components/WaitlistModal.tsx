@@ -1,23 +1,25 @@
-// Flowbite-react
-import { Modal, ModalHeader } from "flowbite-react";
 // I18Next
 import { useTranslation } from 'react-i18next';
 // Components
-import WaitlistGadget from "./WaitlistGadget";
 import ModalBase from "./ModalBase";
+import WaitlistGadget from "./WaitlistGadget";
 
 export default function WaitlistModal({ onClose }: { onClose: () => void; }) {
 
     const { t } = useTranslation();
 
     return (
-        <ModalBase size="md" modalTitle="Iscriviti alla waitlist" onClose={onClose}>
-            <div className="flex items-center justify-center flex-wrap gap-y-7 font-inter">
-                <h1 className="text-4xl text-balance text-center font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-                    &#128640; Siamo quasi pronti...
+        <ModalBase size="lg" modalTitle="Iscriviti alla waitlist" onClose={onClose}>
+            <div className="flex items-center justify-center flex-wrap gap-y-7">
+                <h1 className=" font-bold text-4xl text-balance text-center text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+                    🚀 Preparati a partire con noi!
                 </h1>
-                <p className="text-custom-textSecondaryGray dark:text-dark-textSecondaryGray text-balance text-center font-light">
-                    Se ti iscrivi ADESSO alla waitlist avrai la possibilità di essere tra i primi ad accedere alla piattaforma e ad avere un prezzo ribassato!!
+                <p className="font-light text-center text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+                    Entra nella nostra waitlist oggi stesso e assicurati l'accesso anticipato alla piattaforma.
+                </p>
+                <p className="font-light text-center text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+                    <strong className='font-semibold'> Gli iscritti alla waitlist avranno accesso esclusivo</strong> alle nostre funzionalità iniziali e potranno godere di un
+                    <strong className='font-semibold'> prezzo speciale riservato!</strong>
                 </p>
                 <WaitlistGadget mdWidth="w-full" />
             </div>

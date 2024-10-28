@@ -1,35 +1,39 @@
 // React
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 // React-router
 import { Link } from "react-router-dom";
 // Utilities
 import { scrollToElement } from '../utilities/useAnimations.tsx';
-// Components
-import { IconaLogo } from "./SvgComponents.tsx";
+// Assets
+import logo from '../assets/images/logo.svg';
 
-interface LogoProps {
-    width: string;
-    height: string;
-}
+export default function Logo() {
 
-export default function Logo({ width, height }: LogoProps) {
+    const [isVisible, setVisible] = useState(false);
 
-    const [isVisible, setVisible] = useState(window.innerWidth > 728);
-
-    const handleResize = () => {
-        setVisible(window.innerWidth > 728);
-    }
+    const handleResize = useCallback((e: any) => {
+        setVisible(e.matches);
+    }, []);
 
     useEffect(() => {
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    });
+        const mediaQuery = window.matchMedia("(min-width: 728px)");
+        setVisible(mediaQuery.matches);
+
+        mediaQuery.addEventListener('change', handleResize);
+        return () => mediaQuery.removeEventListener('change', handleResize);
+    }, [handleResize]);
 
     return (
-        <div className="md:w-1/4 p-y-10">
-            <Link to="/" onClick={() => scrollToElement("#Home")} aria-label="link logo home" className="flex items-center gap-x-3">
-                <IconaLogo width={width} height={height} />
-                {isVisible && <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>}
+        <div className="md:w-1/4 py-10">
+            <Link to="/" onClick={() => scrollToElement("#Home")} aria-label="Home page di Describify" className="flex items-center gap-x-3">
+                <div className='flex items-center gap-x-2'>
+                    <img src={logo} alt="Describify Logo" className="w-14 h-12 md:w-10 md:h-10" />
+                    {isVisible && (
+                        <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>
+                            Describify
+                        </h2>
+                    )}
+                </div>
             </Link>
         </div>
     );

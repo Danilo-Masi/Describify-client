@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 // Utilities
 import { scrollToElement } from '../utilities/useAnimations';
+// Assets
+import logo from '../assets/images/logo.svg';
 // Components
 import { FooterCol } from './Layout';
-import { IconaLogo } from './SvgComponents';
 
 export default function Footer() {
 
@@ -17,12 +18,12 @@ export default function Footer() {
             <div className="w-[90%] h-auto flex-wrap flex flex-col md:flex-row items-start justify-start gap-y-10 py-20">
                 {/* Logo e info */}
                 <FooterCol mdItemsPosition='md:items-start'>
-                    <div className='flex gap-x-2'>
-                        <IconaLogo width='30' height='30' />
+                    <div className='flex items-center gap-x-2'>
+                        <img src={logo} className="w-full h-10"/>
                         <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>
                     </div>
                     <p className='text-md font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
-                        Less stress, more sales.
+                        Crea gli annunci per i tuoi articoli di seconda mano in maniera veloce e semplice con Describify
                     </p>
                     <p className='text-md font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
                         Made with &#9749; and &#127829; by
@@ -46,7 +47,7 @@ export default function Footer() {
                 </FooterCol>
                 {/* Link termini e condizioni */}
                 <FooterCol>
-                    <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">{t('footerTerms')}</p>
+                    <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">Terms & Conditions</p>
                     <Link to="/terms-and-conditions" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Terms & Conditions</Link>
                     <Link to="/privacy-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Privacy policy</Link>
                     <Link to="/cookie-policy" className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" onClick={() => scrollToElement("Start")}>Cookies policy</Link>

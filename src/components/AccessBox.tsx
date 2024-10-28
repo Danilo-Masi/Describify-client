@@ -1,7 +1,7 @@
 // I18next
 import { useTranslation } from 'react-i18next';
-// Components
-import { IconaLogo } from './SvgComponents';
+// Assets
+import logo from '../assets/images/logo.svg';
 
 export default function AccessBox() {
 
@@ -10,9 +10,9 @@ export default function AccessBox() {
     return (
         <div className="w-full md:w-1/2 h-auto md:h-full flex flex-col items-start justify-center gap-y-5 px-6 md:px-20 py-10 md:py-0 bg-[#6D44CE]">
             {/* Logo */}
-            <div className="w-full flex items-start justify-start gap-x-2">
-                <IconaLogo width="30" height="30" />
-                <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">Describify</h1>
+            <div className='flex items-center gap-x-2'>
+                <img src={logo} className="w-full h-10" />
+                <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>
             </div>
             {/* Blocco immagini */}
             <div className="flex relative">

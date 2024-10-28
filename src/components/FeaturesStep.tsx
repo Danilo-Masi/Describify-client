@@ -1,32 +1,21 @@
 // React
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 // Utilities
 import { fadeInElement } from '../utilities/useAnimations';
-// Components
-import { Sparkling, ArrowDown, ArrowRight } from './SvgComponents';
-
-interface DataFeaturesProps {
-    title: string;
-    caption: string;
-}
 
 interface FeaturesStepProps {
-    justifyPosition: string;
     order1?: string;
     order2?: string;
-    data: DataFeaturesProps;
+    title: string;
+    description: string;
     component: ReactNode;
-    arrow?: boolean;
-    sparkling?: boolean;
 }
 
-export default function FeaturesStep({ justifyPosition, order1, order2, data, component, arrow, sparkling }: FeaturesStepProps) {
+export default function FeaturesStep({ order1, order2, title, description, component }: FeaturesStepProps) {
 
     const titleRef = useRef(null);
     const captionRef = useRef(null);
     const imgRef = useRef(null);
-
-    const [arrowComponent, setArrowComponent] = useState<any>();
 
     useEffect(() => {
         // Reference delle animazioni
@@ -39,26 +28,18 @@ export default function FeaturesStep({ justifyPosition, order1, order2, data, co
         fadeInElement(image, 0.5, 1.0);
     }, []);
 
-    // Funzione per modificare l'SVG corrente
-    const handleResize = () => {
-        const windowSize = window.innerWidth;
-        setArrowComponent(windowSize > 728 ? <ArrowRight width="150" height="150" /> : <ArrowDown width="100" height="100" />);
-    };
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize);
-        handleResize();
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
     return (
         <div className="w-full md:w-3/4 flex flex-col md:flex-row gap-y-10 gap-x-5">
-            {/* Features text */}
+            {/* Features titolo e descrizione */}
             <div className={`w-full md:w-2/3 flex flex-col items-center justify-center gap-y-5 text-center ${order1}`}>
-                <h1 className="md:max-w-[70%] text-4xl text-balance font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray " ref={titleRef}>{data.title}</h1>
-                <p className="md:max-w-[70%] text-lg text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray " ref={captionRef}>{data.caption}</p>
+                <h1 className="md:max-w-[70%] text-4xl text-balance font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray " ref={titleRef}>
+                    {title}
+                </h1>
+                <p className="md:max-w-[70%] text-lg text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray " ref={captionRef}>
+                    {description}
+                </p>
             </div>
-            {/* Components */}
+            {/* Features immagine */}
             <div className={`md:w-1/2 flex items-center justify-center ${order2}`} ref={imgRef}>
                 {component}
             </div>
