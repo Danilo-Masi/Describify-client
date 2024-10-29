@@ -6,31 +6,27 @@ import { useTranslation } from 'react-i18next';
 import ActiveButton from "./ActiveButton";
 import ModalBase from "./ModalBase";
 
-interface ModalMessageProps {
-    onClose: () => void;
-    setExploding: Dispatch<SetStateAction<boolean>>;
-}
+export default function ModalMessage({ onClose, setExploding }: { onClose: () => void, setExploding: Dispatch<SetStateAction<boolean>> }) {
 
-export default function ModalMessage({ onClose, setExploding }: ModalMessageProps) {
-
+    // Compoonente per la traduzione
     const { t } = useTranslation();
 
-    // Funzione per attivare i coriandoli e chiudere il modal
-    const handleClick = () => {
+    // Funzione per chiudere il modal e far partire i coriandoli
+    const handleCloseMessage = () => {
         setExploding(true);
         onClose();
     }
 
     return (
-        <ModalBase size="md" modalTitle="Benvenuto in Describify" onClose={onClose}>
+        <ModalBase size="md" modalTitle={t('modalMessageTitoloModal')} onClose={onClose}>
             <div className="flex flex-col justify-center items-center gap-y-5 text-center">
-                <h1 className="text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-                    Benvenuto nella community di Describify! 🎉
+                <h1 className="text-2xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+                    {t('modalMessageTitolo')} 🎉
                 </h1>
-                <p className="text-lg font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
-                    Grazie per esserti unito alla nostra waitlist! Sarai tra i primi a sapere quando la piattaforma sarà pronta e riceverai un accesso prioritario a un prezzo esclusivo.
+                <p className="text-lg text-balance text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+                    {t('modalMessageDescrizione')}
                 </p>
-                <ActiveButton text="Perfetto, grazie!" onClick={handleClick} />
+                <ActiveButton text={t('modalMessageBottone')} onClick={handleCloseMessage} />
             </div>
         </ModalBase>
     );

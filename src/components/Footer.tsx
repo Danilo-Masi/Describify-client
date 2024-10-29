@@ -11,6 +11,7 @@ import { FooterCol } from './Layout';
 
 export default function Footer() {
 
+    // Componente per la traduzione
     const { t } = useTranslation();
 
     return (
@@ -19,11 +20,11 @@ export default function Footer() {
                 {/* Logo e info */}
                 <FooterCol mdItemsPosition='md:items-start'>
                     <div className='flex items-center gap-x-2'>
-                        <img src={logo} className="w-full h-10"/>
+                        <img src={logo} className="w-full h-10" />
                         <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>
                     </div>
-                    <p className='text-md font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
-                        Crea gli annunci per i tuoi articoli di seconda mano in maniera veloce e semplice con Describify
+                    <p className='text-md font-light text-center md:text-left text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
+                        {t('footerDescrizione')}
                     </p>
                     <p className='text-md font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
                         Made with &#9749; and &#127829; by
@@ -33,9 +34,9 @@ export default function Footer() {
                 {/* Link di navigazione della pagina */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">Link</p>
-                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Home")}>Home</Link>
-                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Features")}>{t('linkFeatures')}</Link>
-                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Prices")}>{t('linkPrices')}</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Home")}>{t('linkHome')}</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Features")}>{t('linkFunzionalità')}</Link>
+                    <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Prices")}>{t('linkPrezzi')}</Link>
                     <Link to="/" className={`text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-solidColor dark:hover:text-dark-solidColor font-light cursor-pointer`} onClick={() => scrollToElement("#Faqs")}>Faqs</Link>
                 </FooterCol>
                 {/* Link social media */}

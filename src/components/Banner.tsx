@@ -1,7 +1,13 @@
 // React
 import { Dispatch, SetStateAction } from "react";
+// I18next
+import { useTranslation } from 'react-i18next';
 
 export default function Banner({ isBannerVisible, setBannerVisible }: { isBannerVisible: boolean, setBannerVisible: Dispatch<SetStateAction<boolean>> }) {
+
+    // Componente per la traduzione
+    const { t } = useTranslation();
+
     return (
         <div className={`w-full h-[10svh] md:h-[7svh] fixed top-0 start-0 z-50 flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 ${!isBannerVisible && 'hidden'}`}>
             {/* Testo banner */}
@@ -13,7 +19,7 @@ export default function Banner({ isBannerVisible, setBannerVisible }: { isBanner
                         </svg>
                         <span className="sr-only">Light bulb</span>
                     </span>
-                    <span>Describify è in versione beta. Iscriviti per ottenere un prezzo ribassato!</span>
+                    <span>{t('bannerTesto')}</span>
                 </p>
             </div>
             {/* Bottone chiusura banner */}

@@ -11,13 +11,14 @@ import heroVideo from '../assets/images/hero_video.mp4';
 
 export default function Hero({ id }: { id: string; }) {
 
+    // Componente per la traduzione
     const { t } = useTranslation();
 
     return (
         <GridBackground id={id}>
             <Intestazione
-                titleValue="Meno stress Più vendite"
-                descriptionValue="Velocizza la creazione di annunci e incrementa le tue vendite su Vinted, Ebay, Subito e Wallapop"
+                titleValue={t('heroTitolo')}
+                descriptionValue={t('heroDescrizione')}
                 titleStyle="text-6xl md:text-8xl tracking-tighter"
                 descriptionStyle="text-lg md:text-xl" />
             <WaitlistGadget />

@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 // Funzione per lo scrolling ad una determinata posizione della pagina
 export const scrollToElement = (elementId: string) => {
-    gsap.to(window, { duration: 1, scrollTo: { y: elementId, offsetY: 50 } });
+    gsap.to(window, { duration: 1, scrollTo: { y: elementId, offsetY: 75 } });
 }
 
 // Animazione di dissolvenza con effetto apparizione

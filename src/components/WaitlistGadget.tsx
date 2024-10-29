@@ -22,13 +22,9 @@ const SERVER_URL = 'http://localhost:3000';
 // Url del server di rilascio
 //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
-interface WaitlistGadgetProps {
-    mdWidth?: string;
-    buttonColor?: string;
-}
+export default function WaitlistGadget({ buttonColor, mdWidth }: { buttonColor?: string, mdWidth?: string }) {
 
-export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetProps) {
-
+    //Componente per la traduzione
     const { t } = useTranslation();
 
     const [emailInput, setEmailInput] = useState<string>(""); //Valore dell'email inserita dall'utente
@@ -37,8 +33,10 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
     const [isEmailSend, setEmailSend] = useState<boolean>(false); //Imposta in stato di inviato
     const [isExploding, setExploding] = useState<boolean>(false); //Attiva l'animazione dei coriandoli
 
+    // Convenerte il file React/Html in string
     const htmlString = renderToString(<EmailWaitlist />);
 
+    // Funzione per inviare email di benvenuto tramite le API di Resend
     const sendWaitlistEmail = async () => {
         try {
             const response = await axios.post(`${SERVER_URL}/send-email`, {
@@ -66,39 +64,37 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
             try {
                 const response = await axios.post(`${SERVER_URL}/signup-to-waitlist`, { email: emailInput });
                 if (response.status === 200) {
-                    const language = localStorage.getItem('i18nextLng') || 'it';
                     const emailSent = await sendWaitlistEmail();
                     if (emailSent) {
                         setEmailLoading(false);
                         setEmailInput("");
                         setEmailSend(true);
                     } else {
-                        setEmailLoading(false);
-                        setEmailInput("");
-                        // Errore nell'invio dell'email
-                        console.error("Iscrizione alla waitlist effettuata, invio email non andato a buon fine");
-                        toast.error(t('emailErrorSend'));
+                        toast.warn(t('erroreInvioEmailWaitlist'));
+                        console.error("CLIENT: Iscrizione alla waitlist effettuata, invio email non andato a buon fine");
+                        handleErrorWaitlist();
                     }
                 } else {
-                    setEmailLoading(false);
-                    setEmailInput("");
-                    // Errore nell'iscrizione alla waitlist
-                    console.error("Errore durante l'iscrizione alla waitlist");
-                    toast.error(t('emailErrorWaitlist'));
+                    toast.error(t('erroreIscrizioneWaitlist'));
+                    console.error("CLIENT: Errore durante l'iscrizione alla waitlist");
+                    handleErrorWaitlist();
                 }
-            } catch (error) {
-                setEmailLoading(false);
-                setEmailInput("");
-                // Errore "imprevisto" nell'iscrizione alla waitlist
-                console.error("Errore imprevisto durante l'iscrizione alla waitlist", error);
-                toast.error(t('emailErrorWaitlist'));
+            } catch (error: any) {
+                toast.error(t('erroreImprevistoWaitlist'));
+                console.error("CLIENT: Errore imprevisto durante l'iscrizione alla waitlist", error.message);
+                handleErrorWaitlist();
             }
         } else {
-            // Email digitata male
-            setErrorInput(t('emailErrorDigit'));
+            setErrorInput(t('erroreInputWaitlist'));
             setEmailLoading(false);
         }
     };
+
+    // Funzione per gestire gli stati in caso di errore
+    const handleErrorWaitlist = () => {
+        setEmailLoading(false);
+        setEmailInput("");
+    }
 
     return (
         <>
@@ -124,14 +120,14 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB" />
                             <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor" />
                         </svg>
-                        Loading...
+                        {t('bottoneCaricamentoWaitlist')}
                     </button>
                 ) : (
                     <button
                         onClick={submitWaitlist}
                         type="submit"
                         className={`w-full md:w-min py-3 px-5 md:ms-2 text-sm font-semibold text-dark-textPrimaryGray rounded-lg border ${buttonColor ? buttonColor : 'bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor border-0'}`}>
-                        {t('buttonSubscribe')}
+                        {t('bottoneIscriviWaitlist')}
                     </button>
                 )}
                 {/* Modal message */}
@@ -140,7 +136,7 @@ export default function WaitlistGadget({ buttonColor, mdWidth }: WaitlistGadgetP
                 {isExploding && <ConfettiExplosion zIndex={100} force={0.8} duration={3000} particleCount={250} onComplete={() => setExploding(false)} />}
             </form >
             {/* Componente per le notifiche */}
-            <ToastContainer position="top-left" />
+            <ToastContainer autoClose={1500} />
         </>
     );
 }

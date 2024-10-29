@@ -1,35 +1,35 @@
 export const questions_en = [
     {
-        title: "What is Descrify?",
-        content: "Descrify is an AI-powered service that generates effective and personalized descriptions for your products. This can help you improve sales on platforms like Ebay, Vinted, Subito, and many others."
+        title: "What is Describify?",
+        content: "Describify is an AI-based service that creates effective and personalized listings for your products, helping you increase sales on platforms like Vinted, eBay, Subito, Wallapop, and many others."
     },
     {
-        title: "Why use Descrify?",
-        content: "With just a few clicks, Descrify allows you to create effective descriptions for your products, saving you time to focus on what matters most to you."
+        title: "Why should I use Describify?",
+        content: "With just a few clicks, you can generate an optimized listing for the main sales platforms, saving time and avoiding the hassle of manual creation."
     },
     {
-        title: "How much is a token worth?",
-        content: "One token corresponds to a single generated description."
+        title: "What does a token represent?",
+        content: "A token corresponds to a single listing generation."
     },
     {
-        title: "Are tokens consumed if generation fails?",
-        content: "If description generation fails due to a network or platform error, no tokens will be consumed."
+        title: "Are tokens consumed if a generation error occurs?",
+        content: "No, if the listing generation fails due to a network or platform issue, the token will not be deducted from your account."
     },
     {
         title: "Can I cancel my subscription?",
-        content: "You can cancel your subscription at any time. If you still have tokens available, they will remain usable until the end of the subscription period, at no additional cost."
+        content: "Describify does not offer monthly or annual subscriptions. You can purchase token packages to use whenever you like."
     },
     {
-        title: "Can I upgrade my subscription?",
-        content: "Absolutely. You can upgrade your subscription at any time. The upgrade will be effective at the next monthly renewal."
+        title: "Can I purchase more tokens if I still have some available?",
+        content: "Absolutely! You can purchase additional tokens, and they will be added to those already in your account."
     },
     {
         title: "How can I report an invalid description?",
-        content: "In the generated description box, you will find a button with a question mark. Clicking it will open a form where you can report the issue to us."
+        content: "In the sidebar, you’ll find a Help section where you can report any issues. We’ll respond via email as soon as possible."
     },
     {
         title: "How can I contact you?",
-        content: "You will find all our social channels and the company email address in the footer at the bottom, where you can contact us directly."
+        content: "You can find all our social channels in the footer, or contact us via email at info@describify.it."
     }
 ]
 

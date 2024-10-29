@@ -13,9 +13,9 @@ export default function Faqs({ id }: { id: string; }) {
     <ContainerComponents id={id}>
       {/* Intestazione */}
       <Intestazione
-        badgeValue="FAQs"
-        titleValue={t('faqsTitle')}
-        descriptionValue={t('faqsDescription')}
+        badgeValue={t('faqsBadge')}
+        titleValue={t('faqsTitolo')}
+        descriptionValue={t('faqsDescrizione')}
         titleStyle="text-5xl md:text-6xl"
         descriptionStyle="text-lg" />
       {/* Faqs box */}

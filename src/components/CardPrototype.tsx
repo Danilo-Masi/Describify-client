@@ -16,14 +16,14 @@ export default function CardPrototype() {
                 <p className='font-bold text-xl text-custom-textSecondaryGray dark:text-dark-textSecondaryGray line-through'>30,00 €</p>
                 <p className='font-bold text-3xl text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>28,50 €</p>
             </div>
-            <p className='font-medium text-lg text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>{t('cardTitle')}</p>
-            <p className='font-light text-md text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>{t('cardCaption')}</p>
+            <p className='font-medium text-lg text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>{t('componenteVenditaTitolo')}</p>
+            <p className='font-light text-md text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>{t('componenteVenditaDescrizione')}</p>
             <button
                 name="button"
                 type="button"
                 disabled
                 className="w-full rounded-lg px-5 py-2.5 text-sm font-semibold text-dark-textPrimaryGray bg-green-500 hover:bg-green-700" >
-                {t('cardButton').toUpperCase()}
+                {t('componenteVenditaBottone').toUpperCase()}
             </button>
         </div>
     );
