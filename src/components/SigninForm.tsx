@@ -2,6 +2,8 @@
 import { useCallback, useState } from "react";
 // React router
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+// React-icon
+import { RiSparkling2Line } from "react-icons/ri";
 // React-tostify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +31,9 @@ interface SigninFormState {
 
 export default function SigninForm() {
 
+    // Componente per la traduzione
     const { t } = useTranslation();
+    // Componente per la navigazione dei link
     const navigate: NavigateFunction = useNavigate();
 
     const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
@@ -47,7 +51,7 @@ export default function SigninForm() {
     // Fnzione per validare l'email inserita dall'utente
     const validateEmail = (email: string) => {
         if (email === "" || !useEmail(email)) {
-            return 'Inserire un email valida prima di procedere';
+            return t('signinErroreEmail');
         }
         return '';
     }
@@ -55,9 +59,9 @@ export default function SigninForm() {
     // Funzione per validare la password inserita dall'utente
     const validatePassword = (password: string) => {
         if (password === "") {
-            return 'Inserire una password valida prima di procedere';
+            return t('signinErrorePassword');
         } else if (password.length < 6) {
-            return 'La password deve contenere almeno 6 caratteri';
+            return t('signinErrorePasswordLunghezza');
         }
         return '';
     };
@@ -85,23 +89,23 @@ export default function SigninForm() {
         if (error.response) {
             switch (error.response.status) {
                 case 401:
-                    toast.error("Credenziali errate");
+                    toast.error(t('signinErroreCredenziali'));
                     break;
                 case 404:
-                    toast.error("Server non trovato");
+                    toast.error(t('signinErroreServer'));
                     break;
                 default:
-                    toast.error("Errore durante la fase di login, riprova più tardi");
+                    toast.error(t('signinErroreGenerico'));
             }
         } else {
-            toast.error("Errore di connessione");
+            toast.error(t('signinErroreRete'));
         }
     }, [navigate]);
 
     // Funzione per gestire il successo della fase di accesso
     const handleSuccess = useCallback((token: string) => {
         localStorage.setItem('authToken', token);
-        toast.success('Login effettuato correttamente', {
+        toast.success(t('signinVerificato'), {
             onClose: () => navigate('/product'),
         });
     }, [navigate]);
@@ -133,11 +137,9 @@ export default function SigninForm() {
                 className="w-full md:w-1/2 h-auto min-h-[90svh] flex flex-col gap-5 items-center justify-center px-6 md:px-32">
                 {/* Intestazione */}
                 <ContainerInput containerStyle="w-full flex flex-col items-center gap-y-3 mb-5">
-                    <div className='flex items-center gap-x-2'>
-                        <img src={logo} className="w-full h-10" />
-                        <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>
-                    </div>
-                    <h1 className="text-5xl text-center font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signinWelcome')}</h1>
+                    <h1 className="text-center text-2xl md:text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+                        {t('signinMessaggioBenvenuto')}
+                    </h1>
                 </ContainerInput>
                 {/* Campo email */}
                 <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
@@ -179,7 +181,7 @@ export default function SigninForm() {
                     <button
                         type="submit"
                         className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
-                        {t('signinButton')}
+                        {t('signinBottone')}
                     </button>
                 </ContainerInput>
                 {/* Link redirect */}

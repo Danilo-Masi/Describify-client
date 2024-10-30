@@ -6,7 +6,7 @@ import { Button, Tooltip, Badge } from "flowbite-react";
 import { useTranslation } from 'react-i18next';
 
 interface PriceCardProps {
-    reference: any;
+    reference: React.RefObject<HTMLDivElement>;
     mdGrandezza: string;
     cardTitle: string;
     cardBadge?: boolean;
@@ -25,45 +25,43 @@ export default function PriceCard({ reference, mdGrandezza, cardTitle, cardBadge
     return (
         <div
             ref={reference}
-            className={`w-full ${mdGrandezza} flex flex-col items-center justify-start gap-y-6 py-8 px-5 rounded-xl shadow-lg border border-custom-borderColor dark:border-dark-borderColor bg-custom-elevation2 dark:bg-dark-elevation2 hover:shadow-2xl transition-shadow duration-300`}>
+            className={`w-full ${mdGrandezza} relative flex flex-col items-center justify-start gap-y-6 py-8 px-5 rounded-xl shadow-lg border border-custom-borderGray dark:border-dark-borderGray ${cardBadge && 'ring-2 ring-custom-borderRingColor dark:ring-custom-borderRingColor'} bg-custom-elevation2 dark:bg-dark-elevation2 hover:shadow-2xl transition-shadow duration-300`}>
             {/* Titolo, Descrizione ed eventuale Badge */}
-            <div className='w-full flex flex-col items-start justify-between gap-y-5 md:gap-y-3'>
-                <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-y-3">
-                    <h1 className="text-xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+            <div className='w-full flex flex-col items-center justify-between gap-y-6'>
+                {cardBadge && (
+                    <Badge className="absolute -top-4 left-1/3 px-3 py-1 text-md" color="green" icon={IoMdTrendingUp}>
+                        {t('prezziPianoStandardBadge')}
+                    </Badge>
+                )}
+                <div className="w-full flex items-start md:items-center justify-between gap-y-3">
+                    <h1 className="text-xl font-extrabold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
                         {cardTitle}
                     </h1>
-                    {cardBadge && (
-                        <Badge className="px-3 py-1 text-sm" color="green" icon={IoMdTrendingUp}>
-                            {t('prezziPianoStandardBadge')}
-                        </Badge>
-                    )}
+                    <Badge color="indigo" className="text-lg">
+                        {cardTokenNum} token
+                    </Badge>
                 </div>
-                <Badge color="indigo" className="text-base">
-                    {cardTokenNum} token
-                </Badge>
-                <p className='text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
+                <p className='text-xl text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
                     {cardDescription}
                 </p>
             </div>
             {/* Prezzi */}
             <div className='w-full flex items-center justify-center gap-x-3'>
-                <p className='font-bold text-xl text-custom-textSecondaryGray dark:text-dark-textSecondaryGray line-through'>
+                <p className='font-bold text-2xl text-custom-textSecondaryGray dark:text-dark-textSecondaryGray line-through'>
                     €{cardPrice}
                 </p>
-                <p className='font-bold text-2xl text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>
+                <p className='font-bold text-3xl text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>
                     €{cardPriceAfter}
                 </p>
             </div>
             {/* Pulsante Acquista */}
-            <Tooltip
-                content={t('prezziBottoneTooltip')}
-                animation="duration-500"
-                trigger="hover">
-                <Button
+            <Tooltip content={t('prezziBottoneTooltip')} animation="duration-500" trigger="hover">
+                <button
                     disabled
-                    className="w-full text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
+                    type="button"
+                    className="block w-full rounded-lg px-10 py-3 text-md font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
                     {cardButtonText}
-                </Button>
+                </button>
             </Tooltip>
         </div>
     );

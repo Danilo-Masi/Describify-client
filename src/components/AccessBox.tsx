@@ -22,8 +22,8 @@ export default function AccessBox() {
                 <img className="w-10 h-10 -ml-3 rounded-full border border-white" src="./src/assets/images/pic4.png" alt="profile image4" />
             </div>
             {/* Testi */}
-            <h1 className="text-white text-5xl font-bold">{t('accessBoxTitle')}</h1>
-            <p className="text-gray-200">{t('accessBoxCaption')}</p>
+            <h1 className="text-white text-5xl font-bold">{t('accessBoxTitolo')}</h1>
+            <p className="text-gray-200">{t('accessBoxDescrizione')}</p>
         </div>
     );
 }

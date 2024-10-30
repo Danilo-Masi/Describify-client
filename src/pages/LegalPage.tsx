@@ -42,7 +42,7 @@ export default function LegalPage({ setModalWaitListOpen }: { setModalWaitListOp
                     setData(data);
                 });
             } else {
-                import("../data/legalData/cookie_policy.json").then((data) => {
+                import("../data/legalData/cookiePolicy_it.json").then((data) => {
                     setData(data);
                 });
             }
@@ -56,7 +56,7 @@ export default function LegalPage({ setModalWaitListOpen }: { setModalWaitListOp
                     setData(data);
                 });
             } else {
-                import("../data/legalData/cookie_policy.json").then((data) => {
+                import("../data/legalData/cookiePolicy_en.json").then((data) => {
                     setData(data);
                 });
             }
@@ -65,7 +65,7 @@ export default function LegalPage({ setModalWaitListOpen }: { setModalWaitListOp
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
-            <Navbar isBannerVisible={false} setModalWaitlistOpen={setModalWaitListOpen} />
+            <Navbar setModalWaitlistOpen={setModalWaitListOpen} />
             <div className="w-[90%] md:w-[50%] h-auto flex flex-col items-start justify-start gap-y-8 py-5 md:py-10" id="Start">
                 <h1 className="text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{data?.titlePrimary}</h1>
                 <p className="text-md font-medium text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">{data?.captionPrimary}</p>

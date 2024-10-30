@@ -50,7 +50,7 @@ export default function SignupForm() {
   // Funzione per validare il nome inserito dall'utente
   const validateName = (name: string) => {
     if (name === "") {
-      return 'Inserire un nome valido prima di procedere';
+      return t('signupErroreNome');
     }
     return '';
   }
@@ -58,7 +58,7 @@ export default function SignupForm() {
   // Funzione per validare l'email inserita dall'utente
   const validateEmail = (email: string) => {
     if (email === "" || !useEmail(email)) {
-      return 'Inserire un email valida prima di procedere';
+      return t('signupErroreEmail');
     }
     return '';
   }
@@ -66,9 +66,9 @@ export default function SignupForm() {
   // Funzione per validare la password inserita dall'utente
   const validatePassword = (password: string) => {
     if (password === "") {
-      return 'Inserire una password valida prima di procedere';
+      return t('signupErrorePassword');
     } else if (password.length < 6) {
-      return 'La password deve contenere almeno 6 caratteri';
+      return t('signupErrorePasswordLunghezza');
     }
     return '';
   };
@@ -76,7 +76,7 @@ export default function SignupForm() {
   // Funzione per validare se la checkbox è stata cliccata
   const validateCheckbox = (isChecked: boolean) => {
     if (!isChecked) {
-      return 'Devi accettare i termini e le condizioni prima di procedere';
+      return t('signupErroreCheckbox');
     }
     return '';
   };
@@ -106,23 +106,23 @@ export default function SignupForm() {
     if (error.response) {
       switch (error.response.status) {
         case 401:
-          toast.error("Credenziali errate");
+          toast.error(t('signupErroreCredenziali'));
           break;
         case 404:
-          toast.error("Server non trovato");
+          toast.error(t('signupErroreServer'));
           break;
         default:
-          toast.error("Errore durante la fase di registrazione, riprova più tardi");
+          toast.error(t('signupErroreGenerico'));
       }
     } else {
-      toast.error("Errore di rete o problema imprevisto");
+      toast.error(t('signupErroreRete'));
     }
   }, [navigate]);
 
   // Funzione per gestire il successo della fase di registrazione
   const handleSuccess = useCallback((token: string) => {
     localStorage.setItem('authToken', token);
-    toast.success("Utente registrato correttamente", {
+    toast.success(t('signupVerificato'), {
       onClose: () => navigate('/product'), //MODIFICARE IL NAVIGATE ALLA PAGINA PRODUCT CON IL REINDEREZZAMENTO ALLA SEZIONE ACQUISTA CREDITI
     });
   }, [navigate]);
@@ -155,11 +155,9 @@ export default function SignupForm() {
         className="w-full md:w-1/2 h-auto min-h-svh flex flex-col gap-4 items-center justify-center px-6 md:px-32 py-6 md:py-0">
         {/* Intestazione */}
         <ContainerInput containerStyle="w-full flex flex-col items-center gap-y-3 mb-5">
-          <div className='flex items-center gap-x-2'>
-            <img src={logo} className="w-full h-10" />
-            <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>
-          </div>
-          <h1 className="text-4xl text-center font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupWelcome')}</h1>
+          <h1 className="text-center text-2xl md:text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+            {t('signupMessaggioBenvenuto')}
+          </h1>
         </ContainerInput>
         {/* Campo nome */}
         <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
@@ -225,7 +223,7 @@ export default function SignupForm() {
               onChange={event => handleChange(event, 'termsCheckbox')} />
             <label htmlFor="terms" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray ms-2">
               {t('signupCheckboxLabel')}
-              <Link to="/terms-and-conditions" className="text-custom-textSecondaryColor dark:text-dark-textSecondaryColor hover:text-custom-solidColor dark:hover:text-dark-solidColor">
+              <Link to="/terms-and-conditions" className="ms-2 text-custom-textSecondaryColor dark:text-dark-textSecondaryColor hover:text-custom-solidColor dark:hover:text-dark-solidColor">
                 {t('singupCheckboxLink')}
               </Link>
             </label>
@@ -237,7 +235,7 @@ export default function SignupForm() {
           <button
             type="submit"
             className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
-            {t('signupButton')}
+            {t('signupBottone')}
           </button>
         </ContainerInput>
         {/* Link redirect */}

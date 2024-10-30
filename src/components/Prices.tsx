@@ -31,7 +31,6 @@ export default function Prices({ id }: { id: string; }) {
   }, [window.onload]);
 
   return (
-    <GridBackground id={id}>
       <ContainerComponents id={id}>
         {/* Intestazione */}
         <Intestazione
@@ -41,11 +40,11 @@ export default function Prices({ id }: { id: string; }) {
           titleStyle="text-5xl md:text-6xl"
           descriptionStyle="text-lg" />
         {/* Price cards */}
-        <div className='w-full md:w-[85%] flex flex-col md:flex-row md:flex-wrap gap-8 md:gap-5'>
+        <div className='w-full md:w-[85%] flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-12 md:gap-8 mt-20'>
           {/* Piano basic */}
           <PriceCard
             reference={priceCard1}
-            mdGrandezza='md:w-[calc(32%-0.85rem)]'
+            mdGrandezza='md:w-[calc(32%-1.6rem)]'
             cardTokenNum='25'
             cardPrice='4.50'
             cardPriceAfter='3.00'
@@ -55,7 +54,7 @@ export default function Prices({ id }: { id: string; }) {
           {/* Piano standard */}
           <PriceCard
             reference={priceCard2}
-            mdGrandezza='md:w-[calc(36%-0.80rem)]'
+            mdGrandezza='md:w-[calc(36%-0.8rem)]'
             cardBadge={true}
             cardTokenNum='50'
             cardPrice='8.00'
@@ -66,7 +65,7 @@ export default function Prices({ id }: { id: string; }) {
           {/* Piano premium */}
           <PriceCard
             reference={priceCard3}
-            mdGrandezza='md:w-[calc(32%-0.85rem)]'
+            mdGrandezza='md:w-[calc(32%-1.6rem)]'
             cardTokenNum='150'
             cardPrice='21.00'
             cardPriceAfter='12.00'
@@ -75,6 +74,5 @@ export default function Prices({ id }: { id: string; }) {
             cardButtonText={t('prezziPianoPremiumBottone')} />
         </div>
       </ContainerComponents>
-    </GridBackground>
   );
 }

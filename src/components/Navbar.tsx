@@ -45,7 +45,7 @@ function JoinWaitllistButton({ setModalWaitlistOpen }: { setModalWaitlistOpen: D
     );
 }
 
-export default function Navbar({ isBannerVisible, setModalWaitlistOpen }: { isBannerVisible: boolean, setModalWaitlistOpen: Dispatch<SetStateAction<boolean>>; }) {
+export default function Navbar({ setModalWaitlistOpen }: { setModalWaitlistOpen: Dispatch<SetStateAction<boolean>>; }) {
     // Stato per verificare se l'utente ha scrollato nella pagina o meno
     const [isScrolled, setIsScrolled] = useState(false);
     // Effetto che modifica lo stato precedente
@@ -61,7 +61,7 @@ export default function Navbar({ isBannerVisible, setModalWaitlistOpen }: { isBa
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
     return (
-        <div className={`w-full h-[12svh] flex items-center justify-center sticky z-20 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-95'} ${isBannerVisible ? 'top-[10svh] md:top-[7svh]' : 'top-0'}`} >
+        <div className={`w-full h-[12svh] top-[10svh] md:top-[7svh] flex items-center justify-center sticky z-20 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-95'}`} >
             <div className="w-[90%] flex items-center">
                 <Logo />
                 <MenuElements />

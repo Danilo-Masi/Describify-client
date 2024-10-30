@@ -32,8 +32,8 @@
     "funzionalitàStep4Titolo": "Vendi e guadagna",
     "funzionalitàStep4Descrizione": "Carica l'annuncio sulla tua piattaforma di vendita preferita ed inizia subito ad incassare",
 
-    "componenteVenditaTitolo": "T-shirt Vans Nera - Taglia M - Condizioni eccellenti",
-    "componenteVenditaDescrizione": "Ciao! Sto vendendo la mia t-shirt nera della Vans, taglia M. L'ho comprata un' pò di tempo fa...",
+    "componenteVenditaTitolo": "Tuta Spaziale Prada - Stile unico al mondo",
+    "componenteVenditaDescrizione": "Sei pronto a fare un viaggio nello spa...stile? Questa tuta spaziale Prada è il ...",
     "componenteVenditaBottone": "Oggetto venduto",
 
     "prezziBadge": "Prezzi",
@@ -71,5 +71,45 @@
     "modalWaitlistDescrizione2": "Gli iscritti alla waitlist avranno accesso esclusivo alle nostre funzionalità iniziali e potranno godere di un prezzo speciale riservato!",
 
     "modalCookieDescrizione": "Monitoriamo il traffico di Describify utilizzando piattaforme esterne, ma senza impiegare cookie di terze parti. Per maggiori dettagli, leggi qui:",
-    "modalCookieBottone": "Ho capito"
+    "modalCookieBottone": "Ho capito",
+
+    "accessBoxTitolo": "Massimizza il tuo tempo",
+    "accessBoxDescrizione": "Con Describify, creare annunci è semplice e veloce: risparmia tempo ed energie per ciò che conta davvero.",
+
+    "signinMessaggioBenvenuto": "Pronto a continuare dove avevi lasciato? Siamo felici di rivederti!",
+    "signinEmailLabel": "La tua email",
+    "signinPasswordLabel": "La tua password",
+    "signinBottone": "Entra",
+    "signinRedirectLabel": "Non hai un account?",
+    "signinRedirectLink": "Crea un account",
+
+    "signinErroreEmail": "Per favore, inserisci un'email valida per procedere",
+    "signinErrorePassword": "Per favore, inserisci una password valida per procedere",
+    "signinErrorePasswordLunghezza": "La password deve contenere almeno 6 caratteri",
+    "signinErroreCredenziali": "Le credenziali inserite non sono corrette",
+    "signinErroreServer": "Impossibile connettersi al server",
+    "signinErroreGenerico": "Si è verificato un errore durante l'accesso. Riprova più tardi",
+    "signinErroreRete": "Errore di rete o problema imprevisto. Verifica la connessione",
+    "signinVerificato": "Accesso completato con successo!",
+
+    "signupMessaggioBenvenuto": "Siamo felici di averti con noi per rendere la creazione di annunci più semplice e veloce.",
+    "signupNameLabel": "Nome o nickname",
+    "signupEmailLabel": "Email",
+    "signupPasswordLabel": "Crea una password",
+    "signupCheckboxLabel": "Accetto i termini e le condizioni",
+    "singupCheckboxLink": "termini e condizioni",
+    "signupBottone": "Registrati",
+    "signupRedirectLabel": "Hai già un account?",
+    "signupRedirectLink": "Accedi qui",
+
+    "signupErroreNome": "Per favore, inserisci un nome valido per procedere",
+    "signupErroreEmail": "Per favore, inserisci un’email valida per procedere",
+    "signupErrorePassword": "Per favore, inserisci una password valida per procedere",
+    "signupErrorePasswordLunghezza": "La password deve contenere almeno 6 caratteri",
+    "signupErroreCheckbox": "Devi accettare i termini e le condizioni per procedere",
+    "signupErroreCredenziali": "Le credenziali inserite non sono corrette",
+    "signupErroreServer": "Impossibile connettersi al server",
+    "signupErroreGenerico": "Si è verificato un errore durante la registrazione. Riprova più tardi",
+    "signupErroreRete": "Errore di rete o problema imprevisto. Verifica la connessione",
+    "signupVerificato": "Registrazione completata con successo!"
 }

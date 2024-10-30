@@ -70,5 +70,45 @@
     "modalWaitlistDescrizione2": "Waitlist members will have exclusive access to our initial features and enjoy a special reserved price!",
 
     "modalCookieDescrizione": "We monitor Describify's traffic using external platforms, but without using third-party cookies. For more details, read here:",
-    "modalCookieBottone": "Got it"
+    "modalCookieBottone": "Got it",
+
+    "accessBoxTitolo": "Maximize Your Time",
+    "accessBoxDescrizione": "With Describify, creating ads is simple and fast: save time and energy for what really matters.",
+
+    "signinMessaggioBenvenuto": "Ready to continue where you left off? We're happy to see you again!",
+    "signinEmailLabel": "Your email",
+    "signinPasswordLabel": "Your password",
+    "signinBottone": "Sign In",
+    "signinRedirectLabel": "Don't have an account?",
+    "signinRedirectLink": "Create an account",
+
+    "signinErroreEmail": "Please enter a valid email to proceed",
+    "signinErrorePassword": "Please enter a valid password to proceed",
+    "signinErrorePasswordLunghezza": "Password must be at least 6 characters long",
+    "signinErroreCredenziali": "The entered credentials are incorrect",
+    "signinErroreServer": "Unable to connect to the server",
+    "signinErroreGenerico": "An error occurred during login. Please try again later",
+    "signinErroreRete": "Network error or unexpected issue. Please check your connection",
+    "signinVerificato": "Login completed successfully!",
+
+    "signupMessaggioBenvenuto": "We're happy to have you with us to make ad creation simpler and faster.",
+    "signupNameLabel": "Name or nickname",
+    "signupEmailLabel": "Email",
+    "signupPasswordLabel": "Create a password",
+    "signupCheckboxLabel": "I accept the terms and conditions",
+    "singupCheckboxLink": "terms and conditions",
+    "signupBottone": "Sign Up",
+    "signupRedirectLabel": "Already have an account?",
+    "signupRedirectLink": "Sign in here",
+
+    "signupErroreNome": "Please enter a valid name to proceed",
+    "signupErroreEmail": "Please enter a valid email to proceed",
+    "signupErrorePassword": "Please enter a valid password to proceed",
+    "signupErrorePasswordLunghezza": "Password must be at least 6 characters long",
+    "signupErroreCheckbox": "You must accept the terms and conditions to proceed",
+    "signupErroreCredenziali": "The entered credentials are incorrect",
+    "signupErroreServer": "Unable to connect to the server",
+    "signupErroreGenerico": "An error occurred during registration. Please try again later",
+    "signupErroreRete": "Network error or unexpected issue. Please check your connection",
+    "signupVerificato": "Registration completed successfully!"
 }

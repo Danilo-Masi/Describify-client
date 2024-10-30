@@ -23,9 +23,9 @@ export default function FeaturesStep({ order1, order2, title, description, compo
         const caption = captionRef.current || "";
         const image = imgRef.current || "";
         // Avvio delle animazioni
-        fadeInElement(title, 0.5, 0.0);
-        fadeInElement(caption, 0.5, 0.5);
-        fadeInElement(image, 0.5, 1.0);
+        fadeInElement(title, 0.5, 0.5);
+        fadeInElement(caption, 0.5, 1.0);
+        fadeInElement(image, 0.5, 0.0);
     }, []);
 
     return (
@@ -39,7 +39,7 @@ export default function FeaturesStep({ order1, order2, title, description, compo
                     {description}
                 </p>
             </div>
-            {/* Features immagine */}
+            {/* Features componente */}
             <div className={`md:w-1/2 flex items-center justify-center ${order2}`} ref={imgRef}>
                 {component}
             </div>
