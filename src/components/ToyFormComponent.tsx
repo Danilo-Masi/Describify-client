@@ -31,7 +31,7 @@ export default function ToyFormComponent() {
                 disabled
                 type="button"
                 className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
-                Genera annuncio
+                Genera annuncio nn
                 <SparklingStars />
             </button>
         </div>
