@@ -25,7 +25,7 @@ export default function PriceCard({ reference, mdGrandezza, cardTitle, cardBadge
     return (
         <div
             ref={reference}
-            className={`w-full ${mdGrandezza} relative flex flex-col items-center justify-start gap-y-6 py-8 px-5 rounded-xl shadow-lg border border-custom-borderGray dark:border-dark-borderGray ${cardBadge && 'ring-2 ring-custom-borderRingColor dark:ring-custom-borderRingColor'} bg-custom-elevation2 dark:bg-dark-elevation2 hover:shadow-2xl transition-shadow duration-300`}>
+            className={`w-full ${mdGrandezza} relative flex flex-col items-center justify-start gap-y-6 py-8 px-5 rounded-xl shadow-lg border border-custom-borderGray dark:border-dark-borderGray ${cardBadge && 'ring-4 ring-custom-borderRingColor dark:ring-dark-borderRingColor'} bg-custom-elevation2 dark:bg-dark-elevation2 hover:shadow-2xl transition-shadow duration-300`}>
             {/* Titolo, Descrizione ed eventuale Badge */}
             <div className='w-full flex flex-col items-center justify-between gap-y-6'>
                 {cardBadge && (

@@ -21,6 +21,7 @@ export default function ToyResultComponent() {
           </button>
         </div>
         <Textarea
+          readOnly
           name="textarea titolo"
           placeholder="🚀 Tuta Spaziale Prada - Stile unico al mondo"
           className="w-full h-[7svh] overflow-scroll resize-none px-0 bg-custom-elevation4 dark:bg-dark-elevation4 border-0 focus:border-0 focus:ring-0 text-md text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray" />
@@ -42,7 +43,8 @@ export default function ToyResultComponent() {
           </button>
         </div>
         <Textarea
-          name="textarea titolo"
+          readOnly
+          name="textarea descrizione"
           placeholder={`Sei pronto a fare un viaggio nello spa...stile? Questa tuta spaziale Prada è il mix perfetto di design audace e comfort, ideale per chi ama distinguersi!
 
 🌟 Caratteristiche principali:

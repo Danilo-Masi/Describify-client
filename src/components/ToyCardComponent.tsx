@@ -13,7 +13,7 @@ export default function ToyCardComponent() {
                 <img src={tutaSpaziale} alt="Ragazzo che indossa maglia nera della Vans" className='w-full h-auto rounded-lg' />
             </div>
             <div className='flex items-center gap-x-3'>
-                <p className='font-bold text-xl text-custom-textSecondaryGray dark:text-dark-textSecondaryGray line-through'>€300,00 </p>
+                <p className='font-bold text-xl text-custom-textSecondaryGray dark:text-dark-textSecondaryGray line-through'>€300,00</p>
                 <p className='font-bold text-3xl text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>€280,50</p>
             </div>
             <p className='font-medium text-lg text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'> 🚀 {t('componenteVenditaTitolo')}</p>

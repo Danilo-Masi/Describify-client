@@ -5,6 +5,7 @@ import logo from '../assets/images/logo.svg';
 
 export default function AccessBox() {
 
+    // Componenete per la traduzione
     const { t } = useTranslation();
 
     return (

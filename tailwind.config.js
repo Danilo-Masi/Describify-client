@@ -58,7 +58,7 @@ export default {
           borderRingGray: '#5C5E76', //Border ring grigio (8)
           solidColor: '#8E64FF', //Colore solido (9) //Per i bottoni
           solidGray: '#696C84', //Grigio solido (9) //Per i bottoni
-          hoverColor: '#8256F0', //Hover colorato (10)
+          hoverColor: '#6D43CC', //Hover colorato (10)
           hoverGray: '#777992', //Hover grigio (10)
           textSecondaryColor: '#B9A2FF', // Testo secondario colorato (11)
           textSecondaryGray: '#AFB1CC', //Testo secondario grigio (11)
