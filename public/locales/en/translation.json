@@ -114,5 +114,63 @@
     "signupErroreServer": "Unable to connect to the server",
     "signupErroreGenerico": "An error occurred during registration. Please try again later",
     "signupErroreRete": "Network error or unexpected issue. Please check your connection",
-    "signupVerificato": "Registration completed successfully!"
+    "signupVerificato": "Registration completed successfully!",
+
+    "productSideBarGenera": "Generate Listing",
+    "productSideBarImpostazioni": "Preferences",
+    "productSideBarChat": "Support",
+    "productSideBarLogout": "Log Out",
+
+    "productSiderBarTesto": "Remaining credits",
+    "productSideBarBottone": "Add credits",
+
+    "productSwitchImmagine": "View Image",
+    "productSwitchDettagli": "View Details",
+
+    "productImageTesto": "Click here to upload an image",
+
+    "productImageErroreCrediti": "Insufficient credits",
+    "productImageErroreCaricamento": "Unable to upload selected image",
+
+    "productFormLabelCategoria": "Category",
+    "productFormPlaceholderCategoria": "Example: Spacesuit",
+    "productFormLabelBrand": "Brand",
+    "productFormPlaceholderBrand": "Example: Prada",
+    "productFormLabelColore": "Color",
+    "productFormPlaceholderColore": "Example: White, Red, Gray",
+    "productFormLabelDimensione": "Size",
+    "productFormPlaceholderDimensione": "Example: M",
+    "productFormBottone": "Create Listing",
+
+    "productFormErroreDati": "Please check the entered data before proceeding",
+    "productFormErroreGenerazione": "Error while creating the listing",
+
+    "productGenerateTextTitolo1": "Suggested Title",
+    "productGenerateTextTitolo2": "Suggested Description",
+    "productGenerateTextPlaceholder1": "🚀 Prada Spacesuit - Unique Style in the World",
+    "productGenerateTextPlaceholder2": "Ready to embark on a style journey? This Prada spacesuit combines bold design with comfort, perfect for standing out!\n\n🌟 Main Features:\n- Size: M\n- Color: White, Red, Gray\n- Material: High quality\n- Condition: Excellent, like new (never used for any mission)\n\n🔹 Why choose this product?\nThis suit is an unmissable deal! At a competitive price, it offers the quality and prestige of the Prada brand. Ideal for special events or a casual-chic look, don’t miss your chance to own this unique piece!\n\n📞 Contact me for more details or to arrange a fitting. Don’t miss the opportunity to add a one-of-a-kind item to your wardrobe!",
+    "productGenerateTextCopia": "Copy Description",
+    "productGenerateTextCopiato": "Description Copied",
+
+    "modalSettingsTitolo": "Preferences",
+    "modalSettingsLinguaTitolo": "Language",
+    "modalSettinsLinguaDescrizione": "Select a language",
+    "modalSettingsTemaTitolo": "Theme",
+    "modalSettingsTemaDescrizione": "Select a theme",
+
+    "modalHelpTitolo": "Support",
+    "modalHelpMessaggioInformativo": "Hello! Please describe your issue clearly and briefly, and we’ll do our best to help.",
+    "modalHelpSender": "You",
+    "modalHelpMessaggioRisposta": "We’ve received your message. We’ll reply via email as soon as possible. Thank you for reaching out!",
+    "modalHelpInputPlaceholder": "Type your message here...",
+    "modalHelpBottoneInvia": "Send",
+    "modalHelpErrore200": "Error sending message, please try again",
+    "modalHelpErroreRete": "Network error, please check your connection",
+    "modalHelpErroreTestoVuoto": "Cannot send an empty message",
+
+    "modalLogoutTitolo": "Do you want to log out?",
+    "modalLogoutDescrizione": "Once you log out, you will need your credentials to log back in",
+    "modalLogoutBottoneAccetta": "Yes, log out",
+    "modalLogoutBottoneAnnulla": "No, cancel",
+    "modalLogoutErroreServer": "Error during logout, please try again later"
 }

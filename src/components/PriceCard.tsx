@@ -41,7 +41,7 @@ export default function PriceCard({ reference, mdGrandezza, cardTitle, cardBadge
                         {cardTokenNum} token
                     </Badge>
                 </div>
-                <p className='text-xl text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
+                <p className='text-xl text-center text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>
                     {cardDescription}
                 </p>
             </div>

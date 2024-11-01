@@ -31,19 +31,17 @@ interface SettingsBlockProps {
 
 function SettingsBlock({ title, description, options, selectedOption, onChange, labels }: SettingsBlockProps) {
 
-    const passaValore = (event: any) => {
-        onChange(event.target.value);
-    }
-
     return (
         <div className="flex flex-wrap items-center justify-center gap-y-3 md:gap-0">
             <p className="text-md font-medium w-full md:w-2/3 text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
                 {title}
                 <br />
-                <span className="text-sm font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">{description}</span>
+                <span className="text-sm font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+                    {description}
+                </span>
             </p>
             <div className="w-full md:w-1/3">
-                <Select id={title} onChange={passaValore} value={selectedOption}>
+                <Select id={title} onChange={event => onChange(event.target.value)} value={selectedOption}>
                     {options.map((option, key) => (
                         <option key={key} value={option}>
                             {labels[option]}
@@ -57,49 +55,55 @@ function SettingsBlock({ title, description, options, selectedOption, onChange, 
 
 export default function ModalSettings({ setPageSelected }: { setPageSelected: Dispatch<SetStateAction<string>>; }) {
 
+    // Componente per la traduzione
     const { t } = useTranslation();
+    // Stato che gestisce la lingua in uso
+    const [selectedLanguage, setSelectedLanguage] = useState<string>(localStorage.getItem("language") || "it");
+    // Stato che gestisce il tema in uso
+    const [selectedTheme, setSelectedTheme] = useState<string>(localStorage.getItem("theme") || "dark");
 
-    const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem("language") || "it");
-    const [selectedTheme, setSelectedTheme] = useState(localStorage.getItem("theme") || "dark");
-
+    // Effetto per impostare la lingua
     useEffect(() => {
         i18n.changeLanguage(selectedLanguage);
         localStorage.setItem("language", selectedLanguage);
     }, [selectedLanguage]);
 
+    // Effetto per impostare il tema
     useEffect(() => {
         document.documentElement.classList.toggle('dark', selectedTheme === 'dark');
         localStorage.setItem("theme", selectedTheme);
     }, [selectedTheme]);
 
+    // Funzione per impostare la lingua selezionata dall'utente
     const handleLanguageChange = (language: string) => {
         setSelectedLanguage(language);
     }
 
+    // Funzione per impostare il tema selezionato dall'utente
     const handleThemeChange = (theme: string) => {
         setSelectedTheme(theme);
     }
 
     return (
-        <ModalBase size="lg" modalTitle={t('modalSettingsTitle')} onClose={() => setPageSelected("Genera")}>
+        <ModalBase size="lg" modalTitle={t('modalSettingsTitolo')} onClose={() => setPageSelected("Genera")}>
             {/* Lingua */}
             <SettingsBlock
-                title={t('modalSettingsLanguageTitle')}
-                description={t('modalSettingsLanguageCaption')}
+                title={t('modalSettingsLinguaTitolo')}
+                description={t('modalSettinsLinguaDescrizione')}
+                labels={languageLabels}
                 options={languages}
-                onChange={handleLanguageChange}
                 selectedOption={selectedLanguage}
-                labels={languageLabels} />
+                onChange={handleLanguageChange} />
             {/* Divider */}
             <Divider dividerStyle="my-4" />
             {/* Tema */}
             <SettingsBlock
-                title={t('modalSettingsThemeTitle')}
-                description={t('modalSettingsThemeCaption')}
+                title={t('modalSettingsTemaTitolo')}
+                description={t('modalSettingsTemaDescrizione')}
+                labels={themeLabels}
                 options={themes}
-                onChange={handleThemeChange}
                 selectedOption={selectedTheme}
-                labels={themeLabels} />
+                onChange={handleThemeChange} />
         </ModalBase>
     );
 }

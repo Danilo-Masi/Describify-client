@@ -115,5 +115,63 @@
     "signupErroreServer": "Impossibile connettersi al server",
     "signupErroreGenerico": "Si è verificato un errore durante la registrazione. Riprova più tardi",
     "signupErroreRete": "Errore di rete o problema imprevisto. Verifica la connessione",
-    "signupVerificato": "Registrazione completata con successo!"
+    "signupVerificato": "Registrazione completata con successo!",
+
+    "productSideBarGenera": "Genera annuncio",
+    "productSideBarImpostazioni": "Preferenze",
+    "productSideBarChat": "Supporto",
+    "productSideBarLogout": "Esci",
+
+    "productSiderBarTesto": "Crediti rimanenti",
+    "productSideBarBottone": "Aggiungi crediti",
+
+    "productSwitchImmagine": "Visualizza Immagine",
+    "productSwitchDettagli": "Visualizza Dettagli",
+
+    "productImageTesto": "Clicca qui per caricare l’immagine",
+
+    "productImageErroreCrediti": "Crediti insufficienti",
+    "productImageErroreCaricamento": "Impossibile caricare l'immagine selezionata",
+
+    "productFormLabelCategoria": "Categoria",
+    "productFormPlaceholderCategoria": "Esempio: Tuta spaziale",
+    "productFormLabelBrand": "Marchio",
+    "productFormPlaceholderBrand": "Esempio: Prada",
+    "productFormLabelColore": "Colore",
+    "productFormPlaceholderColore": "Esempio: Bianco, Rosso, Grigio",
+    "productFormLabelDimensione": "Taglia",
+    "productFormPlaceholderDimensione": "Esempio: M",
+    "productFormBottone": "Crea annuncio",
+
+    "productFormErroreDati": "Verifica i dati inseriti prima di procedere",
+    "productFormErroreGenerazione": "Errore durante la creazione dell'annuncio",
+
+    "productGenerateTextTitolo1": "Titolo Suggerito",
+    "productGenerateTextTitolo2": "Descrizione Suggerita",
+    "productGenerateTextPlaceholder1": "🚀 Tuta Spaziale Prada - Stile unico al mondo",
+    "productGenerateTextPlaceholder2": "Sei pronto a fare un viaggio nello spa...stile? Questa tuta spaziale Prada è il mix perfetto di design audace e comfort, ideale per chi ama distinguersi!\n\n🌟 Caratteristiche principali:\n- Taglia: M\n- Colore: Bianco, Rosso, Grigio\n- Materiale: Alta qualità\n- Condizioni: Ottime, come nuova (mai usata per nessuna missione)\n\n🔹 Perché scegliere questo prodotto?\nQuesta tuta è un affare imperdibile! Con un prezzo competitivo, offre la qualità e il prestigio del marchio Prada. Perfetta per eventi speciali o per un look casual-chic, non puoi lasciartela sfuggire!\n\n📞 Contattami per maggiori dettagli o per organizzare una prova. Non perdere l'occasione di aggiungere un pezzo unico al tuo guardaroba!",
+    "productGenerateTextCopia": "Copia",
+    "productGenerateTextCopiato": "Copiata",
+
+    "modalSettingsTitolo": "Preferenze",
+    "modalSettingsLinguaTitolo": "Lingua",
+    "modalSettinsLinguaDescrizione": "Scegli la lingua",
+    "modalSettingsTemaTitolo": "Tema",
+    "modalSettingsTemaDescrizione": "Scegli un tema",
+
+    "modalHelpTitolo": "Supporto",
+    "modalHelpMessaggioInformativo": "Ciao! Descrivi il problema in modo chiaro e breve, faremo del nostro meglio per aiutarti.",
+    "modalHelpSender": "Tu",
+    "modalHelpMessaggioRisposta": "Abbiamo ricevuto il tuo messaggio. Ti risponderemo via email il prima possibile. Grazie per averci contattato!",
+    "modalHelpInputPlaceholder": "Scrivi il tuo messaggio qui...",
+    "modalHelpBottoneInvia": "Invia",
+    "modalHelpErrore200": "Errore durante l'invio, riprova",
+    "modalHelpErroreRete": "Errore di rete, verifica la connessione",
+    "modalHelpErroreTestoVuoto": "Non è possibile inviare un messaggio vuoto",
+
+    "modalLogoutTitolo": "Vuoi uscire dal tuo account?",
+    "modalLogoutDescrizione": "Effettuando il logout, dovrai inserire nuovamente i dati per rientrare",
+    "modalLogoutBottoneAccetta": "Sì, esci",
+    "modalLogoutBottoneAnnulla": "No, annulla",
+    "modalLogoutErroreServer": "Errore durante il logout, riprova più tardi"
 }

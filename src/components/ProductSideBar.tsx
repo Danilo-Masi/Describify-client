@@ -7,8 +7,6 @@ import logo from '../assets/images/logo.svg';
 // Components
 import { ChevronDown, ChevronUp, GenerateIcon, HelpIcon, SettingsIcon, SignoutIcon } from "./SvgComponents";
 import Divider from "./Divider";
-import CreditPieChart from "./CreditPieChart";
-import ActiveButton from "./ActiveButton";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
@@ -26,7 +24,7 @@ const ContainerItem = ({ children, id, pageSelected, setPageSelected }: Containe
     return (
         <div
             id={id}
-            className={`w-full flex items-center justify-start gap-x-2 cursor-pointer p-3 rounded-lg text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:bg-custom-elevation4 dark:hover:bg-dark-elevation4 ${pageSelected === id && 'bg-custom-elevation4 dark:bg-dark-elevation4'} ${id === 'Signout' && 'hover:bg-red-500 dark:hover:bg-red-600'}`}
+            className={`w-full flex items-center justify-start gap-x-2 cursor-pointer p-3 rounded-lg text-custom-textPrimaryGray dark:text-dark-textPrimaryGray hover:bg-custom-elevation4 dark:hover:bg-dark-elevation4 ${pageSelected === id && 'bg-custom-elevation4 dark:bg-dark-elevation4'}`}
             onClick={() => setPageSelected(id)}>
             {children}
         </div>
@@ -41,6 +39,7 @@ interface SideBarProps {
 
 export default function ProductSideBar({ pageSelected, setPageSelected, creditiDisponibili }: SideBarProps) {
 
+    // Componente per la traduzione
     const { t } = useTranslation();
 
     const [isSideBarOpen, setSideBarOpen] = useState(false);
@@ -69,24 +68,33 @@ export default function ProductSideBar({ pageSelected, setPageSelected, creditiD
                 <>
                     <ContainerItem id="Genera" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <GenerateIcon />
-                        <p className="font-medium text-lg">{t('sideBarGenerate')}</p>
+                        <p className="font-medium text-lg">{t('productSideBarGenera')}</p>
                     </ContainerItem>
                     <ContainerItem id="Impostazioni" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <SettingsIcon />
-                        <p className="font-medium text-lg">{t('sideBarSettings')}</p>
+                        <p className="font-medium text-lg">{t('productSideBarImpostazioni')}</p>
                     </ContainerItem>
                     <ContainerItem id="Aiuto" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <HelpIcon />
-                        <p className="font-medium text-lg">{t('sideBarHelp')}</p>
+                        <p className="font-medium text-lg">{t('productSideBarChat')}</p>
                     </ContainerItem>
                     <Divider />
                     <ContainerItem id="Signout" pageSelected={pageSelected} setPageSelected={setPageSelected}>
                         <SignoutIcon />
-                        <p className="font-medium text-lg">Log-out</p>
+                        <p className="font-medium text-lg">{t('productSideBarLogout')}</p>
                     </ContainerItem>
-                    <div className="w-full h-[30svh] md:h-full flex flex-col items-start justify-between rounded-xl p-3 bg-custom-solidColor dark:bg-green-500">
-                        <CreditPieChart totalCredits={150} availableCredits={creditiDisponibili} />
-                        <ActiveButton text="Aggiungi token" buttonStyle="w-full" onClick={() => alert('Acquista nuovi token')} />
+                    <div className="w-full h-[30svh] md:h-full flex flex-col items-center justify-center rounded-xl p-3 bg-gradient-to-br from-violet-700 via-pink-400 to-indigo-300 border border-custom-borderColor dark:border-custom-borderColor">
+                        <div className="w-full h-2/3 flex flex-col items-center justify-center gap-y-2">
+                            <p className="text-5xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+                                {creditiDisponibili}
+                            </p>
+                            <p className="text-md font-medium text-custom-textPrimaryGray dark:text-dark-textPrimaryGray py-2 px-3 rounded-xl bg-gray-500 opacity-70">
+                                {t('productSiderBarTesto')}
+                            </p>
+                            <button className="font-bold underline cursor-pointer">
+                                {t('productSideBarBottone')}
+                            </button>
+                        </div>
                     </div>
                 </>
             }

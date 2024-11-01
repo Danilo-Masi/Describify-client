@@ -14,7 +14,6 @@ import axios from 'axios';
 // Components
 import ModalBase from "./ModalBase";
 import EmailHelp from "./EmailHelp";
-import SkeltonPlaceholder from "./SkeltonPlaceholder";
 
 // Url del server di produzione
 const SERVER_URL = 'http://localhost:3000';
@@ -33,6 +32,7 @@ const ChatBubble = ({ messageStyle, messageSender, messageText }: { messageStyle
 
 export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispatch<SetStateAction<string>>; }) {
 
+    // Componente per la traduzione
     const { t } = useTranslation();
     // Stato per gestire il testo dell'input dell'utente
     const [text, setText] = useState<string>("");
@@ -70,20 +70,20 @@ export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispat
                     setMessageText(text);
                     resetStates();
                 } else {
-                    console.error("CLIENT: Errore durante l'invio del messaggio, status !== 200");
-                    toast.error('Si è verificato un errore durante l’invio del commento.');
+                    console.error("CLIENT: Errore durante l'invio del messaggio, response.status !== 200");
+                    toast.error(t('modalHelpErrore200'));
                     resetStates();
                 }
             } catch (error: any) {
                 console.error("CLIENT: Impossibile inviare il messaggio", error.message);
-                toast.error('Errore di rete: impossibile inviare il commento.');
+                toast.error(t('modalHelpErroreRete'));
                 resetStates();
             } finally {
                 resetStates();
                 setLoading(false);
             }
         } else {
-            toast.warn('Hai inserito un testo vuoto');
+            toast.warn(t('modalHelpErroreTestoVuoto'));
             resetStates();
         }
     };
@@ -98,12 +98,12 @@ export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispat
                 <>
                     <ChatBubble
                         messageStyle="bg-custom-elevation3 dark:bg-dark-elevation3 items-end"
-                        messageSender="Tu"
+                        messageSender={t('modalHelpSender')}
                         messageText={messageText} />
                     <ChatBubble
                         messageStyle="bg-custom-elevation2 dark:bg-dark-elevation2"
                         messageSender="Describify"
-                        messageText="Abbiamo ricevuto il tuo messaggio, appena avremo una risposta ti invieremo un'email, grazie per averci contattato." />
+                        messageText={t('modalHelpMessaggioRisposta')} />
                 </>
             );
         }
@@ -112,15 +112,15 @@ export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispat
 
     return (
         <>
-            <ModalBase size="lg" modalTitle="Contattaci" onClose={() => handleCloseModalHelp()}>
-                <div className="w-full h-auto min-h-[50svh] flex flex-col justify-between gap-y-10">
+            <ModalBase size="lg" modalTitle={t('modalHelpTitolo')} onClose={() => handleCloseModalHelp()}>
+                <div className="w-full h-auto min-h-[50svh] max-h-[80svh] overflow-scroll flex flex-col justify-between gap-y-10">
                     {/* Blocco messaggi */}
                     <div className="w-full flex flex-col gap-y-3">
                         {/* Primo messaggio di spiegazione */}
                         <ChatBubble
                             messageStyle="bg-custom-elevation2 dark:bg-dark-elevation2"
                             messageSender="Describify"
-                            messageText="Ciao, scrivici il problema che stai riscontrando in maniera semplice e concisa, e cercheremo di esserti d'aiuto" />
+                            messageText={t('modalHelpMessaggioInformativo')} />
                         {/* Messaggio scritto dall'utente con relativa risposta del sistema */}
                         {conditionalBubble()}
                     </div>
@@ -128,14 +128,14 @@ export default function ModalHelp({ setPageSelected }: { setPageSelected: Dispat
                     <div className="w-full h-min flex items-center justify-center gap-x-3">
                         <input
                             type="text"
-                            placeholder="Scrivi qui il tuo testo..."
+                            placeholder={t('modalHelpInputPlaceholder')}
                             className="w-full rounded-lg p-3 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
                             onChange={e => setText(e.target.value)}
                             value={text} />
                         <button
                             className="flex items-center justify-center gap-x-2 p-2.5 rounded-lg bg-custom-accent hover:bg-custom-hoverColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray"
                             onClick={() => handleSendComment()}>
-                            Invia <IoIosSend />
+                            {t('modalHelpBottoneInvia')} <IoIosSend />
                         </button>
                     </div>
                 </div>

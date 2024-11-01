@@ -3,13 +3,9 @@ import { Dispatch, SetStateAction } from 'react';
 // I18Next
 import { useTranslation } from 'react-i18next';
 
-interface ProductDetailsProps {
-  isImageSelected: boolean;
-  setImageSelected: Dispatch<SetStateAction<boolean>>;
-}
+export default function ProductSwitch({ isImageSelected, setImageSelected }: { isImageSelected: boolean, setImageSelected: Dispatch<SetStateAction<boolean>> }) {
 
-export default function ProductSwitch({ isImageSelected, setImageSelected }: ProductDetailsProps) {
-
+  // Componente per la traduzione
   const { t } = useTranslation();
 
   return (
@@ -17,12 +13,12 @@ export default function ProductSwitch({ isImageSelected, setImageSelected }: Pro
       <button
         onClick={() => { setImageSelected(true) }}
         className={`w-1/2 px-4 py-2 rounded-lg ${isImageSelected ? 'bg-custom-elevation3 shadow' : 'text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'}`} >
-        Immagine
+        {t('productSwitchImmagine')}
       </button>
       <button
         onClick={() => { setImageSelected(false) }}
         className={`w-1/2 px-4 py-2 rounded-lg ${!isImageSelected ? 'bg-custom-elevation3' : 'text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'} disabled:bg-red-500 dark:disabled:bg-red-500`} >
-        Dettagli
+        {t('productSwitchDettagli')}
       </button>
     </div>
   );

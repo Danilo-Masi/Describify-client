@@ -76,6 +76,7 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
 export default function ProductForm({ selectedCategory, selectedBrand, selectedSize, selectedColor, setSelectedCategory, setSelectedBrand, setSelectedColor, setSelectedSize, setTitleGenerated, setDescriptionGenerated, setLoading }: ProductFormProps) {
 
     const language = useLanguage();
+    // Componente per la traduzione
     const { t } = useTranslation();
 
     // Funzione per generare la caption
@@ -103,7 +104,7 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
     // Funzione per validare i dati prima di procedere con la generazione
     const handleValidate = ({ selectedCategory, selectedBrand, selectedSize, selectedColor }: any) => {
         if (selectedCategory === "" || selectedBrand === "" || selectedSize === "" || selectedColor === "") {
-            toast.warn("Controlla i dati inseriti prima di procedere");
+            toast.warn(t('productFormErroreDati'));
             return false;
         }
         return true;
@@ -127,8 +128,8 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
 
     // Funzione per gestire le operazioni nel caso in cui la generazione non vada a buon fine
     const handleError = (error: any) => {
-        console.error(error.message);
-        toast.error('Errore durante la generazione...', {
+        console.error("CLIENT: Errore durante la generazione ", error.message);
+        toast.error(t('productFormErroreGenerazione'), {
             onClose: () => setLoading(false),
         });
     }
@@ -138,38 +139,38 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
             {/* Input categoria */}
             <TextInput
                 valoreId='inputCategoriaId'
-                valoreLabel='Categoria'
+                valoreLabel={t('productFormLabelCategoria')}
                 valoreInput={selectedCategory}
-                valorePlaceholder='T-shirt'
+                valorePlaceholder={t('productFormPlaceholderCategoria')}
                 onChange={e => setSelectedCategory(e.target.value)}
             />
             {/* Input brand */}
             <TextInput
                 valoreId='inputBrandId'
-                valoreLabel='Marca del prodotto'
+                valoreLabel={t('productFormLabelBrand')}
                 valoreInput={selectedBrand}
-                valorePlaceholder='Prada'
+                valorePlaceholder={t('productFormPlaceholderBrand')}
                 onChange={e => setSelectedBrand(e.target.value)}
             />
             {/* Input colore */}
             <TextInput
                 valoreId='inputColoreId'
-                valoreLabel='Colore del prodotto'
+                valoreLabel={t('productFormLabelColore')}
                 valoreInput={selectedColor}
-                valorePlaceholder='Borgogna'
+                valorePlaceholder={t('productFormPlaceholderColore')}
                 onChange={e => setSelectedColor(e.target.value)}
             />
             {/* Input taglia */}
             <TextInput
                 valoreId='inputTagliaId'
-                valoreLabel='Dimensione del prodotto'
+                valoreLabel={t('productFormLabelDimensione')}
                 valoreInput={selectedSize}
-                valorePlaceholder='M'
+                valorePlaceholder={t('productFormPlaceholderDimensione')}
                 onChange={e => setSelectedSize(e.target.value)}
             />
             {/* Bottone per la generazione */}
             <ButtonGenerate
-                labelButton={t('productGenerateButton')}
+                labelButton={t('productFormBottone')}
                 onClick={handleGenerate}
             />
         </div>

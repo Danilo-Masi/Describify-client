@@ -6,6 +6,8 @@ import { CloseIcon, CloudIcon } from "./SvgComponents";
 // React-tostify
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// I18Next
+import { useTranslation } from 'react-i18next';
 // Axios
 import axios from 'axios';
 // Components
@@ -30,6 +32,8 @@ interface ProductImageProps {
 
 export default function ProductImage({ fileSelected, setImageSelected, setFileSelected, setSelectedCategory, setSelectedBrand, setSelectedSize, setSelectedColor, setCreditiUpdate, isCreditiUpdate }: ProductImageProps) {
 
+    // Componenete per la traduzione
+    const { t } = useTranslation();
     // Stato per impostare l'URL temporaneo dell'immagine
     const [imageUrl, setImageUrl] = useState<string | null>(null);
     const [isLoading, setLoading] = useState<boolean>(false);
@@ -105,12 +109,13 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
             }
         } catch (error: any) {
             if (error.status === 401) {
-                toast.warn('Crediti insufficienti per procedere', {
+                console.error("ERRORE CLIENT: Crediti insufficienti ", error.message)
+                toast.warn(t('productImageErroreCrediti'), {
                     onClose: () => setFileSelected(null),
                 });
             } else {
-                console.error(`Errore CLIENT: ${error.message}`);
-                toast.error('Errore durante la procedura di carimento della immagine', {
+                console.error("ERRORE CLIENT: Errore durante il caricmanto dell'immagine", error.message);
+                toast.error(t('productImageErroreCaricamento'), {
                     onClose: () => setFileSelected(null),
                 });
             }
@@ -129,10 +134,10 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                         <div className="flex flex-col items-center justify-center pb-6 pt-5">
                             <CloudIcon />
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                                Click to upload
+                                {t('productImageTesto')}
                             </p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">
-                                SVG, PNG, JPG or GIF (MAX. 800x400px)
+                                SVG, PNG o JPG (MAX. 800x400px)
                             </p>
                         </div>
                         <FileInput id="dropzone-file" className="hidden" typeof="file" onChange={handleSelectFile} />
