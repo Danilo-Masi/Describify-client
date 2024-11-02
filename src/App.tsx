@@ -32,14 +32,12 @@ export default function App() {
     // Verifica se il banner dei cookie è già stato visualizzato
     if (localStorage.getItem('cookieBanner')) {
       setCookieModalOpen(false);
-      // LogLib analytics //ATTIVARE
-      /*
+      // LogLib analytics
       const script = document.createElement('script');
       script.src = "https://cdn.jsdelivr.net/npm/@loglib/tracker@latest/dist/index.global.js";
       script.setAttribute('data-id', 'describify');
       script.defer = true;
       document.head.appendChild(script);
-      */
     } else {
       setCookieModalOpen(true);
     }
@@ -64,9 +62,11 @@ export default function App() {
       <Routes>
         <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
+        {/* 
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        */}
         <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />

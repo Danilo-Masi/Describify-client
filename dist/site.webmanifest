@@ -1,53 +1,30 @@
 {
-    "name": "Describify",
-    "short_name": "Describify",
-    "description": "Describify è una piattaforma basata sull'AI che genera in modo rapido gli annunci dei tuoi prodotti di seconda mano per aiutarti a vendere di più ed in modo più rapido",
-    "lang": "it",
-    "categories": [
-        "Saas",
-        "Shopping",
-        "E-commerce"
-    ],
-    "start_url": "/",
-    "scope": "/",
-    "display": "standalone",
-    "orientation": "portrait",
-    "theme_color": "#010314",
-    "background_color": "#010314",
-    "icons": [
-        {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "any"
-        },
-        {
-            "src": "/maskable-icon.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable"
-        }
-    ],
-    "prefer_related_applications": false,
-    "share_target": {
-        "action": "/share",
-        "method": "POST",
-        "enctype": "application/x-www-form-urlencoded",
-        "params": {
-            "title": "Describify",
-            "text": "Sfrutta l'intelligenza artificiale per massimizzare la visibilità e l'efficacia delle tue vendite online con Describify. Ottimizza rapidamente gli annunci dei tuoi prodotti di seconda mano per piattaforme di vendita come Vinted, Ebay e altro ancora.",
-            "url": "https://www.describify.it"
-        }
+  "name": "Describify",
+  "short_name": "Describify",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
-    "navigation_ui": "browser",
-    "serviceworker": {
-        "src": "/service-worker.js",
-        "scope": "/"
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
+  ],
+  "theme_color": "#8E64FF",
+  "background_color": "#7b4ef7",
+  "display": "standalone",
+  "description": "Describify: descrizioni automatizzate con IA per ottimizzare le vendite online su Vinted, eBay e altre piattaforme."
 }

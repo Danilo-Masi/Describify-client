@@ -18,9 +18,9 @@ import ModalMessage from "./ModalMessage";
 import EmailWaitlist from "./EmailWaitlist";
 
 // Url del server di produzione
-const SERVER_URL = 'http://localhost:3000';
+//const SERVER_URL = 'http://localhost:3000';
 // Url del server di rilascio
-//const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
+const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
 export default function WaitlistGadget({ buttonColor, mdWidth }: { buttonColor?: string, mdWidth?: string }) {
 

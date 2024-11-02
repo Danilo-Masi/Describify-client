@@ -1,0 +1,11 @@
+const i="Politica sui Cookie",e="Aggiornato al 2024-11-04",o=[{title:"Introduzione",content:"Questa Politica sui Cookie spiega come Describify e le sue affiliate utilizzano cookie e tecnologie simili quando visiti il nostro sito web, incluso [https://www.describify.it](https://www.describify.it). Tratta di cosa sono i cookie, perché li utilizziamo e come puoi gestire le tue preferenze sui cookie."},{title:"Definizioni e Termini Chiave",content:`- **Cookie**: Piccoli file di dati memorizzati dal tuo browser per ricordare informazioni come lo stato di accesso e le preferenze linguistiche. Describify non utilizza cookie per servizi di terze parti.
+
+ - **Azienda**: Si riferisce a Describify, il fornitore dei Servizi descritti in questa politica.
+
+ - **Dati Personali**: Informazioni che ti identificano come individuo, direttamente o indirettamente.`},{title:"Tipi di Cookie che Utilizziamo",content:"Describify non utilizza cookie sul suo sito web, nemmeno per l'analisi. Per monitorare il traffico del sito, utilizziamo LogLib senza impiego di cookie o tracciamento di terze parti."},{title:"Come Gestire i Cookie",content:`Puoi controllare i cookie tramite le impostazioni del tuo browser, anche se disabilitarli può influire sul funzionamento del sito. La maggior parte dei browser consente di:
+
+ -Eliminare i cookie alla fine di ogni sessione
+
+ -Bloccare determinati tipi di cookie
+
+ -Impostare preferenze per i cookie di prima e terza parte`},{title:"Aggiornamenti alla Politica",content:"Possiamo aggiornare periodicamente questa Politica sui Cookie. Quando lo faremo, pubblicheremo le modifiche su questa pagina e aggiorneremo la data di 'Aggiornamento'. Si consiglia di controllare questa pagina occasionalmente per assicurarsi di essere soddisfatti di eventuali cambiamenti."},{title:"Il Tuo Consenso",content:"Continuando a utilizzare il nostro sito web, acconsenti ai termini di questa politica. Se non sei d'accordo, puoi disabilitare i cookie tramite le impostazioni del tuo browser."},{title:"Contattaci",content:"Se hai domande sulla nostra Politica sui Cookie, non esitare a contattarci all'indirizzo info@describify.it."}],t={titlePrimary:i,captionPrimary:e,paragraphs:o};export{e as captionPrimary,t as default,o as paragraphs,i as titlePrimary};
