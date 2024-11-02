@@ -43,6 +43,7 @@ export default function HeroVideoPlayer() {
             className='w-full md:w-3/4 h-auto flex items-center justify-center relative rounded-xl ring-4 ring-custom-borderRingColor dark:ring-dark-borderRingColor'>
             {isButtonVisible && (
                 <button
+                    aria-label='pulsante play'
                     onClick={handleButtonClick}
                     className="w-16 h-16 flex items-center justify-center rounded-full bg-gray-200 shadow-2xl absolute z-20 cursor-pointer">
                     <div className='w-12 h-12 flex items-center justify-center rounded-full bg-white'>
@@ -50,7 +51,7 @@ export default function HeroVideoPlayer() {
                     </div>
                 </button>
             )}
-            <video ref={videoRef} src={heroVideo} typeof='video/mp4' className='rounded-xl' />
+            <video ref={videoRef} src={heroVideo} typeof='video/mp4' className='rounded-xl' > <track kind="captions" /></video>
         </div>
     );
 }

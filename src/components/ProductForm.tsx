@@ -51,6 +51,7 @@ function TextInput({ valoreId, valoreLabel, valoreInput, valorePlaceholder, onCh
                 {valoreLabel}
             </label>
             <input
+                aria-label={`Input ${valoreLabel}`}
                 id={valoreId}
                 type="text"
                 placeholder={valorePlaceholder}

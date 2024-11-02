@@ -1,5 +1,5 @@
 // React
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, Suspense } from "react";
 // Components
 import { Layout } from "../components/Layout";
 import Banner from "../components/Banner";
@@ -17,11 +17,13 @@ export default function HomePage({ setModalWaitListOpen }: { setModalWaitListOpe
             <Banner />
             <Navbar setModalWaitlistOpen={setModalWaitListOpen} />
             <Hero id="Home" />
-            <Features id="Features" />
-            <Prices id="Prices" />
-            <Faqs id="Faqs" />
-            <WaitlistSection />
-            <Footer />
+            <Suspense fallback={<div >Loading...</div>}>
+                <Features id="Features" />
+                <Prices id="Prices" />
+                <Faqs id="Faqs" />
+                <WaitlistSection />
+                <Footer />
+            </Suspense>
         </Layout>
     );
 }

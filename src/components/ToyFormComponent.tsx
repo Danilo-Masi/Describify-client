@@ -14,6 +14,7 @@ function TextInput({ valoreLabel, valore }: TextInputProps) {
             <input
                 readOnly
                 type="text"
+                aria-label={`Input ${valoreLabel}`}
                 value={valore}
                 className="w-full rounded-lg p-3 capitalize bg-custom-elevation3 dark:bg-dark-elevation3 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray" />
         </div>

@@ -7,6 +7,7 @@ import FaqsAccordition from "./FaqsAccordition";
 
 export default function Faqs({ id }: { id: string; }) {
 
+  // Componente per la traduzione
   const { t } = useTranslation();
 
   return (

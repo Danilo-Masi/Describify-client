@@ -20,7 +20,7 @@ export default function Footer() {
                 {/* Logo e info */}
                 <FooterCol mdItemsPosition='md:items-start'>
                     <div className='flex items-center gap-x-2'>
-                        <img src={logo} className="w-full h-10" />
+                        <img src={logo} className="w-full h-10" alt="Logo Describify"/>
                         <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>
                     </div>
                     <p className='text-md font-light text-center md:text-left text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'>

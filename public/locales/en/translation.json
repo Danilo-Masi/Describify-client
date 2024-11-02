@@ -172,5 +172,15 @@
     "modalLogoutDescrizione": "Once you log out, you will need your credentials to log back in",
     "modalLogoutBottoneAccetta": "Yes, log out",
     "modalLogoutBottoneAnnulla": "No, cancel",
-    "modalLogoutErroreServer": "Error during logout, please try again later"
+    "modalLogoutErroreServer": "Error during logout, please try again later",
+
+    "emailWaitlistTitolo": "Welcome to Describify!",
+    "emailWaitlistTesto1": "Hello and welcome to my community!",
+    "emailWaitlistTesto2": "Thank you so much for joining the Describify waitlist! I'm truly excited to have you with me on this project.",
+    "emailWaitlistTesto3": "As a thank you for believing in Describify from the start, I'll send you a notification as soon as the platform is ready. Plus, you'll be able to purchase credits at a special price reserved just for our early supporters.",
+    "emailWaitlistTesto4": "If you'd like to stay updated on Describify's developments, follow me on my social channels:",
+    "emailWaitlistTesto5": "Once again, thank you for your trust and support. I can't wait to show you everything I'm working on!",
+    "emailWaitlistTesto6": "See you soon,",
+    "emailWaitlistTesto7": "Danilo",
+    "emailWaitlistTesto8": "2024 Describify. All rights reserved."
 }

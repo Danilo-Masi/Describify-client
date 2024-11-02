@@ -173,5 +173,15 @@
     "modalLogoutDescrizione": "Effettuando il logout, dovrai inserire nuovamente i dati per rientrare",
     "modalLogoutBottoneAccetta": "Sì, esci",
     "modalLogoutBottoneAnnulla": "No, annulla",
-    "modalLogoutErroreServer": "Errore durante il logout, riprova più tardi"
+    "modalLogoutErroreServer": "Errore durante il logout, riprova più tardi",
+
+    "emailWaitlistTitolo": "Benvenuto in Describify!",
+    "emailWaitlistTesto1": "Ciao e benvenuto nella nostra community!",
+    "emailWaitlistTesto2": "Grazie di cuore per esserti iscritto alla waitlist di Describify! Sono davvero entusiasta di averti con me in questo progetto.",
+    "emailWaitlistTesto3": "Per ringraziarti di aver creduto in Describify fin dall'inizio, ti invierò una notifica appena la piattaforma sarà pronta. Inoltre, potrai acquistare i crediti a un prezzo speciale riservato ai nostri primi sostenitori.",
+    "emailWaitlistTesto4": "Se vuoi rimanere aggiornato sugli sviluppi di Describify, seguimi sui miei canali social:",
+    "emailWaitlistTesto5": "Ancora una volta, grazie per la tua fiducia e il tuo supporto. Non vedo l'ora di mostrarti tutto ciò che sto preparando!",
+    "emailWaitlistTesto6": "A presto,",
+    "emailWaitlistTesto7": "Danilo",
+    "emailWaitlistTesto8": "2024 Describify. Tutti i diritti riservati."
 }

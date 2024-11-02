@@ -27,7 +27,7 @@ export default function Logo() {
         <div className="md:w-1/4 py-10">
             <Link to="/" onClick={() => scrollToElement("#Home")} aria-label="Home page di Describify" className="flex items-center gap-x-3">
                 <div className='flex items-center justify-center gap-x-2'>
-                    <img src={logo} alt="Describify Logo" className="w-14 h-12 md:w-10 md:h-10" />
+                    <img src={logo} alt="Logo Describify" className="w-14 h-12 md:w-10 md:h-10" />
                     {isVisible && (
                         <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>
                             Describify

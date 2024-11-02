@@ -1,5 +1,5 @@
 // React
-import { Suspense} from 'react';
+import { Suspense } from 'react';
 // I18Next
 import { useTranslation } from 'react-i18next';
 // Components
@@ -22,7 +22,7 @@ export default function Hero({ id }: { id: string; }) {
                 descriptionStyle="text-lg md:text-xl" />
             <WaitlistGadget />
             <Suspense fallback={<div >Loading...</div>}>
-            <HeroVideoPlayer />
+                <HeroVideoPlayer />
             </Suspense>
         </GridBackground>
     );
