@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Utilities
 import { useLanguage } from "./utilities/useLanguage";
-// Vercel 
-import { SpeedInsights } from '@vercel/speed-insights/react';
 // Pages
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
@@ -77,7 +75,6 @@ export default function App() {
       </Routes>
       {isCookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}
       {isWaitlistModalOpen && <WaitlistModal onClose={() => setWaitlistModalOpen(false)} />}
-      <SpeedInsights />
     </BrowserRouter>
   );
 }
