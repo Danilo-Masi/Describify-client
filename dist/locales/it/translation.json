@@ -183,5 +183,9 @@
     "emailWaitlistTesto5": "Ancora una volta, grazie per la tua fiducia e il tuo supporto. Non vedo l'ora di mostrarti tutto ciò che sto preparando!",
     "emailWaitlistTesto6": "A presto,",
     "emailWaitlistTesto7": "Danilo",
-    "emailWaitlistTesto8": "2024 Describify. Tutti i diritti riservati."
+    "emailWaitlistTesto8": "2024 Describify. Tutti i diritti riservati.",
+
+    "errorPageTitolo": "Pagina non trovata",
+    "errorPageDescrizione": "Ricarica la pagina o torna alla home per continuare la navigazione.",
+    "errorPageBottone": "Vai alla home"
 }

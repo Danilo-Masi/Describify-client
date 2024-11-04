@@ -1,8 +1,15 @@
 // Flowbite-React
 import { FileInput, Label } from "flowbite-react";
+// I18next
+import { useTranslation } from 'react-i18next';
+// Components
 import { CloudIcon } from "./SvgComponents";
 
 export default function ToyImageComponent() {
+
+    // Componenete per la traduzione
+    const { t } = useTranslation();
+
     return (
         <Label
             htmlFor="dropzone-file"
@@ -10,7 +17,7 @@ export default function ToyImageComponent() {
             <div className="flex flex-col items-center justify-center pb-6 pt-5">
                 <CloudIcon />
                 <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    Click to upload
+                    {t('productImageTesto')}
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                     SVG, PNG, JPG or GIF (MAX. 800x400px)

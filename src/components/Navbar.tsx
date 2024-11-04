@@ -4,8 +4,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 // I18Next
 import { useTranslation } from 'react-i18next';
-// LogLib
-import { loglib } from "@loglib/tracker"
+
 // Utils
 import { scrollToElement } from '../utilities/useAnimations.tsx';
 // Components
@@ -31,10 +30,9 @@ function MenuElements() {
 function JoinWaitllistButton({ setModalWaitlistOpen }: { setModalWaitlistOpen: Dispatch<SetStateAction<boolean>>; }) {
     // Componente per la traduzione
     const { t } = useTranslation();
-
     // Funzione per aprire il popup con il form per l'iscrizione alla waitlist
     const handleOpenWaitlist = () => {
-        //loglib.track("click 'iscriviti alla waitlist' navbar"); //ATTIVARE
+        //track("AZIONE: Click modal waitlist, POSIZIONE: Navbar");
         setModalWaitlistOpen(true);
     }
 
@@ -60,6 +58,7 @@ export default function Navbar({ setModalWaitlistOpen }: { setModalWaitlistOpen:
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
     return (
         <div className={`w-full h-[12svh] top-[10svh] md:top-[7svh] flex items-center justify-center sticky z-20 ${isScrolled && 'backdrop-blur-lg backdrop-brightness-95'}`} >
             <div className="w-[90%] flex items-center">

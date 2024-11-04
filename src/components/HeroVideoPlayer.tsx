@@ -45,7 +45,7 @@ export default function HeroVideoPlayer() {
                 <button
                     aria-label='pulsante play'
                     onClick={handleButtonClick}
-                    className="w-16 h-16 flex items-center justify-center rounded-full bg-gray-200 shadow-2xl absolute z-20 cursor-pointer">
+                    className="w-16 h-16 flex items-center justify-center rounded-full bg-gray-200 shadow-2xl absolute z-10 cursor-pointer">
                     <div className='w-12 h-12 flex items-center justify-center rounded-full bg-white'>
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </div>

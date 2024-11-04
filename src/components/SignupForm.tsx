@@ -3,16 +3,13 @@ import { useCallback, useState } from "react";
 // React-router
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 // React-tostify
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 // Axios
 import axios from 'axios';
 // I18Next
 import { useTranslation } from 'react-i18next';
 // Utilities
 import { useEmail } from "../utilities/useEmail.tsx";
-// Assets
-import logo from '../assets/images/logo.svg';
 // Components
 import { ContainerInput } from "../components/Layout";
 import { NonVisibilityIcon, VisibilityIcon } from "../components/SvgComponents.tsx";
@@ -149,107 +146,103 @@ export default function SignupForm() {
   }
 
   return (
-    <>
-      <form
-        onSubmit={handleSignup}
-        className="w-full md:w-1/2 h-auto min-h-svh flex flex-col gap-4 items-center justify-center px-6 md:px-32 py-6 md:py-0">
-        {/* Intestazione */}
-        <ContainerInput containerStyle="w-full flex flex-col items-center gap-y-3 mb-5">
-          <h1 className="text-center text-2xl md:text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-            {t('signupMessaggioBenvenuto')}
-          </h1>
-        </ContainerInput>
-        {/* Campo nome */}
-        <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
-          <label htmlFor="input-signup-name" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupNameLabel')}</label>
+    <form
+      onSubmit={handleSignup}
+      className="w-full md:w-1/2 h-auto min-h-svh flex flex-col gap-4 items-center justify-center px-6 md:px-32 py-6 md:py-0">
+      {/* Intestazione */}
+      <ContainerInput containerStyle="w-full flex flex-col items-center gap-y-3 mb-5">
+        <h1 className="text-center text-2xl md:text-3xl font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+          {t('signupMessaggioBenvenuto')}
+        </h1>
+      </ContainerInput>
+      {/* Campo nome */}
+      <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
+        <label htmlFor="input-signup-name" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupNameLabel')}</label>
+        <input
+          type="text"
+          id="input-signup-name"
+          name="input-signup-name"
+          className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
+          placeholder="dmasiii"
+          value={signupForm.name}
+          onFocus={() => handleResetLabel('nameError')}
+          onChange={event => handleChange(event, 'name')} />
+        {errorLabel.nameError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.nameError}</p>}
+      </ContainerInput>
+      {/* Campo email */}
+      <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
+        <label htmlFor="input-signup-email" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupEmailLabel')}</label>
+        <input
+          type="email"
+          id="input-signup-email"
+          name="input-signup-email"
+          className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
+          placeholder="name@describify.com"
+          value={signupForm.email}
+          onFocus={() => handleResetLabel('emailError')}
+          onChange={event => handleChange(event, 'email')} />
+        {errorLabel.emailError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.emailError}</p>}
+      </ContainerInput>
+      {/* Campo password */}
+      <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
+        <label htmlFor="input-signup-password" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupPasswordLabel')}</label>
+        <div className="w-full relative">
           <input
-            type="text"
-            id="input-signup-name"
-            name="input-signup-name"
+            placeholder="•••••••••"
+            type={isPasswordVisible ? "text" : "password"}
+            id="input-signup-password"
+            name="input-signup-password"
             className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
-            placeholder="dmasiii"
-            value={signupForm.name}
-            onFocus={() => handleResetLabel('nameError')}
-            onChange={event => handleChange(event, 'name')} />
-          {errorLabel.nameError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.nameError}</p>}
-        </ContainerInput>
-        {/* Campo email */}
-        <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
-          <label htmlFor="input-signup-email" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupEmailLabel')}</label>
-          <input
-            type="email"
-            id="input-signup-email"
-            name="input-signup-email"
-            className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
-            placeholder="name@describify.com"
-            value={signupForm.email}
-            onFocus={() => handleResetLabel('emailError')}
-            onChange={event => handleChange(event, 'email')} />
-          {errorLabel.emailError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.emailError}</p>}
-        </ContainerInput>
-        {/* Campo password */}
-        <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
-          <label htmlFor="input-signup-password" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">{t('signupPasswordLabel')}</label>
-          <div className="w-full relative">
-            <input
-              placeholder="•••••••••"
-              type={isPasswordVisible ? "text" : "password"}
-              id="input-signup-password"
-              name="input-signup-password"
-              className="w-full rounded-lg p-2.5 bg-custom-elevation2 dark:bg-dark-elevation2 border border-custom-borderGray dark:border-dark-borderGray focus:border-custom-borderFocusColor dark:focus:border-dark-borderFocusColor focus:ring-custom-borderRingColor dark:focus:ring-dark-borderRingColor text-custom-textPrimaryGray dark:text-dark-textPrimaryGray placeholder:text-custom-textSecondaryGray dark:placeholder:text-dark-textSecondaryGray"
-              value={signupForm.password}
-              onFocus={() => handleResetLabel('passwordError')}
-              onChange={event => handleChange(event, 'password')} />
-            <button
-              type="button"
-              onClick={() => setPasswordVisible(!isPasswordVisible)}
-              className="absolute inset-y-0 right-0 px-3 flex items-center text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
-              {isPasswordVisible ? <VisibilityIcon /> : <NonVisibilityIcon />}
-            </button>
-          </div>
-          {errorLabel.passwordError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.passwordError}</p>}
-        </ContainerInput>
-        {/* Campo accetta termini e condizioni */}
-        <ContainerInput containerStyle="flex-col gap-y-3">
-          <div className="flex items-center justify-center">
-            <input
-              id="terms"
-              type="checkbox"
-              value=""
-              name="checkbox"
-              className="w-4 h-4 border rounded focus:ring-1 border-custom-border bg-custom-background focus:ring-custom-accent checked:bg-custom-accent dark:border-dark-border dark:bg-dark-background dark:ring-dark-accent dark:checked:bg-dark-accent"
-              checked={signupForm.termsCheckbox}
-              onFocus={() => handleResetLabel('checkboxError')}
-              onChange={event => handleChange(event, 'termsCheckbox')} />
-            <label htmlFor="terms" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray ms-2">
-              {t('signupCheckboxLabel')}
-              <Link to="/terms-and-conditions" className="ms-2 text-custom-textSecondaryColor dark:text-dark-textSecondaryColor hover:text-custom-solidColor dark:hover:text-dark-solidColor">
-                {t('singupCheckboxLink')}
-              </Link>
-            </label>
-          </div>
-          {errorLabel.checkboxError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.checkboxError}</p>}
-        </ContainerInput>
-        {/* Bottone registrati */}
-        <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
+            value={signupForm.password}
+            onFocus={() => handleResetLabel('passwordError')}
+            onChange={event => handleChange(event, 'password')} />
           <button
-            type="submit"
-            className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
-            {t('signupBottone')}
+            type="button"
+            onClick={() => setPasswordVisible(!isPasswordVisible)}
+            className="absolute inset-y-0 right-0 px-3 flex items-center text-custom-textPrimaryGray dark:text-dark-textPrimaryGray">
+            {isPasswordVisible ? <VisibilityIcon /> : <NonVisibilityIcon />}
           </button>
-        </ContainerInput>
-        {/* Link redirect */}
-        <ContainerInput containerStyle="flex-row">
-          <p className="text-sm font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
-            {t('signupRedirectLabel')}
-            <Link to="/signin" className="text-custom-textSecondaryColor dark:text-dark-textSecondaryColor hover:text-custom-solidColor dark:hover:text-dark-solidColor ms-2">
-              {t('signupRedirectLink')}
+        </div>
+        {errorLabel.passwordError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.passwordError}</p>}
+      </ContainerInput>
+      {/* Campo accetta termini e condizioni */}
+      <ContainerInput containerStyle="flex-col gap-y-3">
+        <div className="flex items-center justify-center">
+          <input
+            id="terms"
+            type="checkbox"
+            value=""
+            name="checkbox"
+            className="w-4 h-4 border rounded focus:ring-1 border-custom-border bg-custom-background focus:ring-custom-accent checked:bg-custom-accent dark:border-dark-border dark:bg-dark-background dark:ring-dark-accent dark:checked:bg-dark-accent"
+            checked={signupForm.termsCheckbox}
+            onFocus={() => handleResetLabel('checkboxError')}
+            onChange={event => handleChange(event, 'termsCheckbox')} />
+          <label htmlFor="terms" className="text-custom-textPrimaryGray dark:text-dark-textPrimaryGray ms-2">
+            {t('signupCheckboxLabel')}
+            <Link to="/terms-and-conditions" className="ms-2 text-custom-textSecondaryColor dark:text-dark-textSecondaryColor hover:text-custom-solidColor dark:hover:text-dark-solidColor">
+              {t('singupCheckboxLink')}
             </Link>
-          </p>
-        </ContainerInput>
-      </form>
-      {/* Componente per le notifiche */}
-      <ToastContainer autoClose={1000} />
-    </>
+          </label>
+        </div>
+        {errorLabel.checkboxError !== "" && <p className="text-red-500 font-light text-sm">{errorLabel.checkboxError}</p>}
+      </ContainerInput>
+      {/* Bottone registrati */}
+      <ContainerInput containerStyle="w-full flex flex-col gap-y-3">
+        <button
+          type="submit"
+          className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
+          {t('signupBottone')}
+        </button>
+      </ContainerInput>
+      {/* Link redirect */}
+      <ContainerInput containerStyle="flex-row">
+        <p className="text-sm font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+          {t('signupRedirectLabel')}
+          <Link to="/signin" className="text-custom-textSecondaryColor dark:text-dark-textSecondaryColor hover:text-custom-solidColor dark:hover:text-dark-solidColor ms-2">
+            {t('signupRedirectLink')}
+          </Link>
+        </p>
+      </ContainerInput>
+    </form>
   );
 }

@@ -182,5 +182,9 @@
     "emailWaitlistTesto5": "Once again, thank you for your trust and support. I can't wait to show you everything I'm working on!",
     "emailWaitlistTesto6": "See you soon,",
     "emailWaitlistTesto7": "Danilo",
-    "emailWaitlistTesto8": "2024 Describify. All rights reserved."
+    "emailWaitlistTesto8": "2024 Describify. All rights reserved.",
+
+    "errorPageTitolo": "Page not found",
+    "errorPageDescrizione": "Reload the page or return to the home to continue browsing.",
+    "errorPageBottone": "Go to home"
 }

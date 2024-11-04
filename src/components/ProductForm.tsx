@@ -25,11 +25,6 @@ interface TextInputProps {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-interface ButtonGenerateProps {
-    labelButton: string;
-    onClick: () => void;
-}
-
 interface ProductFormProps {
     selectedCategory: string;
     selectedBrand: string;
@@ -62,7 +57,7 @@ function TextInput({ valoreId, valoreLabel, valoreInput, valorePlaceholder, onCh
     );
 }
 
-function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
+function ButtonGenerate({ labelButton, onClick }: { labelButton: string, onClick: () => void }) {
     return (
         <button
             onClick={onClick}
@@ -76,6 +71,7 @@ function ButtonGenerate({ labelButton, onClick }: ButtonGenerateProps) {
 
 export default function ProductForm({ selectedCategory, selectedBrand, selectedSize, selectedColor, setSelectedCategory, setSelectedBrand, setSelectedColor, setSelectedSize, setTitleGenerated, setDescriptionGenerated, setLoading }: ProductFormProps) {
 
+    // Componente per capire la lingua in uso
     const language = useLanguage();
     // Componente per la traduzione
     const { t } = useTranslation();
@@ -87,7 +83,7 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
         const validazioneDati = handleValidate({ selectedCategory, selectedBrand, selectedSize, selectedColor });
         if (validazioneDati) {
             try {
-                // Effettua la richiesta al backend con il token JWT nell'header Authorization
+                // Effettua la richiesta al backend con il token JWT nell'header Authorization //DA MODIFICARE
                 const response = await axios.post(`${SERVER_URL}/product-generation`, {
                     prompt: `Categoria del prodotto: ${selectedCategory}, Marca: ${selectedBrand}, Taglia: ${selectedSize}, Colore: ${selectedColor}`,
                 });
@@ -143,37 +139,32 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
                 valoreLabel={t('productFormLabelCategoria')}
                 valoreInput={selectedCategory}
                 valorePlaceholder={t('productFormPlaceholderCategoria')}
-                onChange={e => setSelectedCategory(e.target.value)}
-            />
+                onChange={e => setSelectedCategory(e.target.value)} />
             {/* Input brand */}
             <TextInput
                 valoreId='inputBrandId'
                 valoreLabel={t('productFormLabelBrand')}
                 valoreInput={selectedBrand}
                 valorePlaceholder={t('productFormPlaceholderBrand')}
-                onChange={e => setSelectedBrand(e.target.value)}
-            />
+                onChange={e => setSelectedBrand(e.target.value)} />
             {/* Input colore */}
             <TextInput
                 valoreId='inputColoreId'
                 valoreLabel={t('productFormLabelColore')}
                 valoreInput={selectedColor}
                 valorePlaceholder={t('productFormPlaceholderColore')}
-                onChange={e => setSelectedColor(e.target.value)}
-            />
+                onChange={e => setSelectedColor(e.target.value)} />
             {/* Input taglia */}
             <TextInput
                 valoreId='inputTagliaId'
                 valoreLabel={t('productFormLabelDimensione')}
                 valoreInput={selectedSize}
                 valorePlaceholder={t('productFormPlaceholderDimensione')}
-                onChange={e => setSelectedSize(e.target.value)}
-            />
+                onChange={e => setSelectedSize(e.target.value)} />
             {/* Bottone per la generazione */}
             <ButtonGenerate
                 labelButton={t('productFormBottone')}
-                onClick={handleGenerate}
-            />
+                onClick={handleGenerate} />
         </div>
     );
 }

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Utilities
 import { useLanguage } from "./utilities/useLanguage";
+// Vercel 
+import { SpeedInsights } from '@vercel/speed-insights/react';
 // Pages
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
@@ -37,6 +39,7 @@ export default function App() {
       script.src = "https://cdn.jsdelivr.net/npm/@loglib/tracker@latest/dist/index.global.js";
       script.setAttribute('data-id', 'describify');
       script.defer = true;
+      script.onerror = (error: any) => console.error("CLIENT: Errore nel caricamento di LogLib:", error.message);
       document.head.appendChild(script);
     } else {
       setCookieModalOpen(true);
@@ -74,6 +77,7 @@ export default function App() {
       </Routes>
       {isCookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}
       {isWaitlistModalOpen && <WaitlistModal onClose={() => setWaitlistModalOpen(false)} />}
+      <SpeedInsights />
     </BrowserRouter>
   );
 }

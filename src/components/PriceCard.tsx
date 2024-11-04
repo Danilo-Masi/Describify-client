@@ -1,7 +1,7 @@
 // React-icons
 import { IoMdTrendingUp } from "react-icons/io";
 // Flowbite-react
-import { Button, Tooltip, Badge } from "flowbite-react";
+import { Tooltip, Badge } from "flowbite-react";
 // I18Next
 import { useTranslation } from 'react-i18next';
 

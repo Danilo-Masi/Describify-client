@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@loglib/tracker": "^0.8.0",
     "@react-email/components": "^0.0.25",
+    "@vercel/speed-insights": "^1.0.14",
     "axios": "^1.6.8",
     "clsx": "^2.1.1",
     "flowbite": "^2.3.0",
