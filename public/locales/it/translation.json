@@ -130,6 +130,7 @@
 
     "productImageTesto": "Clicca qui per caricare l’immagine",
 
+    "productImageErroreEstensione": "Il file selezionato non è valido",
     "productImageErroreCrediti": "Crediti insufficienti",
     "productImageErroreCaricamento": "Impossibile caricare l'immagine selezionata",
 

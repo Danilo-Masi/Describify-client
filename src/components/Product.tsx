@@ -46,7 +46,6 @@ export default function Product({ isCreditiUpdate, setCreditiUpdate }: { isCredi
                             fileSelected={fileSelected}
                             setSelectedCategory={setSelectedCategory}
                             setSelectedBrand={setSelectedBrand}
-                            setSelectedSize={setSelectedSize}
                             setSelectedColor={setSelectedColor}
                             setCreditiUpdate={setCreditiUpdate}
                             isCreditiUpdate={isCreditiUpdate} />

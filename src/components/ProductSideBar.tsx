@@ -14,13 +14,13 @@ const SERVER_URL = 'http://localhost:3000';
 //const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL;
 
 interface ContainerItemProps {
-    children: ReactNode;
     id: string;
     pageSelected: string;
     setPageSelected: Dispatch<SetStateAction<string>>;
+    children: ReactNode;
 }
 
-const ContainerItem = ({ children, id, pageSelected, setPageSelected }: ContainerItemProps) => {
+const ContainerItem = ({ id, pageSelected, setPageSelected, children }: ContainerItemProps) => {
     return (
         <div
             id={id}
@@ -32,23 +32,24 @@ const ContainerItem = ({ children, id, pageSelected, setPageSelected }: Containe
 }
 
 interface SideBarProps {
+    creditiDisponibili: number;
     pageSelected: string;
     setPageSelected: Dispatch<SetStateAction<string>>;
-    creditiDisponibili: any;
 }
 
-export default function ProductSideBar({ pageSelected, setPageSelected, creditiDisponibili }: SideBarProps) {
+export default function ProductSideBar({ creditiDisponibili, pageSelected, setPageSelected }: SideBarProps) {
 
     // Componente per la traduzione
     const { t } = useTranslation();
-
+    // Stato che gestisce quando la sideBar è aperta o chiusa (per mobile)
     const [isSideBarOpen, setSideBarOpen] = useState(false);
+    // Stato che gestisce quando mostrare o meno gli elementi del menù
     const shouldShowMenu = window.innerWidth > 728 || isSideBarOpen;
 
     return (
         <div className="w-full md:w-1/5 h-fit md:h-[calc(100svh-2.5rem)] flex flex-col items-start justify-start gap-y-3 p-5 rounded-xl mb-5 md:mb-0 bg-custom-elevation2 dark:bg-dark-elevation2">
-            {/* Logo/Bottone apertura */}
-            <div className={`w-full flex items-center justify-between md:justify-start gap-x-2 ${isSideBarOpen || window.innerWidth > 728 && 'mb-5'}`}>
+            {/* Logo - Bottone apertura/chiusura menù */}
+            <div className={`w-full flex items-center justify-between md:justify-start gap-x-2 ${isSideBarOpen || window.innerWidth > 728 ? 'mb-5' : 'mb-0'}`}>
                 <div className="flex items-center justify-center gap-x-2">
                     <img src={logo} className="w-full h-10" />
                     <h2 className='text-2xl font-bold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray'>Describify</h2>

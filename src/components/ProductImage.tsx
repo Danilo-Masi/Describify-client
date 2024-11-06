@@ -24,13 +24,12 @@ interface ProductImageProps {
     setImageSelected: Dispatch<SetStateAction<boolean>>;
     setSelectedCategory: Dispatch<SetStateAction<string>>;
     setSelectedBrand: Dispatch<SetStateAction<string>>;
-    setSelectedSize: Dispatch<SetStateAction<string>>;
     setSelectedColor: Dispatch<SetStateAction<string>>;
     setCreditiUpdate: Dispatch<SetStateAction<boolean>>;
     isCreditiUpdate: boolean;
 }
 
-export default function ProductImage({ fileSelected, setImageSelected, setFileSelected, setSelectedCategory, setSelectedBrand, setSelectedSize, setSelectedColor, setCreditiUpdate, isCreditiUpdate }: ProductImageProps) {
+export default function ProductImage({ fileSelected, setImageSelected, setFileSelected, setSelectedCategory, setSelectedBrand, setSelectedColor, setCreditiUpdate, isCreditiUpdate }: ProductImageProps) {
 
     // Componenete per la traduzione
     const { t } = useTranslation();
@@ -39,8 +38,55 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
     const [isLoading, setLoading] = useState<boolean>(false);
 
     // Funzione per selezionare il file dal file system
-    const handleSelectFile = (e: any) => {
-        setFileSelected(e.target.files[0]);
+    const handleSelectFile = async (e: any) => {
+        const file = e.target.files[0];
+        if (file && (file.type === "image/jpeg" || file.type === "image/svg+xml" || file.type === "image/png")) {
+            const resizedImage = await resizeImage(file, 800, 800);
+            setFileSelected(resizedImage);
+        } else {
+            toast.warn(t('productImageErroreEstensione'));
+        }
+    }
+
+    // Funzione per il ridimensionamento dell'immagine
+    const resizeImage = (file: File, maxWidth: number, maxHeight: number): Promise<File> => {
+        return new Promise((resolve) => {
+            const img = new Image();
+            const reader = new FileReader();
+            // Legge l'immagine caricata
+            reader.onload = (event: any) => {
+                img.src = event.target.result;
+            };
+            img.onload = () => {
+                // Dimensioni dell'immagine caricata
+                let width = img.width;
+                let height = img.height;
+                // Calcola le nuove dimensioni mantenendo le proporzioni
+                if (width > maxWidth || height > maxHeight) {
+                    if (width > height) {
+                        height = Math.floor((height * maxWidth) / width);
+                        width = maxWidth;
+                    } else {
+                        width = Math.floor((width * maxHeight) / height);
+                        height = maxHeight;
+                    }
+                }
+                // Crea il canvas e disegna l'immagine ridimensionata
+                const canvas = document.createElement("canvas");
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext("2d");
+                ctx?.drawImage(img, 0, 0, width, height);
+                // Converti il contenuto del canvas in un file Blob
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        const resizedFile = new File([blob], file.name, { type: file.type });
+                        resolve(resizedFile);
+                    }
+                }, file.type);
+            };
+            reader.readAsDataURL(file);
+        });
     }
 
     // Effetto per creare un URL temporaneo dell'immagine per caricare l'anteprima
@@ -131,6 +177,7 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                     <Label
                         htmlFor="dropzone-file"
                         className="flex h-full w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600" >
+                        {/* Contenitore su cui cliccare per selezionare l'immagine */}
                         <div className="flex flex-col items-center justify-center pb-6 pt-5">
                             <CloudIcon />
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
@@ -140,17 +187,23 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                                 SVG, PNG o JPG (MAX. 800x400px)
                             </p>
                         </div>
-                        <FileInput id="dropzone-file" className="hidden" typeof="file" onChange={handleSelectFile} />
+                        {/* File input nascosto per selezionare l'immagine */}
+                        <FileInput
+                            id="dropzone-file"
+                            className="hidden"
+                            typeof="file"
+                            accept=".jpg, .jpeg, .svg, .png"
+                            onChange={handleSelectFile} />
                     </Label>
                 ) : (
                     <div className="w-full h-full relative flex flex-col gap-y-5">
-
+                        {/* Bottone per cancellare l'immagine selezionata */}
                         <button
                             className="absolute -right-3 -top-3 text-custom-textPrimaryGray dark:text-dark-textPrimaryGray"
                             onClick={() => setFileSelected(null)}>
                             <CloseIcon />
                         </button>
-
+                        {/* Anteprima dell'immagine selezionata */}
                         {imageUrl && (
                             <img
                                 className="w-full h-full object-cover object-center max-h-[60svh] rounded-lg"
@@ -158,7 +211,7 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                                 alt="Selected"
                             />
                         )}
-
+                        {/* Bottone chiamare la funzione handleAnalyzeImage */}
                         <ActiveButton
                             text={isLoading ? "Sta analizzando" : "Continua"}
                             buttonStyle={`w-full py-3.5 ${isLoading && 'animate-pulse'}`}

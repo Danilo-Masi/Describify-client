@@ -129,6 +129,7 @@
 
     "productImageTesto": "Click here to upload an image",
 
+    "productImageErroreEstensione": "The file selected is not valid",
     "productImageErroreCrediti": "Insufficient credits",
     "productImageErroreCaricamento": "Unable to upload selected image",
 
