@@ -2,7 +2,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 // Flowbite-React
 import { FileInput, Label } from "flowbite-react";
-import { CloseIcon, CloudIcon } from "./SvgComponents";
+import { ChevronRight, CloseIcon, CloudIcon, LoadingIncon } from "./SvgComponents";
 // React-tostify
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -184,7 +184,7 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                                 {t('productImageTesto')}
                             </p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">
-                                SVG, PNG o JPG (MAX. 800x400px)
+                                SVG, PNG o JPG (MAX. 800x800px)
                             </p>
                         </div>
                         {/* File input nascosto per selezionare l'immagine */}
@@ -211,11 +211,27 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                                 alt="Selected"
                             />
                         )}
+                        <p className="font-light text-sm text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
+                            {t('productImageAvviso')}
+                        </p>
                         {/* Bottone chiamare la funzione handleAnalyzeImage */}
-                        <ActiveButton
-                            text={isLoading ? "Sta analizzando" : "Continua"}
-                            buttonStyle={`w-full py-3.5 ${isLoading && 'animate-pulse'}`}
-                            onClick={handleAnalyzeImage} />
+                        {isLoading ? (
+                            <button
+                                disabled
+                                type="button"
+                                className="w-full inline-flex items-center justify-center py-3 gap-x-2 font-semibold text-dark-textPrimaryGray rounded-lg bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
+                                {t('productImageBottoneCaricamento')}
+                                <LoadingIncon />
+                            </button>
+                        ) : (
+                            <button
+                                type="button"
+                                className=" w-full inline-flex items-center justify-center py-3 gap-x-2 font-semibold text-dark-textPrimaryGray rounded-lg bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor"
+                                onClick={handleAnalyzeImage}>
+                                {t('productImageBottoneContinua')}
+                                <ChevronRight />
+                            </button>
+                        )}
                     </div>
                 )}
         </div>

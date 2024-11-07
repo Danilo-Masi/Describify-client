@@ -69,7 +69,8 @@ export default function Product({ isCreditiUpdate, setCreditiUpdate }: { isCredi
                     {isLaoding ? <SkeltonPlaceholder skeletonStyle="h-2/3" /> : <ProductGenerateText divStyle="h-2/3" titolo={t('productGenerateTextTitolo2')} placeholder={t('productGenerateTextPlaceholder2')} testoGenerato={descriptionGenerated !== "" ? descriptionGenerated : ''} />}
                 </div>
             </div>
-            <ToastContainer autoClose={1500} />
+            {/* Componente per le notifiche */}
+            <ToastContainer autoClose={1500} pauseOnHover={false} />
         </>
     );
 }

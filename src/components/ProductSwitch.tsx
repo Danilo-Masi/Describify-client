@@ -17,7 +17,7 @@ export default function ProductSwitch({ isImageSelected, setImageSelected }: { i
       </button>
       <button
         onClick={() => { setImageSelected(false) }}
-        className={`w-1/2 px-4 py-2 rounded-lg ${!isImageSelected ? 'bg-custom-elevation3' : 'text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'} disabled:bg-red-500 dark:disabled:bg-red-500`} >
+        className={`w-1/2 px-4 py-2 rounded-lg ${!isImageSelected ? 'bg-custom-elevation3' : 'text-custom-textSecondaryGray dark:text-dark-textSecondaryGray'}`} >
         {t('productSwitchDettagli')}
       </button>
     </div>

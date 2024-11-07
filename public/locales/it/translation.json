@@ -129,6 +129,9 @@
     "productSwitchDettagli": "Visualizza Dettagli",
 
     "productImageTesto": "Clicca qui per caricare l’immagine",
+    "productImageAvviso": "* Una volta cliccato su “Continua” verrà utilizzato un token. Assicurati quindi di scegliere attentamente la foto da inserire prima di procedere",
+    "productImageBottoneContinua": "Continua",
+    "productImageBottoneCaricamento": "Caricamento",
 
     "productImageErroreEstensione": "Il file selezionato non è valido",
     "productImageErroreCrediti": "Crediti insufficienti",

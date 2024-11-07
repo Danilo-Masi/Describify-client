@@ -80,7 +80,7 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
     const handleGenerate = async () => {
         setLoading(true);
         // Validazione dei dati
-        const validazioneDati = handleValidate({ selectedCategory, selectedBrand, selectedSize, selectedColor });
+        const validazioneDati = handleValidate(selectedCategory);
         if (validazioneDati) {
             try {
                 // Effettua la richiesta al backend con il token JWT nell'header Authorization //DA MODIFICARE
@@ -99,8 +99,8 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
     }
 
     // Funzione per validare i dati prima di procedere con la generazione
-    const handleValidate = ({ selectedCategory, selectedBrand, selectedSize, selectedColor }: any) => {
-        if (selectedCategory === "" || selectedBrand === "" || selectedSize === "" || selectedColor === "") {
+    const handleValidate = (selectedCategory: string) => {
+        if (selectedCategory === "") {
             toast.warn(t('productFormErroreDati'));
             return false;
         }
