@@ -6,10 +6,10 @@
     "linkPrezzi": "Pricing",
     "bottoneIscriviti": "Join the waitlist",
 
-    "heroTitolo": "Less Stress, More Sales",
+    "heroTitolo": "Less Stress More Sales",
     "heroDescrizione": "Speed up listing creation and boost your sales on Vinted, eBay, Subito, and Wallapop",
 
-    "bottoneIscriviWaitlist": "Sign Up",
+    "bottoneIscriviWaitlist": "Join the waitlist",
     "bottoneCaricamentoWaitlist": "Loading...",
     "erroreInvioEmailWaitlist": "You have successfully subscribed to the waitlist, but there was an error in sending the email",
     "erroreIscrizioneWaitlist": "There was an error while trying to get the waitlist, try again later!",
@@ -128,7 +128,11 @@
     "productSwitchDettagli": "View Details",
 
     "productImageTesto": "Click here to upload an image",
+    "productImageAvviso": "* Once you click on “Continue” a token will be used. So make sure to carefully select the photo you want to upload before proceeding.",
+    "productImageBottoneContinua": "Continue",
+    "productImageBottoneCaricamento": "Loading",
 
+    "productImageErroreEstensione": "The file selected is not valid",
     "productImageErroreCrediti": "Insufficient credits",
     "productImageErroreCaricamento": "Unable to upload selected image",
 

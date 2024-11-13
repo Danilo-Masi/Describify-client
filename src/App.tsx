@@ -32,12 +32,13 @@ export default function App() {
     // Verifica se il banner dei cookie è già stato visualizzato
     if (localStorage.getItem('cookieBanner')) {
       setCookieModalOpen(false);
-      // LogLib analytics
+      // Simple Analytics
       const script = document.createElement('script');
-      script.src = "https://cdn.jsdelivr.net/npm/@loglib/tracker@latest/dist/index.global.js";
-      script.setAttribute('data-id', 'describify');
+      script.src = "https://scripts.simpleanalyticscdn.com/latest.js";
+      script.async = true;
       script.defer = true;
-      script.onerror = (error: any) => console.error("CLIENT: Errore nel caricamento di LogLib:", error.message);
+      script.setAttribute('data-hostname', 'www.describify.it');
+      script.onerror = (error: any) => console.error("CLIENT: Errore nel caricamento di Simple Analytics:", error.message);
       document.head.appendChild(script);
     } else {
       setCookieModalOpen(true);
@@ -61,16 +62,16 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
-        <Route path="/" element={<HomePage setModalWaitListOpen={setWaitlistModalOpen} />} />
-        
+        <Route index element={<HomePage isBannerVisible={true} setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/" element={<HomePage isBannerVisible={true} setModalWaitListOpen={setWaitlistModalOpen} />} />
+        {/* 
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
-
-        <Route path="/terms-and-conditions" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
-        <Route path="/privacy-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
-        <Route path="/cookie-policy" element={<LegalPage setModalWaitListOpen={setWaitlistModalOpen} />} />
+          */}
+        <Route path="/terms-and-conditions" element={<LegalPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/privacy-policy" element={<LegalPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/cookie-policy" element={<LegalPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       {isCookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}

@@ -9,7 +9,7 @@
     "heroTitolo": "Meno stress Più vendite",
     "heroDescrizione": "Velocizza la creazione di annunci e incrementa le tue vendite su Vinted, Ebay, Subito e Wallapop",
 
-    "bottoneIscriviWaitlist": "Iscriviti",
+    "bottoneIscriviWaitlist": "Iscriviti alla waitlist",
     "bottoneCaricamentoWaitlist": "Caricamento...",
     "erroreInvioEmailWaitlist": "Ti sei iscritto correttamente alla waitlist, ma c'è stato un errore nell'invio dell'email",
     "erroreIscrizioneWaitlist": "C'è stato un errore durante l'iscirizone alla waitlist, riprova più tardi!",
@@ -129,7 +129,11 @@
     "productSwitchDettagli": "Visualizza Dettagli",
 
     "productImageTesto": "Clicca qui per caricare l’immagine",
+    "productImageAvviso": "* Una volta cliccato su “Continua” verrà utilizzato un token. Assicurati quindi di scegliere attentamente la foto da inserire prima di procedere",
+    "productImageBottoneContinua": "Continua",
+    "productImageBottoneCaricamento": "Caricamento",
 
+    "productImageErroreEstensione": "Il file selezionato non è valido",
     "productImageErroreCrediti": "Crediti insufficienti",
     "productImageErroreCaricamento": "Impossibile caricare l'immagine selezionata",
 

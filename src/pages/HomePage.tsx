@@ -11,11 +11,11 @@ import Faqs from "../components/Faqs";
 import Footer from "../components/Footer";
 import WaitlistSection from "../components/WaitlistSection";
 
-export default function HomePage({ setModalWaitListOpen }: { setModalWaitListOpen: Dispatch<SetStateAction<boolean>>; }) {
+export default function HomePage({ isBannerVisible, setModalWaitListOpen }: { isBannerVisible: boolean, setModalWaitListOpen: Dispatch<SetStateAction<boolean>>; }) {
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">
             <Banner />
-            <Navbar setModalWaitlistOpen={setModalWaitListOpen} />
+            <Navbar isBannerVisibile={isBannerVisible} setModalWaitlistOpen={setModalWaitListOpen} />
             <Hero id="Home" />
             <Suspense fallback={<div >Loading...</div>}>
                 <Features id="Features" />
