@@ -36,9 +36,6 @@ export default function Product({ isCreditiUpdate, setCreditiUpdate }: { isCredi
             <div className="w-full md:w-4/5 h-auto md:h-[calc(100svh-2.5rem)] flex flex-col md:flex-row gap-5 p-5 rounded-xl z-10 ml-0 md:ml-5 bg-custom-elevation2 dark:bg-dark-elevation2">
                 {/* Form caricamento immagine e dettagli */}
                 <div className="w-full md:w-1/2 h-auto flex flex-col items-start justify-start gap-y-6">
-                    <ProductSwitch
-                        isImageSelected={isImageSelected}
-                        setImageSelected={setImageSelected} />
                     {isImageSelected
                         ? <ProductImage
                             setImageSelected={setImageSelected}

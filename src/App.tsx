@@ -64,11 +64,11 @@ export default function App() {
       <Routes>
         <Route index element={<HomePage isBannerVisible={true} setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/" element={<HomePage isBannerVisible={true} setModalWaitListOpen={setWaitlistModalOpen} />} />
-        {/* 
+        
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
-          */}
+        
         <Route path="/terms-and-conditions" element={<LegalPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<LegalPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<LegalPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
