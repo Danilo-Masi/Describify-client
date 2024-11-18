@@ -3,7 +3,7 @@ import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-const language = localStorage.getItem('language') || 'it';
+const language = localStorage.getItem('language') || 'en';
 
 i18n
   .use(Backend)
@@ -11,7 +11,7 @@ i18n
   .use(initReactI18next)
   .init({
     lng: language,
-    fallbackLng: 'it',
+    fallbackLng: 'en',
     debug: false,
     detection: {
       order: ['localStorage', 'navigator'],

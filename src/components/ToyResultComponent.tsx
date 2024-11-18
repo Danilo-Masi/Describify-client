@@ -10,7 +10,7 @@ export default function ToyResultComponent() {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full h-auto flex flex-col gap-y-6">
+    <div className="w-full h-auto flex flex-col gap-y-6 cursor-not-allowed">
       {/* Div titolo */}
       <div className="w-full h-1/3 min-h-fit flex flex-col items-start justify-between gap-y-5 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
         <div className="w-full flex items-center justify-between">

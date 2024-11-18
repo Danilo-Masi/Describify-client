@@ -6,8 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLanguage } from "./utilities/useLanguage";
 // Pages
 import HomePage from "./pages/HomePage";
-import LegalPage from "./pages/LegalPage";
 import ErrorPage from "./pages/ErrorPage";
+import TermsPage from "./pages/TermsPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import CookiesPage from "./pages/CookiesPage";
 import ProductPage from "./pages/ProductPage";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
@@ -64,14 +66,14 @@ export default function App() {
       <Routes>
         <Route index element={<HomePage isBannerVisible={true} setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/" element={<HomePage isBannerVisible={true} setModalWaitListOpen={setWaitlistModalOpen} />} />
-        
+        {/*
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        
-        <Route path="/terms-and-conditions" element={<LegalPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
-        <Route path="/privacy-policy" element={<LegalPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
-        <Route path="/cookie-policy" element={<LegalPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
+         */}
+        <Route path="/terms-and-conditions" element={<TermsPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/privacy-policy" element={<PrivacyPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
+        <Route path="/cookie-policy" element={<CookiesPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       {isCookieModalOpen && <ModalCookies setCookieModalOpen={setCookieModalOpen} />}

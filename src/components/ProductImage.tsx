@@ -184,7 +184,7 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                                 {t('productImageTesto')}
                             </p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">
-                                SVG, PNG o JPG (MAX. 800x800px)
+                                SVG, PNG o JPG
                             </p>
                         </div>
                         {/* File input nascosto per selezionare l'immagine */}
@@ -206,14 +206,10 @@ export default function ProductImage({ fileSelected, setImageSelected, setFileSe
                         {/* Anteprima dell'immagine selezionata */}
                         {imageUrl && (
                             <img
-                                className="w-full h-full object-cover object-center max-h-[60svh] rounded-lg"
+                                className="w-full h-full object-cover object-center rounded-lg"
                                 src={imageUrl}
-                                alt="Selected"
-                            />
+                                alt="Selected" />
                         )}
-                        <p className="font-light text-sm text-custom-textSecondaryGray dark:text-dark-textSecondaryGray">
-                            {t('productImageAvviso')}
-                        </p>
                         {/* Bottone chiamare la funzione handleAnalyzeImage */}
                         {isLoading ? (
                             <button

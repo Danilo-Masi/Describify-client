@@ -1,3 +1,5 @@
+// Flowbite-react
+import { Tooltip } from 'flowbite-react';
 // I18next
 import { useTranslation } from 'react-i18next';
 // Components
@@ -29,18 +31,20 @@ export default function ToyFormComponent() {
     const { t } = useTranslation();
 
     return (
-        <div className="w-full h-full flex flex-wrap items-center justify-center gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
+        <div className="w-full h-full flex flex-wrap items-center justify-center gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray cursor-not-allowed">
             <TextInput valoreLabel={t('productFormLabelCategoria')} valore={t('productFormPlaceholderCategoria')} />
             <TextInput valoreLabel={t('productFormLabelBrand')} valore={t('productFormPlaceholderBrand')} />
             <TextInput valoreLabel={t('productFormLabelColore')} valore={t('productFormPlaceholderColore')} />
             <TextInput valoreLabel={t('productFormLabelDimensione')} valore={t('productFormPlaceholderDimensione')} />
-            <button
-                disabled
-                type="button"
-                className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
-                {t('productFormBottone')}
-                <SparklingStars />
-            </button>
+            <Tooltip content={t('prezziBottoneTooltip')} animation="duration-500" trigger="hover">
+                <button
+                    disabled
+                    type="button"
+                    className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
+                    {t('productFormBottone')}
+                    <SparklingStars />
+                </button>
+            </Tooltip>
         </div>
     )
 }

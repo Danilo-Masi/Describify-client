@@ -23,7 +23,7 @@ export default function ToyImageComponent() {
                     SVG, PNG, JPG or GIF (MAX. 800x400px)
                 </p>
             </div>
-            <FileInput id="dropzone-file" className="hidden" typeof="file" />
+            <FileInput id="dropzone-file" className="hidden cursor-no-drop" typeof="file" disabled />
         </Label>
     );
 }

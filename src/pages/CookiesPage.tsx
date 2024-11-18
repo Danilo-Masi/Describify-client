@@ -1,67 +1,40 @@
 // React
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-// React-router
-import { useLocation } from "react-router-dom";
 // Components
 import { Layout } from "../components/Layout";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useLanguage } from "../utilities/useLanguage";
 
-interface ParagraphProps {
-    title: string;
-    content: string;
-}
-
-interface PrivacyDataProps {
+interface DataProps {
     titlePrimary: string;
     captionPrimary: string;
     paragraphs: ParagraphProps[],
 }
 
-export default function LegalPage({ isBannerVisibile, setModalWaitListOpen }: { isBannerVisibile: boolean, setModalWaitListOpen: Dispatch<SetStateAction<boolean>>; }) {
+interface ParagraphProps {
+    title: string;
+    content: string;
+}
+
+export default function CookiesPage({ isBannerVisibile, setModalWaitListOpen }: { isBannerVisibile: boolean, setModalWaitListOpen: Dispatch<SetStateAction<boolean>> }) {
 
     // Funzione per capire la lingua utilizzata
     const language = useLanguage();
-    // Funzione per capire il pathname
-    const location = useLocation();
     // Stato che gestisce la risorsa da mostrare
-    const [data, setData] = useState<PrivacyDataProps | null>(null);
+    const [data, setData] = useState<DataProps | null>(null);
 
     useEffect(() => {
-        const currentURL = location.pathname;
-        console.log(language);
-
         if (language === "it") {
-            if (currentURL.includes("terms-and-conditions")) {
-                import("../data/legalData/terms&conditions_it.json").then((data) => {
-                    setData(data);
-                });
-            } else if (currentURL.includes("privacy-policy")) {
-                import("../data/legalData/privacyPolicy_it.json").then((data) => {
-                    setData(data);
-                });
-            } else {
-                import("../data/legalData/cookiePolicy_it.json").then((data) => {
-                    setData(data);
-                });
-            }
+            import("../data/legalData/cookiePolicy_it.json").then((data) => {
+                setData(data);
+            });
         } else {
-            if (currentURL.includes("terms-and-conditions")) {
-                import("../data/legalData/terms&conditions_en.json").then((data) => {
-                    setData(data);
-                });
-            } else if (currentURL.includes("privacy-policy")) {
-                import("../data/legalData/privacyPolicy_en.json").then((data) => {
-                    setData(data);
-                });
-            } else {
-                import("../data/legalData/cookiePolicy_en.json").then((data) => {
-                    setData(data);
-                });
-            }
+            import("../data/legalData/cookiePolicy_en.json").then((data) => {
+                setData(data);
+            });
         }
-    }, [location.pathname]);
+    }, [data]);
 
     return (
         <Layout padding="px-0" mdFlexOrientation="md:flex-col" mdHeight="md:h-auto">

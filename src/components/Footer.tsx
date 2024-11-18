@@ -49,7 +49,7 @@ export default function Footer() {
                 {/* Link social media */}
                 <FooterCol>
                     <p className="text-lg font-semibold text-custom-textPrimaryGray dark:text-dark-textPrimaryGray mb-2">Social</p>
-                    <a target='_blank' rel='noopener noreferrer' href='https://x.com/dmasiiii' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='Twitter link'>X (Twitter)</a>
+                    <a target='_blank' rel='noopener noreferrer' href='https://x.com/describify' className="cursor-pointer text-center text-balance font-light text-custom-textSecondaryGray dark:text-dark-textSecondaryGray hover:text-custom-hoverColor dark:hover:text-dark-hoverColor" title='Twitter link'>X (Twitter)</a>
                 </FooterCol>
             </div>
         </div>

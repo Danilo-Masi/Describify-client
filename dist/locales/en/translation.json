@@ -7,7 +7,7 @@
     "bottoneIscriviti": "Join the waitlist",
 
     "heroTitolo": "Less Stress More Sales",
-    "heroDescrizione": "Speed up listing creation and boost your sales on Vinted, eBay, Subito, and Wallapop",
+    "heroDescrizione": "Give your listings a fresh vibe and score more buyers on Vinted, Wallapop, and eBay.",
 
     "bottoneIscriviWaitlist": "Join the waitlist",
     "bottoneCaricamentoWaitlist": "Loading...",
@@ -39,6 +39,7 @@
     "prezziBadge": "Pricing",
     "prezziTitolo": "Pay only for what you use",
     "prezziDescrizione": "No expiry, no monthly or annual subscription, just purchase the package with the number of credits you need",
+    "prezziBottoneTooltip": "We’re so close to launch!",
 
     "prezziPianoBasicTitolo": "Basic plan",
     "prezziPianoBasicDescrizione": "Perfect for those who want to start exploring the platform without commitment",
@@ -128,7 +129,6 @@
     "productSwitchDettagli": "View Details",
 
     "productImageTesto": "Click here to upload an image",
-    "productImageAvviso": "* Once you click on “Continue” a token will be used. So make sure to carefully select the photo you want to upload before proceeding.",
     "productImageBottoneContinua": "Continue",
     "productImageBottoneCaricamento": "Loading",
 
