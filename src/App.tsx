@@ -35,13 +35,14 @@ export default function App() {
     if (localStorage.getItem('cookieBanner')) {
       setCookieModalOpen(false);
       // Simple Analytics
-      const script = document.createElement('script');
+      //********************* ATTIVARE PRIMA DELLA BUILD **************************************//
+      /*const script = document.createElement('script');
       script.src = "https://scripts.simpleanalyticscdn.com/latest.js";
       script.async = true;
       script.defer = true;
       script.setAttribute('data-hostname', 'www.describify.it');
       script.onerror = (error: any) => console.error("CLIENT: Errore nel caricamento di Simple Analytics:", error.message);
-      document.head.appendChild(script);
+      document.head.appendChild(script);*/
     } else {
       setCookieModalOpen(true);
     }
@@ -66,11 +67,11 @@ export default function App() {
       <Routes>
         <Route index element={<HomePage isBannerVisible={true} setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/" element={<HomePage isBannerVisible={true} setModalWaitListOpen={setWaitlistModalOpen} />} />
-        {/*
+
         <Route path="/product" element={<ProductPage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
-         */}
+        
         <Route path="/terms-and-conditions" element={<TermsPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/privacy-policy" element={<PrivacyPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />
         <Route path="/cookie-policy" element={<CookiesPage isBannerVisibile={false} setModalWaitListOpen={setWaitlistModalOpen} />} />

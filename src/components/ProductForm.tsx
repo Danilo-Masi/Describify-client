@@ -30,10 +30,12 @@ interface ProductFormProps {
     selectedBrand: string;
     selectedSize: string;
     selectedColor: string;
+    selectedConditions: string;
     setSelectedCategory: Dispatch<SetStateAction<string>>;
     setSelectedBrand: Dispatch<SetStateAction<string>>;
     setSelectedSize: Dispatch<SetStateAction<string>>;
     setSelectedColor: Dispatch<SetStateAction<string>>;
+    setSelectedConditions: Dispatch<SetStateAction<string>>;
     setTitleGenerated: Dispatch<SetStateAction<string>>;
     setDescriptionGenerated: Dispatch<SetStateAction<string>>;
     setLoading: Dispatch<SetStateAction<boolean>>;
@@ -62,14 +64,14 @@ function ButtonGenerate({ labelButton, onClick }: { labelButton: string, onClick
         <button
             onClick={onClick}
             type="button"
-            className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
+            className="w-full flex items-center justify-center gap-x-2 rounded-lg px-5 py-3 mt-3 font-semibold text-dark-textPrimaryGray bg-custom-solidColor dark:bg-dark-solidColor hover:bg-custom-hoverColor dark:hover:bg-dark-hoverColor">
             {labelButton}
             <SparklingStars />
         </button>
     );
 }
 
-export default function ProductForm({ selectedCategory, selectedBrand, selectedSize, selectedColor, setSelectedCategory, setSelectedBrand, setSelectedColor, setSelectedSize, setTitleGenerated, setDescriptionGenerated, setLoading }: ProductFormProps) {
+export default function ProductForm({ selectedCategory, selectedBrand, selectedSize, selectedColor, selectedConditions, setSelectedCategory, setSelectedBrand, setSelectedColor, setSelectedSize, setSelectedConditions, setTitleGenerated, setDescriptionGenerated, setLoading }: ProductFormProps) {
 
     // Componente per capire la lingua in uso
     const language = useLanguage();
@@ -121,6 +123,7 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
         setSelectedBrand("");
         setSelectedColor("");
         setSelectedSize("");
+        setSelectedConditions("");
     }
 
     // Funzione per gestire le operazioni nel caso in cui la generazione non vada a buon fine
@@ -132,35 +135,42 @@ export default function ProductForm({ selectedCategory, selectedBrand, selectedS
     }
 
     return (
-        <div className="w-full h-full flex flex-wrap items-center justify-center gap-6 p-5 rounded-lg bg-custom-elevation4 dark:bg-dark-elevation4 border border-custom-borderGray dark:border-dark-borderGray">
+        <div className="w-full h-full flex flex-col items-start justify-between">
             {/* Input categoria */}
             <TextInput
                 valoreId='inputCategoriaId'
                 valoreLabel={t('productFormLabelCategoria')}
-                valoreInput={selectedCategory}
                 valorePlaceholder={t('productFormPlaceholderCategoria')}
+                valoreInput={selectedCategory}
                 onChange={e => setSelectedCategory(e.target.value)} />
             {/* Input brand */}
             <TextInput
                 valoreId='inputBrandId'
                 valoreLabel={t('productFormLabelBrand')}
-                valoreInput={selectedBrand}
                 valorePlaceholder={t('productFormPlaceholderBrand')}
+                valoreInput={selectedBrand}
                 onChange={e => setSelectedBrand(e.target.value)} />
             {/* Input colore */}
             <TextInput
                 valoreId='inputColoreId'
                 valoreLabel={t('productFormLabelColore')}
-                valoreInput={selectedColor}
                 valorePlaceholder={t('productFormPlaceholderColore')}
+                valoreInput={selectedColor}
                 onChange={e => setSelectedColor(e.target.value)} />
             {/* Input taglia */}
             <TextInput
                 valoreId='inputTagliaId'
                 valoreLabel={t('productFormLabelDimensione')}
-                valoreInput={selectedSize}
                 valorePlaceholder={t('productFormPlaceholderDimensione')}
+                valoreInput={selectedSize}
                 onChange={e => setSelectedSize(e.target.value)} />
+            {/* Input condizioni */}
+            <TextInput
+                valoreId='inputCondizioniId'
+                valoreLabel={t('productFormLabelCondizioni')}
+                valorePlaceholder={t('productFormPlaceholderCondizioni')}
+                valoreInput={selectedConditions}
+                onChange={e => setSelectedConditions(e.target.value)} />
             {/* Bottone per la generazione */}
             <ButtonGenerate
                 labelButton={t('productFormBottone')}

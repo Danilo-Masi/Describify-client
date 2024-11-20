@@ -125,16 +125,14 @@
     "productSiderBarTesto": "Crediti rimanenti",
     "productSideBarBottone": "Aggiungi crediti",
 
-    "productSwitchImmagine": "Visualizza Immagine...",
-    "productSwitchDettagli": "Visualizza Dettagli",
-
     "productImageTesto": "Clicca qui per caricare l’immagine",
-    "productImageBottoneContinua": "Continua",
+    "productImageBottoneContinua": "Compila campi",
     "productImageBottoneCaricamento": "Caricamento",
 
     "productImageErroreEstensione": "Il file selezionato non è valido",
     "productImageErroreCrediti": "Crediti insufficienti",
     "productImageErroreCaricamento": "Impossibile caricare l'immagine selezionata",
+    "productImageErroreLimite": "Caricare massimo 4 immagini",
 
     "productFormLabelCategoria": "Categoria",
     "productFormPlaceholderCategoria": "Esempio: Tuta spaziale",
@@ -144,6 +142,8 @@
     "productFormPlaceholderColore": "Esempio: Bianco, Rosso, Grigio",
     "productFormLabelDimensione": "Taglia",
     "productFormPlaceholderDimensione": "Esempio: M",
+    "productFormLabelCondizioni": "Condizioni",
+    "productFormPlaceholderCondizioni": "Esempio: Usato ma in ottime condizioni",
     "productFormBottone": "Crea annuncio",
 
     "productFormErroreDati": "Verifica i dati inseriti prima di procedere",

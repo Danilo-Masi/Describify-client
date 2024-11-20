@@ -125,9 +125,6 @@
     "productSiderBarTesto": "Remaining credits",
     "productSideBarBottone": "Add credits",
 
-    "productSwitchImmagine": "View Image",
-    "productSwitchDettagli": "View Details",
-
     "productImageTesto": "Click here to upload an image",
     "productImageBottoneContinua": "Continue",
     "productImageBottoneCaricamento": "Loading",
@@ -135,6 +132,7 @@
     "productImageErroreEstensione": "The file selected is not valid",
     "productImageErroreCrediti": "Insufficient credits",
     "productImageErroreCaricamento": "Unable to upload selected image",
+    "productImageErroreLimite": "Upload max 4 images",
 
     "productFormLabelCategoria": "Category",
     "productFormPlaceholderCategoria": "Example: Spacesuit",
@@ -144,6 +142,8 @@
     "productFormPlaceholderColore": "Example: White, Red, Gray",
     "productFormLabelDimensione": "Size",
     "productFormPlaceholderDimensione": "Example: M",
+    "productFormLabelCondizioni": "Conditions",
+    "productFormPlaceholderCondizioni": "Example: used but in excellent condition",
     "productFormBottone": "Create Listing",
 
     "productFormErroreDati": "Please check the entered data before proceeding",
