@@ -144,6 +144,8 @@
     "productFormPlaceholderDimensione": "Example: M",
     "productFormLabelCondizioni": "Conditions",
     "productFormPlaceholderCondizioni": "Example: used but in excellent condition",
+    "productFormLabelPrezzo": "Price",
+    "productFormPlaceholderPrezzo": "€ 12,95",
     "productFormBottone": "Create Listing",
 
     "productFormErroreDati": "Please check the entered data before proceeding",

@@ -125,7 +125,7 @@
     "productSiderBarTesto": "Crediti rimanenti",
     "productSideBarBottone": "Aggiungi crediti",
 
-    "productImageTesto": "Clicca qui per caricare l’immagine",
+    "productImageTesto": "Clicca qui per caricare le immagini (Massimo 4 immagini)",
     "productImageBottoneContinua": "Compila campi",
     "productImageBottoneCaricamento": "Caricamento",
 
@@ -144,6 +144,8 @@
     "productFormPlaceholderDimensione": "Esempio: M",
     "productFormLabelCondizioni": "Condizioni",
     "productFormPlaceholderCondizioni": "Esempio: Usato ma in ottime condizioni",
+    "productFormLabelPrezzo": "Prezzo",
+    "productFormPlaceholderPrezzo": "€ 12,95",
     "productFormBottone": "Crea annuncio",
 
     "productFormErroreDati": "Verifica i dati inseriti prima di procedere",

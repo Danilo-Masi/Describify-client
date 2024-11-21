@@ -23,13 +23,12 @@ interface ProductImageProps {
     setSelectedBrand: Dispatch<SetStateAction<string>>;
     setSelectedColor: Dispatch<SetStateAction<string>>;
     setSelectedSize: Dispatch<SetStateAction<string>>;
-    setSelectedConditions: Dispatch<SetStateAction<string>>;
     setImageSelected: Dispatch<SetStateAction<boolean>>;
     isCreditiUpdate: boolean;
     setCreditiUpdate: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function ProductImage({ fileSelected, setFileSelected, setSelectedCategory, setSelectedBrand, setSelectedColor, setSelectedSize, setSelectedConditions, setImageSelected, isCreditiUpdate, setCreditiUpdate }: ProductImageProps) {
+export default function ProductImage({ fileSelected, setFileSelected, setSelectedCategory, setSelectedBrand, setSelectedColor, setSelectedSize, setImageSelected, isCreditiUpdate, setCreditiUpdate }: ProductImageProps) {
 
     // Componenete per la traduzione
     const { t } = useTranslation();
@@ -163,19 +162,16 @@ export default function ProductImage({ fileSelected, setFileSelected, setSelecte
                 const coloreMatch = analysisResult.match(/colore:\s*(.*?)\s*(?=marchio:)/i);
                 const marchioMatch = analysisResult.match(/marchio:\s*(.*?)\s*(?=dimensioni:)/i);
                 const dimensioneMatch = analysisResult.match(/dimensioni:\s*(.*?)\s*(?=condizioni:)/i);
-                const condizioniMatch = analysisResult.match(/condizioni:\s*(.*)/i);
                 // Ottieni i valori se trovati
                 const categoria = categoriaMatch && categoriaMatch[1].trim();
                 const colore = coloreMatch && coloreMatch[1].trim();
                 const marchio = marchioMatch && marchioMatch[1].trim();
                 const dimensione = dimensioneMatch && dimensioneMatch[1].trim();
-                const condizioni = condizioniMatch && condizioniMatch[1].trim();
                 // Imposta i valori trovati nel form
                 setSelectedCategory(categoria);
                 setSelectedColor(colore);
                 setSelectedBrand(marchio);
                 setSelectedSize(dimensione);
-                setSelectedConditions(condizioni);
                 // Resetta lo stato dell'immagine
                 setImageSelected(true);
                 setFileSelected([]);

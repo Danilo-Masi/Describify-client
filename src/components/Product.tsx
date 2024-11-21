@@ -21,13 +21,14 @@ export default function Product({ isCreditiUpdate, setCreditiUpdate }: { isCredi
     // Stato che verifica se l'immagine è presente o deve esseree caricata
     const [fileSelected, setFileSelected] = useState<File[]>([]);
     // Stato che controlla se passare al form
-    const [isImageSelected, setImageSelected] = useState<boolean>(false);
+    const [isImageSelected, setImageSelected] = useState<boolean>(true);
     // Stato per tenere traccia dei valori presenti nei campi del form dei dettagli
     const [selectedCategory, setSelectedCategory] = useState<string>("");
     const [selectedBrand, setSelectedBrand] = useState<string>("");
     const [selectedColor, setSelectedColor] = useState<string>("");
     const [selectedSize, setSelectedSize] = useState<string>("");
     const [selectedConditions, setSelectedConditions] = useState<string>("");
+    const [selectedPrice, setSelectedPrice] = useState<number>(0);
     // Stato per tenere traccia dei valori del titolo e della caption generati dall'AI
     const [titleGenerated, setTitleGenerated] = useState<string>("");
     const [descriptionGenerated, setDescriptionGenerated] = useState<string>("");
@@ -45,7 +46,6 @@ export default function Product({ isCreditiUpdate, setCreditiUpdate }: { isCredi
                             setSelectedBrand={setSelectedBrand}
                             setSelectedColor={setSelectedColor}
                             setSelectedSize={setSelectedSize}
-                            setSelectedConditions={setSelectedConditions}
                             setImageSelected={setImageSelected}
                             isCreditiUpdate={isCreditiUpdate}
                             setCreditiUpdate={setCreditiUpdate} />
@@ -56,6 +56,7 @@ export default function Product({ isCreditiUpdate, setCreditiUpdate }: { isCredi
                             selectedSize={selectedSize}
                             selectedColor={selectedColor}
                             selectedConditions={selectedConditions}
+                            selectedPrice={selectedPrice}
                             setSelectedCategory={setSelectedCategory}
                             setSelectedBrand={setSelectedBrand}
                             setSelectedSize={setSelectedSize}
@@ -63,6 +64,7 @@ export default function Product({ isCreditiUpdate, setCreditiUpdate }: { isCredi
                             setSelectedConditions={setSelectedConditions}
                             setTitleGenerated={setTitleGenerated}
                             setDescriptionGenerated={setDescriptionGenerated}
+                            setSelectedPrice={setSelectedPrice}
                             setLoading={setLoading} />
                     )
                     }
